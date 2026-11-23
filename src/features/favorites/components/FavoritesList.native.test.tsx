@@ -1,10 +1,10 @@
 import React from 'react'
+import { ListRenderItem, Text } from 'react-native'
 
 import { FavoriteOfferResponseV2 } from 'api/gen'
 import { FavoritesList, FavoritesListProps } from 'features/favorites/components/FavoritesList'
 import { paginatedOfferFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedOfferFavoritesResponseSnap'
 import { FavoriteSortBy, Tab } from 'features/favorites/types'
-import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils'
@@ -18,14 +18,17 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 
 const mockFavorites: FavoriteOfferResponseV2[] = paginatedOfferFavoritesResponseSnap.favorites
 
+const renderItem: ListRenderItem<FavoriteOfferResponseV2> = ({ item }) => (
+  <Text>{item.offer.name}</Text>
+)
+
 const defaultProps = {
   favorites: mockFavorites,
+  renderItem,
   sortBy: 'RECENTLY_ADDED' as FavoriteSortBy,
   isRefreshing: false,
   onRefresh: jest.fn(),
-  onBookOffer: jest.fn(),
   selectedTab: Tab.OFFERS,
-  user: beneficiaryUser,
 }
 
 describe('FavoritesList', () => {
@@ -33,7 +36,7 @@ describe('FavoritesList', () => {
     setFeatureFlags()
   })
 
-  it('should render favorites items when user and credit are available', () => {
+  it('should render favorites items using renderItem', () => {
     renderFavoritesList({})
 
     expect(screen.getByText('Spectacle une seule date')).toBeOnTheScreen()
@@ -67,6 +70,6 @@ describe('FavoritesList', () => {
   })
 })
 
-const renderFavoritesList = (props: Partial<FavoritesListProps>) => {
+const renderFavoritesList = (props: Partial<FavoritesListProps<FavoriteOfferResponseV2>>) => {
   return render(reactQueryProviderHOC(<FavoritesList {...defaultProps} {...props} />))
 }

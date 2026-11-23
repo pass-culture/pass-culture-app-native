@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { FavoriteOfferResponseV2 } from 'api/gen'
+import { FavoriteArtistResponse, FavoriteOfferResponseV2, FavoriteVenueResponse } from 'api/gen'
 import { FavoriteButton } from 'ui/components/buttons/FavoriteButton'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -11,7 +11,7 @@ export type FavoriteActionsProps = {
   primaryAction?: React.ReactNode
   onSharePress: () => void
   shareAccessibilityLabel: string
-  favorite: FavoriteOfferResponseV2
+  favorite: FavoriteOfferResponseV2 | FavoriteArtistResponse | FavoriteVenueResponse
   onRemove: () => void
   isRemoving: boolean
 }
@@ -24,7 +24,10 @@ export const FavoriteActions: FunctionComponent<FavoriteActionsProps> = ({
   onRemove,
   isRemoving,
 }) => {
-  const entityId = favorite.offer.id
+  const favoriteButtonProps = {
+    removeFavorite: onRemove,
+    isRemoveFavoriteLoading: isRemoving,
+  }
 
   return (
     <FavoriteActionsContainer gap={2}>
@@ -37,12 +40,19 @@ export const FavoriteActions: FunctionComponent<FavoriteActionsProps> = ({
         accessibilityLabel={shareAccessibilityLabel}
         iconButton
       />
-      <FavoriteButton
-        offerId={entityId}
-        removeFavorite={onRemove}
-        isRemoveFavoriteLoading={isRemoving}
-        favorite={favorite}
-      />
+      {'offer' in favorite ? (
+        <FavoriteButton offerId={favorite.offer.id} favorite={favorite} {...favoriteButtonProps} />
+      ) : null}
+      {'artist' in favorite ? (
+        <FavoriteButton
+          artistId={favorite.artist.id}
+          favorite={favorite}
+          {...favoriteButtonProps}
+        />
+      ) : null}
+      {'venue' in favorite ? (
+        <FavoriteButton venueId={favorite.venue.id} favorite={favorite} {...favoriteButtonProps} />
+      ) : null}
     </FavoriteActionsContainer>
   )
 }

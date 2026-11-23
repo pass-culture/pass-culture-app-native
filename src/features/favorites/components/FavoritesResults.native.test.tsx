@@ -2,16 +2,27 @@ import { QueryObserverSuccessResult } from '@tanstack/react-query'
 import React from 'react'
 import { Text as MockText } from 'react-native'
 
-import { FavoriteOfferResponseV2, PaginatedResponseFavoriteOfferResponseV2 } from 'api/gen'
+import {
+  FavoriteArtistResponse,
+  FavoriteOfferResponseV2,
+  FavoriteVenueResponse,
+  PaginatedResponseFavoriteOfferResponseV2,
+} from 'api/gen'
 import { initialFavoritesState } from 'features/favorites/context/reducer'
+import { favoriteArtistResponseSnap } from 'features/favorites/fixtures/favoriteArtistResponseSnap'
+import { favoriteVenueResponseSnap } from 'features/favorites/fixtures/favoriteVenueResponseSnap'
 import { paginatedOfferFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedOfferFavoritesResponseSnap'
-import { useOfferFavoritesQuery } from 'features/favorites/queries'
-import { env } from 'libs/environment/env'
+import { UserProfile } from 'features/share/types'
+import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useRemoveOfferFavoriteMutation } from 'queries/favorites/useRemoveFavoriteMutation'
+import {
+  useArtistFavoritesQuery,
+  useOfferFavoritesQuery,
+  useVenueFavoritesQuery,
+} from 'queries/favorites/useFavoritesQuery'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen } from 'tests/utils'
+import { fireEvent, render, screen, userEvent } from 'tests/utils'
 
 import { FavoritesResults } from './FavoritesResults'
 
@@ -23,14 +34,41 @@ jest.mock('features/favorites/context/FavoritesWrapper', () => ({
   }),
 }))
 
-jest.mock('features/favorites/queries/useOfferFavoritesQuery')
-const mockUseFavorites = useOfferFavoritesQuery as jest.MockedFunction<
+let mockUser: UserProfile | undefined = beneficiaryUser
+jest.mock('features/auth/context/AuthContext', () => ({
+  ...jest.requireActual('features/auth/context/AuthContext'),
+  useAuthContext: () => ({ user: mockUser }),
+}))
+
+jest.mock('queries/favorites/useFavoritesQuery')
+const mockUseOfferFavorites = useOfferFavoritesQuery as jest.MockedFunction<
   typeof useOfferFavoritesQuery
 >
-jest.mock('queries/favorites/useRemoveFavoriteMutation')
-const mockUseRemoveFavorites = useRemoveOfferFavoriteMutation as jest.MockedFunction<
-  typeof useRemoveOfferFavoriteMutation
+const mockUseVenueFavorites = useVenueFavoritesQuery as jest.MockedFunction<
+  typeof useVenueFavoritesQuery
 >
+const mockUseArtistFavorites = useArtistFavoritesQuery as jest.MockedFunction<
+  typeof useArtistFavoritesQuery
+>
+
+jest.mock('features/favorites/components/FavoriteOffer', () => ({
+  FavoriteOffer: ({ favorite }: { favorite: FavoriteOfferResponseV2 }) => {
+    const Text = MockText
+    return <Text>{favorite.offer.name}</Text>
+  },
+}))
+jest.mock('features/favorites/components/FavoriteVenue', () => ({
+  FavoriteVenue: ({ favorite }: { favorite: FavoriteVenueResponse }) => {
+    const Text = MockText
+    return <Text>{favorite.venue.name}</Text>
+  },
+}))
+jest.mock('features/favorites/components/FavoriteArtist', () => ({
+  FavoriteArtist: ({ favorite }: { favorite: FavoriteArtistResponse }) => {
+    const Text = MockText
+    return <Text>{favorite.artist.name}</Text>
+  },
+}))
 
 jest.mock('features/bookOffer/pages/BookingOfferModal', () => ({
   BookingOfferModal() {
@@ -38,12 +76,6 @@ jest.mock('features/bookOffer/pages/BookingOfferModal', () => ({
     return <Text>BookingOfferModalMock</Text>
   },
 }))
-
-const mockData = {
-  nbFavorites: 0,
-  favorites: [] as Array<FavoriteOfferResponseV2>,
-  page: 0,
-} as PaginatedResponseFavoriteOfferResponseV2
 
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
@@ -59,17 +91,59 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const emptyOffers = {
+  nbFavorites: 0,
+  favorites: [] as FavoriteOfferResponseV2[],
+  page: 0,
+} as PaginatedResponseFavoriteOfferResponseV2
+
+const mockRefetchOffers = jest.fn()
+const mockRefetchVenues = jest.fn()
+const mockRefetchArtists = jest.fn()
+
+const queryResult = (data: unknown, refetch: jest.Mock, overrides = {}) =>
+  ({ data, isLoading: false, isFetching: false, refetch, ...overrides }) as unknown
+
+function mockOffers(data: unknown = paginatedOfferFavoritesResponseSnap, overrides = {}) {
+  mockUseOfferFavorites.mockReturnValue(
+    queryResult(
+      data,
+      mockRefetchOffers,
+      overrides
+    ) as QueryObserverSuccessResult<PaginatedResponseFavoriteOfferResponseV2>
+  )
+}
+
+function mockVenues(favorites: FavoriteVenueResponse[] = [], overrides = {}) {
+  const data = { nbFavorites: favorites.length, favorites, page: 0 }
+
+  mockUseVenueFavorites.mockReturnValue(
+    queryResult(data, mockRefetchVenues, overrides) as ReturnType<typeof useVenueFavoritesQuery>
+  )
+}
+
+function mockArtists(favorites: FavoriteArtistResponse[] = [], overrides = {}) {
+  const data = { nbFavorites: favorites.length, favorites, page: 0 }
+
+  mockUseArtistFavorites.mockReturnValue(
+    queryResult(data, mockRefetchArtists, overrides) as ReturnType<typeof useArtistFavoritesQuery>
+  )
+}
+
+const user = userEvent.setup()
+
 describe('FavoritesResults component', () => {
   beforeEach(() => {
+    jest.clearAllMocks()
+    mockUser = beneficiaryUser
     setFeatureFlags()
+    mockOffers()
+    mockVenues()
+    mockArtists()
   })
 
   it('should show no result message when list is empty', async () => {
-    // eslint-disable-next-line local-rules/independent-mocks
-    mockUseFavorites.mockReturnValue({
-      data: mockData,
-      isFetching: false,
-    } as QueryObserverSuccessResult<PaginatedResponseFavoriteOfferResponseV2>)
+    mockOffers(emptyOffers)
 
     renderFavoritesResults()
     const button = await screen.findByText('Explorer')
@@ -80,11 +154,7 @@ describe('FavoritesResults component', () => {
   })
 
   it('should show favorite placeholder on init', async () => {
-    // eslint-disable-next-line local-rules/independent-mocks
-    mockUseFavorites.mockReturnValue({
-      data: undefined,
-      isLoading: true,
-    } as unknown as QueryObserverSuccessResult<PaginatedResponseFavoriteOfferResponseV2>)
+    mockOffers(undefined, { isLoading: true })
 
     renderFavoritesResults()
     const container = await screen.findByTestId('FavoritesResultsPlaceHolder')
@@ -93,18 +163,6 @@ describe('FavoritesResults component', () => {
   })
 
   it('should show number of result and sortBy button', async () => {
-    env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = true
-    const mutate = jest.fn()
-    // eslint-disable-next-line local-rules/independent-mocks
-    mockUseFavorites.mockReturnValue({
-      data: paginatedOfferFavoritesResponseSnap,
-      isFetching: false,
-    } as unknown as QueryObserverSuccessResult<PaginatedResponseFavoriteOfferResponseV2>)
-
-    // eslint-disable-next-line local-rules/independent-mocks
-    mockUseRemoveFavorites.mockReturnValue({
-      mutate,
-    } as unknown as ReturnType<typeof useRemoveOfferFavoriteMutation>)
     renderFavoritesResults()
     const container = await screen.findByText(
       `${paginatedOfferFavoritesResponseSnap.nbFavorites} favoris`
@@ -117,13 +175,23 @@ describe('FavoritesResults component', () => {
     expect(sortByButton).toBeOnTheScreen()
   })
 
+  it('should render offers when user and credit are available', async () => {
+    renderFavoritesResults()
+
+    expect(await screen.findByText('Spectacle une seule date')).toBeOnTheScreen()
+  })
+
+  it('should not render offers when user is not available', async () => {
+    mockUser = undefined
+
+    renderFavoritesResults()
+    await screen.findByText(`${paginatedOfferFavoritesResponseSnap.nbFavorites} favoris`)
+
+    expect(screen.queryByText('Spectacle une seule date')).not.toBeOnTheScreen()
+  })
+
   it('should display tabs panel when wipFavoritesHub FF activated', async () => {
     setFeatureFlags([RemoteStoreFeatureFlags.WIP_FAVORITES_HUB])
-    // eslint-disable-next-line local-rules/independent-mocks
-    mockUseFavorites.mockReturnValue({
-      data: paginatedOfferFavoritesResponseSnap,
-      isFetching: false,
-    } as unknown as QueryObserverSuccessResult<PaginatedResponseFavoriteOfferResponseV2>)
 
     renderFavoritesResults()
 
@@ -131,17 +199,100 @@ describe('FavoritesResults component', () => {
   })
 
   it('should not display tabs panel when wipFavoritesHub FF deactivated', async () => {
-    // eslint-disable-next-line local-rules/independent-mocks
-    mockUseFavorites.mockReturnValue({
-      data: paginatedOfferFavoritesResponseSnap,
-      isFetching: false,
-    } as unknown as QueryObserverSuccessResult<PaginatedResponseFavoriteOfferResponseV2>)
-
     renderFavoritesResults()
 
     await screen.findByText(`${paginatedOfferFavoritesResponseSnap.nbFavorites} favoris`)
 
     expect(screen.queryByLabelText('Types de favoris')).not.toBeOnTheScreen()
+  })
+
+  describe('with wipFavoritesHub FF activated', () => {
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_FAVORITES_HUB])
+    })
+
+    it('should display venue favorites in venues tab', async () => {
+      mockVenues([favoriteVenueResponseSnap])
+      renderFavoritesResults()
+
+      await user.press(await screen.findByText('Lieux'))
+
+      expect(await screen.findByText(favoriteVenueResponseSnap.venue.name)).toBeOnTheScreen()
+    })
+
+    it('should display artist favorites in artists tab', async () => {
+      mockArtists([favoriteArtistResponseSnap])
+      renderFavoritesResults()
+
+      await user.press(await screen.findByText('Artistes'))
+
+      expect(await screen.findByText(favoriteArtistResponseSnap.artist.name)).toBeOnTheScreen()
+    })
+
+    it('should show no result message in venues tab when list is empty', async () => {
+      renderFavoritesResults()
+
+      await user.press(await screen.findByText('Lieux'))
+
+      expect(await screen.findByText('Explorer')).toBeOnTheScreen()
+    })
+
+    it('should show no result message in artists tab when list is empty', async () => {
+      renderFavoritesResults()
+
+      await user.press(await screen.findByText('Artistes'))
+
+      expect(await screen.findByText('Explorer')).toBeOnTheScreen()
+    })
+
+    it('should show placeholder in venues tab while venues are loading', async () => {
+      mockVenues([], { isLoading: true })
+      renderFavoritesResults()
+
+      await user.press(await screen.findByText('Lieux'))
+
+      expect(await screen.findByTestId('FavoritesResultsPlaceHolder')).toBeOnTheScreen()
+    })
+
+    it('should show placeholder in artists tab while artists are loading', async () => {
+      mockArtists([], { isLoading: true })
+      renderFavoritesResults()
+
+      await user.press(await screen.findByText('Artistes'))
+
+      expect(await screen.findByTestId('FavoritesResultsPlaceHolder')).toBeOnTheScreen()
+    })
+
+    it('should not block offers tab while venues are loading', async () => {
+      mockVenues([], { isLoading: true })
+      renderFavoritesResults()
+
+      expect(await screen.findByText('Spectacle une seule date')).toBeOnTheScreen()
+      expect(screen.queryByTestId('FavoritesResultsPlaceHolder')).not.toBeOnTheScreen()
+    })
+
+    it('should show sort button only in offers tab', async () => {
+      mockVenues([favoriteVenueResponseSnap])
+      renderFavoritesResults()
+
+      expect(await screen.findByText('Trier')).toBeOnTheScreen()
+
+      await user.press(screen.getByText('Lieux'))
+
+      expect(screen.queryByText('Trier')).not.toBeOnTheScreen()
+    })
+
+    it('should refetch only venues when pulling to refresh in venues tab', async () => {
+      mockVenues([favoriteVenueResponseSnap])
+      renderFavoritesResults()
+
+      await user.press(await screen.findByText('Lieux'))
+      fireEvent(await screen.findByTestId('favoritesResultsFlatlist'), 'refresh')
+
+      expect(mockRefetchVenues).toHaveBeenCalledTimes(1)
+      expect(mockRefetchOffers).not.toHaveBeenCalled()
+      expect(mockRefetchArtists).not.toHaveBeenCalled()
+    })
   })
 })
 

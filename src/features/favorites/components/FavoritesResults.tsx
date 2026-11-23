@@ -1,16 +1,23 @@
-import React, { FunctionComponent, memo, useMemo, useState } from 'react'
+import React, { FunctionComponent, memo, useCallback, useMemo, useState } from 'react'
+import { ListRenderItem } from 'react-native'
 import styled from 'styled-components/native'
 
-import { FavoriteOfferResponse } from 'api/gen'
+import {
+  FavoriteArtistResponse,
+  FavoriteOfferResponse,
+  FavoriteOfferResponseV2,
+  FavoriteVenueResponse,
+} from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { BookingOfferModal } from 'features/bookOffer/pages/BookingOfferModal'
+import { FavoriteArtist } from 'features/favorites/components/FavoriteArtist'
+import { FavoriteOffer } from 'features/favorites/components/FavoriteOffer'
 import { FavoritesList } from 'features/favorites/components/FavoritesList'
 import { FavoritesResultsPlaceholder } from 'features/favorites/components/FavoritesResultsPlaceholder'
-import { NoFavoritesResult } from 'features/favorites/components/NoFavoritesResult'
+import { FavoriteVenue } from 'features/favorites/components/FavoriteVenue'
 import { SortButton } from 'features/favorites/components/SortButton'
 import { useFavoritesState } from 'features/favorites/context/FavoritesWrapper'
 import { applySortBy } from 'features/favorites/helpers/applySortBy'
-import { useOfferFavoritesQuery } from 'features/favorites/queries'
 import { Tab } from 'features/favorites/types'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -18,7 +25,13 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { LocationMode } from 'libs/location/types'
 import { useLocationConfiguration } from 'libs/locationV2/location.store'
-import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
+import {
+  useArtistFavoritesQuery,
+  useOfferFavoritesQuery,
+  useVenueFavoritesQuery,
+} from 'queries/favorites/useFavoritesQuery'
+import { getAvailableCredit } from 'shared/user/getAvailableCredit'
+import { FavoriteHitPlaceholder } from 'ui/components/placeholders/Placeholders'
 
 const ANIMATION_DURATION = 700
 
@@ -26,34 +39,97 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
   const [offerToBook, setOfferToBook] = useState<FavoriteOfferResponse | null>(null)
   const { sortBy } = useFavoritesState()
   const { geolocation: position } = useLocationConfiguration(LocationMode.AROUND_ME)
-  const { data, isLoading, isFetching, refetch } = useOfferFavoritesQuery()
-  const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
-  const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
+  const {
+    data: offerFavorites,
+    isLoading: isLoadingOfferFavorites,
+    isFetching: isFetchingOfferFavorites,
+    refetch: refetchOfferFavorites,
+  } = useOfferFavoritesQuery()
+  const {
+    data: artistFavorites,
+    isLoading: isLoadingArtistFavorites,
+    isFetching: isFetchingArtistFavorites,
+    refetch: refetchArtistFavorites,
+  } = useArtistFavoritesQuery()
+  const {
+    data: venueFavorites,
+    isLoading: isLoadingVenueFavorites,
+    isFetching: isFetchingVenueFavorites,
+    refetch: refetchVenueFavorites,
+  } = useVenueFavoritesQuery()
+
+  const showOffersSkeleton = useIsFalseWithDelay(isLoadingOfferFavorites, ANIMATION_DURATION)
+  const isOffersRefreshing = useIsFalseWithDelay(isFetchingOfferFavorites, ANIMATION_DURATION)
+  const showVenuesSkeleton = useIsFalseWithDelay(isLoadingVenueFavorites, ANIMATION_DURATION)
+  const isVenuesRefreshing = useIsFalseWithDelay(isFetchingVenueFavorites, ANIMATION_DURATION)
+  const showArtistsSkeleton = useIsFalseWithDelay(isLoadingArtistFavorites, ANIMATION_DURATION)
+  const isArtistsRefreshing = useIsFalseWithDelay(isFetchingArtistFavorites, ANIMATION_DURATION)
   const enableFavoritesHub = useFeatureFlag(RemoteStoreFeatureFlags.WIP_FAVORITES_HUB)
   const [selectedTab, setSelectedTab] = useState<Tab>(Tab.OFFERS)
   const sortedFavorites = useMemo(
-    () => applySortBy(data?.favorites ?? [], sortBy, position),
-    [data?.favorites, sortBy, position]
+    () => applySortBy(offerFavorites?.favorites ?? [], sortBy, position),
+    [offerFavorites?.favorites, sortBy, position]
   )
   const { user } = useAuthContext()
 
-  if (showSkeleton) return <FavoritesResultsPlaceholder />
+  const credit = getAvailableCredit(user)
+
+  const renderOffer = useCallback<ListRenderItem<FavoriteOfferResponseV2>>(
+    ({ item }) => {
+      if (!user || !credit) return <FavoriteHitPlaceholder />
+      return <FavoriteOffer favorite={item} user={user} onInAppBooking={setOfferToBook} />
+    },
+    [user, credit]
+  )
+
+  const renderVenue = useCallback<ListRenderItem<FavoriteVenueResponse>>(
+    ({ item }) => <FavoriteVenue favorite={item} />,
+    []
+  )
+
+  const renderArtist = useCallback<ListRenderItem<FavoriteArtistResponse>>(
+    ({ item }) => <FavoriteArtist favorite={item} />,
+    []
+  )
 
   const tabPanels = {
-    [Tab.OFFERS]: (
+    [Tab.OFFERS]: showOffersSkeleton ? (
+      <FavoritesResultsPlaceholder />
+    ) : (
       <FavoritesList
-        isRefreshing={isRefreshing}
-        onBookOffer={setOfferToBook}
-        onRefresh={refetch}
         favorites={sortedFavorites}
-        selectedTab={selectedTab}
+        renderItem={renderOffer}
         sortBy={sortBy}
-        user={user}
+        isRefreshing={isOffersRefreshing}
+        onRefresh={refetchOfferFavorites}
+        selectedTab={selectedTab}
         enableFavoritesHub={enableFavoritesHub}
       />
     ),
-    [Tab.VENUES]: <ListEmptyComponent />,
-    [Tab.ARTISTS]: <ListEmptyComponent />,
+    [Tab.VENUES]: showVenuesSkeleton ? (
+      <FavoritesResultsPlaceholder />
+    ) : (
+      <FavoritesList
+        favorites={venueFavorites?.favorites}
+        renderItem={renderVenue}
+        isRefreshing={isVenuesRefreshing}
+        onRefresh={refetchVenueFavorites}
+        selectedTab={selectedTab}
+        enableFavoritesHub={enableFavoritesHub}
+      />
+    ),
+    [Tab.ARTISTS]: showArtistsSkeleton ? (
+      <FavoritesResultsPlaceholder />
+    ) : (
+      <FavoritesList
+        favorites={artistFavorites?.favorites}
+        renderItem={renderArtist}
+        isRefreshing={isArtistsRefreshing}
+        onRefresh={refetchArtistFavorites}
+        selectedTab={selectedTab}
+        enableFavoritesHub={enableFavoritesHub}
+      />
+    ),
   }
 
   const tabs = [{ key: Tab.OFFERS }, { key: Tab.VENUES }, { key: Tab.ARTISTS }]
@@ -89,20 +165,9 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
 
 export const FavoritesResults = memo(UnmemoizedFavoritesResults)
 
-const ListEmptyComponent = () => (
-  <EmptyComponentContainer>
-    <NoFavoritesResult />
-  </EmptyComponentContainer>
-)
-
 const Container = styled.View<{ enableFavoritesHub?: boolean }>(
   ({ theme, enableFavoritesHub }) => ({
     flex: 1,
     marginTop: enableFavoritesHub ? theme.designSystem.size.spacing.xl : undefined,
   })
 )
-
-const EmptyComponentContainer = styled.View(({ theme }) => ({
-  flex: 1,
-  paddingBottom: TAB_BAR_COMP_HEIGHT + theme.designSystem.size.spacing.l,
-}))
