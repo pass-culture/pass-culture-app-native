@@ -3,7 +3,7 @@ import React, { useCallback, useEffect } from 'react'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useHomeRecommendedOffers } from 'features/home/api/useHomeRecommendedOffers'
 import { homePlaylistsActions, useHomePlaylistRank } from 'features/home/store/homePlaylists.store'
-import { HomepageModuleType, RecommendedOffersModule } from 'features/home/types'
+import { HomepageModuleType, RecommendedOffersParameters } from 'features/home/types'
 import { getSearchPropConfig } from 'features/navigation/navigators/SearchStackNavigator/getSearchPropConfig'
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { asHomeEntryId, asOfferId } from 'libs/analytics/helpers/logViewItem'
@@ -22,7 +22,7 @@ type RecommendationModuleProps = {
   moduleId: string
   displayParameters: DisplayParametersFields
   index: number
-  recommendationParameters?: RecommendedOffersModule['recommendationParameters']
+  recommendationParameters?: RecommendedOffersParameters
   homeEntryId: string | undefined
 }
 
