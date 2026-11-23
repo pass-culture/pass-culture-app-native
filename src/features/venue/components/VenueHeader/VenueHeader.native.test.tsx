@@ -6,7 +6,6 @@ import { api } from 'api/api'
 import { Activity, PaginatedResponseFavoriteVenueResponse, VenueResponse } from 'api/gen'
 import { favoriteVenueResponseSnap } from 'features/favorites/fixtures/favoriteVenueResponseSnap'
 import { paginatedVenueFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedVenueFavoritesResponseSnap'
-import { useVenueFavoritesQuery } from 'features/favorites/queries/useVenueFavoritesQuery'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { UserProfile } from 'features/share/types'
 import { VenueHeader } from 'features/venue/components/VenueHeader/VenueHeader'
@@ -16,6 +15,7 @@ import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useVenueFavoritesQuery } from 'queries/favorites/useFavoritesQuery'
 import {
   mockAuthContextWithoutUser,
   mockAuthContextWithUser,
@@ -55,7 +55,7 @@ const spyApiDeleteFavorite = jest.spyOn(api, 'deleteNativeV2MeFavoritesVenuesfav
 const spyApiPostFavorite = jest.spyOn(api, 'postNativeV2MeFavoritesVenues')
 
 const mockUseVenueFavoritesQuery = useVenueFavoritesQuery as jest.Mock
-jest.mock('features/favorites/queries/useVenueFavoritesQuery', () => ({
+jest.mock('queries/favorites/useFavoritesQuery', () => ({
   useVenueFavoritesQuery: jest.fn(),
 }))
 

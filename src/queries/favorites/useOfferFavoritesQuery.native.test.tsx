@@ -3,8 +3,8 @@ import { View } from 'react-native'
 
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { paginatedOfferFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedOfferFavoritesResponseSnap'
-import { useOfferFavoritesQuery } from 'features/favorites/queries/useOfferFavoritesQuery'
 import { simulateBackendForOffer } from 'features/favorites/tests/simulateBackendForOffer'
+import { useOfferFavoritesQuery } from 'queries/favorites/useFavoritesQuery'
 import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
@@ -12,17 +12,20 @@ import { renderHook, waitFor } from 'tests/utils'
 jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/jwt/jwt')
 
+const renderUseOfferFavoritesQuery = (options = {}) =>
+  renderHook(() => useOfferFavoritesQuery(options), {
+    wrapper: (props) =>
+      reactQueryProviderHOC(
+        <FavoritesWrapper>
+          <View>{props.children}</View>
+        </FavoritesWrapper>
+      ),
+  })
+
 describe('useOfferFavoritesQuery hook', () => {
   it('should retrieve favorite data when logged in', async () => {
     simulateBackendForOffer()
-    const { result } = renderHook(useOfferFavoritesQuery, {
-      wrapper: (props) =>
-        reactQueryProviderHOC(
-          <FavoritesWrapper>
-            <View>{props.children}</View>
-          </FavoritesWrapper>
-        ),
-    })
+    const { result } = renderUseOfferFavoritesQuery()
 
     await waitFor(() => expect(result.current.isFetched).toEqual(true))
 
@@ -31,16 +34,9 @@ describe('useOfferFavoritesQuery hook', () => {
     )
   })
 
-  it('should fail to fetch when not logged in', async () => {
+  it('should fail to fetch when not logged in', () => {
     mockAuthContextWithoutUser()
-    const { result } = renderHook(useOfferFavoritesQuery, {
-      wrapper: (props) =>
-        reactQueryProviderHOC(
-          <FavoritesWrapper>
-            <View>{props.children}</View>
-          </FavoritesWrapper>
-        ),
-    })
+    const { result } = renderUseOfferFavoritesQuery()
 
     expect(result.current.isFetching).toEqual(false)
   })

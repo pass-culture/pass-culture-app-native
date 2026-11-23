@@ -2,10 +2,10 @@ import React from 'react'
 import { View } from 'react-native'
 
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
-import { paginatedArtistFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedArtistFavoritesResponseSnap'
-import { selectArtistFavorite } from 'features/favorites/helpers/selectArtistFavorite'
-import { useArtistFavoritesQuery } from 'features/favorites/queries/useArtistFavoritesQuery'
-import { simulateBackendForArtist } from 'features/favorites/tests/simulateBackendForArtist'
+import { paginatedVenueFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedVenueFavoritesResponseSnap'
+import { selectVenueFavorite } from 'features/favorites/helpers/selectVenueFavorite'
+import { simulateBackendForVenue } from 'features/favorites/tests/simulateBackendForVenue'
+import { useVenueFavoritesQuery } from 'queries/favorites/useFavoritesQuery'
 import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
@@ -13,8 +13,8 @@ import { renderHook, waitFor } from 'tests/utils'
 jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/jwt/jwt')
 
-const renderUseArtistFavoritesQuery = (options = {}) =>
-  renderHook(() => useArtistFavoritesQuery(options), {
+const renderUseVenueFavoritesQuery = (options = {}) =>
+  renderHook(() => useVenueFavoritesQuery(options), {
     wrapper: (props) =>
       reactQueryProviderHOC(
         <FavoritesWrapper>
@@ -23,41 +23,41 @@ const renderUseArtistFavoritesQuery = (options = {}) =>
       ),
   })
 
-describe('useArtistFavoritesQuery hook', () => {
+describe('useVenueFavoritesQuery hook', () => {
   it('should retrieve favorite data when logged in by default', async () => {
-    simulateBackendForArtist()
-    const { result } = renderUseArtistFavoritesQuery()
+    simulateBackendForVenue()
+    const { result } = renderUseVenueFavoritesQuery()
 
     await waitFor(() => expect(result.current.isFetched).toEqual(true))
 
     expect(result.current.data?.favorites.length).toEqual(
-      paginatedArtistFavoritesResponseSnap.favorites.length
+      paginatedVenueFavoritesResponseSnap.favorites.length
     )
   })
 
   it('should not fetch when not logged in', () => {
     mockAuthContextWithoutUser()
-    const { result } = renderUseArtistFavoritesQuery()
+    const { result } = renderUseVenueFavoritesQuery()
 
     expect(result.current.isFetching).toEqual(false)
     expect(result.current.isFetched).toEqual(false)
   })
 
   it('should not fetch when enabled is false', () => {
-    simulateBackendForArtist()
-    const { result } = renderUseArtistFavoritesQuery({ enabled: false })
+    simulateBackendForVenue()
+    const { result } = renderUseVenueFavoritesQuery({ enabled: false })
 
     expect(result.current.isFetching).toEqual(false)
     expect(result.current.isFetched).toEqual(false)
   })
 
   it('should transform data when select option is passed', async () => {
-    simulateBackendForArtist()
-    const targetFavorite = paginatedArtistFavoritesResponseSnap.favorites[0]
-    const targetArtistId = targetFavorite?.artist.id
+    simulateBackendForVenue()
+    const targetFavorite = paginatedVenueFavoritesResponseSnap.favorites[0]
+    const targetVenueId = targetFavorite.venue.id
 
-    const { result } = renderUseArtistFavoritesQuery({
-      select: (data) => selectArtistFavorite(data, targetArtistId),
+    const { result } = renderUseVenueFavoritesQuery({
+      select: (data) => selectVenueFavorite(data, targetVenueId),
     })
 
     await waitFor(() => expect(result.current.isFetched).toEqual(true))
