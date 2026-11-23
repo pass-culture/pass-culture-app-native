@@ -104,6 +104,14 @@ const generatedMethods = operations.map(({ method, path, operation, pathItem }) 
   let parameterIndex = 0
   for (const parameter of parameters) {
     if (!groups[parameter.in]) continue
+    if (
+      parameter.in === 'cookie' &&
+      !legacyMethod?.parameters.some(
+        (candidate) => candidate.name.getText(legacyModelsSource) === parameter.name
+      )
+    ) {
+      throw new Error(`${methodName}: cookie parameters are not supported by the generated SDK`)
+    }
     groups[parameter.in].push({
       name: parameter.name,
       argument: `parameter${parameterIndex++}`,
@@ -115,8 +123,45 @@ const generatedMethods = operations.map(({ method, path, operation, pathItem }) 
   }
 
   const requestBody = resolveReference(document, operation.requestBody)
+
+  const legacyArgumentNames = new Set(
+    legacyMethod?.parameters.map((parameter) => parameter.name.getText(legacyModelsSource))
+  )
+  const additionalArguments = []
+  if (legacyMethod) {
+    const unbound = []
+    for (const [location, group] of Object.entries(groups)) {
+      for (const parameter of group) {
+        if (legacyArgumentNames.has(parameter.name)) continue
+        unbound.push({ name: parameter.name, location, required: parameter.required })
+        additionalArguments.push({
+          name: parameter.argument,
+          type: `NonNullable<${dataType}['${location === 'header' ? 'headers' : location}']>[${JSON.stringify(parameter.name)}]`,
+        })
+      }
+    }
+    if (requestBody && !legacyArgumentNames.has('body')) {
+      unbound.push({ name: 'body', location: 'body', required: requestBody.required ?? false })
+      additionalArguments.push({ name: 'newBody', type: `${dataType}['body']` })
+    }
+
+    const describe = (parameters) =>
+      parameters.map(({ name, location }) => `${name} (${location})`).join(', ')
+    const missingRequired = unbound.filter(({ required }) => required)
+    if (missingRequired.length) {
+      throw new Error(
+        `${methodName}: required parameters missing from LegacyApiSignatures in ${legacyModelsPath}: ${describe(missingRequired)}. Update the signature.`
+      )
+    }
+  }
   const hasBody = Boolean(requestBody)
-  const args = legacyMethod ? [`...args: Parameters<LegacyApiSignatures['${methodName}']>`] : []
+  const legacyParameters = `Parameters<LegacyApiSignatures['${methodName}']>`
+  const additionalTypes = additionalArguments.map(({ name, type }) => `${name}?: ${type}`)
+  const args = legacyMethod
+    ? [
+        `...args: ${additionalTypes.length ? `[...${legacyParameters}, ${additionalTypes.join(', ')}]` : legacyParameters}`,
+      ]
+    : []
   if (!legacyMethod) {
     if (hasBody) {
       args.push(`body${requestBody.required ? '' : '?'}: ${dataType}['body']`)
@@ -124,7 +169,7 @@ const generatedMethods = operations.map(({ method, path, operation, pathItem }) 
     for (const location of ['path', 'query', 'header', 'cookie']) {
       for (const parameter of groups[location]) {
         args.push(
-          `${parameter.argument}${parameter.required ? '' : '?'}: NonNullable<${dataType}['${location}']>[${JSON.stringify(parameter.name)}]`
+          `${parameter.argument}${parameter.required ? '' : '?'}: NonNullable<${dataType}['${location === 'header' ? 'headers' : location}']>[${JSON.stringify(parameter.name)}]`
         )
       }
     }
@@ -147,7 +192,9 @@ const generatedMethods = operations.map(({ method, path, operation, pathItem }) 
       ?.name.getText(legacyModelsSource) ?? parameter.argument
 
   if (hasBody) {
-    properties.push(legacyMethod ? `body: ${getArgumentName({ name: 'body' })}` : 'body')
+    properties.push(
+      legacyMethod ? `body: ${legacyArgumentNames.has('body') ? 'body' : 'newBody'}` : 'body'
+    )
   }
   for (const location of ['path', 'query']) {
     if (groups[location].length) {
@@ -181,12 +228,22 @@ const generatedMethods = operations.map(({ method, path, operation, pathItem }) 
     : `Promise<ApiTypes.${operationSdkName}Response>`
   const sdkCall = `sdk.${operationSdkName}({ ${properties.join(', ')} })`
   const legacyArguments = legacyMethod
-    ? `const [${legacyMethod.parameters.map((parameter) => parameter.name.getText(legacyModelsSource)).join(', ')}] = args\n  `
+    ? `const [${[...legacyMethod.parameters.map((parameter) => parameter.name.getText(legacyModelsSource)), ...additionalArguments.map(({ name }) => name)].join(', ')}] = args\n  `
     : ''
   return `export const ${methodName} = (${args.join(', ')}): ${returnType} => {\n  ${legacyArguments}${prefix}return ${legacyMethod ? `(${sdkCall} as unknown as ${returnType})` : sdkCall}\n}`
 })
 
 const methodNames = generatedMethods.map((method) => method.match(/^export const (\w+)/)?.[1])
-const content = `// This file is auto-generated from the native OpenAPI schema.\n\nimport type { LegacyApiSignatures } from './gen/models.gen'\nimport * as sdk from './hey-api-gen/sdk.gen'\nimport type { Options } from './hey-api-gen/sdk.gen'\nimport type * as ApiTypes from './hey-api-gen/types.gen'\n\n${generatedMethods.join('\n\n')}\n\nconst nativeApiImplementation = {\n${methodNames.map((name) => `  ${name},`).join('\n')}\n}\n\nexport const nativeApi = nativeApiImplementation as Omit<\n  typeof nativeApiImplementation,\n  keyof LegacyApiSignatures\n> &\n  LegacyApiSignatures\n\nexport type NativeApi = typeof nativeApi\n`
+const methods = generatedMethods.join('\n\n')
+const imports = [
+  methods.includes('LegacyApiSignatures') &&
+    `import type { LegacyApiSignatures } from './gen/models.gen'`,
+  `import * as sdk from './hey-api-gen/sdk.gen'`,
+  methods.includes('Options<') && `import type { Options } from './hey-api-gen/sdk.gen'`,
+  methods.includes('ApiTypes.') && `import type * as ApiTypes from './hey-api-gen/types.gen'`,
+]
+  .filter(Boolean)
+  .join('\n')
+const content = `// This file is auto-generated from the native OpenAPI schema.\n\n${imports}\n\n${methods}\n\nexport const nativeApi = {\n${methodNames.map((name) => `  ${name},`).join('\n')}\n}\n\nexport type NativeApi = typeof nativeApi\n`
 
 await writeFile(outputPath, content)

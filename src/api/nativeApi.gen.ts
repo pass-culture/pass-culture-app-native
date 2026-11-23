@@ -153,7 +153,10 @@ export const getNativeV1Banner = (
 export const getNativeV1Bookings = (
   options: Omit<Options<ApiTypes.getNativeV1BookingsData, true>, 'body' | 'path' | 'query'> = {}
 ): Promise<ApiTypes.getNativeV1BookingsResponse> => {
-  return sdk.getNativeV1Bookings({ ...options, credentials: options.credentials ?? 'include' })
+  return sdk.getNativeV1Bookings({
+    ...options,
+    credentials: options.credentials ?? 'include',
+  })
 }
 
 export const postNativeV1Bookings = (
@@ -382,7 +385,10 @@ export const getNativeV1MovieCalendarMe = (
 export const getNativeV1OauthState = (
   options: Omit<Options<ApiTypes.getNativeV1OauthStateData, true>, 'body' | 'path' | 'query'> = {}
 ): Promise<ApiTypes.getNativeV1OauthStateResponse> => {
-  return sdk.getNativeV1OauthState({ ...options, credentials: options.credentials ?? 'omit' })
+  return sdk.getNativeV1OauthState({
+    ...options,
+    credentials: options.credentials ?? 'omit',
+  })
 }
 
 export const postNativeV1OauthssoProviderAccount = (
@@ -519,7 +525,11 @@ export const postNativeV1RecommendationPlaylist = (
     ...(options ?? {}),
     credentials: (options ?? {}).credentials ?? 'include',
     body: body,
-    query: { modelEndpoint: modelEndpoint, longitude: longitude, latitude: latitude },
+    query: {
+      modelEndpoint: modelEndpoint,
+      longitude: longitude,
+      latitude: latitude,
+    },
   }) as unknown as ReturnType<LegacyApiSignatures['postNativeV1RecommendationPlaylist']>
 }
 
@@ -661,7 +671,11 @@ export const postNativeV1Signin = (
   body: ApiTypes.postNativeV1SigninData['body'],
   options: Omit<Options<ApiTypes.postNativeV1SigninData, true>, 'body' | 'path' | 'query'> = {}
 ): Promise<ApiTypes.postNativeV1SigninResponse> => {
-  return sdk.postNativeV1Signin({ ...options, credentials: options.credentials ?? 'omit', body })
+  return sdk.postNativeV1Signin({
+    ...options,
+    credentials: options.credentials ?? 'omit',
+    body,
+  })
 }
 
 export const postNativeV1Signout = (
@@ -775,7 +789,11 @@ export const getNativeV1VenuevenueIdAdvices = (
     ...options,
     credentials: options.credentials ?? 'omit',
     path: { venue_id: parameter0 },
-    query: { maxContentLength: parameter1, page: parameter2, resultsPerPage: parameter3 },
+    query: {
+      maxContentLength: parameter1,
+      page: parameter2,
+      resultsPerPage: parameter3,
+    },
   })
 }
 
@@ -1214,7 +1232,7 @@ export const getNativeV3SubscriptionStepper = (
   }) as unknown as ReturnType<LegacyApiSignatures['getNativeV3SubscriptionStepper']>
 }
 
-const nativeApiImplementation = {
+export const nativeApi = {
   postNativeV1Account,
   postNativeV1AccountAnonymize,
   postNativeV1AccountSuspend,
@@ -1316,11 +1334,5 @@ const nativeApiImplementation = {
   postNativeV3OffersStocks,
   getNativeV3SubscriptionStepper,
 }
-
-export const nativeApi = nativeApiImplementation as Omit<
-  typeof nativeApiImplementation,
-  keyof LegacyApiSignatures
-> &
-  LegacyApiSignatures
 
 export type NativeApi = typeof nativeApi
