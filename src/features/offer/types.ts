@@ -5,6 +5,7 @@ import {
   CategoryIdEnum,
   FavoriteArtistResponse,
   FavoriteOfferResponseV2,
+  FavoriteVenueResponse,
   OfferResponse,
   ReactionTypeEnum,
   RecommendationApiParams,
@@ -69,6 +70,11 @@ export type OfferFavoriteProps = {
 export type ArtistFavoriteProps = {
   addFavorite?: ({ artistId }: { artistId: string }) => void
   favorite?: FavoriteArtistResponse | null
+} & BaseFavoriteProps
+
+export type VenueFavoriteProps = {
+  addFavorite?: ({ venueId }: { venueId: number }) => void
+  favorite?: FavoriteVenueResponse | null
 } & BaseFavoriteProps
 
 export interface SimilarOffersResponse {

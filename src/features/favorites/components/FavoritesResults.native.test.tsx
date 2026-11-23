@@ -1,4 +1,4 @@
-import { QueryObserverSuccessResult, UseMutationResult } from '@tanstack/react-query'
+import { QueryObserverSuccessResult } from '@tanstack/react-query'
 import React from 'react'
 import { Text as MockText } from 'react-native'
 
@@ -6,12 +6,10 @@ import { FavoriteOfferResponseV2, PaginatedResponseFavoriteOfferResponseV2 } fro
 import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { paginatedOfferFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedOfferFavoritesResponseSnap'
 import { useOfferFavoritesQuery } from 'features/favorites/queries'
-import { FavoriteOfferMutationContext } from 'features/favorites/queries/types'
 import { env } from 'libs/environment/env'
-import { EmptyResponse } from 'libs/fetch'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useRemoveOfferFavoriteMutation } from 'queries/favorites/useRemoveOfferFavoriteMutation'
+import { useRemoveOfferFavoriteMutation } from 'queries/favorites/useRemoveFavoriteMutation'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
@@ -29,7 +27,7 @@ jest.mock('features/favorites/queries/useOfferFavoritesQuery')
 const mockUseFavorites = useOfferFavoritesQuery as jest.MockedFunction<
   typeof useOfferFavoritesQuery
 >
-jest.mock('queries/favorites/useRemoveOfferFavoriteMutation')
+jest.mock('queries/favorites/useRemoveFavoriteMutation')
 const mockUseRemoveFavorites = useRemoveOfferFavoriteMutation as jest.MockedFunction<
   typeof useRemoveOfferFavoriteMutation
 >
@@ -106,7 +104,7 @@ describe('FavoritesResults component', () => {
     // eslint-disable-next-line local-rules/independent-mocks
     mockUseRemoveFavorites.mockReturnValue({
       mutate,
-    } as unknown as UseMutationResult<EmptyResponse, Error, number, FavoriteOfferMutationContext>)
+    } as unknown as ReturnType<typeof useRemoveOfferFavoriteMutation>)
     renderFavoritesResults()
     const container = await screen.findByText(
       `${paginatedOfferFavoritesResponseSnap.nbFavorites} favoris`

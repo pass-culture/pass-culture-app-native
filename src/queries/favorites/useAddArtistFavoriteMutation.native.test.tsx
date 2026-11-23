@@ -10,7 +10,7 @@ import * as firstFavoriteModule from 'features/favorites/helpers/firstFavoriteSn
 import { simulateBackendForArtist } from 'features/favorites/tests/simulateBackendForArtist'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useAddArtistFavoriteMutation } from 'queries/favorites/useAddArtistFavoriteMutation'
+import { useAddArtistFavoriteMutation } from 'queries/favorites/useAddFavoriteMutation'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { DefaultWrapper, renderHook, waitFor } from 'tests/utils'
 import * as SnackBarStore from 'ui/designSystem/Snackbar/snackBar.store'

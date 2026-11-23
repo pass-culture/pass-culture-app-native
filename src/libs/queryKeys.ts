@@ -22,6 +22,7 @@ export enum QueryKeys {
   ERROR_ASYNC = 'errorAsync',
   FAVORITES_ARTIST = 'favoritesArtist',
   FAVORITES_OFFER = 'favoritesOffer',
+  FAVORITES_VENUE = 'favoritesVenue',
   FEATURE_FLAGS = 'featureFlags',
   FILMS_OFFERS = 'filmsOffers',
   GTL_PLAYLISTS_CONFIG = 'GtlPlaylistsConfig',

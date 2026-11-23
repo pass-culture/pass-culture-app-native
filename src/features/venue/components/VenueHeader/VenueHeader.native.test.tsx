@@ -2,18 +2,28 @@ import React from 'react'
 import { Animated, Share } from 'react-native'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { Activity, VenueResponse } from 'api/gen'
+import { api } from 'api/api'
+import { Activity, PaginatedResponseFavoriteVenueResponse, VenueResponse } from 'api/gen'
+import { favoriteVenueResponseSnap } from 'features/favorites/fixtures/favoriteVenueResponseSnap'
+import { paginatedVenueFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedVenueFavoritesResponseSnap'
+import { useVenueFavoritesQuery } from 'features/favorites/queries/useVenueFavoritesQuery'
 import * as useGoBack from 'features/navigation/useGoBack'
+import { UserProfile } from 'features/share/types'
 import { VenueHeader } from 'features/venue/components/VenueHeader/VenueHeader'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import * as venueSurveyAccessStorageModule from 'features/venue/helpers/venueSurveyAccessStorage'
+import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import {
+  mockAuthContextWithoutUser,
+  mockAuthContextWithUser,
+  mockUseAuthContext,
+} from 'tests/AuthContextUtils'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen, userEvent } from 'tests/utils'
-
-jest.mock('libs/jwt/jwt')
+import { act, render, screen, userEvent, waitFor } from 'tests/utils'
 
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 jest.mock('features/venue/queries/useVenueQuery')
@@ -28,11 +38,26 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
 })
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/jwt/jwt')
+jest.mock('features/auth/context/AuthContext')
 
 const mockCheckVenueSurveyAccess = jest.spyOn(
   venueSurveyAccessStorageModule,
   'checkVenueSurveyAccess'
 )
+
+const mockLoggedInUser = () => {
+  mockUseAuthContext.mockReset()
+  mockAuthContextWithUser(beneficiaryUser, { persist: true })
+}
+
+const spyApiDeleteFavorite = jest.spyOn(api, 'deleteNativeV2MeFavoritesVenuesfavoriteId')
+const spyApiPostFavorite = jest.spyOn(api, 'postNativeV2MeFavoritesVenues')
+
+const mockUseVenueFavoritesQuery = useVenueFavoritesQuery as jest.Mock
+jest.mock('features/favorites/queries/useVenueFavoritesQuery', () => ({
+  useVenueFavoritesQuery: jest.fn(),
+}))
 
 const user = userEvent.setup()
 jest.useFakeTimers()
@@ -45,6 +70,11 @@ const venueWithSurveyActivity: VenueResponse = {
 describe('<VenueHeader />', () => {
   beforeEach(() => {
     setFeatureFlags([])
+    mockUseVenueFavoritesQuery.mockReturnValue({ data: favoriteVenueResponseSnap })
+    mockServer.getApi<UserProfile>(`/v1/me`, beneficiaryUser)
+    spyApiDeleteFavorite.mockResolvedValue({})
+    spyApiPostFavorite.mockResolvedValue(favoriteVenueResponseSnap)
+    mockAuthContextWithoutUser()
   })
 
   it('should render all icons', () => {
@@ -141,6 +171,85 @@ describe('<VenueHeader />', () => {
 
         expect(mockGoBack).toHaveBeenCalledTimes(1)
         expect(navigate).not.toHaveBeenCalled()
+      })
+    })
+  })
+
+  describe('Favorite button', () => {
+    describe('When wipFavoritesHub FF activated', () => {
+      beforeEach(() => {
+        setFeatureFlags([RemoteStoreFeatureFlags.WIP_FAVORITES_HUB])
+      })
+
+      describe('When venue is in favorites', () => {
+        const expectedFavoriteId = paginatedVenueFavoritesResponseSnap.favorites[0].id
+
+        beforeEach(() => {
+          mockServer.getApi<PaginatedResponseFavoriteVenueResponse>(
+            `/v2/me/favorites/venues`,
+            paginatedVenueFavoritesResponseSnap
+          )
+          mockLoggedInUser()
+        })
+
+        it('should remove favorite when press on favorite', async () => {
+          renderVenueHeader()
+
+          const button = await screen.findByLabelText('Retirer des favoris')
+          await user.press(button)
+
+          await waitFor(() => {
+            expect(spyApiDeleteFavorite).toHaveBeenCalledWith(expectedFavoriteId)
+          })
+        })
+
+        it('should display snackbar when remove favorite fails', async () => {
+          spyApiDeleteFavorite.mockRejectedValueOnce({ status: 400 })
+
+          renderVenueHeader()
+
+          const button = await screen.findByLabelText('Retirer des favoris')
+          await user.press(button)
+
+          expect(
+            await screen.findByText('Le lieu n’a pas été retiré de tes favoris')
+          ).toBeOnTheScreen()
+          expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
+          expect(spyApiDeleteFavorite).toHaveBeenCalledWith(expectedFavoriteId)
+        })
+      })
+
+      describe('When venue is not in favorites', () => {
+        beforeEach(() => {
+          mockUseVenueFavoritesQuery.mockReturnValue({ data: null })
+          mockLoggedInUser()
+        })
+
+        it('should add favorite when press on favorite', async () => {
+          renderVenueHeader()
+
+          const button = await screen.findByLabelText('Mettre en favori')
+          await user.press(button)
+
+          await waitFor(() => {
+            expect(spyApiPostFavorite).toHaveBeenCalledWith({ venueId: venueDataTest.id })
+          })
+        })
+      })
+    })
+
+    describe('When wipFavoritesHub FF deactivated', () => {
+      it('should not display favorite button and disable query', async () => {
+        mockAuthContextWithUser(beneficiaryUser)
+        renderVenueHeader()
+
+        await screen.findAllByText(venueDataTest.name)
+
+        expect(screen.queryByLabelText('Mettre en favori')).not.toBeOnTheScreen()
+        expect(screen.queryByLabelText('Retirer des favoris')).not.toBeOnTheScreen()
+        expect(mockUseVenueFavoritesQuery).toHaveBeenCalledWith(
+          expect.objectContaining({ enabled: false })
+        )
       })
     })
   })

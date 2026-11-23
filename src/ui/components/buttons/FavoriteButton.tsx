@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { FavoriteAuthModal } from 'features/offer/components/FavoriteAuthModal/FavoriteAuthModal'
-import { ArtistFavoriteProps, OfferFavoriteProps } from 'features/offer/types'
+import { ArtistFavoriteProps, OfferFavoriteProps, VenueFavoriteProps } from 'features/offer/types'
 import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
 import { AnimatedFavoriteIcon, FavoriteAnimationAction } from 'ui/components/AnimatedFavoriteIcon'
 import { useModal } from 'ui/components/modals/useModal'
@@ -13,10 +13,12 @@ import { AccessibleIcon } from 'ui/svg/icons/types'
 export type FavoriteButtonProps =
   | ({ offerId: number; artistId?: never; venueId?: never } & OfferFavoriteProps)
   | ({ artistId: string; offerId?: never; venueId?: never } & ArtistFavoriteProps)
+  | ({ venueId: number; offerId?: never; artistId?: never } & VenueFavoriteProps)
 
 export const FavoriteButton: React.FC<FavoriteButtonProps> = ({
   offerId,
   artistId,
+  venueId,
   favorite,
   addFavorite,
   removeFavorite,
@@ -64,6 +66,7 @@ export const FavoriteButton: React.FC<FavoriteButtonProps> = ({
       setAnimatingAction('add')
       if (artistId) addFavorite?.({ artistId })
       else if (offerId) addFavorite?.({ offerId })
+      else if (venueId) addFavorite?.({ venueId })
     }
   }, [
     addFavorite,
@@ -75,6 +78,7 @@ export const FavoriteButton: React.FC<FavoriteButtonProps> = ({
     offerId,
     removeFavorite,
     showSignInModal,
+    venueId,
   ])
 
   const renderFavoriteIcon: React.FC<AccessibleIcon> = useCallback(
@@ -111,6 +115,7 @@ export const FavoriteButton: React.FC<FavoriteButtonProps> = ({
           visible={signInModalVisible}
           offerId={offerId}
           artistId={artistId}
+          venueId={venueId}
           dismissModal={hideSignInModal}
         />
       </ModalWrapper>

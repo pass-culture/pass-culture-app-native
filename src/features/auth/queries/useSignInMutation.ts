@@ -31,8 +31,11 @@ import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { storage } from 'libs/storage'
-import { useAddArtistFavoriteMutation } from 'queries/favorites/useAddArtistFavoriteMutation'
-import { useAddOfferFavoriteMutation } from 'queries/favorites/useAddOfferFavoriteMutation'
+import {
+  useAddArtistFavoriteMutation,
+  useAddOfferFavoriteMutation,
+  useAddVenueFavoriteMutation,
+} from 'queries/favorites/useAddFavoriteMutation'
 import { useBonificationBonusAmount } from 'queries/settings/useSettings'
 import { deviceInfoStoreSelectors } from 'shared/store/deviceInfoStore'
 
@@ -124,8 +127,13 @@ const useHandleSigninSuccess = (
     type: FavoriteType.ARTIST,
   })
 
+  const { mutate: addVenueFavorite } = useAddVenueFavoriteMutation({
+    type: FavoriteType.VENUE,
+  })
+
   const offerId = params?.offerId
   const artistId = params?.artistId
+  const venueId = params?.venueId
   const comeFrom = params?.from
 
   const navigateForActiveState = useCallback(
@@ -160,12 +168,14 @@ const useHandleSigninSuccess = (
             navigateToHome()
             return
         }
-      } else if (artistId) {
-        if (comeFrom === StepperOrigin.FAVORITE) {
-          addArtistFavorite({ artistId })
-          navigate('Artist', { id: artistId })
-          return
-        }
+      } else if (artistId && comeFrom === StepperOrigin.FAVORITE) {
+        addArtistFavorite({ artistId })
+        navigate('Artist', { id: artistId })
+        return
+      } else if (venueId && comeFrom === StepperOrigin.FAVORITE) {
+        addVenueFavorite({ venueId })
+        navigate('Venue', { id: venueId })
+        return
       } else {
         navigateToHome()
       }
@@ -173,11 +183,13 @@ const useHandleSigninSuccess = (
     [
       offerId,
       artistId,
+      venueId,
       bonificationBonusAmount,
       navigate,
       comeFrom,
       addOfferFavorite,
       addArtistFavorite,
+      addVenueFavorite,
     ]
   )
 
