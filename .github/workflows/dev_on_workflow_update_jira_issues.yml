@@ -61,7 +61,7 @@ jobs:
       # jira issue key example : PC-24026
       - name: Get jira issue key in commit
         id: get_jira_key
-        uses: atlassian/gajira-find-issue-key@7d9cbdfce900a0fcf608050ce728620a928be8b6 # v3
+        uses: atlassian/gajira-find-issue-key@7d11fdc500b3b69d3edd797e9f1d619b89f8dafc # v3.0.1
         with:
           from: commits
 
