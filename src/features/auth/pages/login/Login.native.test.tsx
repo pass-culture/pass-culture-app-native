@@ -173,14 +173,14 @@ describe('<Login/>', () => {
     expect(navigateToHome).toHaveBeenCalledTimes(1)
   })
 
-  it('should redirect to EighteenBirthday WHEN signin is successful and user has not seen eligible card and needs to see it', async () => {
+  it('should redirect to UnlockEighteenCredit WHEN signin is successful and user has not seen eligible card and needs to see it', async () => {
     mockMeApiCall({ showEligibleCard: true } as UserProfile)
     renderLogin()
 
     await fillInputs()
     await user.press(screen.getByText('Se connecter'))
 
-    expect(navigate).toHaveBeenCalledWith('EighteenBirthday')
+    expect(navigate).toHaveBeenCalledWith('UnlockEighteenCredit')
   })
 
   it('should redirect to BonificationGranted WHEN signin is successful and recreditTypeToShow is BonusCredit and recreditAmountToShow is eq to bonus amount', async () => {

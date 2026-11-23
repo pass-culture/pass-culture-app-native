@@ -44,6 +44,7 @@ const props = {
   homeEntryId: 'fakeEntryId',
   index: 1,
   data: mockData,
+  recommendationParameters: undefined,
 }
 
 const mockUseAlgoliaSimilarOffers = jest

@@ -100,7 +100,7 @@ const rootStackNavigatorPathDefinition: PathConfigMap<RootStackParamList> = {
     path: 'email-confirmation-creation-compte/expire',
   },
   // Birthday
-  EighteenBirthday: {
+  UnlockEighteenCredit: {
     path: 'anniversaire-18-ans',
     alias: ['eighteen'],
   },

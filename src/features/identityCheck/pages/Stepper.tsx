@@ -3,10 +3,11 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { extractApiErrorMessage } from 'api/apiHelpers'
-import { MaintenancePageType, SubscriptionStep } from 'api/gen'
+import { MaintenancePageType, SubscriptionStatus, SubscriptionStep } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useShowDisableActivation } from 'features/forceUpdate/helpers/useShowDisableActivation'
 import { QuitIdentityCheckModal } from 'features/identityCheck/components/modals/QuitIdentityCheckModal'
+import { hasCompletedCreditActivation } from 'features/identityCheck/helpers/hasCompletedCreditActivation'
 import { logIdentityCheckUnavailable } from 'features/identityCheck/pages/helpers/logIdentityCheckUnavailable'
 import { useSetSubscriptionStepAndMethod } from 'features/identityCheck/pages/helpers/useSetCurrentSubscriptionStep'
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
@@ -18,7 +19,6 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { recordProfileCompletionStart } from 'libs/reviewInApp/creditReviewTrigger'
-import { hasOngoingCredit } from 'shared/user/getAvailableCredit'
 import { useModal } from 'ui/components/modals/useModal'
 import { StepButton } from 'ui/components/StepButton/StepButton'
 import { StepButtonState } from 'ui/components/StepButton/types'
@@ -72,13 +72,24 @@ export const Stepper = () => {
   useEffect(() => {
     if (subscription?.nextSubscriptionStep === null) {
       refetchUser()
-        .then(({ data: userProfile }) => {
-          const hasUserOngoingCredit = userProfile ? hasOngoingCredit(userProfile) : false
-          if (hasUserOngoingCredit) {
+        .then(({ data: userProfile, error, isError }) => {
+          if (isError) {
+            showErrorSnackBar(extractApiErrorMessage(error))
+            return
+          }
+          if (!userProfile) {
+            showErrorSnackBar('Une erreur est survenue lors de la mise à jour de ton profil')
+            return
+          }
+          if (hasCompletedCreditActivation(userProfile)) {
             navigate('SubscriptionStackNavigator', {
               screen: 'BeneficiaryAccountCreated',
               params: { from: 'Stepper' },
             })
+          } else if (
+            userProfile.subscriptionStatus === SubscriptionStatus.has_subscription_pending
+          ) {
+            navigate(...getSubscriptionHookConfig('BeneficiaryRequestSent'))
           }
         })
         .catch((error) => {

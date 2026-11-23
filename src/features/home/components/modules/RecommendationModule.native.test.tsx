@@ -106,6 +106,7 @@ const renderRecommendationModule = (additionalDisplayParams?: DisplayParametersF
         index={1}
         moduleId="abcd"
         homeEntryId="xyz"
+        recommendationParameters={undefined}
         displayParameters={additionalDisplayParams || displayParameters}
       />
     )
