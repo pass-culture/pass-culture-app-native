@@ -10,7 +10,7 @@ import {
   HomepageModuleType,
   ModuleData,
   OffersModule as OffersModuleType,
-  RecommendedOffersModule,
+  RecommendedOffersParameters,
 } from 'features/home/types'
 import { getSearchPropConfig } from 'features/navigation/navigators/SearchStackNavigator/getSearchPropConfig'
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
@@ -37,7 +37,7 @@ export type OffersModuleProps = {
   index: number
   homeEntryId: string | undefined
   data: ModuleData | undefined
-  recommendationParameters?: RecommendedOffersModule['recommendationParameters']
+  recommendationParameters?: RecommendedOffersParameters
 }
 
 const keyExtractor = (item: Offer) => item.objectID
