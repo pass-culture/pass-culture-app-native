@@ -99,6 +99,8 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         setFormErrors('email', { message: 'Cette adresse e-mail est liée à un compte supprimé' })
       } else if (failureCode === 'NETWORK_REQUEST_FAILED') {
         setErrorMessage('Erreur réseau. Tu peux réessayer une fois la connexion réétablie')
+      } else if (response.statusCode && response.statusCode >= 500) {
+        setErrorMessage('Il y a eu un problème. Tu peux réessayer plus tard')
       } else if (response.statusCode === 429 || failureCode === 'TOO_MANY_ATTEMPTS') {
         setErrorMessage('Nombre de tentatives dépassé. Réessaye dans 1 minute')
       } else {

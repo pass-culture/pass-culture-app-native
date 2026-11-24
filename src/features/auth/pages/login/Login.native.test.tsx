@@ -367,6 +367,19 @@ describe('<Login/>', () => {
     expect(navigate).not.toHaveBeenCalled()
   })
 
+  it('should show a retryable error when signin returns an empty server error', async () => {
+    mockServer.postApi('/v2/signin', { responseOptions: { statusCode: 500 } })
+    renderLogin()
+
+    await fillInputs()
+    await user.press(screen.getByText('Se connecter'))
+
+    expect(
+      screen.getByText('Il y a eu un problème. Tu peux réessayer plus tard', { hidden: true })
+    ).toBeOnTheScreen()
+    expect(navigate).not.toHaveBeenCalled()
+  })
+
   it('should enable login button when both text inputs are filled', async () => {
     renderLogin()
     await screen.findByText('Connecte-toi')
