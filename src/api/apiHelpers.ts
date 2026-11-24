@@ -59,7 +59,7 @@ export const safeFetch = async (
   api: NativeApi
 ): Promise<Response> => {
   const request = input instanceof Request ? input : undefined
-  const url = request?.url ?? input.toString()
+  const url = typeof input === 'string' ? input : input instanceof URL ? input.href : input.url
   const requestOptions: RequestInit = request
     ? {
         ...options,

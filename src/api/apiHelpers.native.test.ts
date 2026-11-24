@@ -79,6 +79,12 @@ describe('[api] helpers', () => {
     removeRefreshedAccessToken()
   })
 
+  it('returns an empty object for a headerless 204 API response', async () => {
+    mockFetch.mockResolvedValueOnce(new Response(null, { status: 204 }))
+
+    await expect(api.getNativeV1AccountSuspendTokenValidationtoken('token')).resolves.toEqual({})
+  })
+
   describe('[method] safeFetch', () => {
     it('should call fetch with populated header', async () => {
       mockGetTokenStatus.mockReturnValueOnce('valid')

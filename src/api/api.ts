@@ -4,7 +4,7 @@ import { eventMonitoring } from 'libs/monitoring/services'
 import { storage } from 'libs/storage'
 
 import { ApiError } from './ApiError'
-import { safeFetch , createNeedsAuthenticationResponse } from './apiHelpers'
+import { createNeedsAuthenticationResponse, safeFetch } from './apiHelpers'
 import { client } from './hey-api-gen/client.gen'
 import { nativeApi } from './nativeApi.gen'
 
@@ -23,6 +23,10 @@ const emptyResponse = () =>
   })
 
 client.interceptors.response.use(async (response, request, options) => {
+  if (response.status === 204) {
+    return emptyResponse()
+  }
+
   if (response.status === 403 && response.headers.get('x-country-ban')) {
     navigateFromRef('BannedCountryError')
     return emptyResponse()
@@ -60,4 +64,4 @@ client.interceptors.error.use((error, response, request) => {
   )
 })
 
-export const api = nativeApi
+export { nativeApi as api } from './nativeApi.gen'
