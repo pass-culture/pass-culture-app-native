@@ -27,6 +27,8 @@ type MovieCalendarContextType = {
   displayDates: (dates: Date[]) => void
   disableDates: (dates: Date[]) => void
   dates: Date[]
+  displaySpecialEventBanner: (shouldDisplaySpecialEventBanner: boolean) => void
+  specialEventBannerTitle?: string
 }
 
 const MovieCalendarContext = createContext<MovieCalendarContextType | undefined>(undefined)
@@ -35,7 +37,8 @@ export const MovieCalendarProvider: React.FC<{
   children: React.ReactNode
   containerStyle?: ViewStyle
   initialDates?: Date[]
-}> = ({ containerStyle, children, initialDates = [] }) => {
+  specialEventBannerTitle?: string
+}> = ({ containerStyle, children, initialDates = [], specialEventBannerTitle }) => {
   const { dates, selectedDate, setSelectedDate, setDates } = useDaysSelector(initialDates)
   const [disabledDates, setDisabledDates] = useState<Date[]>([])
   const flatListRef = useRef<FlashListRef<Date> | null>(null)
@@ -43,6 +46,8 @@ export const MovieCalendarProvider: React.FC<{
   const { width: itemWidth, onLayout: onItemLayout } = useLayout()
   const scrollToAnchor = useScrollToAnchor()
   const [isVisible, setIsVisible] = useState<boolean>(true)
+  const [shouldDisplaySpecialEventBanner, setShouldDisplaySpecialEventBanner] =
+    useState<boolean>(false)
   const { designSystem } = useTheme()
   const MOVIE_CALENDAR_PADDING = designSystem.size.spacing.xl
   const layoutRef = useRef({ flatListWidth, itemWidth })
@@ -98,6 +103,7 @@ export const MovieCalendarProvider: React.FC<{
       displayCalendar: setIsVisible,
       displayDates,
       disableDates: setDisabledDates,
+      displaySpecialEventBanner: setShouldDisplaySpecialEventBanner,
     }),
     [dates, selectedDate, goToDate, displayDates]
   )
@@ -117,6 +123,8 @@ export const MovieCalendarProvider: React.FC<{
               onFlatListLayout={onFlatListLayout}
               itemWidth={itemWidth}
               onItemLayout={onItemLayout}
+              shouldDisplaySpecialEventBanner={shouldDisplaySpecialEventBanner}
+              specialEventBannerTitle={specialEventBannerTitle}
             />
           </Anchor>
         </View>
@@ -154,4 +162,15 @@ export const useDisplayCalendar = (shouldDisplayCalendar: boolean) => {
   useEffect(() => {
     context.displayCalendar(shouldDisplayCalendar)
   }, [context, shouldDisplayCalendar])
+}
+
+export const useDisplaySpecialEventBanner = (shouldDisplaySpecialEventBanner: boolean) => {
+  const context = useContext(MovieCalendarContext)
+  if (context === undefined) {
+    throw new Error('useDisplaySpecialEventBanner must be used within a MovieCalendarProvider')
+  }
+
+  useEffect(() => {
+    context.displaySpecialEventBanner(shouldDisplaySpecialEventBanner)
+  }, [context, shouldDisplaySpecialEventBanner])
 }

@@ -64,7 +64,10 @@ export const SpecialEventOfferCineBlock: FC<Props> = ({ title, onSeeVenuePress, 
           </TitleContainer>
         </InView>
       </Anchor>
-      <MovieCalendarProvider initialDates={next15Dates} containerStyle={getCalendarStyle(theme)}>
+      <MovieCalendarProvider
+        initialDates={next15Dates}
+        containerStyle={getCalendarStyle(theme)}
+        specialEventBannerTitle="Des séances spéciales sont disponibles pour ce film.">
         <SpecialEventOfferCineContent offer={offer} onSeeVenuePress={onSeeVenuePress} />
       </MovieCalendarProvider>
     </Container>

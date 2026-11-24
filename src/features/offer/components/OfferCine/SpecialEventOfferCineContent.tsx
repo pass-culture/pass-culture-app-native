@@ -7,6 +7,7 @@ import { ExpandingFlatList } from 'features/offer/components/ExpandingFlatlist/E
 import {
   useDisableCalendarDates,
   useDisplayCalendar,
+  useDisplaySpecialEventBanner,
   useMovieCalendar,
 } from 'features/offer/components/MoviesScreeningCalendar/MovieCalendarContext'
 import { CineBlockSkeleton } from 'features/offer/components/OfferCine/CineBlockSkeleton'
@@ -18,6 +19,7 @@ import {
   hasReachedEnd,
 } from 'features/offer/helpers/expandableList'
 import { getSpecialEventDaysWithNoScreenings } from 'features/offer/helpers/getDaysWithNoScreenings'
+import { getHasSpecialEventScreenings } from 'features/offer/helpers/getHasSpecialEventScreening'
 import { useGetSpecialEventVenuesByDay } from 'features/offer/helpers/useGetVenueByDay/useGetSpecialEventVenuesByDay'
 import { useOffersStocksFromOfferSpecialEventQuery } from 'features/offer/queries/useOffersStocksFromOfferSpecialEventQuery'
 import { Button } from 'ui/designSystem/Button/Button'
@@ -36,6 +38,7 @@ export const SpecialEventOfferCineContent: FC<Props> = ({ offer, onSeeVenuePress
     selectedDate,
     offers.offers
   )
+  const shouldDisplaySpecialEventBanner = getHasSpecialEventScreenings(offers.offers, dates)
 
   const selectedDateKey = selectedDate.toISOString()
   const [displayState, setDisplayState] = useState({
@@ -49,6 +52,7 @@ export const SpecialEventOfferCineContent: FC<Props> = ({ offer, onSeeVenuePress
 
   useDisplayCalendar(!hasStocksOnlyAfter15Days)
   useDisableCalendarDates(disabledDates)
+  useDisplaySpecialEventBanner(shouldDisplaySpecialEventBanner)
 
   return (
     <View>

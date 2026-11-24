@@ -60,6 +60,7 @@ export const env: Environment = {
   FAQ_LINK_RESET_PASSORD_EMAIL_NOT_RECEIVED: 'https://passculture-reset-password.faq',
   FAQ_LINK_RIGHT_TO_ERASURE: 'https://passculture-right-to-erasure.faq',
   FAQ_LINK_SIGNUP_CONFIRMATION_EMAIL_NOT_RECEIVED: 'https://passculture-confirmation-email.faq',
+  FAQ_LINK_SPECIAL_EVENT: 'https://aide.passculture.app/hc/fr/articles/31775670873628',
   FAQ_LINK: 'https://passculture.faq',
   FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING: true,
   FIREBASE_API_PUBLIC_KEY: 'FIREBASE_API_PUBLIC_KEY',
