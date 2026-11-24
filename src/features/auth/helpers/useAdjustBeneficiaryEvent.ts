@@ -8,6 +8,27 @@ import { AdjustEvents, AdjustEventsStorage } from 'shared/adjust/adjustEvents'
 import { isCurrentBeneficiary } from 'shared/user/checkStatusType'
 import { getAge } from 'shared/user/getAge'
 
+const logNewBeneficiaryEvents = (creditType: UserCreditType, userAge?: number) => {
+  Adjust.logEvent(AdjustEvents.NEW_BENEFICIARY)
+
+  if (creditType === UserCreditType.CREDIT_V3_FREE) {
+    Adjust.logEvent(AdjustEvents.NEW_FREE_BENEFICIARY)
+    if (userAge && userAge === 15) {
+      Adjust.logEvent(AdjustEvents.NEW_FREE_BENEFICIARY_15)
+    } else if (userAge && userAge === 16) {
+      Adjust.logEvent(AdjustEvents.NEW_FREE_BENEFICIARY_16)
+    }
+  }
+
+  if (creditType === UserCreditType.CREDIT_V3_17) {
+    Adjust.logEvent(AdjustEvents.NEW_BENEFICIARY_17)
+  }
+
+  if ([UserCreditType.CREDIT_V3_18, UserCreditType.CREDIT_V2_18].includes(creditType)) {
+    Adjust.logEvent(AdjustEvents.NEW_BENEFICIARY_18)
+  }
+}
+
 export const logAdjustBeneficiaryEvent = (user?: UserProfile) => {
   if (!user) return
 
@@ -47,24 +68,7 @@ export const logAdjustBeneficiaryEvent = (user?: UserProfile) => {
 
     // NEW_BENEFICIARY event
     if (adjustEventsStorage?.alreadySeenAsNotBeneficiary) {
-      Adjust.logEvent(AdjustEvents.NEW_BENEFICIARY)
-
-      if (user.creditType === UserCreditType.CREDIT_V3_FREE) {
-        Adjust.logEvent(AdjustEvents.NEW_FREE_BENEFICIARY)
-        if (userAge && userAge === 15) {
-          Adjust.logEvent(AdjustEvents.NEW_FREE_BENEFICIARY_15)
-        } else if (userAge && userAge === 16) {
-          Adjust.logEvent(AdjustEvents.NEW_FREE_BENEFICIARY_16)
-        }
-      }
-
-      if (user.creditType === UserCreditType.CREDIT_V3_17) {
-        Adjust.logEvent(AdjustEvents.NEW_BENEFICIARY_17)
-      }
-
-      if ([UserCreditType.CREDIT_V3_18, UserCreditType.CREDIT_V2_18].includes(user.creditType)) {
-        Adjust.logEvent(AdjustEvents.NEW_BENEFICIARY_18)
-      }
+      logNewBeneficiaryEvents(user.creditType, userAge)
     }
 
     // NEW_BENEFICIARY_WITH_REGISTRATION
