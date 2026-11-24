@@ -5,7 +5,6 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 
 import achievements_success from 'ui/animations/achievements_success.json'
-import add_favorite from 'ui/animations/add_favorite.json'
 import french_republic_animation from 'ui/animations/french_republic_animation.json'
 import geolocalisation from 'ui/animations/geolocalisation.json'
 import lottie_loading from 'ui/animations/lottie_loading.json'
@@ -13,7 +12,6 @@ import notif_basic_medium from 'ui/animations/notif_basic_medium.json'
 import onboarding_birthday_cake from 'ui/animations/onboarding_birthday_cake.json'
 import onboarding_unlock from 'ui/animations/onboarding_unlock.json'
 import qpi_thanks from 'ui/animations/qpi_thanks.json'
-import remove_favorite from 'ui/animations/remove_favorite.json'
 import { ThemedStyledLottieView } from 'ui/animations/ThemedStyledLottieView'
 import { AnimationObject, LottieColoringOptions } from 'ui/animations/type'
 import { AnimatedFavoriteIcon } from 'ui/components/AnimatedFavoriteIcon'
@@ -40,12 +38,6 @@ const LottieAnimations: Record<string, LottieStoryConfig> = {
     isSmallAnimation: false,
     coloringMode: 'targeted',
     targetShapeNames: ['Fond 1'],
-  },
-  add_favorite: {
-    source: add_favorite,
-    hasBackground: false,
-    isSmallAnimation: true,
-    coloringMode: 'global',
   },
   geolocalisation: {
     source: geolocalisation,
@@ -94,12 +86,6 @@ const LottieAnimations: Record<string, LottieStoryConfig> = {
     coloringMode: 'targeted',
     targetShapeNames: ['Fond 1', 'Gradient Fill 1'],
     targetLayerNames: ['étoile', 'cadre'],
-  },
-  remove_favorite: {
-    source: remove_favorite,
-    hasBackground: false,
-    isSmallAnimation: true,
-    coloringMode: 'global',
   },
 }
 
