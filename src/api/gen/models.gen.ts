@@ -2471,6 +2471,23 @@ export interface FavoriteCoordinates {
 
 /**
  * @export
+ * @interface FavoriteCoordinatesV2
+ */
+export interface FavoriteCoordinatesV2 {
+  /**
+   * @type {number | null}
+   * @memberof FavoriteCoordinatesV2
+   */
+  latitude?: number | null
+  /**
+   * @type {number | null}
+   * @memberof FavoriteCoordinatesV2
+   */
+  longitude?: number | null
+}
+
+/**
+ * @export
  * @interface FavoriteMediationResponse
  */
 export interface FavoriteMediationResponse {
@@ -2497,10 +2514,10 @@ export interface FavoriteOfferDataResponse {
    */
   bookingAllowedDatetime?: string | null
   /**
-   * @type {FavoriteCoordinates}
+   * @type {FavoriteCoordinatesV2}
    * @memberof FavoriteOfferDataResponse
    */
-  coordinates: FavoriteCoordinates
+  coordinates: FavoriteCoordinatesV2
   /**
    * @type {string | null}
    * @memberof FavoriteOfferDataResponse
@@ -2687,6 +2704,57 @@ export interface FavoriteRequest {
    * @memberof FavoriteRequest
    */
   offerId: number
+}
+
+/**
+ * @export
+ * @interface FavoriteVenueDataResponse
+ */
+export interface FavoriteVenueDataResponse {
+  /**
+   * @type {number}
+   * @memberof FavoriteVenueDataResponse
+   */
+  id: number
+  /**
+   * @type {string | null}
+   * @memberof FavoriteVenueDataResponse
+   */
+  image: string | null
+  /**
+   * @type {string}
+   * @memberof FavoriteVenueDataResponse
+   */
+  name: string
+}
+
+/**
+ * @export
+ * @interface FavoriteVenueRequest
+ */
+export interface FavoriteVenueRequest {
+  /**
+   * @type {number}
+   * @memberof FavoriteVenueRequest
+   */
+  venueId: number
+}
+
+/**
+ * @export
+ * @interface FavoriteVenueResponse
+ */
+export interface FavoriteVenueResponse {
+  /**
+   * @type {number}
+   * @memberof FavoriteVenueResponse
+   */
+  id: number
+  /**
+   * @type {FavoriteVenueDataResponse}
+   * @memberof FavoriteVenueResponse
+   */
+  venue: FavoriteVenueDataResponse
 }
 
 /**
@@ -4299,6 +4367,28 @@ export interface PaginatedResponseFavoriteOfferResponseV2 {
   /**
    * @type {number}
    * @memberof PaginatedResponseFavoriteOfferResponseV2
+   */
+  page: number
+}
+
+/**
+ * @export
+ * @interface PaginatedResponseFavoriteVenueResponse
+ */
+export interface PaginatedResponseFavoriteVenueResponse {
+  /**
+   * @type {Array<FavoriteVenueResponse>}
+   * @memberof PaginatedResponseFavoriteVenueResponse
+   */
+  favorites: Array<FavoriteVenueResponse>
+  /**
+   * @type {number}
+   * @memberof PaginatedResponseFavoriteVenueResponse
+   */
+  nbFavorites: number
+  /**
+   * @type {number}
+   * @memberof PaginatedResponseFavoriteVenueResponse
    */
   page: number
 }
@@ -6562,6 +6652,7 @@ export interface LegacyApiSignatures {
   deleteNativeV1MeRemindersreminderId(reminder_id: number, options?: any): Promise<EmptyResponse>
   deleteNativeV2MeFavoritesArtistsfavoriteId(favorite_id: number, options?: any): Promise<EmptyResponse>
   deleteNativeV2MeFavoritesOffersfavoriteId(favorite_id: number, options?: any): Promise<EmptyResponse>
+  deleteNativeV2MeFavoritesVenuesfavoriteId(favorite_id: number, options?: any): Promise<EmptyResponse>
   getNativeV1AccountSuspendTokenValidationtoken(token: string, options?: any): Promise<EmptyResponse>
   getNativeV1ArtistsartistId(artist_id: string, options?: any): Promise<ArtistResponse>
   getNativeV1ArtistsartistIdSimilar(artist_id: string, options?: any): Promise<SimilarArtistsResponse>
@@ -6588,6 +6679,7 @@ export interface LegacyApiSignatures {
   getNativeV2Bookingsstatus(status: string, options?: any): Promise<BookingsListResponseV2>
   getNativeV2MeFavoritesArtists(options?: any): Promise<PaginatedResponseFavoriteArtistResponse>
   getNativeV2MeFavoritesOffers(options?: any): Promise<PaginatedResponseFavoriteOfferResponseV2>
+  getNativeV2MeFavoritesVenues(options?: any): Promise<PaginatedResponseFavoriteVenueResponse>
   getNativeV2OauthState(options?: any): Promise<OauthStateResponseV2>
   getNativeV2ProfileEmailUpdateStatus(options?: any): Promise<EmailUpdateStatusResponse>
   getNativeV2ReactionAvailable(options?: any): Promise<GetAvailableReactionsResponse>
@@ -6630,6 +6722,7 @@ export interface LegacyApiSignatures {
   postNativeV1ValidateEmail(body: ValidateEmailRequest, options?: any): Promise<ValidateEmailResponse>
   postNativeV2MeFavoritesArtists(body: FavoriteArtistRequest, options?: any): Promise<FavoriteArtistResponse>
   postNativeV2MeFavoritesOffers(body: FavoriteRequest, options?: any): Promise<FavoriteOfferResponseV2>
+  postNativeV2MeFavoritesVenues(body: FavoriteVenueRequest, options?: any): Promise<FavoriteVenueResponse>
   postNativeV2OauthssoProviderAuthorize(body: OAuthSigninRequestV2, sso_provider: string, options?: any): Promise<SigninResponseV2>
   postNativeV2OffersStocks(body: OffersStocksRequest, options?: any): Promise<OffersStocksResponseV2>
   postNativeV2ProfileEmailUpdateConfirm(body: ChangeBeneficiaryEmailBody, options?: any): Promise<EmailChangeConfirmationResponse>

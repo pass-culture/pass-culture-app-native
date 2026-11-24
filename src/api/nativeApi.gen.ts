@@ -900,45 +900,35 @@ export const deleteNativeV2MeFavoritesOffersfavoriteId = (
 }
 
 export const getNativeV2MeFavoritesVenues = (
-  options: Omit<
-    Options<ApiTypes.getNativeV2MeFavoritesVenuesData, true>,
-    'body' | 'path' | 'query'
-  > = {}
-): Promise<ApiTypes.getNativeV2MeFavoritesVenuesResponse> => {
+  ...args: Parameters<LegacyApiSignatures['getNativeV2MeFavoritesVenues']>
+): ReturnType<LegacyApiSignatures['getNativeV2MeFavoritesVenues']> => {
+  const [options] = args
   return sdk.getNativeV2MeFavoritesVenues({
-    ...options,
-    credentials: options.credentials ?? 'include',
-  })
+    ...(options ?? {}),
+    credentials: (options ?? {}).credentials ?? 'include',
+  }) as unknown as ReturnType<LegacyApiSignatures['getNativeV2MeFavoritesVenues']>
 }
 
 export const postNativeV2MeFavoritesVenues = (
-  body: ApiTypes.postNativeV2MeFavoritesVenuesData['body'],
-  options: Omit<
-    Options<ApiTypes.postNativeV2MeFavoritesVenuesData, true>,
-    'body' | 'path' | 'query'
-  > = {}
-): Promise<ApiTypes.postNativeV2MeFavoritesVenuesResponse> => {
+  ...args: Parameters<LegacyApiSignatures['postNativeV2MeFavoritesVenues']>
+): ReturnType<LegacyApiSignatures['postNativeV2MeFavoritesVenues']> => {
+  const [body, options] = args
   return sdk.postNativeV2MeFavoritesVenues({
-    ...options,
-    credentials: options.credentials ?? 'include',
-    body,
-  })
+    ...(options ?? {}),
+    credentials: (options ?? {}).credentials ?? 'include',
+    body: body,
+  }) as unknown as ReturnType<LegacyApiSignatures['postNativeV2MeFavoritesVenues']>
 }
 
 export const deleteNativeV2MeFavoritesVenuesfavoriteId = (
-  parameter0: NonNullable<
-    ApiTypes.deleteNativeV2MeFavoritesVenuesFavoriteIdData['path']
-  >['favorite_id'],
-  options: Omit<
-    Options<ApiTypes.deleteNativeV2MeFavoritesVenuesFavoriteIdData, true>,
-    'body' | 'path' | 'query'
-  > = {}
-): Promise<ApiTypes.deleteNativeV2MeFavoritesVenuesFavoriteIdResponse> => {
+  ...args: Parameters<LegacyApiSignatures['deleteNativeV2MeFavoritesVenuesfavoriteId']>
+): ReturnType<LegacyApiSignatures['deleteNativeV2MeFavoritesVenuesfavoriteId']> => {
+  const [favorite_id, options] = args
   return sdk.deleteNativeV2MeFavoritesVenuesFavoriteId({
-    ...options,
-    credentials: options.credentials ?? 'include',
-    path: { favorite_id: parameter0 },
-  })
+    ...(options ?? {}),
+    credentials: (options ?? {}).credentials ?? 'include',
+    path: { favorite_id: favorite_id },
+  }) as unknown as ReturnType<LegacyApiSignatures['deleteNativeV2MeFavoritesVenuesfavoriteId']>
 }
 
 export const getNativeV2MovieCalendar = (
