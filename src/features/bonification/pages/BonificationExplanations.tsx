@@ -17,7 +17,9 @@ import {
 } from 'queries/settings/useSettings'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { Form } from 'ui/components/Form'
+import { RemoteIllustration } from 'ui/components/RemoteIllustration'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Banner } from 'ui/designSystem/Banner/Banner'
@@ -45,6 +47,7 @@ export const BonificationExplanations = () => {
   const enableHandicapBonification = useFeatureFlag(
     RemoteStoreFeatureFlags.ENABLE_HANDICAP_BONIFICATION
   )
+  const enableNewVisionUi = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_VISION_UI)
   const { data: bonificationQfThreshold } = useBonificationQfThreshold()
   const qfThresholdInCents = (bonificationQfThreshold || 700) * 100
   const familyQuotientLevel = formatCurrencyFromCents(
@@ -66,7 +69,15 @@ export const BonificationExplanations = () => {
         <Form.MaxWidth>
           <ViewGap gap={4}>
             <Container>
-              <StyledSpeaker />
+              {enableNewVisionUi ? (
+                <RemoteIllustration
+                  url={remoteIllustrationUrls.oldMegaphone}
+                  backgroundColor="positive01"
+                  size="s"
+                />
+              ) : (
+                <StyledSpeaker />
+              )}
             </Container>
             <StyledTitle3 {...setTextSemantic('h2')}>
               Quel est ce bonus et comment en bénéficier&nbsp;?

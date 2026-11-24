@@ -44,6 +44,18 @@ describe('<SuspendProfileReason />', () => {
     expect(screen).toMatchSnapshot()
   })
 
+  it('should display new vision UI illustration when WIP_NEW_VISION_UI FF is enabled', () => {
+    setFeatureFlags([
+      RemoteStoreFeatureFlags.WIP_SUSPEND_PROFILE,
+      RemoteStoreFeatureFlags.WIP_NEW_VISION_UI,
+    ])
+    mockAuthContextWithUser(nonBeneficiaryUser)
+
+    render(<SuspendProfileReason />)
+
+    expect(screen.getByTestId('remote-illustration')).toBeOnTheScreen()
+  })
+
   it('should redirect to DeleteProfileContactSupport page when clicking on "Autre" button', async () => {
     mockAuthContextWithUser(nonBeneficiaryUser)
     render(<SuspendProfileReason />)

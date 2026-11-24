@@ -67,6 +67,11 @@ const profileCheatcodeCategory: CheatcodeCategory = {
     },
     {
       id: uuidv4(),
+      title: 'SuspendProfileReason',
+      navigationTarget: getProfilePropConfig('SuspendProfileReason'),
+    },
+    {
+      id: uuidv4(),
       title: 'SuspendAccountConfirmation',
       navigationTarget: getProfilePropConfig('SuspendAccountConfirmation'),
     },

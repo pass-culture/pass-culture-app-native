@@ -19,6 +19,7 @@ import { env } from 'libs/environment/env'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { plural } from 'libs/plural'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Banner } from 'ui/designSystem/Banner/Banner'
@@ -35,6 +36,10 @@ import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 const notFoundPageConfig: PageConfigEntry = {
   Illustration: ErrorIllustration,
+  remoteIllustration: {
+    url: remoteIllustrationUrls.brokenDinosaurSkeletonLarge,
+    backgroundColor: 'negative01',
+  },
   title: 'Ton dossier est refusé',
   firstText:
     'Nous avons bien reçu ton dossier, mais nous ne trouvons pas ton parent ou représentant légal.',
@@ -152,6 +157,7 @@ export const BonificationFamilyQuotientRefused = () => {
   const disableQFBonificationManualRequest = useFeatureFlag(
     RemoteStoreFeatureFlags.DISABLE_QF_BONIFICATION_MANUAL_REQUEST
   )
+  const enableNewVisionUi = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_VISION_UI)
   const { params } = useRoute<UseRouteType<'BonificationFamilyQuotientRefused'>>()
   const { user } = useAuthContext()
 
@@ -195,6 +201,7 @@ export const BonificationFamilyQuotientRefused = () => {
   return (
     <GenericInfoPage
       illustration={pageConfig.Illustration}
+      remoteIllustration={enableNewVisionUi ? pageConfig.remoteIllustration : undefined}
       title={pageConfig.title}
       buttonsSurtitle={buttonsSurtitle}
       buttonPrimary={{

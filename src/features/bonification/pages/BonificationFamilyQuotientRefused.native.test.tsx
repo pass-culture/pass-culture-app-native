@@ -29,6 +29,17 @@ describe('BonificationFamilyQuotientRefused', () => {
   })
 
   describe('Parent not found', () => {
+    it('should display new vision UI illustration when WIP_NEW_VISION_UI FF is enabled', () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_VISION_UI])
+      useRoute.mockReturnValueOnce({
+        params: { bonificationRefusedType: BonificationQFRefusedType.CUSTODIAN_NOT_FOUND },
+      })
+
+      render(<BonificationFamilyQuotientRefused />)
+
+      expect(screen.getByTestId('remote-illustration')).toBeOnTheScreen()
+    })
+
     it('should go navigate to BonificationRequiredInformation when pressing "Renouveler ma demande" button', async () => {
       useRoute.mockReturnValueOnce({
         params: { bonificationRefusedType: BonificationQFRefusedType.CUSTODIAN_NOT_FOUND },
@@ -159,6 +170,17 @@ describe('BonificationFamilyQuotientRefused', () => {
   })
 
   describe('Family quotient too high', () => {
+    it('should not display new vision UI illustration when WIP_NEW_VISION_UI FF is enabled', () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_VISION_UI])
+      useRoute.mockReturnValueOnce({
+        params: { bonificationRefusedType: BonificationQFRefusedType.QUOTIENT_FAMILY_TOO_HIGH },
+      })
+
+      render(<BonificationFamilyQuotientRefused />)
+
+      expect(screen.queryByTestId('remote-illustration')).not.toBeOnTheScreen()
+    })
+
     it('should go navigate to home when pressing "Revenir vers le catalogue"', async () => {
       useRoute.mockReturnValueOnce({
         params: { bonificationRefusedType: BonificationQFRefusedType.QUOTIENT_FAMILY_TOO_HIGH },

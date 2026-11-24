@@ -1,6 +1,7 @@
 import { FunctionComponent } from 'react'
 
 import { BonificationQFRefusedType } from 'features/bonification/types/BonificationRefusedType'
+import { RemoteIllustrationProps } from 'ui/components/RemoteIllustration'
 import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { BannerLink } from 'ui/designSystem/Banner/Banner'
 import { AccessibleIcon, AccessibleRectangleIcon } from 'ui/svg/icons/types'
@@ -33,6 +34,7 @@ type TertiaryButtonEntry = {
 }
 export type PageConfigEntry = {
   Illustration: React.FC<AccessibleIcon | AccessibleRectangleIcon>
+  remoteIllustration?: RemoteIllustrationProps
   title: string
   firstText: React.ReactNode
   secondText?: string

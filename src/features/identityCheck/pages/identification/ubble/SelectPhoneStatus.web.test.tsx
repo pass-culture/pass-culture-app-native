@@ -2,15 +2,29 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SelectPhoneStatus } from 'features/identityCheck/pages/identification/ubble/SelectPhoneStatus.web'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { checkAccessibilityFor, fireEvent, render, screen } from 'tests/utils/web'
 
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
 describe('SelectPhoneStatus', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should render correctly', () => {
     const { container } = render(<SelectPhoneStatus />)
 
     expect(container).toMatchSnapshot()
+  })
+
+  it('should display new vision UI illustration when WIP_NEW_VISION_UI FF is enabled', () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_VISION_UI])
+
+    render(<SelectPhoneStatus />)
+
+    expect(screen.getByTestId('remote-illustration-container')).toBeInTheDocument()
   })
 
   it('should navigate to SelectIDStatus on press "J’ai un smartphone à proximité" button', () => {

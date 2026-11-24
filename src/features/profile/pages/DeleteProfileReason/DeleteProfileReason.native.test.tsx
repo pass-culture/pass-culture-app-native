@@ -44,6 +44,18 @@ describe('<DeleteProfileReason />', () => {
     expect(screen).toMatchSnapshot()
   })
 
+  it('should display new vision UI illustration when WIP_NEW_VISION_UI FF is enabled', () => {
+    setFeatureFlags([
+      RemoteStoreFeatureFlags.WIP_SUSPEND_PROFILE,
+      RemoteStoreFeatureFlags.WIP_NEW_VISION_UI,
+    ])
+    mockAuthContextWithUser(nonBeneficiaryUser)
+
+    render(<DeleteProfileReason />)
+
+    expect(screen.getByTestId('remote-illustration')).toBeOnTheScreen()
+  })
+
   it('should match snapshot when FF off', () => {
     setFeatureFlags([])
 

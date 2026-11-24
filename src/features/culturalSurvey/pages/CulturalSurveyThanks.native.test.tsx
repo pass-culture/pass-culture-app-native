@@ -5,6 +5,7 @@ import { useCulturalSurveyContext } from 'features/culturalSurvey/context/__mock
 import * as CulturalSurveyContextProviderModule from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
 import { CulturalSurveyThanks } from 'features/culturalSurvey/pages/CulturalSurveyThanks'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -25,6 +26,14 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('CulturalSurveyThanksPage page', () => {
+  it('should display new vision UI illustration when WIP_NEW_VISION_UI FF is enabled', () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_VISION_UI])
+
+    render(<CulturalSurveyThanks />)
+
+    expect(screen.getByTestId('remote-illustration')).toBeOnTheScreen()
+  })
+
   describe('When FF is disabled', () => {
     beforeEach(() => {
       setFeatureFlags()

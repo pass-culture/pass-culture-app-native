@@ -20,6 +20,14 @@ describe('BonificationExplanations', () => {
     setFeatureFlags()
   })
 
+  it('should display new vision UI illustration when WIP_NEW_VISION_UI FF is enabled', () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_VISION_UI])
+
+    render(<BonificationExplanations />)
+
+    expect(screen.getByTestId('remote-illustration')).toBeOnTheScreen()
+  })
+
   it('should navigate to form when pressing "Continuer"', async () => {
     render(<BonificationExplanations />)
 

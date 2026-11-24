@@ -3,7 +3,11 @@ import { Platform, Text } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SecondButtonList } from 'features/identityCheck/components/SecondButtonList'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
+import { RemoteIllustration } from 'ui/components/RemoteIllustration'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
@@ -22,10 +26,20 @@ export const SelectIDOrigin: FunctionComponent = () => (
 )
 
 const SelectIDOriginContent: FunctionComponent = () => {
+  const enableNewVisionUi = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_VISION_UI)
+
   return (
     <Container>
       <StyledIconContainer>
-        <IdCardWithMagnifyingGlass />
+        {enableNewVisionUi ? (
+          <RemoteIllustration
+            url={remoteIllustrationUrls.sculptureMagnifyingGlassPaperSmall}
+            backgroundColor="information02"
+            size="s"
+          />
+        ) : (
+          <IdCardWithMagnifyingGlass />
+        )}
       </StyledIconContainer>
       <StyledViewGap gap={4}>
         <StyledTitle4>Munis-toi de ta pièce d’identité et débloque ton crédit&nbsp;!</StyledTitle4>{' '}
