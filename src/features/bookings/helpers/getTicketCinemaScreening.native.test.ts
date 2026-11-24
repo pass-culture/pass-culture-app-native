@@ -37,7 +37,10 @@ describe('getTicketCinemaScreening', () => {
   })
 
   it('should return the features without details when no feature has a description', () => {
-    const features = { ...emptyFeatures, video: '4DX' }
+    const features = {
+      ...emptyFeatures,
+      accessibility: { ...emptyFeatures.accessibility, motor: ['UNKNOWN'] },
+    }
 
     expect(getTicketCinemaScreening(buildBookingDetails(features), true)).toEqual({
       features,

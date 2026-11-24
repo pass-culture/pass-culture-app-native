@@ -1,6 +1,6 @@
 import { BookingResponseV3 } from 'api/gen'
 import { convertBookingResponseDateToTimezone } from 'features/bookings/queries/selectors/convertBookingsDatesToTimezone'
-import { selectCinemaScreeningDetails } from 'features/bookings/queries/selectors/selectCinemaScreeningDetails'
+import { getScreeningDetails } from 'features/bookOffer/helpers/getScreeningDetails'
 
 export type BookingDetailsResponse = ReturnType<typeof selectBookingDetails>
 
@@ -9,6 +9,6 @@ export const selectBookingDetails = (booking: BookingResponseV3) => {
 
   return {
     ...bookingWithTimezone,
-    cinemaScreeningDetails: selectCinemaScreeningDetails(booking.stock.screeningFeatures),
+    cinemaScreeningDetails: getScreeningDetails(booking.stock.screeningFeatures),
   }
 }
