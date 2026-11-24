@@ -545,6 +545,28 @@ describe('<ArtistBody />', () => {
           expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
           expect(spyApiDeleteFavorite).toHaveBeenCalledWith(expectedFavoriteId)
         })
+
+        it('should trigger RemoveItemFromFavorite log when press on favorite', async () => {
+          render(
+            reactQueryProviderHOC(
+              <ArtistBody
+                artist={mockArtist}
+                artistPlaylist={[]}
+                artistTopOffers={[]}
+                onExpandBioPress={jest.fn()}
+              />
+            )
+          )
+
+          const button = await screen.findByLabelText('Retirer des favoris')
+          await user.press(button)
+
+          expect(analytics.logRemoveItemFromFavorite).toHaveBeenCalledWith({
+            id: mockArtist.id,
+            type: FavoriteType.ARTIST,
+            from: 'artist',
+          })
+        })
       })
 
       describe('When artist is not in favorites', () => {

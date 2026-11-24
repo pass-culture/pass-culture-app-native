@@ -3,6 +3,7 @@ import { Share } from 'react-native'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { FavoriteVenue } from 'features/favorites/components/FavoriteVenue'
+import { FavoriteType } from 'features/favorites/enum'
 import { favoriteVenueResponseSnap } from 'features/favorites/fixtures/favoriteVenueResponseSnap'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -88,6 +89,27 @@ describe('<FavoriteVenue /> component', () => {
     await waitFor(() => {
       expect(mockRemoveFavorite).toHaveBeenNthCalledWith(1, favoriteVenueResponseSnap.id)
       expect(screen.queryByTestId('snackbar-error')).not.toBeOnTheScreen()
+    })
+  })
+
+  it('should trigger RemoveItemFromFavorite log on button click', async () => {
+    useRemoveVenueFavoriteMutationSpy.mockImplementationOnce(
+      (options) =>
+        ({
+          mutate: () => options.onSuccess?.(undefined),
+          isPending: false,
+        }) as unknown as ReturnType<typeof useRemoveVenueFavoriteMutation>
+    )
+    renderFavoriteVenue()
+
+    await user.press(screen.getByLabelText('Retirer des favoris'))
+
+    await waitFor(() => {
+      expect(analytics.logRemoveItemFromFavorite).toHaveBeenNthCalledWith(1, {
+        id: favoriteVenueResponseSnap.venue.id.toString(),
+        type: FavoriteType.VENUE,
+        from: 'favorites',
+      })
     })
   })
 

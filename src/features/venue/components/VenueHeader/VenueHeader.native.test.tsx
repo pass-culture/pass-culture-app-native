@@ -218,6 +218,19 @@ describe('<VenueHeader />', () => {
           expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
           expect(spyApiDeleteFavorite).toHaveBeenCalledWith(expectedFavoriteId)
         })
+
+        it('should trigger RemoveItemFromFavorite log when press on favorite', async () => {
+          renderVenueHeader()
+
+          const button = await screen.findByLabelText('Retirer des favoris')
+          await user.press(button)
+
+          expect(analytics.logRemoveItemFromFavorite).toHaveBeenCalledWith({
+            id: venueDataTest.id.toString(),
+            type: FavoriteType.VENUE,
+            from: 'venue',
+          })
+        })
       })
 
       describe('When venue is not in favorites', () => {

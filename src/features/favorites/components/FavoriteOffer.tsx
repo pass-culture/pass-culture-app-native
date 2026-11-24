@@ -5,6 +5,7 @@ import { FavoriteOfferResponse, FavoriteOfferResponseV2 } from 'api/gen'
 import { FavoriteActions } from 'features/favorites/components/FavoriteActions'
 import { FavoriteAnimatedWrapper } from 'features/favorites/components/FavoriteAnimatedWrapper'
 import { FavoriteBookingButton } from 'features/favorites/components/FavoriteBookingButton'
+import { FavoriteType } from 'features/favorites/enum'
 import { getBookingButtonProperties } from 'features/favorites/helpers/getBookingButtonProperties'
 import { getFavoriteDisplayPrice } from 'features/favorites/helpers/getFavoriteDisplayPrice'
 import { useFavoriteFormattedDate } from 'features/favorites/hooks/useFavoriteFormattedDate'
@@ -79,6 +80,13 @@ export const FavoriteOffer: React.FC<FavoriteProps> = ({ favorite, onInAppBookin
   })
 
   const { mutate: removeFavorite, isPending: isRemoving } = useRemoveOfferFavoriteMutation({
+    onSuccess: () => {
+      void analytics.logRemoveItemFromFavorite({
+        id: offer.id.toString(),
+        type: FavoriteType.OFFER,
+        from: 'favorites',
+      })
+    },
     onError: () => {
       showErrorSnackBar('L’offre n’a pas été retirée de tes favoris')
     },

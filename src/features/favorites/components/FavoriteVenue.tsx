@@ -3,6 +3,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { FavoriteVenueResponse } from 'api/gen'
 import { FavoriteArtistVenue } from 'features/favorites/components/FavoriteArtistVenue'
+import { FavoriteType } from 'features/favorites/enum'
 import { getShareVenue } from 'features/share/helpers/getShareVenue'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { analytics } from 'libs/analytics/provider'
@@ -18,6 +19,13 @@ export const FavoriteVenue: FunctionComponent<Props> = ({ favorite }) => {
   const { designSystem } = useTheme()
 
   const { mutate: removeFavorite, isPending: isRemoving } = useRemoveVenueFavoriteMutation({
+    onSuccess: () => {
+      void analytics.logRemoveItemFromFavorite({
+        id: venue.id.toString(),
+        type: FavoriteType.VENUE,
+        from: 'favorites',
+      })
+    },
     onError: () => {
       showErrorSnackBar('Le lieu n’a pas été retiré de tes favoris')
     },

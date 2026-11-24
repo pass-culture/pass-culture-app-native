@@ -225,6 +225,13 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
 
   const { mutate: removeFavorite, isPending: isRemoveFavoriteLoading } =
     useRemoveOfferFavoriteMutation({
+      onSuccess: () => {
+        void analytics.logRemoveItemFromFavorite({
+          id: offer.id.toString(),
+          type: FavoriteType.OFFER,
+          from: 'offer',
+        })
+      },
       onError: () => {
         showErrorSnackBar('L’offre n’a pas été retirée de tes favoris')
       },

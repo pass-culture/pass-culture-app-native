@@ -3,6 +3,7 @@ import { Share } from 'react-native'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { FavoriteArtist } from 'features/favorites/components/FavoriteArtist'
+import { FavoriteType } from 'features/favorites/enum'
 import { favoriteArtistResponseSnap } from 'features/favorites/fixtures/favoriteArtistResponseSnap'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -91,6 +92,29 @@ describe('<FavoriteArtist /> component', () => {
     await waitFor(() => {
       expect(mockRemoveFavorite).toHaveBeenNthCalledWith(1, favoriteArtistResponseSnap.id)
       expect(screen.queryByTestId('snackbar-error')).not.toBeOnTheScreen()
+    })
+  })
+
+  it('should trigger RemoveItemFromFavorite log on button click', async () => {
+    useRemoveArtistFavoriteMutationSpy.mockImplementationOnce(
+      (options) =>
+        ({
+          mutate: () => options.onSuccess?.(undefined),
+          isPending: false,
+        }) as unknown as ReturnType<
+          typeof useRemoveFavoriteMutationModule.useRemoveArtistFavoriteMutation
+        >
+    )
+    renderFavoriteArtist()
+
+    await user.press(screen.getByLabelText('Retirer des favoris'))
+
+    await waitFor(() => {
+      expect(analytics.logRemoveItemFromFavorite).toHaveBeenNthCalledWith(1, {
+        id: favoriteArtistResponseSnap.artist.id,
+        type: FavoriteType.ARTIST,
+        from: 'favorites',
+      })
     })
   })
 

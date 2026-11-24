@@ -133,6 +133,7 @@ export enum AnalyticsEvent {
   QUIT_FAVORITE_MODAL_FOR_SIGN_IN = 'QuitFavoriteModalForSignIn',
   QUIT_IDENTITY_CHECK = 'QuitIdentityCheck',
   REINITIALIZE_FILTERS = 'ReinitializeFilters',
+  REMOVE_ITEM_FROM_FAVORITE = 'RemoveItemFromFavorite',
   RESEND_EMAIL_RESET_PASSWORD_EXPIRED_LINK = 'ResendEmailResetPasswordExpiredLink',
   RESEND_EMAIL_SIGNUP_CONFIRMATION_EXPIRED_LINK = 'ResendEmailSignupConfirmationExpiredLink',
   RESEND_EMAIL_VALIDATION = 'ResendEmailValidation',

@@ -141,6 +141,13 @@ export const ArtistBody: FunctionComponent<Props> = ({
 
   const { mutate: removeFavorite, isPending: isRemoveFavoriteLoading } =
     useRemoveArtistFavoriteMutation({
+      onSuccess: () => {
+        void analytics.logRemoveItemFromFavorite({
+          id: artist.id,
+          type: FavoriteType.ARTIST,
+          from: 'artist',
+        })
+      },
       onError: () => {
         showErrorSnackBar('L’artiste n’a pas été retiré de tes favoris')
       },

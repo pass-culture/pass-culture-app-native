@@ -136,6 +136,7 @@ export const logEventAnalytics: typeof actualLogEventAnalytics = {
   logQuitFavoriteModalForSignIn: jest.fn(),
   logQuitIdentityCheck: jest.fn(),
   logReinitializeFilters: jest.fn(),
+  logRemoveItemFromFavorite: jest.fn(),
   logResendEmailResetPasswordExpiredLink: jest.fn(),
   logResendEmailSignupConfirmationExpiredLink: jest.fn(),
   logResendEmailValidation: jest.fn(),

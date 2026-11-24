@@ -6,6 +6,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
 import { FavoriteOfferResponseV2, SubcategoriesResponseModelv2, SubcategoryIdEnum } from 'api/gen'
 import { initialFavoritesState } from 'features/favorites/context/reducer'
+import { FavoriteType } from 'features/favorites/enum'
 import { favoriteResponseSnap as favorite } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { beneficiaryUserV2 } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
@@ -40,6 +41,7 @@ jest.mock('libs/jwt/jwt')
 
 const shareSpy = jest.spyOn(Share, 'share').mockResolvedValue({ action: Share.sharedAction })
 const usePrePopulateOfferSpy = jest.spyOn(PrePopulateOffer, 'usePrePopulateOffer')
+const deleteFavoriteSpy = jest.spyOn(api, 'deleteNativeV2MeFavoritesOffersfavoriteId')
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -126,7 +128,6 @@ describe('<FavoriteOffer /> component', () => {
   })
 
   it('should delete favorite on button click', async () => {
-    const deleteFavoriteSpy = jest.spyOn(api, 'deleteNativeV2MeFavoritesOffersfavoriteId')
     simulateBackend()
 
     renderFavorite()
@@ -139,8 +140,22 @@ describe('<FavoriteOffer /> component', () => {
     })
   })
 
+  it('should trigger RemoveItemFromFavorite log on favorite button click', async () => {
+    simulateBackend()
+
+    renderFavorite()
+
+    await user.press(screen.getByLabelText('Retirer des favoris'))
+    await waitFor(() => {
+      expect(analytics.logRemoveItemFromFavorite).toHaveBeenNthCalledWith(1, {
+        id: favorite.offer.id.toString(),
+        type: FavoriteType.OFFER,
+        from: 'favorites',
+      })
+    })
+  })
+
   it('should fail to delete favorite on button click', async () => {
-    const deleteFavoriteSpy = jest.spyOn(api, 'deleteNativeV2MeFavoritesOffersfavoriteId')
     const id = 0
     simulateBackend({ id, hasRemoveFavoriteError: true })
 

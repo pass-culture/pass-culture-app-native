@@ -266,6 +266,19 @@ describe('<OfferContent />', () => {
       expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
       expect(screen.getByText('L’offre n’a pas été retirée de tes favoris')).toBeOnTheScreen()
     })
+
+    it('should trigger RemoveItemFromFavorite log when remove favorite succeeds', async () => {
+      mockAuthContextWithUser({ id: 1, email: 'user@test.com' } as UserProfile)
+      renderOfferContent({})
+
+      await user.press(await screen.findByLabelText('Retirer des favoris'))
+
+      expect(analytics.logRemoveItemFromFavorite).toHaveBeenNthCalledWith(1, {
+        id: offerResponseSnap.id.toString(),
+        type: FavoriteType.OFFER,
+        from: 'offer',
+      })
+    })
   })
 
   it('should navigate to offer preview screen when clicking on image offer', async () => {
