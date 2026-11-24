@@ -3,12 +3,20 @@ import React from 'react'
 import { action } from 'storybook/actions'
 
 import { theme } from 'theme'
+import { IconFactoryProvider } from 'ui/components/icons/IconFactoryProvider'
 
 import { EventCardList } from './EventCardList'
 
 const meta: Meta<typeof EventCardList> = {
   title: 'ui/EventCard/EventCardList',
   component: EventCardList,
+  decorators: [
+    (Story) => (
+      <IconFactoryProvider>
+        <Story />
+      </IconFactoryProvider>
+    ),
+  ],
 }
 export default meta
 

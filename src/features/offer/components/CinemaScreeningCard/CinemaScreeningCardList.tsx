@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react'
-import { StyleSheet } from 'react-native'
-import styled from 'styled-components/native'
+import { useTheme } from 'styled-components/native'
+
+import { ArrowFlatList } from 'ui/components/ArrowFlatList'
 
 import { CinemaScreeningCard } from './CinemaScreeningCard'
 import { CinemaScreeningCardProps } from './types'
@@ -10,30 +11,19 @@ type Props = {
 }
 
 export const CinemaScreeningCardList: FunctionComponent<Props> = ({ screenings }) => {
+  const { designSystem } = useTheme()
+
   return (
-    <HorizontalScrollView
+    <ArrowFlatList
+      data={screenings}
       horizontal
-      contentContainerStyle={styles.contentContainer}
+      contentContainerStyle={{
+        gap: designSystem.size.spacing.m,
+      }}
       showsHorizontalScrollIndicator={false}
-      testID="cinema-screening-card-list">
-      {screenings.map((screening, index) => (
-        <CardContainer key={`${screening.time}-${index}`} isLast={index === screenings.length - 1}>
-          <CinemaScreeningCard {...screening} fillHeight />
-        </CardContainer>
-      ))}
-    </HorizontalScrollView>
+      testID="cinema-screening-card-list"
+      keyExtractor={(item, index) => `${item.time}-${index}`}
+      renderItem={({ item }) => <CinemaScreeningCard {...item} fillHeight />}
+    />
   )
 }
-
-const HorizontalScrollView = styled.ScrollView({
-  flexGrow: 0,
-})
-
-const CardContainer = styled.View<{ isLast: boolean }>(({ theme, isLast }) => ({
-  alignSelf: 'stretch',
-  marginRight: isLast ? 0 : theme.designSystem.size.spacing.m,
-}))
-
-const styles = StyleSheet.create({
-  contentContainer: { alignItems: 'stretch' },
-})

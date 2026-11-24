@@ -1,43 +1,28 @@
-import React, { useState } from 'react'
-import { FlatList, View } from 'react-native'
+import React from 'react'
+import { Platform, View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { EVENT_CARD_WIDTH, EventCard, EventCardProps } from 'ui/components/eventCard/EventCard'
+import { ArrowFlatList } from 'ui/components/ArrowFlatList'
+import { EventCard, EventCardProps } from 'ui/components/eventCard/EventCard'
 
 type Props = {
   data: EventCardProps[]
 }
 
 export const EventCardList: React.FC<Props> = ({ data }) => {
-  const [webViewWidth, setWebViewWidth] = useState(0)
-  const { isDesktopViewport, designSystem } = useTheme()
+  const { designSystem } = useTheme()
 
-  const numColumns = Math.max(
-    Math.floor(webViewWidth / (EVENT_CARD_WIDTH + designSystem.size.spacing.l)),
-    1
-  )
-
-  if (isDesktopViewport) {
+  if (Platform.OS === 'web') {
     return (
-      <View
-        testID="desktop-event-card-list"
-        onLayout={(event) => {
-          const { width } = event.nativeEvent.layout
-          setWebViewWidth(width)
-        }}>
-        <FlatList
-          listAs="ul"
-          itemAs="li"
-          key={numColumns}
+      <View testID="desktop-event-card-list">
+        <ArrowFlatList
           data={data}
-          renderItem={({ item }: { item: EventCardProps }) => (
-            <Container>
-              <EventCard {...item} />
-            </Container>
-          )}
-          keyExtractor={(item) => JSON.stringify(item)}
+          horizontal
+          contentContainerStyle={{ gap: designSystem.size.spacing.m }}
+          showsHorizontalScrollIndicator={false}
+          renderItem={({ item }: { item: EventCardProps }) => <EventCard {...item} />}
+          keyExtractor={(_, index) => `screening-${index}`}
           ItemSeparatorComponent={FlatListLineSpacer}
-          numColumns={numColumns}
         />
       </View>
     )
@@ -89,5 +74,3 @@ const ScrollViewContainer = styled.ScrollView(({ theme }) => ({
 const FlatListLineSpacer = styled.View(({ theme }) => ({
   marginVertical: theme.designSystem.size.spacing.s,
 }))
-
-const Container = styled(View)(({ theme }) => ({ marginRight: theme.designSystem.size.spacing.l }))
