@@ -44,7 +44,6 @@ export const FavoriteButton: React.FC<FavoriteButtonProps> = ({
   const isFavorited = optimisticFavorite ?? !!favorite
   const isAnimating = animatingAction !== null
   const isPurple = isFavorited || isAnimating
-  const isRemoveSource = animatingAction ? animatingAction === 'remove' : isFavorited
 
   const handleAnimationFinish = useCallback(() => {
     setAnimatingAction(null)
@@ -86,12 +85,11 @@ export const FavoriteButton: React.FC<FavoriteButtonProps> = ({
       <AnimatedFavoriteIcon
         isFavorited={isFavorited}
         isPurple={isPurple}
-        isRemoveSource={isRemoveSource}
         animatingAction={animatingAction}
         onAnimationFinish={handleAnimationFinish}
       />
     ),
-    [animatingAction, handleAnimationFinish, isFavorited, isPurple, isRemoveSource]
+    [animatingAction, handleAnimationFinish, isFavorited, isPurple]
   )
 
   const accessibilityLabel = isFavorited ? 'Retirer des favoris' : 'Mettre en favori'

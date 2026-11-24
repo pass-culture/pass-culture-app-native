@@ -10,7 +10,8 @@ import {
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen, userEvent } from 'tests/utils'
+import { render, screen, userEvent, act } from 'tests/utils'
+import { ADD_FAVORITE_DURATION } from 'ui/animations/favoriteKeyframes'
 import { FavoriteButton, FavoriteButtonProps } from 'ui/components/buttons/FavoriteButton'
 
 jest.mock('libs/jwt/jwt')
@@ -152,6 +153,15 @@ describe('<FavoriteButton />', () => {
         await user.press(button)
 
         expect(mockAddFavorite).toHaveBeenCalledTimes(1)
+      })
+
+      it('should enable the button again once the animation is over', async () => {
+        renderFavoriteButton(defaultOfferProps)
+
+        await user.press(await screen.findByLabelText('Mettre en favori'))
+        await act(() => jest.advanceTimersByTime(ADD_FAVORITE_DURATION))
+
+        expect(screen.getByLabelText('Retirer des favoris')).toBeEnabled()
       })
 
       it('should sync state when favorite prop updates externally', async () => {
