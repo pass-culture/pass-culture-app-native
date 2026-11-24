@@ -24,7 +24,8 @@ export const PreviewInstallModal: FunctionComponent = () => {
   const { goBack } = useGoBack(...homeNavigationConfig)
   const { params } = useRoute<UseRouteType<'PreviewInstallModal'>>()
   const { downloadUrl, platform, channel, fingerprint } = params
-  const [showDownload, setShowDownload] = useState(false)
+  const [phase, setPhase] = useState<'loading' | 'download' | 'report'>('loading')
+  const [report, setReport] = useState('')
 
   const platformLabel = platform ? PLATFORM_LABELS[platform] : undefined
 
@@ -34,13 +35,15 @@ export const PreviewInstallModal: FunctionComponent = () => {
         channel,
         fingerprint,
         downloadUrl,
-        onMatched: goBack,
-        onMismatch: () => setShowDownload(true),
+        onReloaded: goBack,
+        onMismatch: () => setPhase('download'),
+        onReport: (detail) => {
+          setReport(detail)
+          setPhase('report')
+        },
       }),
     [channel, downloadUrl, fingerprint, goBack]
   )
-
-  if (!showDownload) return null
 
   return (
     <ModalScreenWrapper onClose={goBack} title="Installation preview">
@@ -57,31 +60,52 @@ export const PreviewInstallModal: FunctionComponent = () => {
             />
           </HeaderContainer>
 
-          <Content gap={6}>
-            <Typo.Body>
-              {platformLabel
-                ? `Une nouvelle version preview (${platformLabel}) est disponible.`
-                : 'Une nouvelle version preview est disponible.'}
-            </Typo.Body>
-            <Typo.Body>
-              Télécharge-la pour tester cette branche. L’installation remplacera l’app preview déjà
-              présente sur ton appareil.
-            </Typo.Body>
-          </Content>
+          {phase === 'loading' ? (
+            <Content gap={6}>
+              <Typo.Body>Vérification du bundle…</Typo.Body>
+            </Content>
+          ) : null}
 
-          <FooterContainer>
-            {downloadUrl ? (
-              <ExternalTouchableLink
-                as={Button}
-                wording="Télécharger"
-                icon={ExternalSiteFilled}
-                fullWidth
-                externalNav={{ url: downloadUrl }}
-              />
-            ) : (
-              <Button wording="Fermer" onPress={closeWithTransition} fullWidth />
-            )}
-          </FooterContainer>
+          {phase === 'report' ? (
+            <React.Fragment>
+              <Content gap={6}>
+                <Typo.Body>{report}</Typo.Body>
+              </Content>
+              <FooterContainer>
+                <Button wording="Fermer" onPress={closeWithTransition} fullWidth />
+              </FooterContainer>
+            </React.Fragment>
+          ) : null}
+
+          {phase === 'download' ? (
+            <React.Fragment>
+              <Content gap={6}>
+                <Typo.Body>
+                  {platformLabel
+                    ? `Une nouvelle version preview (${platformLabel}) est disponible.`
+                    : 'Une nouvelle version preview est disponible.'}
+                </Typo.Body>
+                <Typo.Body>
+                  Télécharge-la pour tester cette branche. L’installation remplacera l’app preview
+                  déjà présente sur ton appareil.
+                </Typo.Body>
+              </Content>
+
+              <FooterContainer>
+                {downloadUrl ? (
+                  <ExternalTouchableLink
+                    as={Button}
+                    wording="Télécharger"
+                    icon={ExternalSiteFilled}
+                    fullWidth
+                    externalNav={{ url: downloadUrl }}
+                  />
+                ) : (
+                  <Button wording="Fermer" onPress={closeWithTransition} fullWidth />
+                )}
+              </FooterContainer>
+            </React.Fragment>
+          ) : null}
           <Spacer.BottomScreen />
         </React.Fragment>
       )}

@@ -29,7 +29,7 @@ describe('handlePreviewInstallFromDeeplink', () => {
       downloadUrl: 'https://example.com',
     })
 
-    expect(result).toBe('mismatch')
+    expect(result).toEqual({ status: 'mismatch' })
     expect(await getPreviewInstall()).toBeNull()
     expect(mockLoadPreviewChannel).not.toHaveBeenCalled()
   })
@@ -43,7 +43,7 @@ describe('handlePreviewInstallFromDeeplink', () => {
       downloadUrl: 'https://example.com/download',
     })
 
-    expect(result).toBe('mismatch')
+    expect(result).toEqual({ status: 'mismatch' })
     expect(await getPreviewInstall()).toEqual({
       channel: 'PC-1234',
       fingerprint: 'qr-fp',
@@ -52,8 +52,9 @@ describe('handlePreviewInstallFromDeeplink', () => {
     expect(mockLoadPreviewChannel).not.toHaveBeenCalled()
   })
 
-  it('should persist, load channel and return matched when fingerprint matches', async () => {
+  it('should persist, load channel and return the load result when fingerprint matches', async () => {
     mockGetFingerprintHash.mockReturnValueOnce('same-fp')
+    mockLoadPreviewChannel.mockResolvedValueOnce({ status: 'reloaded' })
 
     const result = await handlePreviewInstallFromDeeplink({
       channel: 'PC-1234',
@@ -61,7 +62,7 @@ describe('handlePreviewInstallFromDeeplink', () => {
       downloadUrl: 'https://example.com/download',
     })
 
-    expect(result).toBe('matched')
+    expect(result).toEqual({ status: 'reloaded' })
     expect(await getPreviewInstall()).toEqual({
       channel: 'PC-1234',
       fingerprint: 'same-fp',

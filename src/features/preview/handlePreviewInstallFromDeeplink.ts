@@ -1,7 +1,7 @@
 import { HotUpdater } from '@hot-updater/react-native'
 
 import { isMatchingPreviewFingerprint } from 'features/preview/helpers/isMatchingPreviewFingerprint'
-import { loadPreviewChannel } from 'features/preview/loadPreviewChannel'
+import { loadPreviewChannel, PreviewChannelLoadResult } from 'features/preview/loadPreviewChannel'
 import { savePreviewInstall } from 'features/preview/previewInstallStorage'
 
 type PreviewInstallDeeplinkParams = {
@@ -18,8 +18,8 @@ export const handlePreviewInstallFromDeeplink = async ({
   channel,
   fingerprint,
   downloadUrl,
-}: PreviewInstallDeeplinkParams): Promise<'mismatch' | 'matched'> => {
-  if (!channel || !fingerprint) return 'mismatch'
+}: PreviewInstallDeeplinkParams): Promise<{ status: 'mismatch' } | PreviewChannelLoadResult> => {
+  if (!channel || !fingerprint) return { status: 'mismatch' }
 
   await savePreviewInstall({
     channel,
@@ -28,9 +28,8 @@ export const handlePreviewInstallFromDeeplink = async ({
   })
 
   if (!isMatchingPreviewFingerprint(HotUpdater.getFingerprintHash(), fingerprint)) {
-    return 'mismatch'
+    return { status: 'mismatch' }
   }
 
-  await loadPreviewChannel(channel)
-  return 'matched'
+  return loadPreviewChannel(channel)
 }

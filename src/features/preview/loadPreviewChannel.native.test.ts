@@ -5,7 +5,9 @@ import { loadPreviewChannel } from 'features/preview/loadPreviewChannel'
 jest.mock('@hot-updater/react-native', () => ({
   HotUpdater: {
     checkForUpdate: jest.fn(),
+    getBundleId: jest.fn(() => 'bundle-1'),
     getChannel: jest.fn(() => 'production'),
+    getFingerprintHash: jest.fn(() => 'fp-device'),
     isChannelSwitched: jest.fn(() => false),
     reload: jest.fn(),
     resetChannel: jest.fn(() => Promise.resolve(true)),
@@ -29,14 +31,20 @@ describe('loadPreviewChannel', () => {
     mockReload.mockClear()
   })
 
-  it('should check for update with the given channel', async () => {
+  it('should report that nothing was downloaded when the check returns null', async () => {
     mockCheckForUpdate.mockResolvedValueOnce(null)
 
-    await loadPreviewChannel('PC-1234')
+    const result = await loadPreviewChannel('PC-1234')
 
     expect(mockCheckForUpdate).toHaveBeenCalledWith({
       channel: 'PC-1234',
       updateStrategy: 'fingerprint',
+      requestTimeout: 20_000,
+      onError: expect.any(Function),
+    })
+    expect(result).toEqual({
+      status: 'up_to_date',
+      detail: expect.stringMatching(/Aucun bundle téléchargé[\s\S]*fingerprint fp-device/),
     })
   })
 
@@ -51,6 +59,8 @@ describe('loadPreviewChannel', () => {
     expect(mockCheckForUpdate).toHaveBeenCalledWith({
       channel: 'PC-1234',
       updateStrategy: 'fingerprint',
+      requestTimeout: 20_000,
+      onError: expect.any(Function),
     })
   })
 
@@ -58,7 +68,7 @@ describe('loadPreviewChannel', () => {
     const updateBundle = jest.fn().mockResolvedValue(true)
     mockCheckForUpdate.mockResolvedValueOnce({ updateBundle })
 
-    await loadPreviewChannel('PC-1234')
+    await expect(loadPreviewChannel('PC-1234')).resolves.toEqual({ status: 'reloaded' })
 
     expect(updateBundle).toHaveBeenCalledTimes(1)
     expect(mockReload).toHaveBeenCalledTimes(1)
@@ -68,9 +78,26 @@ describe('loadPreviewChannel', () => {
     const updateBundle = jest.fn().mockResolvedValue(false)
     mockCheckForUpdate.mockResolvedValueOnce({ updateBundle })
 
-    await loadPreviewChannel('PC-1234')
+    const result = await loadPreviewChannel('PC-1234')
 
     expect(updateBundle).toHaveBeenCalledTimes(1)
+    expect(mockReload).not.toHaveBeenCalled()
+    expect(result.status).toBe('download_failed')
+  })
+
+  it('should surface the check error instead of looking successful', async () => {
+    mockCheckForUpdate.mockImplementationOnce(({ onError }) => {
+      onError(new Error('Request timed out'))
+      return null
+    })
+
+    const result = await loadPreviewChannel('PC-1234')
+
+    expect(result).toEqual({
+      status: 'error',
+      detail: expect.stringContaining('Request timed out'),
+    })
+
     expect(mockReload).not.toHaveBeenCalled()
   })
 })

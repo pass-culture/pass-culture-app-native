@@ -28,7 +28,8 @@ export const HomeHeader: FunctionComponent = function () {
   const availableCredit = getAvailableCredit(user)
 
   const Header = useMemo(() => {
-    const welcomeTitle = user?.firstName && isLoggedIn ? `Caca ${user.firstName}` : 'Caca\u00a0!'
+    const welcomeTitle =
+      user?.firstName && isLoggedIn ? `Bonjour ${user.firstName}` : 'Bienvenue\u00a0!'
 
     const shouldDisplayActivationFlow = user && getShouldDisplayActivationFlow(user)
 
