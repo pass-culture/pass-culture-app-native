@@ -130,6 +130,13 @@ export const ArtistBody: FunctionComponent<Props> = ({
 
   const { mutate: addFavorite, isPending: isAddFavoriteLoading } = useAddArtistFavoriteMutation({
     type: FavoriteType.ARTIST,
+    onSuccess: () => {
+      void analytics.logAddItemToFavorite({
+        id: artist.id,
+        type: FavoriteType.ARTIST,
+        from: 'artist',
+      })
+    },
   })
 
   const { mutate: removeFavorite, isPending: isRemoveFavoriteLoading } =

@@ -4,6 +4,7 @@ export enum AnalyticsEvent {
   ACCOUNT_DELETION = 'AccountDeletion',
   ACCOUNT_REACTIVATION = 'AccountReactivation',
   ACTIVATE_GEOLOC_FROM_SEARCH_RESULTS = 'ActivateGeolocfromSearchResults',
+  ADD_ITEM_TO_FAVORITE = 'AddItemToFavorite',
   ALL_MODULES_SEEN = 'AllModulesSeen',
   ALL_TILES_SEEN = 'AllTilesSeen',
   FEATURE_FEEDBACK_CLICKED = 'FeatureFeedbackClicked',

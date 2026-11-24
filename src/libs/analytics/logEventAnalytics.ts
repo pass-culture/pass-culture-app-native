@@ -13,6 +13,7 @@ import { PreValidationSignupStep } from 'features/auth/enums'
 import { Provider } from 'features/auth/types'
 import { STEP_LABEL, Step } from 'features/bookOffer/context/reducer'
 import { CookiesChoiceByCategory } from 'features/cookies/types'
+import { FavoriteType } from 'features/favorites/enum'
 import { FavoriteSortBy } from 'features/favorites/types'
 import { IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
 import {
@@ -129,6 +130,16 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.ACCOUNT_REACTIVATION }, { from }),
   logActivateGeolocfromSearchResults: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.ACTIVATE_GEOLOC_FROM_SEARCH_RESULTS }),
+  logAddItemToFavorite: (params: {
+    id: string
+    type: FavoriteType
+    from?: Referrals
+    moduleName?: string
+    moduleId?: string
+    searchId?: string
+    apiRecoParams?: RecommendationApiParams
+    playlistType?: string
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.ADD_ITEM_TO_FAVORITE }, params),
   logAllModulesSeen: (numberOfModules: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.ALL_MODULES_SEEN }, { numberOfModules }),
   logAllTilesSeen: (params: {

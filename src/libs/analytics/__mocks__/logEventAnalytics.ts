@@ -5,6 +5,7 @@ export const logEventAnalytics: typeof actualLogEventAnalytics = {
   logAccountDeletion: jest.fn(),
   logAccountReactivation: jest.fn(),
   logActivateGeolocfromSearchResults: jest.fn(),
+  logAddItemToFavorite: jest.fn(),
   logAllModulesSeen: jest.fn(),
   logAllTilesSeen: jest.fn(),
   logAppThemeStatus: jest.fn(),

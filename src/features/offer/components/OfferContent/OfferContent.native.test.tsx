@@ -21,6 +21,7 @@ import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/Cook
 import { ConsentState } from 'features/cookies/enums'
 import * as Cookies from 'features/cookies/helpers/useCookies'
 import { ConsentStatus } from 'features/cookies/types'
+import { FavoriteType } from 'features/favorites/enum'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import * as useOfferFavorite from 'features/favorites/hooks/useOfferFavorite'
 import * as useGoBack from 'features/navigation/useGoBack'
@@ -385,6 +386,23 @@ describe('<OfferContent />', () => {
           expect(analytics.logHasAddedOfferToFavorites).toHaveBeenNthCalledWith(
             1,
             expect.objectContaining({ offerId: comingSoonOffer.id, from: 'comingSoonOffer' })
+          )
+        })
+
+        it('should send logAddItemToFavorite event with correct params', async () => {
+          renderOfferContent({ offer: comingSoonOffer })
+
+          await screen.findAllByText(comingSoonOffer.name)
+
+          await user.press(await screen.findByText('Mettre en favori'))
+
+          expect(analytics.logAddItemToFavorite).toHaveBeenNthCalledWith(
+            1,
+            expect.objectContaining({
+              id: comingSoonOffer.id.toString(),
+              type: FavoriteType.OFFER,
+              from: 'comingSoonOffer',
+            })
           )
         })
       })

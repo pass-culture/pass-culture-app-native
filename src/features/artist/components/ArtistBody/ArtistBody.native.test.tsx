@@ -8,6 +8,7 @@ import { PaginatedResponseFavoriteArtistResponse, SubcategoryIdEnum } from 'api/
 import { ArtistBody } from 'features/artist/components/ArtistBody/ArtistBody'
 import { mockArtist } from 'features/artist/fixtures/mockArtist'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
+import { FavoriteType } from 'features/favorites/enum'
 import { favoriteArtistResponseSnap } from 'features/favorites/fixtures/favoriteArtistResponseSnap'
 import { paginatedArtistFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedArtistFavoritesResponseSnap'
 import { useGetOffersDataQuery } from 'features/home/queries/useGetOffersDataQuery'
@@ -569,6 +570,28 @@ describe('<ArtistBody />', () => {
 
           await waitFor(() => {
             expect(spyApiPostFavorite).toHaveBeenCalledWith({ artistId: mockArtist.id })
+          })
+        })
+
+        it('should trigger AddItemToFavorite log when press on favorite', async () => {
+          render(
+            reactQueryProviderHOC(
+              <ArtistBody
+                artist={mockArtist}
+                artistPlaylist={[]}
+                artistTopOffers={[]}
+                onExpandBioPress={jest.fn()}
+              />
+            )
+          )
+
+          const button = await screen.findByLabelText('Mettre en favori')
+          await user.press(button)
+
+          expect(analytics.logAddItemToFavorite).toHaveBeenCalledWith({
+            id: mockArtist.id,
+            type: FavoriteType.ARTIST,
+            from: 'artist',
           })
         })
       })

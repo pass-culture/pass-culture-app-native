@@ -49,6 +49,13 @@ export const VenueHeader: React.FC<Props> = ({ headerTransition, venue }) => {
 
   const { mutate: addFavorite, isPending: isAddFavoriteLoading } = useAddVenueFavoriteMutation({
     type: FavoriteType.VENUE,
+    onSuccess: () => {
+      void analytics.logAddItemToFavorite({
+        id: venue.id.toString(),
+        type: FavoriteType.VENUE,
+        from: 'venue',
+      })
+    },
   })
 
   const { mutate: removeFavorite, isPending: isRemoveFavoriteLoading } =

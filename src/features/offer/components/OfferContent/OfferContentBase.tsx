@@ -209,6 +209,16 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
           ...apiRecoParams,
           playlistType,
         })
+        void analytics.logAddItemToFavorite({
+          id: offer.id.toString(),
+          type: FavoriteType.OFFER,
+          from: getIsAComingSoonOffer(offer.bookingAllowedDatetime) ? 'comingSoonOffer' : from,
+          moduleName,
+          moduleId,
+          searchId,
+          ...apiRecoParams,
+          playlistType,
+        })
       }
     },
   })
