@@ -14,6 +14,7 @@ import {
   categoryButtonIllustrationNames,
   categoryButtonIllustrationUrls,
 } from 'shared/illustrations/categoryButtonIllustrations'
+import { remoteIllustrationUrls } from 'shared/illustrations/remoteIllustrations'
 import { AssetGridTemplate as Illustrations } from 'ui/storybook/AssetGridTemplate'
 import { getSpacing } from 'ui/theme'
 
@@ -39,19 +40,38 @@ const contentfulHeaderImages = Object.fromEntries(
   contentfulIllustrationNames.map((name) => [name, buildContentfulIllustrationUrl(name)])
 )
 
-const Template: StoryFn = () => (
-  <React.Fragment>
-    <Illustrations title="Cultural objects" images={categoryButtonImages} isIllustration />
-    <Illustrations
-      title="Cultural themes"
-      images={contentfulHeaderImages}
-      imageSize={getSpacing(40)}
-      isIllustration
-    />
-  </React.Fragment>
+const CulturalObjectsTemplate: StoryFn = () => (
+  <Illustrations title="Cultural objects" images={categoryButtonImages} isIllustration />
 )
 
-export const AllIllustrations = {
+const CulturalThemesTemplate: StoryFn = () => (
+  <Illustrations
+    title="Cultural themes"
+    images={contentfulHeaderImages}
+    imageSize={getSpacing(40)}
+    isIllustration
+  />
+)
+
+const ScreensTemplate: StoryFn = () => (
+  <Illustrations
+    title="Screens"
+    images={remoteIllustrationUrls}
+    imageSize={getSpacing(40)}
+    isIllustration
+  />
+)
+
+export const CulturalObjects = {
+  name: 'Cultural objects',
+  render: CulturalObjectsTemplate,
+}
+
+export const CulturalThemes = {
   name: 'Cultural themes',
-  render: Template,
+  render: CulturalThemesTemplate,
+}
+
+export const Screens = {
+  render: ScreensTemplate,
 }
