@@ -39,6 +39,7 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
   const [offerToBook, setOfferToBook] = useState<FavoriteOfferResponse | null>(null)
   const { sortBy } = useFavoritesState()
   const { geolocation: position } = useLocationConfiguration(LocationMode.AROUND_ME)
+  const enableFavoritesHub = useFeatureFlag(RemoteStoreFeatureFlags.WIP_FAVORITES_HUB)
   const {
     data: offerFavorites,
     isLoading: isLoadingOfferFavorites,
@@ -50,13 +51,13 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
     isLoading: isLoadingArtistFavorites,
     isFetching: isFetchingArtistFavorites,
     refetch: refetchArtistFavorites,
-  } = useArtistFavoritesQuery()
+  } = useArtistFavoritesQuery({ enabled: enableFavoritesHub })
   const {
     data: venueFavorites,
     isLoading: isLoadingVenueFavorites,
     isFetching: isFetchingVenueFavorites,
     refetch: refetchVenueFavorites,
-  } = useVenueFavoritesQuery()
+  } = useVenueFavoritesQuery({ enabled: enableFavoritesHub })
 
   const showOffersSkeleton = useIsFalseWithDelay(isLoadingOfferFavorites, ANIMATION_DURATION)
   const isOffersRefreshing = useIsFalseWithDelay(isFetchingOfferFavorites, ANIMATION_DURATION)
@@ -64,7 +65,7 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
   const isVenuesRefreshing = useIsFalseWithDelay(isFetchingVenueFavorites, ANIMATION_DURATION)
   const showArtistsSkeleton = useIsFalseWithDelay(isLoadingArtistFavorites, ANIMATION_DURATION)
   const isArtistsRefreshing = useIsFalseWithDelay(isFetchingArtistFavorites, ANIMATION_DURATION)
-  const enableFavoritesHub = useFeatureFlag(RemoteStoreFeatureFlags.WIP_FAVORITES_HUB)
+
   const [selectedTab, setSelectedTab] = useState<Tab>(Tab.OFFERS)
   const sortedFavorites = useMemo(
     () => applySortBy(offerFavorites?.favorites ?? [], sortBy, position),
