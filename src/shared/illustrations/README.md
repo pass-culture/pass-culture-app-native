@@ -102,4 +102,7 @@ Some older files have a `@3x` suffix (`book@3x.png`, referenced in the code as `
 
 ## Error handling
 
-When the image cannot be loaded, `RemoteIllustration` displays the `ErrorServer` SVG instead. A missing file in a bucket is therefore not a crash, but it shows a broken state to the user.
+A missing file in a bucket does not crash the app, but the result depends on the family:
+
+- Screens: `RemoteIllustration` displays the `ErrorServer` SVG instead.
+- Cultural objects and cultural themes: the category button or the thematic header is displayed without illustration.
