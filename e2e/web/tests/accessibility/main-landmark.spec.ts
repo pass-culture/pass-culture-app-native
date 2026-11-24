@@ -1,4 +1,4 @@
-import { expect, test } from '../fixtures'
+import { expect, test } from '../../fixtures'
 
 const pages = [
   { name: 'home', path: '/accueil' },
@@ -10,7 +10,7 @@ const pages = [
   { name: 'login', path: '/connexion' },
 ]
 
-test.describe('accessibility', () => {
+test.describe('accessibility', { tag: '@smoke' }, () => {
   for (const { name, path } of pages) {
     test(`${name} page opened from its URL has exactly one main landmark`, async ({ page }) => {
       await page.goto(path)

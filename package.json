@@ -49,6 +49,7 @@
     "start:web:production": "yarn start:web --mode=production",
     "start:web:staging": "yarn start:web --mode=staging",
     "start:web:testing": "yarn start:web --mode=testing",
+    "preview:web:staging": "vite preview --mode=staging",
     "storybook": "NODE_OPTIONS='--openssl-legacy-provider' TZ=UTC storybook dev -p 6006",
     "test": "yarn test:lint && yarn test:types && yarn test:unit && yarn test:unit:web",
     "test:deadcode": "yarn knip --treat-config-hints-as-errors && NODE_ENV=production yarn knip --production",
