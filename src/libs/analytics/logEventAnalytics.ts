@@ -308,6 +308,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_ERROR_APPLICATION_MODAL }, { offerId }),
   logConsultFakeDoorSurvey: (params: FakeDoorAnalyticsParams) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_FAKE_DOOR_SURVEY }, params),
+  logConsultFavorites: (params: { tab: FavoriteType }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_FAVORITES }, params),
   logConsultFinishSubscriptionModal: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_FINISH_SUBSCRIPTION_MODAL }, { offerId }),
   logConsultHome: (params: ConsultHomeParams) =>
