@@ -1,0 +1,58 @@
+name: '[CI] PR checks'
+
+on:
+  pull_request:
+  push:
+    branches:
+      - pc-44620-split-dev_on_push_workflow_main
+
+permissions:
+  contents: write
+  id-token: write
+  pages: write
+  pull-requests: write
+
+jobs:
+  actionlint-check:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.3
+        with:
+          persist-credentials: false
+      - uses: pass-culture/common-workflows/actions/actionlint-check@547f3df463509ca831922b667e6dc2d29f74e4e0 # actionlint/v0.3
+  yarn-install:
+    name: 'Install yarn dependencies'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.3
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/setup-node-yarn
+  yarn-linter:
+    needs: yarn-install
+    uses: ./.github/workflows/ci_sub_lint.yml
+  yarn-tester:
+    needs: yarn-linter
+    uses: ./.github/workflows/ci_sub_unit_tests.yml
+    secrets:
+      PASSCULTURE_GITHUB_ACTION_APP_ID: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_ID }}
+      PASSCULTURE_GITHUB_ACTION_APP_PRIVATE_KEY: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_PRIVATE_KEY }}
+  test-e2e-web:
+    needs: yarn-linter
+    uses: ./.github/workflows/ci_sub_e2e_web.yml
+  check-storybook-folder-changes:
+    name: Check storybook folder changes
+    uses: ./.github/workflows/ci_check_folder_changes.yml
+    with:
+      folder: |
+        .storybook/**
+        src/**
+  yarn-chromatic:
+    needs: [yarn-linter, check-storybook-folder-changes]
+    uses: ./.github/workflows/ci_sub_chromatic.yml
+    if: needs.check-storybook-folder-changes.outputs.folder_changed == 'true'
+    secrets:
+      CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}

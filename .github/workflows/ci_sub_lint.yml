@@ -1,0 +1,42 @@
+name: '[CI] lint & type checks'
+
+on:
+  workflow_call:
+
+concurrency:
+  group: linter-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  yarn_lint:
+    name: 'Lint checks'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.3
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/setup-node-yarn
+      - run: yarn test:lint
+
+  yarn_typescript:
+    name: 'TypeScript checks'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.3
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/setup-node-yarn
+      - run: yarn test:types
+
+  check-deadcode:
+    name: 'Check dead code'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.3
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/setup-node-yarn
+      - run: yarn test:deadcode

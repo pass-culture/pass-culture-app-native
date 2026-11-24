@@ -1,0 +1,39 @@
+name: '[CI] run chromatic'
+
+on:
+  workflow_call:
+    secrets:
+      CHROMATIC_PROJECT_TOKEN:
+        required: true
+
+env:
+  BUILD_DIR: /tmp/${{ github.sha }}
+
+jobs:
+  yarn_test_and_publish_storybook_with_chromatic:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.3
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/setup-node-yarn
+      - name: Restore git history for Chromatic
+        run: |
+          if git rev-parse --is-shallow-repository; then
+            git fetch --unshallow
+          fi
+          git fetch --all
+      - name: Install Playwright Browsers
+        run: npx playwright install chromium
+      - name: Build Storybook 🔧
+        run: yarn build-storybook --stats-json --output-dir "$BUILD_DIR"
+      - name: Publish to Chromatic 🚀
+        uses: chromaui/action@5bcadb5104b09e360e210c54f95a7437c2d82bab # v18.13.3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          storybookBuildDir: ${{ env.BUILD_DIR }}
+          onlyChanged: true
+      - name: Run axe storybook accessibility tests 🧪
+        run: yarn axe-storybook --build-dir "$BUILD_DIR"

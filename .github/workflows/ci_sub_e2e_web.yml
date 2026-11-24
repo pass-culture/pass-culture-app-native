@@ -1,0 +1,52 @@
+name: 'E2E Web SmokeTest'
+
+on:
+  workflow_call:
+
+permissions:
+  contents: read
+  id-token: write
+  pull-requests: write
+
+jobs:
+  run_e2e_web:
+    name: 'Smoke test Staging Web'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.3
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/setup-node-yarn
+
+      - name: Install Playwright browsers
+        run: yarn playwright install --with-deps chromium
+
+      - name: Authentification to Google
+        uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093 # v3.0.0
+        with:
+          workload_identity_provider: ${{ vars.WORKLOAD_IDENTITY_PRD }}
+          service_account: ${{ vars.NATIVE_CI_SERVICE_ACCOUNT }}
+
+      - name: Get secrets for Slack
+        id: slack_secrets
+        uses: google-github-actions/get-secretmanager-secrets@bc9c54b29fdffb8a47776820a7d26e77b379d262 #v3.0.0
+        with:
+          secrets: |-
+            SLACK_BOT_TOKEN:pc-native-production/slack-bot-token
+
+      - name: Run Playwright E2E Web Tests
+        env:
+          SLACK_BOT_USER_OAUTH_TOKEN: ${{ steps.slack_secrets.outputs.SLACK_BOT_TOKEN }}
+          E2E_SUITE_LABEL: ${{ github.workflow }}
+        run: |
+          echo "Running Playwright smoke tests from your branch on web Staging build"
+          yarn test:e2e:web
+
+      - name: Upload Playwright report
+        if: failure()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7
