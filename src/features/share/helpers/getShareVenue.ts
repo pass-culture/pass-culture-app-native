@@ -1,4 +1,4 @@
-import { VenueResponse } from 'api/gen'
+import { FavoriteVenueDataResponse, VenueResponse } from 'api/gen'
 import { getScreenPath } from 'features/navigation/navigators/RootNavigator/linking/getScreenPath'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 import { share } from 'libs/share/share'
@@ -10,7 +10,7 @@ function getVenueUrl(id: number, utmMedium: string) {
 }
 
 type Parameters = {
-  venue?: VenueResponse
+  venue?: VenueResponse | FavoriteVenueDataResponse
   utmMedium: string
 }
 

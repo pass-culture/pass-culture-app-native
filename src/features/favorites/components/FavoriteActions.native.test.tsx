@@ -4,7 +4,9 @@ import {
   FavoriteActions,
   FavoriteActionsProps,
 } from 'features/favorites/components/FavoriteActions'
+import { favoriteArtistResponseSnap } from 'features/favorites/fixtures/favoriteArtistResponseSnap'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
+import { favoriteVenueResponseSnap } from 'features/favorites/fixtures/favoriteVenueResponseSnap'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
@@ -50,6 +52,22 @@ describe('FavoriteActions', () => {
     await user.press(screen.getByLabelText('Retirer des favoris'))
 
     expect(defaultProps.onRemove).toHaveBeenCalledWith(favoriteResponseSnap.id)
+  })
+
+  it('should trigger favorite removing when pressing favorite button for an artist', async () => {
+    renderFavoriteActions({ favorite: favoriteArtistResponseSnap })
+
+    await user.press(screen.getByLabelText('Retirer des favoris'))
+
+    expect(defaultProps.onRemove).toHaveBeenCalledWith(favoriteArtistResponseSnap.id)
+  })
+
+  it('should trigger favorite removing when pressing favorite button for a venue', async () => {
+    renderFavoriteActions({ favorite: favoriteVenueResponseSnap })
+
+    await user.press(screen.getByLabelText('Retirer des favoris'))
+
+    expect(defaultProps.onRemove).toHaveBeenCalledWith(favoriteVenueResponseSnap.id)
   })
 })
 

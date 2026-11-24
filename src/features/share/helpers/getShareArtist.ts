@@ -1,11 +1,11 @@
-import { ArtistResponse } from 'api/gen'
+import { ArtistResponse, FavoriteArtistDataResponse } from 'api/gen'
 import { getScreenPath } from 'features/navigation/navigators/RootNavigator/linking/getScreenPath'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 import { share } from 'libs/share/share'
 import { ShareContent } from 'libs/share/types'
 
 type Parameters = {
-  artist?: ArtistResponse
+  artist?: ArtistResponse | FavoriteArtistDataResponse
   utmMedium: string
 }
 

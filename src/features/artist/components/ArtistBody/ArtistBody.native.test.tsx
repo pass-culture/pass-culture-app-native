@@ -10,7 +10,6 @@ import { mockArtist } from 'features/artist/fixtures/mockArtist'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { favoriteArtistResponseSnap } from 'features/favorites/fixtures/favoriteArtistResponseSnap'
 import { paginatedArtistFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedArtistFavoritesResponseSnap'
-import { useArtistFavoritesQuery } from 'features/favorites/queries'
 import { useGetOffersDataQuery } from 'features/home/queries/useGetOffersDataQuery'
 import { Color, HomepageModuleType } from 'features/home/types'
 import * as useGoBack from 'features/navigation/useGoBack'
@@ -25,6 +24,7 @@ import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
+import { useArtistFavoritesQuery } from 'queries/favorites/useFavoritesQuery'
 import {
   mockAuthContextWithoutUser,
   mockAuthContextWithUser,
@@ -68,7 +68,7 @@ jest.mock('features/home/queries/useGetOffersDataQuery', () => ({
 }))
 
 const mockUseArtistFavoritesQuery = useArtistFavoritesQuery as jest.Mock
-jest.mock('features/favorites/queries/useArtistFavoritesQuery', () => ({
+jest.mock('queries/favorites/useFavoritesQuery', () => ({
   useArtistFavoritesQuery: jest.fn(),
 }))
 

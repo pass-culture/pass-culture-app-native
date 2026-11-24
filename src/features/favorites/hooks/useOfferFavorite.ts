@@ -1,6 +1,5 @@
 import { FavoriteOfferResponseV2 } from 'api/gen'
-
-import { useOfferFavoritesQuery } from '../queries/useOfferFavoritesQuery'
+import { useOfferFavoritesQuery } from 'queries/favorites/useFavoritesQuery'
 
 export const useOfferFavorite = ({
   offerId,

@@ -1,8 +1,14 @@
 import React from 'react'
 
-import { PaginatedResponseFavoriteOfferResponseV2 } from 'api/gen'
+import {
+  PaginatedResponseFavoriteArtistResponse,
+  PaginatedResponseFavoriteOfferResponseV2,
+  PaginatedResponseFavoriteVenueResponse,
+} from 'api/gen'
 import { initialFavoritesState as mockInitialFavoritesState } from 'features/favorites/context/reducer'
+import { paginatedArtistFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedArtistFavoritesResponseSnap'
 import { paginatedOfferFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedOfferFavoritesResponseSnap'
+import { paginatedVenueFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedVenueFavoritesResponseSnap'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
@@ -45,6 +51,14 @@ describe('<Favorites/>', () => {
     mockServer.getApi<PaginatedResponseFavoriteOfferResponseV2>(
       '/v2/me/favorites/offers',
       paginatedOfferFavoritesResponseSnap
+    )
+    mockServer.getApi<PaginatedResponseFavoriteArtistResponse>(
+      '/v2/me/favorites/artists',
+      paginatedArtistFavoritesResponseSnap
+    )
+    mockServer.getApi<PaginatedResponseFavoriteVenueResponse>(
+      '/v2/me/favorites/venues',
+      paginatedVenueFavoritesResponseSnap
     )
     render(reactQueryProviderHOC(<Favorites />))
 
