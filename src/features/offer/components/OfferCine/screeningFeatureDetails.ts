@@ -13,12 +13,12 @@ export const VIDEO: Record<string, ScreeningDetailContent> = {
   '4DX': {
     name: '4DX',
     description:
-      'Les sièges bougent au rythme du film et des effets s’ajoutent&nbsp;: vent, eau, odeurs, lumière… Accès limité selon l’âge ou la taille.',
+      'Les sièges bougent au rythme du film et des effets s’ajoutent\u00a0: vent, eau, odeurs, lumière… Accès limité selon l’âge ou la taille.',
   },
   '4DX_3D': {
     name: '4DX 3D',
     description:
-      'Film en relief en salle 4DX&nbsp;: sièges qui bougent, effets (vent, eau, odeurs…). Lunettes 3D nécessaires. Accès limité selon l’âge ou la taille.',
+      'Film en relief en salle 4DX\u00a0: sièges qui bougent, effets (vent, eau, odeurs…). Lunettes 3D nécessaires. Accès limité selon l’âge ou la taille.',
   },
   IMAX: {
     name: 'IMAX',
@@ -57,7 +57,7 @@ export const VIDEO: Record<string, ScreeningDetailContent> = {
   '4K': {
     name: '4K',
     description:
-      'Le film est projeté en très haute définition&nbsp;: l’image est plus nette et plus détaillée qu’en projection classique.',
+      'Le film est projeté en très haute définition\u00a0: l’image est plus nette et plus détaillée qu’en projection classique.',
   },
   ODYSEE: {
     name: 'Odyssée',
@@ -72,17 +72,17 @@ export const VIDEO: Record<string, ScreeningDetailContent> = {
   HFR: {
     name: 'HFR',
     description:
-      'Le film est projeté avec plus d’images par seconde (48 ou plus, contre 24 d’habitude)&nbsp;: les mouvements sont plus fluides.',
+      'Le film est projeté avec plus d’images par seconde (48 ou plus, contre 24 d’habitude)\u00a0: les mouvements sont plus fluides.',
   },
   ONYX: {
     name: 'Onyx',
     description:
-      'Le film est diffusé sur un écran LED Samsung Onyx, sans projecteur&nbsp;: l’image est très lumineuse, avec des noirs profonds.',
+      'Le film est diffusé sur un écran LED Samsung Onyx, sans projecteur\u00a0: l’image est très lumineuse, avec des noirs profonds.',
   },
   '70MM': {
     name: '70mm',
     description:
-      'Le film est projeté sur pellicule grand format (70 mm) et non en numérique&nbsp;: l’image est très détaillée.',
+      'Le film est projeté sur pellicule grand format (70 mm) et non en numérique\u00a0: l’image est très détaillée.',
   },
   OMNIMAX: {
     name: 'Omnimax',
@@ -92,12 +92,12 @@ export const VIDEO: Record<string, ScreeningDetailContent> = {
   LASER: {
     name: 'Laser',
     description:
-      'Le film est projeté avec un projecteur laser&nbsp;: l’image est plus lumineuse et plus contrastée qu’avec un projecteur classique.',
+      'Le film est projeté avec un projecteur laser\u00a0: l’image est plus lumineuse et plus contrastée qu’avec un projecteur classique.',
   },
   MX_4D: {
     name: 'MX4D',
     description:
-      'Les sièges bougent au rythme du film et des effets s’ajoutent&nbsp;: vent, eau, odeurs…',
+      'Les sièges bougent au rythme du film et des effets s’ajoutent\u00a0: vent, eau, odeurs…',
   },
   MX_4D_3D: {
     name: 'MX4D 3D',
@@ -197,7 +197,7 @@ export const EVENT: Record<string, ScreeningDetailContent> = {
   RENCONTRE: {
     name: 'Rencontre',
     description:
-      'La projection est accompagnée d’une rencontre avec une personne invitée&nbsp;: membre de l’équipe du film, spécialiste du sujet…',
+      'La projection est accompagnée d’une rencontre avec une personne invitée\u00a0: membre de l’équipe du film, spécialiste du sujet…',
   },
   REPLAY: {
     name: 'Rediffusion',
