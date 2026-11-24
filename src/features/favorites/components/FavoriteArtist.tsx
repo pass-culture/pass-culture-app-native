@@ -54,6 +54,14 @@ export const FavoriteArtist: FunctionComponent<Props> = ({ favorite }) => {
     showShareModal()
   }, [artist.id, artist.name, shareArtist, showShareModal])
 
+  const onItemPress = useCallback(() => {
+    void analytics.logConsultArtist({
+      artistId: artist.id,
+      artistName: artist.name,
+      from: 'favorites',
+    })
+  }, [artist.id, artist.name])
+
   return (
     <React.Fragment>
       <FavoriteArtistVenue
@@ -63,6 +71,7 @@ export const FavoriteArtist: FunctionComponent<Props> = ({ favorite }) => {
         isRemoving={isRemoving}
         onRemove={() => removeFavorite(favorite.id)}
         onSharePress={onSharePress}
+        onPress={onItemPress}
         shareAccessibilityLabel={`Partager l’artiste ${artist.name}`}
         thumbnailComponent={
           <Avatar

@@ -84,6 +84,18 @@ describe('<FavoriteArtist /> component', () => {
     })
   })
 
+  it('should trigger ConsultArtist log when pressing the item', async () => {
+    renderFavoriteArtist()
+
+    await user.press(screen.getByText(favoriteArtistResponseSnap.artist.name))
+
+    expect(analytics.logConsultArtist).toHaveBeenCalledWith({
+      artistId: favoriteArtistResponseSnap.artist.id,
+      artistName: favoriteArtistResponseSnap.artist.name,
+      from: 'favorites',
+    })
+  })
+
   it('should delete favorite on button click', async () => {
     renderFavoriteArtist()
 

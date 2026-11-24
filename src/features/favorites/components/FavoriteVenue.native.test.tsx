@@ -81,6 +81,17 @@ describe('<FavoriteVenue /> component', () => {
     })
   })
 
+  it('should trigger ConsultVenue log when pressing the item', async () => {
+    renderFavoriteVenue()
+
+    await user.press(screen.getByText(favoriteVenueResponseSnap.venue.name))
+
+    expect(analytics.logConsultVenue).toHaveBeenCalledWith({
+      venueId: favoriteVenueResponseSnap.venue.id.toString(),
+      from: 'favorites',
+    })
+  })
+
   it('should delete favorite on button click', async () => {
     renderFavoriteVenue()
 
