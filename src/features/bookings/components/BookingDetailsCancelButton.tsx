@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { BookingResponse } from 'api/gen'
+import { BookingResponse, BookingResponseV3 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import {
   BookingDetailsButton,
@@ -15,7 +15,7 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
 
 export type BookingDetailsCancelButtonProps = BookingDetailsButtonProps & {
-  booking: BookingResponse
+  booking: BookingResponse | BookingResponseV3
 }
 
 export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProps) => {

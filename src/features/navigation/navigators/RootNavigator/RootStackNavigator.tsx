@@ -31,6 +31,7 @@ import { AccountReactivationSuccess } from 'features/auth/pages/suspendedAccount
 import { FraudulentSuspendedAccount } from 'features/auth/pages/suspendedAccount/FraudulentSuspendedAccount/FraudulentSuspendedAccount'
 import { BonificationGranted } from 'features/bonification/pages/BonificationGranted'
 import { BookingDetails } from 'features/bookings/pages/BookingDetails/BookingDetails'
+import { CinemaScreeningDetailsModal } from 'features/bookings/pages/CinemaScreeningDetailsModal/CinemaScreeningDetailsModal'
 import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
 import { ClubAdvices } from 'features/clubAdvices/pages/ClubAdvices/ClubAdvices'
 import { PrivacyPolicy } from 'features/cookies/pages/PrivacyPolicy'
@@ -107,7 +108,7 @@ const MODAL_SCREEN_OPTIONS: NativeStackNavigationOptions = {
   animation: 'slide_from_bottom',
 }
 
-const MODAL_SIMPLE_OPTIONS: NativeStackNavigationOptions = {
+const FORM_SHEET_MODAL_OPTIONS: NativeStackNavigationOptions = {
   presentation: isWeb ? 'transparentModal' : 'formSheet',
   sheetAllowedDetents: 'fitToContents',
   sheetCornerRadius: 8,
@@ -218,6 +219,11 @@ const rootScreens: RouteConfig[] = [
     name: 'BookingDetails',
     component: withAuthProtection(BookingDetails),
     options: { title: 'Détails de réservation' },
+  },
+  {
+    name: 'CinemaScreeningDetailsModal',
+    component: withAuthProtection(CinemaScreeningDetailsModal),
+    options: { title: 'Informations sur la séance', ...FORM_SHEET_MODAL_OPTIONS },
   },
   {
     name: '_DeeplinkOnlyBookingDetails1',
@@ -357,7 +363,10 @@ const rootScreens: RouteConfig[] = [
   {
     name: 'VenueSurveyModal',
     component: VenueSurveyModal,
-    options: { title: 'Fenêtre pour accéder à l‘enquête de la page lieu', ...MODAL_SIMPLE_OPTIONS },
+    options: {
+      title: 'Fenêtre pour accéder à l‘enquête de la page lieu',
+      ...FORM_SHEET_MODAL_OPTIONS,
+    },
   },
   {
     name: 'Artist',

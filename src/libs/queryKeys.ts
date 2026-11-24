@@ -11,6 +11,7 @@ export enum QueryKeys {
   ARTIST_PLAYLIST_CONFIG = 'artistPlaylistConfig',
   AVAILABLE_REACTION = 'availableReaction',
   BOOKINGSV2 = 'bookingsV2',
+  BOOKINGV3 = 'bookingV3',
   BOOKINGSLIST = 'bookingsList',
   CITIES = 'cities',
   CONCERTS_AND_FESTIVALS = 'concertsAndFestivals',

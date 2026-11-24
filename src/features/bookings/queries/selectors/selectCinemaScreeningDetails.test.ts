@@ -6,20 +6,20 @@ describe('selectCinemaScreeningDetails', () => {
       selectCinemaScreeningDetails({
         language: 'VF',
         video: 'IMAX',
-        audio: 'DOLBY_ATMOS',
+        audio: 'ATMOS',
         accessibility: {
           motor: ['PMR'],
-          audio: ['CCAP'],
-          visual: ['GRETA'],
+          audio: ['SUBTITLE_CCAP'],
+          visual: ['AD_GRETA'],
           mental: [],
         },
-        specialEventType: 'PREVIEW_SCREENING_WITH_CREW',
+        specialEventType: 'AVANT_PREMIERE_EQUIPE',
       })
     ).toEqual([
       {
         type: 'tag',
         category: 'special-event',
-        label: 'Avant première',
+        label: 'Avant-première avec équipe',
         description:
           'Séance exceptionnelle permettant de découvrir un film en exclusivité, avant sa sortie officielle.',
       },
@@ -33,7 +33,7 @@ describe('selectCinemaScreeningDetails', () => {
       {
         type: 'tag',
         category: 'audio',
-        label: 'DolbyAtmos',
+        label: 'Dolby Atmos',
         description:
           'Expérience cinéma immersive, avec une image plus grande, un son puissant et des détails exceptionnels.',
       },

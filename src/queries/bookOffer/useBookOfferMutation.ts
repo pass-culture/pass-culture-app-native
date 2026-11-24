@@ -5,8 +5,11 @@ import { ApiError } from 'api/ApiError'
 import { BookingsResponseV2, BookOfferRequest, BookOfferResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { Adjust } from 'libs/adjust/adjust'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { QueryKeys } from 'libs/queryKeys'
 import { prefetchBookingByIdQuery } from 'queries/bookings/useBookingByIdQuery'
+import { prefetchBookingByIdV3Query } from 'queries/bookings/useBookingByIdV3Query'
 import { prefetchBookingsV2Query } from 'queries/bookings/useBookingsQuery'
 import { AdjustEvents } from 'shared/adjust/adjustEvents'
 
@@ -26,6 +29,9 @@ interface BookOffer {
 export const useBookOfferMutation = ({ onSuccess, onError }: BookOffer) => {
   const queryClient = useQueryClient()
   const { isLoggedIn } = useAuthContext()
+  const enableSpecialEventScreenings = useFeatureFlag(
+    RemoteStoreFeatureFlags.ENABLE_SPECIAL_EVENT_SCREENINGS
+  )
 
   return useMutation({
     mutationFn: (body: BookOfferRequest) => api.postNativeV1Bookings(body),
@@ -37,11 +43,16 @@ export const useBookOfferMutation = ({ onSuccess, onError }: BookOffer) => {
           refetchType: 'all',
           exact: true,
         }),
+        queryClient.invalidateQueries({ queryKey: [QueryKeys.BOOKINGV3] }),
         queryClient.invalidateQueries({ queryKey: [QueryKeys.BOOKINGSLIST] }),
       ])
 
+      const prefetchBookingDetails = enableSpecialEventScreenings
+        ? prefetchBookingByIdV3Query
+        : prefetchBookingByIdQuery
+
       await Promise.all([
-        prefetchBookingByIdQuery(data.bookingId, isLoggedIn),
+        prefetchBookingDetails(data.bookingId, isLoggedIn),
         prefetchBookingsV2Query(isLoggedIn),
       ])
 

@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { BookingResponse } from 'api/gen'
 import { BookingDetailsCancelButton } from 'features/bookings/components/BookingDetailsCancelButton'
 import { BookingPrecisions } from 'features/bookings/components/BookingPrecision'
+import { BookingDetailsResponse } from 'features/bookings/queries/selectors/selectBookingDetails'
 import { Separator } from 'ui/components/Separator'
 import { Banner } from 'ui/designSystem/Banner/Banner'
 import { BannerType } from 'ui/designSystem/Banner/enums'
@@ -21,7 +22,7 @@ export const BookingDetailsContentMobile = ({
   bottom,
 }: {
   topBlock: React.JSX.Element
-  booking: BookingResponse
+  booking: BookingResponse | BookingDetailsResponse
   onEmailPress: () => void
   errorBannerMessage: string | null
   cancelBooking: () => void
