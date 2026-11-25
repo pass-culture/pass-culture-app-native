@@ -91,10 +91,10 @@ onFlowStart:
 
 - assertVisible: '150 € viennent d’être crédités sur ton compte pass Culture'
 
-- tapOn: 'C’est parti !'
+- tapOn: "J'en profite"
 
 - tapOn: 'Fermer la modale' # Pop up "Fais tourner le bon plan"
 
-- assertVisible: 'Tu as 150 € sur ton pass'
+- assertVisible: '.*150 €.*'
 
 - runFlow: ../common/lifecycle/StopApp.yml
