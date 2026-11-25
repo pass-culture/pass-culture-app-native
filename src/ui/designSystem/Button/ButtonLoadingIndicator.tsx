@@ -11,12 +11,39 @@ import Animated, {
   withRepeat,
   withTiming,
 } from 'react-native-reanimated'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
+import { DotsLoader } from 'ui/animations/DotsLoader'
 import { Logo } from 'ui/svg/icons/Logo'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
-export const ButtonLoadingIndicator = ({ size, color, testID }: AccessibleIcon) => {
+import { ButtonVariant } from './types'
+
+type Props = AccessibleIcon & {
+  variant: ButtonVariant
+}
+
+export const ButtonLoadingIndicator = ({ size, color, testID, variant }: Props) => {
+  const theme = useTheme()
+  const loaderSize = Number(size ?? theme.designSystem.size.icon.button)
+
+  if (variant === 'secondary') {
+    return (
+      <SpinnerContainer testID={testID}>
+        <DotsLoader
+          color={color ?? theme.designSystem.color.icon.brandPrimary}
+          compact
+          shadowColor={theme.designSystem.color.background.inverted}
+          size={loaderSize}
+        />
+      </SpinnerContainer>
+    )
+  }
+
+  return <RotatingLogo color={color} size={size} testID={testID} />
+}
+
+const RotatingLogo = ({ size, color, testID }: AccessibleIcon) => {
   const rotation = useDerivedValue(() =>
     withRepeat(withTiming(1, { duration: 1200, easing: Easing.linear }), -1, false)
   )
