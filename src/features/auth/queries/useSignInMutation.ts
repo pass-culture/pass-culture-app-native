@@ -115,6 +115,11 @@ const useHandleSigninSuccess = (
   const onAddOfferFavoriteSuccess = useCallback((data?: FavoriteOfferResponseV2) => {
     if (data?.offer.id) {
       void analytics.logHasAddedOfferToFavorites({ from: 'login', offerId: data.offer.id })
+      void analytics.logAddItemToFavorite({
+        from: 'login',
+        id: data.offer.id.toString(),
+        type: FavoriteType.OFFER,
+      })
     }
   }, [])
 

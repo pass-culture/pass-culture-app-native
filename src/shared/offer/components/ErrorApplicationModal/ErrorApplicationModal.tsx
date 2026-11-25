@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
+import { FavoriteType } from 'features/favorites/enum'
 import { Referrals, UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { AddToFavoritesButton } from 'features/offer/components/AddToFavoritesButton/AddToFavoritesButton'
@@ -29,6 +30,11 @@ export const ErrorApplicationModal: FunctionComponent<Props> = ({
     void analytics.logHasAddedOfferToFavorites({
       from: 'ErrorApplicationModal' as Referrals,
       offerId,
+    })
+    void analytics.logAddItemToFavorite({
+      from: 'ErrorApplicationModal' as Referrals,
+      id: offerId.toString(),
+      type: FavoriteType.OFFER,
     })
     hideModal()
   }, [hideModal, offerId])

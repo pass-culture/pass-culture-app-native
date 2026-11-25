@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
+import { FavoriteType } from 'features/favorites/enum'
 import { Referrals } from 'features/navigation/navigators/RootNavigator/types'
 import { AddToFavoritesButton } from 'features/offer/components/AddToFavoritesButton/AddToFavoritesButton'
 import { analytics } from 'libs/analytics/provider'
@@ -28,6 +29,11 @@ export const ApplicationProcessingModal: FunctionComponent<Props> = ({
     void analytics.logHasAddedOfferToFavorites({
       from: 'ApplicationProcessingModal' as Referrals,
       offerId,
+    })
+    void analytics.logAddItemToFavorite({
+      from: 'ApplicationProcessingModal' as Referrals,
+      id: offerId.toString(),
+      type: FavoriteType.OFFER,
     })
     hideModal()
   }, [hideModal, offerId])

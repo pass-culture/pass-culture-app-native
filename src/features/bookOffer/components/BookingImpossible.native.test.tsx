@@ -3,6 +3,7 @@ import React from 'react'
 import { api } from 'api/api'
 import { FavoriteOfferResponseV2, PaginatedResponseFavoriteOfferResponseV2 } from 'api/gen'
 import { Step, initialBookingState } from 'features/bookOffer/context/reducer'
+import { FavoriteType } from 'features/favorites/enum'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -139,6 +140,11 @@ describe('<BookingImpossible />', () => {
       expect(analytics.logHasAddedOfferToFavorites).toHaveBeenNthCalledWith(1, {
         from: 'bookingimpossible',
         offerId: mockOfferId,
+      })
+      expect(analytics.logAddItemToFavorite).toHaveBeenNthCalledWith(1, {
+        from: 'bookingimpossible',
+        id: mockOfferId.toString(),
+        type: FavoriteType.OFFER,
       })
       expect(mockDismissModal).toHaveBeenCalledTimes(1)
     })

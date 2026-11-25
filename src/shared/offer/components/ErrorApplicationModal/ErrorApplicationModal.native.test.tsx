@@ -2,6 +2,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { FavoriteOfferResponseV2 } from 'api/gen'
+import { FavoriteType } from 'features/favorites/enum'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -75,6 +76,11 @@ describe('<ErrorApplicationModal />', () => {
     expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledWith({
       from: 'ErrorApplicationModal',
       offerId,
+    })
+    expect(analytics.logAddItemToFavorite).toHaveBeenCalledWith({
+      from: 'ErrorApplicationModal',
+      id: offerId.toString(),
+      type: FavoriteType.OFFER,
     })
   })
 })

@@ -2,6 +2,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { PaginatedResponseFavoriteOfferResponseV2 } from 'api/gen'
+import { FavoriteType } from 'features/favorites/enum'
 import { paginatedOfferFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedOfferFavoritesResponseSnap'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -102,6 +103,11 @@ describe('<ApplicationProcessingModal />', () => {
     expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledWith({
       from: 'ApplicationProcessingModal',
       offerId,
+    })
+    expect(analytics.logAddItemToFavorite).toHaveBeenCalledWith({
+      from: 'ApplicationProcessingModal',
+      id: offerId.toString(),
+      type: FavoriteType.OFFER,
     })
   })
 })

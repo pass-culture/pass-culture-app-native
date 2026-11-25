@@ -13,6 +13,7 @@ import {
   SigninResponseV2,
 } from 'api/gen'
 import { AuthContext } from 'features/auth/context/AuthContext'
+import { FavoriteType } from 'features/favorites/enum'
 import { favoriteArtistResponseSnap } from 'features/favorites/fixtures/favoriteArtistResponseSnap'
 import { favoriteOfferResponseSnap } from 'features/favorites/fixtures/favoriteOfferResponseSnap'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
@@ -465,6 +466,11 @@ describe('<Login/>', () => {
       expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledWith({
         from: 'login',
         offerId: OFFER_ID,
+      })
+      expect(analytics.logAddItemToFavorite).toHaveBeenCalledWith({
+        from: 'login',
+        id: OFFER_ID.toString(),
+        type: FavoriteType.OFFER,
       })
     })
   })
