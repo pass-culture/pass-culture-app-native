@@ -32,7 +32,7 @@ type OfferPlaylistItemProps = {
   apiRecoParams?: RecommendationApiParams
   analyticsFrom?: Referrals
   priceDisplay: (item: Offer) => string
-  navigationMethod?: OfferTileProps['navigationMethod']
+  navigationMethod?: Exclude<OfferTileProps['navigationMethod'], undefined>
   hasSmallLayout?: boolean
   enableSceneClubTag?: boolean
 }

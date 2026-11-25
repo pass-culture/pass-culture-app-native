@@ -242,13 +242,13 @@ describe('categoriesHelpers', () => {
     it('should return undefined when subcategories API return undefined data', () => {
       const value = getNativeCategoryFromEnum(undefined, NativeCategoryIdEnumv2.ARTS_VISUELS)
 
-      expect(value).toEqual(undefined)
+      expect(value).toBeUndefined()
     })
 
     it('should return undefined when native category id is undefined', () => {
       const value = getNativeCategoryFromEnum(subcategoriesDataTest, undefined)
 
-      expect(value).toEqual(undefined)
+      expect(value).toBeUndefined()
     })
 
     it('should return the native category from native category id', () => {

@@ -19,7 +19,7 @@ type ButtonTextWithIconProps = {
   wording: string
   icon: FunctionComponent<AccessibleIcon>
   onPress?: () => void
-  onLongPress?: AppButtonEventNative
+  onLongPress?: Exclude<AppButtonEventNative, undefined>
   accessibilityLabel?: string
   accessibilityRole?: AccessibilityRole
 }

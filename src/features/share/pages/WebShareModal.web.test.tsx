@@ -65,15 +65,32 @@ describe('<WebShareModal/>', () => {
     expect(mockClipboardWriteText).toHaveBeenCalledWith('https://url.com/offer')
   })
 
-  it('should open the email on the email button click', () => {
+  it.each([
+    {
+      label: 'E-mail',
+      url: 'mailto:?subject=Je t’invite à découvrir une super offre sur le pass Culture\u00a0!&body=Voici%20une%20super%20offre%C2%A0!%0Ahttps%3A%2F%2Furl.com%2Foffer',
+    },
+    {
+      label: 'Facebook',
+      url: 'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Furl.com%2Foffer&quote=Voici%20une%20super%20offre%C2%A0!',
+    },
+    {
+      label: 'X',
+      url: 'https://twitter.com/intent/tweet?text=Voici une super offre\u00a0!&url=https%3A%2F%2Furl.com%2Foffer',
+    },
+    {
+      label: 'WhatsApp',
+      url: 'https://api.whatsapp.com/send?text=Voici%20une%20super%20offre%C2%A0!%0Ahttps%3A%2F%2Furl.com%2Foffer',
+    },
+    {
+      label: 'Telegram',
+      url: 'https://telegram.me/share/msg?url=https%3A%2F%2Furl.com%2Foffer&text=Voici une super offre\u00a0!',
+    },
+  ])('should open $label when sharing with $label', ({ label, url }) => {
     render(<WebShareModal {...defaultProps} />)
-    fireEvent.click(screen.getByText('E-mail'))
+    fireEvent.click(screen.getByText(label))
 
-    expect(openUrl).toHaveBeenCalledWith(
-      'mailto:?subject=Je t’invite à découvrir une super offre sur le pass Culture\u00a0!&body=Voici%20une%20super%20offre%C2%A0!%0Ahttps%3A%2F%2Furl.com%2Foffer',
-      undefined,
-      true
-    )
+    expect(openUrl).toHaveBeenCalledWith(url, undefined, true)
   })
 
   it('should expose visible labels in share links accessibility labels', () => {
@@ -84,49 +101,5 @@ describe('<WebShareModal/>', () => {
     expect(screen.getByRole('link', { name: 'X - Nouvelle fenêtre' })).toBeTruthy()
     expect(screen.getByRole('link', { name: 'WhatsApp - Nouvelle fenêtre' })).toBeTruthy()
     expect(screen.getByRole('link', { name: 'Telegram - Nouvelle fenêtre' })).toBeTruthy()
-  })
-
-  it('should open Facebook when sharing with Facebook', () => {
-    render(<WebShareModal {...defaultProps} />)
-    fireEvent.click(screen.getByText('Facebook'))
-
-    expect(openUrl).toHaveBeenCalledWith(
-      'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Furl.com%2Foffer&quote=Voici%20une%20super%20offre%C2%A0!',
-      undefined,
-      true
-    )
-  })
-
-  it('should open X when sharing with X', () => {
-    render(<WebShareModal {...defaultProps} />)
-    fireEvent.click(screen.getByText('X'))
-
-    expect(openUrl).toHaveBeenCalledWith(
-      'https://twitter.com/intent/tweet?text=Voici une super offre\u00a0!&url=https%3A%2F%2Furl.com%2Foffer',
-      undefined,
-      true
-    )
-  })
-
-  it('should open WhatsApp when sharing with WhatsApp', () => {
-    render(<WebShareModal {...defaultProps} />)
-    fireEvent.click(screen.getByText('WhatsApp'))
-
-    expect(openUrl).toHaveBeenCalledWith(
-      'https://api.whatsapp.com/send?text=Voici%20une%20super%20offre%C2%A0!%0Ahttps%3A%2F%2Furl.com%2Foffer',
-      undefined,
-      true
-    )
-  })
-
-  it('should open Telegram when sharing with Telegram', () => {
-    render(<WebShareModal {...defaultProps} />)
-    fireEvent.click(screen.getByText('Telegram'))
-
-    expect(openUrl).toHaveBeenCalledWith(
-      'https://telegram.me/share/msg?url=https%3A%2F%2Furl.com%2Foffer&text=Voici une super offre\u00a0!',
-      undefined,
-      true
-    )
   })
 })

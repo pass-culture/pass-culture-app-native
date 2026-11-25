@@ -45,12 +45,12 @@ export function BeneficiaryAccountCreated({ from }: { from: string }) {
 
   const { mutate: resetRecreditAmountToShow } = useResetRecreditAmountToShowMutation({
     onSuccess: () => {
-      refetchUser()
+      void refetchUser()
     },
   })
 
   const onBeforeNavigate = useCallback(() => {
-    BatchProfile.trackEvent(BatchEvent.hasValidatedSubscription)
+    void BatchProfile.trackEvent(BatchEvent.hasValidatedSubscription)
     showShareAppModal(ShareAppModalType.BENEFICIARY)
     resetRecreditAmountToShow()
   }, [resetRecreditAmountToShow, showShareAppModal])

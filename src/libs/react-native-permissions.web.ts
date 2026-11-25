@@ -1,7 +1,7 @@
 export type PermissionStatus = 'unavailable' | 'blocked' | 'denied' | 'granted' | 'limited'
 
-export async function checkNotifications() {
-  return {
+export function checkNotifications() {
+  return Promise.resolve({
     status: 'granted',
     settings: {
       alert: true,
@@ -13,5 +13,5 @@ export async function checkNotifications() {
       lockScreen: true,
       notificationCenter: true,
     },
-  }
+  })
 }

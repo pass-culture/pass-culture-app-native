@@ -20,7 +20,7 @@ export function useVersion() {
         eventMonitoring.captureException(error)
       }
     }
-    getHotUpdaterLabel()
+    void getHotUpdaterLabel()
   }, [])
 
   // for Hot Updater we take the last 4 digits of the bundle id

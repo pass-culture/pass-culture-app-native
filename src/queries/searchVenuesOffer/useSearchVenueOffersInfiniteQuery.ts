@@ -1,6 +1,5 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { Hit } from 'algoliasearch/lite'
-import { flatten } from 'lodash'
 import { useMemo, useRef } from 'react'
 
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
@@ -148,9 +147,9 @@ export const useSearchVenueOffersInfiniteQuery = ({
       const availableHits = page?.hits ?? []
       return availableHits.map(transformHits)
     })
-    const filteredHits = flatten(transformedHitsList).filter((hit) =>
-      filterVenueOfferHit({ hit, offerId, venueId })
-    ) as Offer[]
+    const filteredHits = transformedHitsList
+      .flat()
+      .filter((hit) => filterVenueOfferHit({ hit, offerId, venueId })) as Offer[]
 
     return getVenueList(filteredHits, userLocation)
   }, [data?.pages, offerId, transformHits, venueId, userLocation])

@@ -124,7 +124,14 @@ describe('<VenueSelectionList />', () => {
     expect(screen.queryByText('à 500 m')).not.toBeOnTheScreen()
   })
 
-  it('should display geolocation banner when user has not a location', () => {
+  it.each([
+    {
+      element: 'geolocation banner when user has not a location',
+      text: 'Active ta géolocalisation',
+    },
+    { element: 'subtitle', text: 'Sélectionner un lieu' },
+    { element: 'header message', text: 'Lieux à proximité' },
+  ])('should display $element', ({ text }) => {
     render(
       <VenueSelectionList
         subTitle="Sélectionner un lieu"
@@ -140,7 +147,7 @@ describe('<VenueSelectionList />', () => {
       />
     )
 
-    expect(screen.getByText('Active ta géolocalisation')).toBeOnTheScreen()
+    expect(screen.getByText(text)).toBeOnTheScreen()
   })
 
   it('should not display geolocation banner when user has a location', () => {
@@ -160,43 +167,5 @@ describe('<VenueSelectionList />', () => {
     )
 
     expect(screen.queryByText('Active ta géolocalisation')).not.toBeOnTheScreen()
-  })
-
-  it('should display subtitle', () => {
-    render(
-      <VenueSelectionList
-        subTitle="Sélectionner un lieu"
-        headerMessage="Lieux à proximité"
-        onItemSelect={jest.fn()}
-        items={items}
-        nbLoadedHits={nbLoadedHits}
-        nbHits={nbHits}
-        isFetchingNextPage
-        autoScrollEnabled
-        isSharingLocation={false}
-        onEndReached={jest.fn()}
-      />
-    )
-
-    expect(screen.getByText('Sélectionner un lieu')).toBeOnTheScreen()
-  })
-
-  it('should display header message', () => {
-    render(
-      <VenueSelectionList
-        subTitle="Sélectionner un lieu"
-        headerMessage="Lieux à proximité"
-        onItemSelect={jest.fn()}
-        items={items}
-        nbLoadedHits={nbLoadedHits}
-        nbHits={nbHits}
-        isFetchingNextPage
-        autoScrollEnabled
-        isSharingLocation={false}
-        onEndReached={jest.fn()}
-      />
-    )
-
-    expect(screen.getByText('Lieux à proximité')).toBeOnTheScreen()
   })
 })

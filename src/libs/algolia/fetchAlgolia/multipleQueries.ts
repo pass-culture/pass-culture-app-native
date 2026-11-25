@@ -12,7 +12,7 @@ export const multipleQueries = async <Response>(queries: SearchForHits[]) => {
 
   try {
     const resultsChunks = await Promise.all(
-      queriesChunks.map(async (queriesChunk) => client.search<Response>({ requests: queriesChunk }))
+      queriesChunks.map((queriesChunk) => client.search<Response>({ requests: queriesChunk }))
     )
     return resultsChunks.reduce<(SearchForFacetValuesResponse | SearchResponse<Response>)[]>(
       (prev, curr) => prev.concat(curr.results),

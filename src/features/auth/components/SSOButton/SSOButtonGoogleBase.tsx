@@ -27,7 +27,7 @@ type Props = {
 export const SSOButtonGoogleBase: FC<Props> = ({ type, onSuccess }) => {
   const { logType } = useLogTypeFromRemoteConfig()
 
-  const onError = async (error: unknown) => {
+  const onError = (error: unknown) => {
     showErrorSnackBar('Une erreur est survenue, veuillez réessayer.')
     if (logType === LogTypeEnum.INFO) {
       const errorMessage = getErrorMessage(error)

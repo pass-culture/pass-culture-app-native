@@ -17,7 +17,7 @@ const prefetchQueries = async () => {
 }
 
 export const usePrefetchQueries = () => {
-  useEffect(() => {
-    prefetchQueries()
+  useEffect(function prefetchQueriesOnMount() {
+    void prefetchQueries()
   }, [])
 }

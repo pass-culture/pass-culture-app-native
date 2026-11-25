@@ -13,8 +13,8 @@ export const useAppStateChange = (
     const becomesInactive =
       appState.current === 'active' && nextAppState.match(/inactive|background/)
 
-    if (becomesActive) onAppBecomeActive?.()
-    else if (becomesInactive) onAppBecomeInactive?.()
+    if (becomesActive) void onAppBecomeActive?.()
+    else if (becomesInactive) void onAppBecomeInactive?.()
 
     appState.current = nextAppState
   }

@@ -1,6 +1,7 @@
 import { getScreenFromDeeplink } from 'features/deeplinks/helpers'
 import { getScreenPath } from 'features/navigation/navigators/RootNavigator/linking/getScreenPath'
 import { getSearchHookConfig } from 'features/navigation/navigators/SearchStackNavigator/getSearchHookConfig'
+import { SearchStackRouteName } from 'features/navigation/navigators/SearchStackNavigator/types'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
@@ -13,7 +14,7 @@ describe('getScreenFromDeeplink()', () => {
     const { screen, params } = getScreenFromDeeplink(url)
 
     expect(screen).toEqual('PageNotFound')
-    expect(params).toEqual(undefined)
+    expect(params).toBeUndefined()
   })
 
   it('should return PageNotFound when prefix is not in known config', () => {
@@ -22,7 +23,7 @@ describe('getScreenFromDeeplink()', () => {
     const { screen, params } = getScreenFromDeeplink(url)
 
     expect(screen).toEqual('PageNotFound')
-    expect(params).toEqual(undefined)
+    expect(params).toBeUndefined()
   })
 
   it('should return Home', () => {
@@ -49,16 +50,12 @@ describe('getScreenFromDeeplink()', () => {
     expect(params).toEqual({ screen: 'Profile', params: undefined })
   })
 
-  it('should return SearchStackNavigator when url = /recherche/resultats', () => {
-    const url = getFullUrl(getScreenPath(...getSearchHookConfig('SearchResults')))
-    const { screen, params } = getScreenFromDeeplink(url)
-
-    expect(screen).toEqual('TabNavigator')
-    expect(params).toEqual({ screen: 'SearchStackNavigator', params: undefined })
-  })
-
-  it('should return SearchStackNavigator when url = /recherche/accueil', () => {
-    const url = getFullUrl(getScreenPath(...getSearchHookConfig('SearchLanding')))
+  it.each<{ path: string; searchScreen: SearchStackRouteName }>([
+    { path: 'resultats', searchScreen: 'SearchResults' },
+    { path: 'accueil', searchScreen: 'SearchLanding' },
+    { path: 'thematic', searchScreen: 'ThematicSearch' },
+  ])('should return SearchStackNavigator when url = /recherche/$path', ({ searchScreen }) => {
+    const url = getFullUrl(getScreenPath(...getSearchHookConfig(searchScreen)))
     const { screen, params } = getScreenFromDeeplink(url)
 
     expect(screen).toEqual('TabNavigator')
@@ -70,15 +67,7 @@ describe('getScreenFromDeeplink()', () => {
     const { screen, params } = getScreenFromDeeplink(url)
 
     expect(screen).toEqual('SearchFilter')
-    expect(params).toEqual(undefined)
-  })
-
-  it('should return SearchStackNavigator when url = /recherche/thematic', () => {
-    const url = getFullUrl(getScreenPath(...getSearchHookConfig('ThematicSearch')))
-    const { screen, params } = getScreenFromDeeplink(url)
-
-    expect(screen).toEqual('TabNavigator')
-    expect(params).toEqual({ screen: 'SearchStackNavigator', params: undefined })
+    expect(params).toBeUndefined()
   })
 
   it('should return Offer with id=666', () => {

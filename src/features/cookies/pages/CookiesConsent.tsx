@@ -38,7 +38,7 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
         refused: [],
       })
       void analytics.logHasAcceptedAllCookies()
-      void setMarketingParams(params, ALL_OPTIONAL_COOKIES)
+      setMarketingParams(params, ALL_OPTIONAL_COOKIES)
     } catch (error) {
       eventMonitoring.captureException(`Failed to set cookies consent: ${String(error)}`)
     }
@@ -70,7 +70,7 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
         from: 'Modal',
         type: settingsCookiesChoice,
       })
-      void setMarketingParams(params, accepted)
+      setMarketingParams(params, accepted)
     } catch (error) {
       eventMonitoring.captureException(`Failed to set cookies consent: ${String(error)}`)
     }

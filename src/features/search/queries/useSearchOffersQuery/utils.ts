@@ -1,4 +1,4 @@
-import { flatten, uniqBy } from 'lodash'
+import { uniqBy } from 'lodash'
 
 import { mapAlgoliaVenueToVenue } from 'features/search/queries/useSearchOffersQuery/helpers/mapAlgoliaVenueToVenue'
 import {
@@ -12,7 +12,7 @@ export const getFlattenHits = (
   transformHits: SelectSearchOffersParams['transformHits'],
   type: 'offersResponse' | 'duplicatedOffersResponse'
 ) => {
-  return flatten(pages.flatMap((page) => page[type].hits).map((offer) => transformHits(offer)))
+  return pages.flatMap((page) => page[type].hits).flatMap((offer) => transformHits(offer))
 }
 
 export const getLastPage = (pages: FetchSearchOffersResponse[]) => pages.at(-1)

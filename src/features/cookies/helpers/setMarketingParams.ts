@@ -4,7 +4,7 @@ import { setUtmParameters } from 'features/navigation/navigators/RootNavigator/l
 import { setFirebaseParams } from 'libs/firebase/analytics/useInit'
 import { getCampaignDate } from 'libs/utm/useUtmParams'
 
-export const setMarketingParams = async (params: UTMParams['params'], acceptedCookies: Cookies) => {
+export const setMarketingParams = (params: UTMParams['params'], acceptedCookies: Cookies) => {
   if (!params) return
 
   // we use setTimeout to ensure local storage is updated before reading it

@@ -26,7 +26,7 @@ export type CheckboxGroupOptionDetailed<T = string> = Omit<
   label: string
   value: T
   variant: 'detailed'
-  asset?: CheckboxProps['asset']
+  asset?: Exclude<CheckboxProps['asset'], undefined>
 }
 
 export type CheckboxGroupOption<T = string> =

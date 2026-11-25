@@ -69,7 +69,7 @@ export const useSubmitChangeStatus = () => {
   const selectedStatus = watch('selectedStatus')
 
   const submitStatus = useCallback(
-    async (formValues: StatusForm) => patchProfile({ activityId: formValues.selectedStatus }),
+    (formValues: StatusForm) => patchProfile({ activityId: formValues.selectedStatus }),
     [patchProfile]
   )
 

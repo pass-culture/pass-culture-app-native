@@ -1,4 +1,3 @@
-import { slice } from 'lodash'
 import React, { FunctionComponent } from 'react'
 import { useTheme } from 'styled-components/native'
 
@@ -23,7 +22,7 @@ export const VideoMultiOfferPlaylist: FunctionComponent<Props> = ({ offers, anal
     return <VideoMultiOfferTile offer={item} analyticsParams={analyticsParams} />
   }
 
-  const offersToDisplay = slice(offers, 0, 10)
+  const offersToDisplay = offers.slice(0, 10)
 
   return (
     <Playlist

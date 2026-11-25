@@ -29,6 +29,6 @@ describe('adaptBusinessModule', () => {
   it('should return null when the module is not provided', () => {
     const rawBusinessModule = { ...businessNatifModuleFixture, fields: undefined }
 
-    expect(adaptBusinessModule(rawBusinessModule)).toEqual(null)
+    expect(adaptBusinessModule(rawBusinessModule)).toBeNull()
   })
 })

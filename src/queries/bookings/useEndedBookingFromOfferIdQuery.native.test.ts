@@ -41,6 +41,6 @@ describe('useEndedBookingFromOfferIdQueryV2', () => {
     })
     await waitFor(async () => expect(result.current.isSuccess).toEqual(true))
 
-    expect(result.current?.data).toEqual(null)
+    expect(result.current?.data).toBeNull()
   })
 })

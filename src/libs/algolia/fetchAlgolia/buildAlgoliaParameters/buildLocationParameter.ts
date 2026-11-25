@@ -12,7 +12,7 @@ export type BuildLocationParameterParams = {
   userLocation: Position
   aroundMeRadius: number | 'all'
   aroundPlaceRadius: number | 'all'
-  geolocPosition?: Position
+  geolocPosition?: Exclude<Position, undefined>
 }
 
 export const buildLocationParameter = ({

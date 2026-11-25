@@ -9,7 +9,7 @@ export const useUserRoleFromOnboarding = () => {
     UserOnboardingRole.UNKNOWN
   )
 
-  storage.readObject<number | string>('user_age').then((userOnboardingAge) => {
+  void storage.readObject<number | string>('user_age').then((userOnboardingAge) => {
     //eslint-disable-next-line @typescript-eslint/switch-exhaustiveness-check
     switch (userOnboardingAge) {
       case 18:

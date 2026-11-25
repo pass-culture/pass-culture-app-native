@@ -32,35 +32,18 @@ describe('useLogoutRoutine', () => {
       expect(BatchProfile.identify).toHaveBeenNthCalledWith(1, null)
     })
 
-    it('should set app_version to null in BatchProfile editor', async () => {
-      jest.spyOn(BatchProfile, 'editor').mockReturnValueOnce(mockEditor)
+    it.each(['app_version', 'last_booking_date', 'credit_activation_date'])(
+      'should set %s to null in BatchProfile editor',
+      async (attribute) => {
+        jest.spyOn(BatchProfile, 'editor').mockReturnValueOnce(mockEditor)
 
-      const { result } = renderUseLogoutRoutine()
-      await result.current()
+        const { result } = renderUseLogoutRoutine()
+        await result.current()
 
-      expect(BatchProfile.editor).toHaveBeenCalledTimes(1)
-      expect(mockSetAttribute).toHaveBeenCalledWith('app_version', null)
-    })
-
-    it('should set last_booking_date to null in BatchProfile editor', async () => {
-      jest.spyOn(BatchProfile, 'editor').mockReturnValueOnce(mockEditor)
-
-      const { result } = renderUseLogoutRoutine()
-      await result.current()
-
-      expect(BatchProfile.editor).toHaveBeenCalledTimes(1)
-      expect(mockSetAttribute).toHaveBeenCalledWith('last_booking_date', null)
-    })
-
-    it('should set credit_activation_date to null in BatchProfile editor', async () => {
-      jest.spyOn(BatchProfile, 'editor').mockReturnValueOnce(mockEditor)
-
-      const { result } = renderUseLogoutRoutine()
-      await result.current()
-
-      expect(BatchProfile.editor).toHaveBeenCalledTimes(1)
-      expect(mockSetAttribute).toHaveBeenCalledWith('credit_activation_date', null)
-    })
+        expect(BatchProfile.editor).toHaveBeenCalledTimes(1)
+        expect(mockSetAttribute).toHaveBeenCalledWith(attribute, null)
+      }
+    )
 
     it('should save BatchProfile', async () => {
       jest.spyOn(BatchProfile, 'editor').mockReturnValueOnce(mockEditor)

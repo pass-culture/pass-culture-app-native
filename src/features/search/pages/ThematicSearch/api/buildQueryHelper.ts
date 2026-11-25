@@ -6,7 +6,7 @@ import { Position } from 'libs/location/location'
 
 type ThematicSearchQueryParams = {
   indexName: string
-  userLocation?: Position
+  userLocation?: Exclude<Position, undefined>
   filters?: string
   numericFilters?: string
   hitsPerPage?: number

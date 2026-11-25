@@ -51,7 +51,7 @@ export const BonificationNames = () => {
 
   const disabled = !formState.isValid
 
-  async function saveNameAndNavigate({ firstNames, givenName, commonName }: FormValues) {
+  function saveNameAndNavigate({ firstNames, givenName, commonName }: FormValues) {
     if (disabled) return
     setFirstNames(firstNames)
     setGivenName(givenName)

@@ -11,7 +11,7 @@ export const useIsLandscape = () => {
   }
 
   useEffect(() => {
-    updateOrientation()
+    void updateOrientation()
     const subscription = Dimensions.addEventListener('change', updateOrientation)
     return () => subscription?.remove()
   }, [])

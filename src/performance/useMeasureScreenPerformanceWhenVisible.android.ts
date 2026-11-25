@@ -20,10 +20,10 @@ export const useMeasureScreenPerformanceWhenVisible = (screenName: string) => {
         }
       }
 
-      startTrace()
+      void startTrace()
 
       return () => {
-        screenTrace.current?.stop()
+        void screenTrace.current?.stop()
         screenTrace.current = null
       }
     }, [screenName])

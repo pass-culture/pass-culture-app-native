@@ -1,5 +1,3 @@
-import { flatten } from 'lodash'
-
 import {
   FetchSearchVenuesResponse,
   SelectedSearchVenues,
@@ -8,11 +6,11 @@ import {
 export const selectSearchVenues = (
   venuesResponse: FetchSearchVenuesResponse | null
 ): SelectedSearchVenues => {
-  const flattenVenues = flatten(venuesResponse?.venuesResponse?.hits)
+  const flattenVenues = (venuesResponse?.venuesResponse?.hits ?? []).flat()
 
   return {
     venues: flattenVenues,
     venuesUserData: venuesResponse?.venuesResponse?.userData,
-    venueNotOpenToPublic: flatten(venuesResponse?.venueNotOpenToPublic?.hits),
+    venueNotOpenToPublic: (venuesResponse?.venueNotOpenToPublic?.hits ?? []).flat(),
   }
 }

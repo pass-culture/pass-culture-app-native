@@ -27,7 +27,7 @@ type Props = {
     provider: Provider.APPLE
   }) => void
   // Used on web - saved to sessionStorage before redirect to Apple
-  params?: RootStackParamList['LoginMethods' | 'SignupMethods']
+  params?: Exclude<RootStackParamList['LoginMethods' | 'SignupMethods'], undefined>
 }
 
 export const SSOButtonAppleBase: FC<Props> = ({ type, onSuccess, params }) => {
@@ -35,7 +35,7 @@ export const SSOButtonAppleBase: FC<Props> = ({ type, onSuccess, params }) => {
 
   if (Platform.OS === 'android' || Platform.OS === 'web') return null
 
-  const onError = async (error: unknown) => {
+  const onError = (error: unknown) => {
     showErrorSnackBar('Une erreur est survenue, veuillez réessayer.')
     if (logType === LogTypeEnum.INFO) {
       eventMonitoring.captureException(`Can\u2019t login via Apple: ${getErrorMessage(error)}`, {

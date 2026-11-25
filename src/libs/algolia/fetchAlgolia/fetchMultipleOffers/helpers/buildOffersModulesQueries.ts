@@ -1,5 +1,3 @@
-import { flatten } from 'lodash'
-
 import { OffersPlaylistParameters } from 'features/home/types'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
@@ -23,7 +21,7 @@ export const buildOffersModulesQueries = ({
   isUserUnderage,
 }: buildOffersModuleQueriesArgs): OfferModuleQuery[] => {
   // We flatten the paramList as an offer module have a list of additionalParameters
-  const queries = flatten(paramsList).map((params) => {
+  const queries = paramsList.flat().map((params) => {
     const query: OfferModuleQuery = {
       indexName: getIndexName(params.offerParams),
       query: params.offerParams.query,

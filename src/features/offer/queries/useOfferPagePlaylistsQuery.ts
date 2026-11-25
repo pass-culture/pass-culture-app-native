@@ -10,7 +10,7 @@ import { QueryKeys } from 'libs/queryKeys'
 type Props = {
   offerId: number
   shouldFetch: boolean
-  position?: Position
+  position?: Exclude<Position, undefined>
   userId?: string
 }
 

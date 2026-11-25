@@ -12,6 +12,7 @@ const globals = require('globals')
 const tseslint = require('typescript-eslint')
 
 const { softRules } = require('./eslint-soft-rules')
+const { sonarjs, sonarRules } = require('./eslint-sonar-rules')
 const { boundariesElements } = require('./eslint-custom-rules/boundaries-rule')
 
 const withPluginMeta = (name, plugin) =>
@@ -55,6 +56,7 @@ module.exports = [
       boundaries: withPluginMeta('eslint-plugin-boundaries', boundaries),
       header: withPluginMeta('@tony.ganchev/eslint-plugin-header', header),
       'local-rules': withPluginMeta('eslint-plugin-local-rules', localRules),
+      sonarjs,
       'sort-keys-fix': withPluginMeta('eslint-plugin-sort-keys-fix', sortKeysFix),
       'typescript-sort-keys': withPluginMeta(
         'eslint-plugin-typescript-sort-keys',
@@ -396,6 +398,7 @@ module.exports = [
             '**/why-did-you-render.js',
             '**/jest.*.ts',
             'dangerfile.ts',
+            'eslint-*.js',
           ],
         },
       ],
@@ -420,6 +423,7 @@ module.exports = [
       '@bam.tech/require-named-effect': 'warn',
       '@bam.tech/no-inline-style': 'warn',
       '@bam.tech/no-different-displayname': 'warn',
+      ...sonarRules,
       ...softRules,
     },
   },

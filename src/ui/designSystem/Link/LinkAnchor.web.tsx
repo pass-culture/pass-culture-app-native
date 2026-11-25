@@ -12,7 +12,7 @@ import { LinkProps } from './types'
 type LinkAnchorProps = Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> & {
   accessibilityLabel?: string
   accessibilityRole?: string
-  color?: LinkProps['color']
+  color?: Exclude<LinkProps['color'], undefined>
   href: string
   hoverUnderlineColor?: ColorsType
   isFocus?: boolean

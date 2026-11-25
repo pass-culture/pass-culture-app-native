@@ -27,7 +27,7 @@ interface Props {
   handleSubmit: UseFormHandleSubmit<StatusForm>
   isLoading: boolean
   isChangeStatus: boolean
-  submitStatus: (formValues: StatusForm) => Promise<void>
+  submitStatus: (formValues: StatusForm) => void
   titleID: string
   control: Control<StatusForm>
   headerHeight: number

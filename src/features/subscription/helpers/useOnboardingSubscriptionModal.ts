@@ -28,7 +28,7 @@ export const useOnboardingSubscriptionModal = ({
         await storage.saveObject('has_seen_onboarding_subscription', true)
       }
     }
-    displaySubscriptionModal()
+    void displaySubscriptionModal()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoggedIn, userStatusType])
 }

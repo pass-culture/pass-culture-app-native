@@ -16,7 +16,7 @@ describe('formatDistanceDate', () => {
   })
 
   it('should return undefined when distance defined and date undefined and width < min width displayed', () => {
-    expect(formatDistanceDate(100, '3 km', undefined)).toEqual(undefined)
+    expect(formatDistanceDate(100, '3 km', undefined)).toBeUndefined()
   })
 
   it('should return only date when defined and distance undefined', () => {
@@ -24,9 +24,7 @@ describe('formatDistanceDate', () => {
   })
 
   it('should return undefined when distance and date undefined', () => {
-    expect(formatDistanceDate(MIN_WIDTH_DISTANCE_DISPLAYED, undefined, undefined)).toEqual(
-      undefined
-    )
+    expect(formatDistanceDate(MIN_WIDTH_DISTANCE_DISPLAYED, undefined, undefined)).toBeUndefined()
   })
 
   it('should return only distance when defined and date is an empty string and width >= min width displayed', () => {

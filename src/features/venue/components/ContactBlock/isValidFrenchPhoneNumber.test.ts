@@ -31,7 +31,6 @@ describe('isValidFrenchPhoneNumber function', () => {
     '0694010203',
     '0594010203',
     '+594010203',
-    '+594010203',
 
     // Martinique
     '0696010203',
@@ -45,7 +44,6 @@ describe('isValidFrenchPhoneNumber function', () => {
     '0681010203',
 
     // New Caledonia
-    '0033101020304',
     '00687010203',
 
     // French Polynesia

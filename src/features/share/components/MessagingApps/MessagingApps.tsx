@@ -28,7 +28,7 @@ export const MessagingApps = ({ shareContent, share, messagingAppAnalytics }: Pr
 
   const onOtherPress = useCallback(() => {
     messagingAppAnalytics('Other')
-    share()
+    void share()
     showShareOfferModal()
   }, [messagingAppAnalytics, share, showShareOfferModal])
 

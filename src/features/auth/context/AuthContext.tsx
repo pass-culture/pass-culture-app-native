@@ -15,7 +15,7 @@ export const AuthContext = React.createContext<IAuthContext>({
   isLoggedIn: false,
   setIsLoggedIn: () => undefined,
   user: undefined,
-  refetchUser: async () => ({}) as QueryObserverResult<UserProfile>,
+  refetchUser: () => Promise.resolve({} as QueryObserverResult<UserProfile>),
   isUserLoading: false,
 })
 

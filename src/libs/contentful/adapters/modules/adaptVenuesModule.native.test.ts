@@ -14,7 +14,7 @@ describe('adaptVenuesModule', () => {
   it('should return null when the module is not provided', () => {
     const rawVenuesModule = { ...venuesNatifModuleFixture, fields: undefined }
 
-    expect(adaptVenuesModule(rawVenuesModule)).toEqual(null)
+    expect(adaptVenuesModule(rawVenuesModule)).toBeNull()
   })
 
   it('should return null when the Display Parameters module is not provided', () => {
@@ -29,6 +29,6 @@ describe('adaptVenuesModule', () => {
       },
     }
 
-    expect(adaptVenuesModule(rawVenuesModule)).toEqual(null)
+    expect(adaptVenuesModule(rawVenuesModule)).toBeNull()
   })
 })

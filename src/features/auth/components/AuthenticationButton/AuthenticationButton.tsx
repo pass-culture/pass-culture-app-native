@@ -16,12 +16,12 @@ import { Typo } from 'ui/theme'
 
 type LoginProps = {
   type: 'login'
-  params?: RootStackParamList['Login']
+  params?: Exclude<RootStackParamList['Login'], undefined>
 }
 
 type SignupProps = {
   type: 'signup'
-  params?: RootStackParamList['SignupMethods']
+  params?: Exclude<RootStackParamList['SignupMethods'], undefined>
 }
 
 type Props = {

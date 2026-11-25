@@ -32,9 +32,8 @@ export const startTrackingAcceptedCookies = (
   calledBecauseOfNewConsents: boolean
 ) => {
   const acceptedGoogleAnalytics = acceptedCookies.includes(CookieNameEnum.GOOGLE_ANALYTICS)
-  acceptedGoogleAnalytics
-    ? firebaseAnalytics.enableCollection()
-    : firebaseAnalytics.disableCollection()
+  if (acceptedGoogleAnalytics) void firebaseAnalytics.enableCollection()
+  else void firebaseAnalytics.disableCollection()
 
   if (acceptedGoogleAnalytics && !hasLoggedAppThemeStatus) {
     hasLoggedAppThemeStatus = true
@@ -47,7 +46,7 @@ export const startTrackingAcceptedCookies = (
   acceptedAdjust ? Adjust.initOrEnable(calledBecauseOfNewConsents) : Adjust.disable()
 
   const acceptedAlgoliaInsights = acceptedCookies.includes(CookieNameEnum.ALGOLIA_INSIGHTS)
-  if (!acceptedAlgoliaInsights) removeGeneratedStorageKey('algoliasearch-client-js')
+  if (!acceptedAlgoliaInsights) void removeGeneratedStorageKey('algoliasearch-client-js')
 
   const acceptedUTMCampaign = acceptedCookies.includes(cookiesNameEnumUTM)
   if (!acceptedUTMCampaign) {
@@ -56,11 +55,11 @@ export const startTrackingAcceptedCookies = (
 
   const acceptedBatch = acceptedCookies.includes(CookieNameEnum.BATCH)
   if (acceptedBatch) {
-    Batch.optIn()
+    void Batch.optIn()
     if (calledBecauseOfNewConsents) {
       BatchPush.requestNotificationAuthorization() // For iOS and Android 13
     }
   } else {
-    Batch.optOut()
+    void Batch.optOut()
   }
 }

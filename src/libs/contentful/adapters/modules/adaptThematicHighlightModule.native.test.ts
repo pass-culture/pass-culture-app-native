@@ -20,7 +20,7 @@ describe('adaptThematicHighlightModule', () => {
       fields: undefined,
     }
 
-    expect(adaptThematicHighlightModule(rawThematicHighlightModule)).toEqual(null)
+    expect(adaptThematicHighlightModule(rawThematicHighlightModule)).toBeNull()
   })
 
   it('should return null when the Thematic Highlight Info module is not published', () => {
@@ -36,6 +36,6 @@ describe('adaptThematicHighlightModule', () => {
       },
     }
 
-    expect(adaptThematicHighlightModule(rawThematicHighlightModule)).toEqual(null)
+    expect(adaptThematicHighlightModule(rawThematicHighlightModule)).toBeNull()
   })
 })

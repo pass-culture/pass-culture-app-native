@@ -20,7 +20,7 @@ export function useLoginRoutine(): LoginRoutine {
   const connectServicesRequiringUserId = useConnectServicesRequiringUserId()
 
   return async (response, method, analyticsType) => {
-    connectServicesRequiringUserId(response.accessToken, user?.id)
+    void connectServicesRequiringUserId(response.accessToken, user?.id)
     await saveRefreshToken(response.refreshToken)
     await storage.saveString('access_token', response.accessToken)
     scheduleAccessTokenRemoval(response.accessToken)
