@@ -30,6 +30,7 @@ module.exports = [
       'doc/**',
       'storybook-static/**',
       'src/api/gen/**',
+      'src/api/hey-api-gen/**',
       '.maestro/**',
       'e2e/**',
       'playwright.config.ts',
@@ -381,6 +382,7 @@ module.exports = [
         'error',
         {
           devDependencies: [
+            'scripts/**',
             '**/tests/**',
             '**/__tests__/**',
             '**/__mocks__/**',

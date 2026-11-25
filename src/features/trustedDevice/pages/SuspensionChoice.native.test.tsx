@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { ApiError } from 'api/ApiError'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { resetFromRef } from 'features/navigation/navigationRef'
 import * as useGoBack from 'features/navigation/useGoBack'
@@ -172,11 +173,15 @@ describe('<SuspensionChoice/>', () => {
 
       expect(eventMonitoring.captureException).toHaveBeenNthCalledWith(
         1,
-        'Can’t suspend account for suspicious login ; reason: "An unexpected error occurred"',
+        'Can’t suspend account for suspicious login ; reason: "Échec de la requête https://localhost/native/v1/account/suspend_for_suspicious_login, code: 400"',
         {
           level: 'info',
           extra: {
-            error: new SyntaxError('Unexpected end of JSON input'),
+            error: new ApiError(
+              400,
+              '',
+              'Échec de la requête https://localhost/native/v1/account/suspend_for_suspicious_login, code: 400'
+            ),
           },
         }
       )

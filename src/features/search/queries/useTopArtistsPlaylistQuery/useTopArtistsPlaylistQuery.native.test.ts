@@ -42,7 +42,9 @@ describe('useTopArtistPlaylistQuery', () => {
       await waitFor(() => {
         expect(fetchApiRecoSpy).toHaveBeenNthCalledWith(
           1,
-          `${env.API_BASE_URL}/native/v1/recommendation/top_artists_playlist/LIVRES`,
+          expect.objectContaining({
+            url: `${env.API_BASE_URL}/native/v1/recommendation/top_artists_playlist/LIVRES`,
+          }),
           {
             credentials: 'omit',
             headers: {

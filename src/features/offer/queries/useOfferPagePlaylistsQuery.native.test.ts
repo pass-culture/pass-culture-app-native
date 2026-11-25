@@ -47,7 +47,9 @@ describe('useOfferPagePlaylistsQuery', () => {
       await waitFor(() => {
         expect(fetchApiRecoSpy).toHaveBeenNthCalledWith(
           1,
-          `${env.API_BASE_URL}/native/v1/recommendation/offer_page_playlists/1?longitude=22&latitude=6`,
+          expect.objectContaining({
+            url: `${env.API_BASE_URL}/native/v1/recommendation/offer_page_playlists/1?longitude=22&latitude=6`,
+          }),
           {
             credentials: 'omit',
             headers: {
@@ -80,7 +82,9 @@ describe('useOfferPagePlaylistsQuery', () => {
       await waitFor(() => {
         expect(fetchApiRecoSpy).toHaveBeenNthCalledWith(
           1,
-          `${env.API_BASE_URL}/native/v1/recommendation/offer_page_playlists/1?userId=1000&longitude=22&latitude=6`,
+          expect.objectContaining({
+            url: `${env.API_BASE_URL}/native/v1/recommendation/offer_page_playlists/1?userId=1000&longitude=22&latitude=6`,
+          }),
           {
             credentials: 'omit',
             headers: {
@@ -112,7 +116,9 @@ describe('useOfferPagePlaylistsQuery', () => {
       await waitFor(() => {
         expect(fetchApiRecoSpy).toHaveBeenNthCalledWith(
           1,
-          `${env.API_BASE_URL}/native/v1/recommendation/offer_page_playlists/1?`,
+          expect.objectContaining({
+            url: `${env.API_BASE_URL}/native/v1/recommendation/offer_page_playlists/1`,
+          }),
           {
             credentials: 'omit',
             headers: {
@@ -198,7 +204,7 @@ describe('useOfferPagePlaylistsQuery', () => {
               retrievalModel: undefined,
               statusCode: 400,
               errorMessage:
-                'Échec de la requête https://localhost/native/v1/recommendation/offer_page_playlists/1?, code: 400',
+                'Échec de la requête https://localhost/native/v1/recommendation/offer_page_playlists/1, code: 400',
             },
           }
         )

@@ -32,6 +32,7 @@ jobs:
             v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock', 'patches/**') }}
 
       - run: yarn test:lint
+      - run: node --test scripts/generate_native_api_facade.test.mjs
 
   yarn_typescript:
     runs-on: ubuntu-24.04

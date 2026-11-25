@@ -15,6 +15,8 @@ const defaultConfig: KnipConfig = {
     // setup
     'src/**/*.web.*',
     'src/api/gen/**',
+    'src/api/hey-api-gen/**',
+    'src/api/nativeApi.gen.ts',
     'src/**/fixtures/**',
     'src/tests/utils/web.tsx',
     // temporary ignore

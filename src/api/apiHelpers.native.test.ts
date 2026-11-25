@@ -9,6 +9,7 @@ import * as PackageJson from 'libs/packageJson'
 import { deviceInfoStoreActions } from 'shared/store/deviceInfoStore'
 import { mockServer } from 'tests/mswServer'
 
+import { api } from './api'
 import { ApiError } from './ApiError'
 import {
   createNeedsAuthenticationResponse,
@@ -17,7 +18,7 @@ import {
   isAPIExceptionNotCaptured,
   safeFetch,
 } from './apiHelpers'
-import { Configuration, DefaultApi, RefreshResponseV2 } from './gen'
+import { RefreshResponseV2 } from './gen'
 import { removeRefreshedAccessToken } from './refreshAccessToken'
 
 jest.spyOn(PackageJson, 'getAppVersion').mockReturnValue('1.10.5')
@@ -25,11 +26,6 @@ jest.spyOn(PackageJson, 'getAppVersion').mockReturnValue('1.10.5')
 jest.mock('libs/keychain/keychain')
 jest.mock('libs/react-native-device-info/getDeviceId')
 jest.mock('libs/jwt/jwt')
-
-const configuration: Configuration = {
-  basePath: env.API_BASE_URL,
-}
-const api = new DefaultApi(configuration)
 
 const respondWith = async (
   body: unknown,
@@ -81,6 +77,12 @@ describe('[api] helpers', () => {
   afterEach(() => {
     mockFetch.mockReset()
     removeRefreshedAccessToken()
+  })
+
+  it('returns an empty object for a headerless 204 API response', async () => {
+    mockFetch.mockResolvedValueOnce(new Response(null, { status: 204 }))
+
+    await expect(api.getNativeV1AccountSuspendTokenValidationtoken('token')).resolves.toEqual({})
   })
 
   describe('[method] safeFetch', () => {
@@ -307,42 +309,30 @@ describe('[api] helpers', () => {
         },
       })
 
-      expect(mockFetch).toHaveBeenNthCalledWith(
-        1,
-        `${env.API_BASE_URL}/native/v2/refresh_access_token`,
-        {
-          headers: {
-            Authorization: `Bearer ${password}`,
-            'Content-Type': 'application/json',
-            'app-version': '1.10.5',
-            'commit-hash': env.COMMIT_HASH,
-            'device-id': 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
-            platform: Platform.OS,
-            'request-id': 'testUuidV4',
-          },
-          body: expectedBody,
-          credentials: 'omit',
-          method: 'POST',
-        }
-      )
-      expect(mockFetch).toHaveBeenNthCalledWith(
-        2,
-        `${env.API_BASE_URL}/native/v2/refresh_access_token`,
-        {
-          headers: {
-            Authorization: `Bearer ${password}`,
-            'Content-Type': 'application/json',
-            'app-version': '1.10.5',
-            'commit-hash': env.COMMIT_HASH,
-            'device-id': 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
-            platform: Platform.OS,
-            'request-id': 'testUuidV4',
-          },
-          body: expectedBody,
-          credentials: 'omit',
-          method: 'POST',
-        }
-      )
+      for (const callIndex of [0, 1]) {
+        const call = mockFetch.mock.calls[callIndex]
+        if (!call) throw new Error('Expected refresh token fetch call')
+        const [request, requestOptions] = call
+        const requestHeaders = new Headers((request as Request).headers)
+        new Headers(requestOptions?.headers).forEach((value, name) => {
+          requestHeaders.set(name, value)
+        })
+
+        expect((request as Request).url).toBe(`${env.API_BASE_URL}/native/v2/refresh_access_token`)
+        expect((request as Request).method).toBe('POST')
+        expect((request as Request).credentials).toBe('omit')
+        expect(requestHeaders.get('authorization')).toBe(`Bearer ${password}`)
+        expect(requestHeaders.get('content-type')).toBe('application/json')
+        expect(Object.fromEntries(requestHeaders.entries())).toMatchObject({
+          'app-version': '1.10.5',
+          'commit-hash': env.COMMIT_HASH,
+          'device-id': 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+          platform: Platform.OS,
+          'request-id': 'testUuidV4',
+        })
+        expect(await (request as Request).clone().text()).toBe(expectedBody)
+      }
+
       expect(mockFetch).toHaveBeenNthCalledWith(3, apiUrl, {
         headers: {
           Authorization: `Bearer ${accessToken}`,

@@ -1,0 +1,6737 @@
+/**
+ * @export
+ * @interface AccessibilityData
+ */
+export interface AccessibilityData {
+  /**
+   * @type {AudioDisability | null}
+   * @memberof AccessibilityData
+   */
+  audioDisability?: AudioDisability | null
+  /**
+   * @type {boolean | null}
+   * @memberof AccessibilityData
+   */
+  isAccessibleAudioDisability?: boolean | null
+  /**
+   * @type {boolean | null}
+   * @memberof AccessibilityData
+   */
+  isAccessibleMentalDisability?: boolean | null
+  /**
+   * @type {boolean | null}
+   * @memberof AccessibilityData
+   */
+  isAccessibleMotorDisability?: boolean | null
+  /**
+   * @type {boolean | null}
+   * @memberof AccessibilityData
+   */
+  isAccessibleVisualDisability?: boolean | null
+  /**
+   * @type {MentalDisability | null}
+   * @memberof AccessibilityData
+   */
+  mentalDisability?: MentalDisability | null
+  /**
+   * @type {MotorDisability | null}
+   * @memberof AccessibilityData
+   */
+  motorDisability?: MotorDisability | null
+  /**
+   * @type {VisualDisability | null}
+   * @memberof AccessibilityData
+   */
+  visualDisability?: VisualDisability | null
+}
+
+/**
+ * @export
+ * @interface AccountRequest
+ */
+export interface AccountRequest {
+  /**
+   * @type {string}
+   * @memberof AccountRequest
+   */
+  birthdate: string
+  /**
+   * @type {string}
+   * @memberof AccountRequest
+   */
+  email: string
+  /**
+   * @type {string}
+   * @memberof AccountRequest
+   */
+  firebasePseudoId?: string | null
+  /**
+   * @type {boolean}
+   * @memberof AccountRequest
+   */
+  marketingEmailSubscription?: boolean | null
+  /**
+   * @type {string}
+   * @memberof AccountRequest
+   */
+  password: string
+  /**
+   * @type {string}
+   * @memberof AccountRequest
+   */
+  token: string
+  /**
+   * @type {DeviceInfoV2}
+   * @memberof AccountRequest
+   */
+  trustedDevice?: DeviceInfoV2 | null
+}
+
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum AccountState {
+  'ACTIVE' = 'ACTIVE',
+  'ANONYMIZED' = 'ANONYMIZED',
+  'INACTIVE' = 'INACTIVE',
+  'SUSPENDED' = 'SUSPENDED',
+  'SUSPENDED_UPON_USER_REQUEST' = 'SUSPENDED_UPON_USER_REQUEST',
+  'SUSPICIOUS_LOGIN_REPORTED_BY_USER' = 'SUSPICIOUS_LOGIN_REPORTED_BY_USER',
+  'DELETED' = 'DELETED',
+  'WAITING_FOR_ANONYMIZATION' = 'WAITING_FOR_ANONYMIZATION',
+}
+
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum AchievementEnum {
+  'FIRST_MOVIE_BOOKING' = 'FIRST_MOVIE_BOOKING',
+  'FIRST_BOOK_BOOKING' = 'FIRST_BOOK_BOOKING',
+  'FIRST_RECORDED_MUSIC_BOOKING' = 'FIRST_RECORDED_MUSIC_BOOKING',
+  'FIRST_SHOW_BOOKING' = 'FIRST_SHOW_BOOKING',
+  'FIRST_MUSEUM_BOOKING' = 'FIRST_MUSEUM_BOOKING',
+  'FIRST_LIVE_MUSIC_BOOKING' = 'FIRST_LIVE_MUSIC_BOOKING',
+  'FIRST_NEWS_BOOKING' = 'FIRST_NEWS_BOOKING',
+  'FIRST_INSTRUMENT_BOOKING' = 'FIRST_INSTRUMENT_BOOKING',
+  'FIRST_ART_LESSON_BOOKING' = 'FIRST_ART_LESSON_BOOKING',
+}
+
+/**
+ * @export
+ * @interface AchievementResponse
+ */
+export interface AchievementResponse {
+  /**
+   * @type {number}
+   * @memberof AchievementResponse
+   */
+  id: number
+  /**
+   * @type {AchievementEnum}
+   * @memberof AchievementResponse
+   */
+  name: AchievementEnum
+  /**
+   * @type {string}
+   * @memberof AchievementResponse
+   */
+  seenDate?: string | null
+  /**
+   * @type {string}
+   * @memberof AchievementResponse
+   */
+  unlockedDate: string
+}
+
+/**
+ * @export
+ * @interface AchievementsResponse
+ */
+export interface AchievementsResponse extends Array<AchievementResponse> {
+}
+
+/**
+ * @export
+ * @interface ActivationCodeResponse
+ */
+export interface ActivationCodeResponse {
+  /**
+   * @type {string}
+   * @memberof ActivationCodeResponse
+   */
+  code: string
+  /**
+   * @type {string}
+   * @memberof ActivationCodeResponse
+   */
+  expirationDate?: string | null
+}
+
+/**
+ * Venue's Activity is the main business activity of an ERP (open to public) structure For a non-ERP structure, the business is described through the Venue's list of EducationalDomain (venue.collectiveDomains)
+ * @export
+ * @enum {string}
+ */
+export enum Activity {
+  'ART_GALLERY' = 'ART_GALLERY',
+  'ARTS_CENTRE' = 'ARTS_CENTRE',
+  'BOOKSTORE' = 'BOOKSTORE',
+  'CINEMA' = 'CINEMA',
+  'COMMUNITY_CENTRE' = 'COMMUNITY_CENTRE',
+  'CREATIVE_ARTS_STORE' = 'CREATIVE_ARTS_STORE',
+  'CULTURAL_CENTRE' = 'CULTURAL_CENTRE',
+  'DISTRIBUTION_STORE' = 'DISTRIBUTION_STORE',
+  'FESTIVAL' = 'FESTIVAL',
+  'HERITAGE_SITE' = 'HERITAGE_SITE',
+  'LIBRARY' = 'LIBRARY',
+  'MUSEUM' = 'MUSEUM',
+  'MUSIC_INSTRUMENT_STORE' = 'MUSIC_INSTRUMENT_STORE',
+  'OTHER' = 'OTHER',
+  'PERFORMANCE_HALL' = 'PERFORMANCE_HALL',
+  'RECORD_STORE' = 'RECORD_STORE',
+  'TOURIST_INFORMATION_CENTRE' = 'TOURIST_INFORMATION_CENTRE',
+}
+
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum ActivityIdEnum {
+  'MIDDLE_SCHOOL_STUDENT' = 'MIDDLE_SCHOOL_STUDENT',
+  'HIGH_SCHOOL_STUDENT' = 'HIGH_SCHOOL_STUDENT',
+  'STUDENT' = 'STUDENT',
+  'EMPLOYEE' = 'EMPLOYEE',
+  'APPRENTICE' = 'APPRENTICE',
+  'APPRENTICE_STUDENT' = 'APPRENTICE_STUDENT',
+  'VOLUNTEER' = 'VOLUNTEER',
+  'INACTIVE' = 'INACTIVE',
+  'UNEMPLOYED' = 'UNEMPLOYED',
+}
+
+/**
+ * @export
+ * @interface ActivityResponseModel
+ */
+export interface ActivityResponseModel {
+  /**
+   * @type {string}
+   * @memberof ActivityResponseModel
+   */
+  description?: string | null
+  /**
+   * @type {ActivityIdEnum}
+   * @memberof ActivityResponseModel
+   */
+  id: ActivityIdEnum
+  /**
+   * @type {string}
+   * @memberof ActivityResponseModel
+   */
+  label: string
+}
+
+/**
+ * @export
+ * @interface ActivityTypesResponse
+ */
+export interface ActivityTypesResponse {
+  /**
+   * @type {Array<ActivityResponseModel>}
+   * @memberof ActivityTypesResponse
+   */
+  activities: Array<ActivityResponseModel>
+}
+
+/**
+ * @export
+ * @interface ArtistItem
+ */
+export interface ArtistItem {
+  /**
+   * @type {string}
+   * @memberof ArtistItem
+   */
+  id: string
+  /**
+   * @type {string | null}
+   * @memberof ArtistItem
+   */
+  image?: string
+  /**
+   * @type {string}
+   * @memberof ArtistItem
+   */
+  name: string
+}
+
+/**
+ * @export
+ * @interface ArtistResponse
+ */
+export interface ArtistResponse {
+  /**
+   * @type {string | null}
+   * @memberof ArtistResponse
+   */
+  description?: string | null
+  /**
+   * @type {string | null}
+   * @memberof ArtistResponse
+   */
+  descriptionCredit?: string | null
+  /**
+   * @type {string | null}
+   * @memberof ArtistResponse
+   */
+  descriptionSource?: string | null
+  /**
+   * @type {string}
+   * @memberof ArtistResponse
+   */
+  id: string
+  /**
+   * @type {string | null}
+   * @memberof ArtistResponse
+   */
+  image?: string | null
+  /**
+   * @type {string}
+   * @memberof ArtistResponse
+   */
+  name: string
+}
+
+/**
+ * A link Artist <> Product also bears a type An artist can be an author or a musician for different products
+ * @export
+ * @enum {string}
+ */
+export enum ArtistType {
+  'author' = 'author',
+  'film_actor' = 'film_actor',
+  'film_director' = 'film_director',
+  'performer' = 'performer',
+  'stage_director' = 'stage_director',
+}
+
+/**
+ * @export
+ * @interface AudioDisability
+ */
+export interface AudioDisability {
+  /**
+   * @type {Array<string>}
+   * @memberof AudioDisability
+   */
+  deafAndHardOfHearing: Array<string>
+}
+
+/**
+ * @export
+ * @interface AvailableReactionBooking
+ */
+export interface AvailableReactionBooking {
+  /**
+   * @type {string}
+   * @memberof AvailableReactionBooking
+   */
+  dateUsed?: string | null
+  /**
+   * @type {string}
+   * @memberof AvailableReactionBooking
+   */
+  image?: string | null
+  /**
+   * @type {string}
+   * @memberof AvailableReactionBooking
+   */
+  name: string
+  /**
+   * @type {number}
+   * @memberof AvailableReactionBooking
+   */
+  offerId: number
+  /**
+   * @type {string}
+   * @memberof AvailableReactionBooking
+   */
+  subcategoryId: string
+}
+
+/**
+ * @export
+ * @interface Banner
+ */
+export interface Banner {
+  /**
+   * @type {BannerName}
+   * @memberof Banner
+   */
+  name: BannerName
+  /**
+   * @type {string}
+   * @memberof Banner
+   */
+  text: string
+  /**
+   * @type {string}
+   * @memberof Banner
+   */
+  title: string
+}
+
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum BannerName {
+  'geolocation_banner' = 'geolocation_banner',
+  'activation_banner' = 'activation_banner',
+  'retry_identity_check_banner' = 'retry_identity_check_banner',
+  'transition_17_18_banner' = 'transition_17_18_banner',
+}
+
+/**
+ * @export
+ * @interface BannerQueryParams
+ */
+export interface BannerQueryParams {
+  /**
+   * @type {boolean}
+   * @memberof BannerQueryParams
+   */
+  isGeolocated?: boolean
+}
+
+/**
+ * @export
+ * @interface BannerResponse
+ */
+export interface BannerResponse {
+  /**
+   * @type {Banner}
+   * @memberof BannerResponse
+   */
+  banner?: Banner | null
+}
+
+/**
+ * @export
+ * @interface Bonification
+ */
+export interface Bonification {
+  /**
+   * @type {number}
+   * @memberof Bonification
+   */
+  bonusAmount: number
+  /**
+   * @type {number}
+   * @memberof Bonification
+   */
+  qfThreshold: number
+}
+
+/**
+ * @export
+ * @interface BookOfferRequest
+ */
+export interface BookOfferRequest {
+  /**
+   * @type {number}
+   * @memberof BookOfferRequest
+   */
+  quantity: number
+  /**
+   * @type {number}
+   * @memberof BookOfferRequest
+   */
+  stockId: number
+}
+
+/**
+ * @export
+ * @interface BookOfferResponse
+ */
+export interface BookOfferResponse {
+  /**
+   * @type {number}
+   * @memberof BookOfferResponse
+   */
+  bookingId: number
+}
+
+/**
+ * @export
+ * @interface BookSubType
+ */
+export interface BookSubType {
+  /**
+   * @type {Array<GTL>}
+   * @memberof BookSubType
+   */
+  gtls: Array<GTL>
+  /**
+   * @type {string}
+   * @memberof BookSubType
+   */
+  label: string
+  /**
+   * @type {number}
+   * @memberof BookSubType
+   */
+  position: number
+}
+
+/**
+ * @export
+ * @interface BookType
+ */
+export interface BookType {
+  /**
+   * @type {Array<BookSubType>}
+   * @memberof BookType
+   */
+  children: Array<BookSubType>
+  /**
+   * @type {Array<GTL>}
+   * @memberof BookType
+   */
+  gtls: Array<GTL>
+  /**
+   * @type {string}
+   * @memberof BookType
+   */
+  label: string
+  /**
+   * @type {number}
+   * @memberof BookType
+   */
+  position: number
+}
+
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum Bookability {
+ 'BOOKABLE' = 'BOOKABLE',
+ 'STOCK_BOOKING_IS_DISABLED' = 'STOCK_BOOKING_IS_DISABLED',
+ 'STOCK_IS_SOLD_OUT' = 'STOCK_IS_SOLD_OUT',
+ 'USER_CANNOT_BOOK' = 'USER_CANNOT_BOOK',
+ 'USER_HAS_ALREADY_BOOKED_OFFER' = 'USER_HAS_ALREADY_BOOKED_OFFER',
+ 'USER_HAS_ALREADY_BOOKED_RELATED_OFFER' = 'USER_HAS_ALREADY_BOOKED_RELATED_OFFER',
+ 'USER_HAS_INSUFFICIENT_CREDIT' = 'USER_HAS_INSUFFICIENT_CREDIT',
+ 'AUTHENTICATION_REQUIRED' = 'AUTHENTICATION_REQUIRED',
+ 'FINISH_SUBSCRIPTION_REQUIRED' = 'FINISH_SUBSCRIPTION_REQUIRED',
+ 'USER_APPLICATION_STILL_PROCESSING' = 'USER_APPLICATION_STILL_PROCESSING',
+ 'USER_HAS_APPLICATION_ERROR' = 'USER_HAS_APPLICATION_ERROR',
+}
+
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum BookingCancellationReasons {
+  'OFFERER' = 'OFFERER',
+  'BENEFICIARY' = 'BENEFICIARY',
+  'EXPIRED' = 'EXPIRED',
+  'FRAUD' = 'FRAUD',
+  'FRAUD_SUSPICION' = 'FRAUD_SUSPICION',
+  'FRAUD_INAPPROPRIATE' = 'FRAUD_INAPPROPRIATE',
+  'REFUSED_BY_INSTITUTE' = 'REFUSED_BY_INSTITUTE',
+  'FINANCE_INCIDENT' = 'FINANCE_INCIDENT',
+  'BACKOFFICE' = 'BACKOFFICE',
+  'BACKOFFICE_EVENT_CANCELLED' = 'BACKOFFICE_EVENT_CANCELLED',
+  'BACKOFFICE_OVERBOOKING' = 'BACKOFFICE_OVERBOOKING',
+  'BACKOFFICE_BENEFICIARY_REQUEST' = 'BACKOFFICE_BENEFICIARY_REQUEST',
+  'BACKOFFICE_OFFER_MODIFIED' = 'BACKOFFICE_OFFER_MODIFIED',
+  'BACKOFFICE_OFFER_WITH_WRONG_INFORMATION' = 'BACKOFFICE_OFFER_WITH_WRONG_INFORMATION',
+  'BACKOFFICE_OFFERER_BUSINESS_CLOSED' = 'BACKOFFICE_OFFERER_BUSINESS_CLOSED',
+  'OFFERER_CONNECT_AS' = 'OFFERER_CONNECT_AS',
+  'OFFERER_CLOSED' = 'OFFERER_CLOSED',
+}
+
+/**
+ * @export
+ * @interface BookingDisplayStatusRequest
+ */
+export interface BookingDisplayStatusRequest {
+  /**
+   * @type {boolean}
+   * @memberof BookingDisplayStatusRequest
+   */
+  ended: boolean
+}
+
+/**
+ * @export
+ * @interface BookingListItemOfferResponse
+ */
+export interface BookingListItemOfferResponse {
+  /**
+   * @type {BookingListItemOfferResponseTimezone}
+   * @memberof BookingListItemOfferResponse
+   */
+  address?: BookingListItemOfferResponseTimezone | null
+  /**
+   * @type {number}
+   * @memberof BookingListItemOfferResponse
+   */
+  id: number
+  /**
+   * @type {string}
+   * @memberof BookingListItemOfferResponse
+   */
+  imageUrl?: string | null
+  /**
+   * @type {boolean}
+   * @memberof BookingListItemOfferResponse
+   */
+  isDigital: boolean
+  /**
+   * @type {boolean}
+   * @memberof BookingListItemOfferResponse
+   */
+  isPermanent: boolean
+  /**
+   * @type {string}
+   * @memberof BookingListItemOfferResponse
+   */
+  name: string
+  /**
+   * @type {SubcategoryIdEnum}
+   * @memberof BookingListItemOfferResponse
+   */
+  subcategoryId: SubcategoryIdEnum
+  /**
+   * @type {BookingListItemVenueResponse}
+   * @memberof BookingListItemOfferResponse
+   */
+  venue: BookingListItemVenueResponse
+  /**
+   * @type {number}
+   * @memberof BookingListItemOfferResponse
+   */
+  withdrawalDelay?: number | null
+  /**
+   * @type {WithdrawalTypeEnum}
+   * @memberof BookingListItemOfferResponse
+   */
+  withdrawalType?: WithdrawalTypeEnum | null
+}
+
+/**
+ * @export
+ * @interface BookingListItemOfferResponseTimezone
+ */
+export interface BookingListItemOfferResponseTimezone {
+  /**
+   * @type {string}
+   * @memberof BookingListItemOfferResponseTimezone
+   */
+  city?: string | null
+  /**
+   * @type {string}
+   * @memberof BookingListItemOfferResponseTimezone
+   */
+  label?: string | null
+  /**
+   * @type {string}
+   * @memberof BookingListItemOfferResponseTimezone
+   */
+  timezone: string
+}
+
+/**
+ * @export
+ * @interface BookingListItemResponse
+ */
+export interface BookingListItemResponse {
+  /**
+   * @type {ActivationCodeResponse}
+   * @memberof BookingListItemResponse
+   */
+  activationCode?: ActivationCodeResponse | null
+  /**
+   * @type {boolean}
+   * @memberof BookingListItemResponse
+   */
+  canReact: boolean
+  /**
+   * @type {string}
+   * @memberof BookingListItemResponse
+   */
+  cancellationDate?: string | null
+  /**
+   * @type {BookingCancellationReasons}
+   * @memberof BookingListItemResponse
+   */
+  cancellationReason?: BookingCancellationReasons | null
+  /**
+   * @type {string}
+   * @memberof BookingListItemResponse
+   */
+  dateCreated: string
+  /**
+   * @type {string}
+   * @memberof BookingListItemResponse
+   */
+  dateUsed?: string | null
+  /**
+   * @type {string}
+   * @memberof BookingListItemResponse
+   */
+  expirationDate?: string | null
+  /**
+   * @type {number}
+   * @memberof BookingListItemResponse
+   */
+  id: number
+  /**
+   * @type {boolean}
+   * @memberof BookingListItemResponse
+   */
+  isArchivable?: boolean | null
+  /**
+   * @type {number}
+   * @memberof BookingListItemResponse
+   */
+  quantity: number
+  /**
+   * @type {BookingListItemStockResponse}
+   * @memberof BookingListItemResponse
+   */
+  stock: BookingListItemStockResponse
+  /**
+   * @type {number}
+   * @memberof BookingListItemResponse
+   */
+  totalAmount: number
+  /**
+   * @type {ReactionTypeEnum}
+   * @memberof BookingListItemResponse
+   */
+  userReaction?: ReactionTypeEnum | null
+}
+
+/**
+ * @export
+ * @interface BookingListItemStockResponse
+ */
+export interface BookingListItemStockResponse {
+  /**
+   * @type {string}
+   * @memberof BookingListItemStockResponse
+   */
+  beginningDatetime?: string | null
+  /**
+   * @type {boolean}
+   * @memberof BookingListItemStockResponse
+   */
+  isAutomaticallyUsed: boolean
+  /**
+   * @type {BookingListItemOfferResponse}
+   * @memberof BookingListItemStockResponse
+   */
+  offer: BookingListItemOfferResponse
+}
+
+/**
+ * @export
+ * @interface BookingListItemVenueResponse
+ */
+export interface BookingListItemVenueResponse {
+  /**
+   * @type {number}
+   * @memberof BookingListItemVenueResponse
+   */
+  id: number
+  /**
+   * @type {string}
+   * @memberof BookingListItemVenueResponse
+   */
+  name: string
+  /**
+   * @type {string}
+   * @memberof BookingListItemVenueResponse
+   */
+  timezone: string
+}
+
+/**
+ * @export
+ * @interface BookingOfferExtraData
+ */
+export interface BookingOfferExtraData {
+  /**
+   * @type {string}
+   * @memberof BookingOfferExtraData
+   */
+  ean?: string | null
+}
+
+/**
+ * @export
+ * @interface BookingOfferExtraDataV2
+ */
+export interface BookingOfferExtraDataV2 {
+  /**
+   * @type {string}
+   * @memberof BookingOfferExtraDataV2
+   */
+  ean?: string | null
+}
+
+/**
+ * @export
+ * @interface BookingOfferExtraDataV3
+ */
+export interface BookingOfferExtraDataV3 {
+  /**
+   * @type {string}
+   * @memberof BookingOfferExtraDataV3
+   */
+  ean?: string | null
+}
+
+/**
+ * @export
+ * @interface BookingOfferExtraDataV3
+ */
+export interface BookingOfferExtraDataV3 {
+  /**
+   * @type {string}
+   * @memberof BookingOfferExtraDataV3
+   */
+  ean?: string | null
+}
+
+/**
+ * @export
+ * @interface BookingOfferExtraDataV3
+ */
+export interface BookingOfferExtraDataV3 {
+  /**
+   * @type {string}
+   * @memberof BookingOfferExtraDataV3
+   */
+  ean?: string | null
+}
+
+/**
+ * @export
+ * @interface BookingOfferResponse
+ */
+export interface BookingOfferResponse {
+  /**
+   * @type {BookingOfferResponseAddress}
+   * @memberof BookingOfferResponse
+   */
+  address?: BookingOfferResponseAddress | null
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponse
+   */
+  bookingContact?: string | null
+  /**
+   * @type {BookingOfferExtraData}
+   * @memberof BookingOfferResponse
+   */
+  extraData?: BookingOfferExtraData | null
+  /**
+   * @type {number}
+   * @memberof BookingOfferResponse
+   */
+  id: number
+  /**
+   * @type {OfferImageResponse}
+   * @memberof BookingOfferResponse
+   */
+  image?: OfferImageResponse | null
+  /**
+   * @type {boolean}
+   * @memberof BookingOfferResponse
+   */
+  isDigital: boolean
+  /**
+   * @type {boolean}
+   * @memberof BookingOfferResponse
+   */
+  isPermanent: boolean
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponse
+   */
+  name: string
+  /**
+   * @type {SubcategoryIdEnum}
+   * @memberof BookingOfferResponse
+   */
+  subcategoryId: SubcategoryIdEnum
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponse
+   */
+  url?: string | null
+  /**
+   * @type {BookingVenueResponse}
+   * @memberof BookingOfferResponse
+   */
+  venue: BookingVenueResponse
+  /**
+   * @type {number}
+   * @memberof BookingOfferResponse
+   */
+  withdrawalDelay?: number | null
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponse
+   */
+  withdrawalDetails?: string | null
+  /**
+   * @type {WithdrawalTypeEnum}
+   * @memberof BookingOfferResponse
+   */
+  withdrawalType?: WithdrawalTypeEnum | null
+}
+
+/**
+ * @export
+ * @interface BookingOfferResponseAddress
+ */
+export interface BookingOfferResponseAddress {
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseAddress
+   */
+  city: string
+  /**
+   * @type {Coordinates}
+   * @memberof BookingOfferResponseAddress
+   */
+  coordinates: Coordinates
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseAddress
+   */
+  label?: string | null
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseAddress
+   */
+  postalCode: string
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseAddress
+   */
+  street?: string | null
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseAddress
+   */
+  timezone: string
+}
+
+/**
+ * @export
+ * @interface BookingOfferResponseAddressV2
+ */
+export interface BookingOfferResponseAddressV2 {
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseAddressV2
+   */
+  city: string
+  /**
+   * @type {Coordinates}
+   * @memberof BookingOfferResponseAddressV2
+   */
+  coordinates: Coordinates
+  /**
+   * @type {number}
+   * @memberof BookingOfferResponseAddressV2
+   */
+  id: number
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseAddressV2
+   */
+  label?: string | null
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseAddressV2
+   */
+  postalCode: string
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseAddressV2
+   */
+  street?: string | null
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseAddressV2
+   */
+  timezone: string
+}
+
+/**
+ * @export
+ * @interface BookingOfferResponseAddressV3
+ */
+export interface BookingOfferResponseAddressV3 {
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseAddressV3
+   */
+  city: string
+  /**
+   * @type {CoordinatesV3}
+   * @memberof BookingOfferResponseAddressV3
+   */
+  coordinates: CoordinatesV3
+  /**
+   * @type {number}
+   * @memberof BookingOfferResponseAddressV3
+   */
+  id: number
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseAddressV3
+   */
+  label?: string | null
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseAddressV3
+   */
+  postalCode: string
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseAddressV3
+   */
+  street?: string | null
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseAddressV3
+   */
+  timezone: string
+}
+
+/**
+ * @export
+ * @interface BookingOfferResponseV2
+ */
+export interface BookingOfferResponseV2 {
+  /**
+   * @type {BookingOfferResponseAddressV2}
+   * @memberof BookingOfferResponseV2
+   */
+  address?: BookingOfferResponseAddressV2 | null
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseV2
+   */
+  bookingContact?: string | null
+  /**
+   * @type {BookingOfferExtraDataV2}
+   * @memberof BookingOfferResponseV2
+   */
+  extraData?: BookingOfferExtraDataV2 | null
+  /**
+   * @type {number}
+   * @memberof BookingOfferResponseV2
+   */
+  id: number
+  /**
+   * @type {OfferImageResponse}
+   * @memberof BookingOfferResponseV2
+   */
+  image?: OfferImageResponse | null
+  /**
+   * @type {boolean}
+   * @memberof BookingOfferResponseV2
+   */
+  isDigital: boolean
+  /**
+   * @type {boolean}
+   * @memberof BookingOfferResponseV2
+   */
+  isPermanent: boolean
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseV2
+   */
+  name: string
+  /**
+   * @type {SubcategoryIdEnum}
+   * @memberof BookingOfferResponseV2
+   */
+  subcategoryId: SubcategoryIdEnum
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseV2
+   */
+  url?: string | null
+  /**
+   * @type {BookingVenueResponseV2}
+   * @memberof BookingOfferResponseV2
+   */
+  venue: BookingVenueResponseV2
+}
+
+/**
+ * @export
+ * @interface BookingOfferResponseV3
+ */
+export interface BookingOfferResponseV3 {
+  /**
+   * @type {BookingOfferResponseAddressV3}
+   * @memberof BookingOfferResponseV3
+   */
+  address?: BookingOfferResponseAddressV3 | null
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseV3
+   */
+  bookingContact?: string | null
+  /**
+   * @type {BookingOfferExtraDataV3}
+   * @memberof BookingOfferResponseV3
+   */
+  extraData?: BookingOfferExtraDataV3 | null
+  /**
+   * @type {number}
+   * @memberof BookingOfferResponseV3
+   */
+  id: number
+  /**
+   * @type {OfferImageV3}
+   * @memberof BookingOfferResponseV3
+   */
+  image?: OfferImageV3 | null
+  /**
+   * @type {boolean}
+   * @memberof BookingOfferResponseV3
+   */
+  isDigital: boolean
+  /**
+   * @type {boolean}
+   * @memberof BookingOfferResponseV3
+   */
+  isPermanent: boolean
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseV3
+   */
+  name: string
+  /**
+   * @type {SubcategoryIdEnum}
+   * @memberof BookingOfferResponseV3
+   */
+  subcategoryId: SubcategoryIdEnum
+  /**
+   * @type {string}
+   * @memberof BookingOfferResponseV3
+   */
+  url?: string | null
+  /**
+   * @type {BookingVenueResponseV3}
+   * @memberof BookingOfferResponseV3
+   */
+  venue: BookingVenueResponseV3
+}
+
+/**
+ * @export
+ * @interface BookingResponse
+ */
+export interface BookingResponse {
+  /**
+   * @type {boolean}
+   * @memberof BookingResponse
+   */
+  canReact: boolean
+  /**
+   * @type {string}
+   * @memberof BookingResponse
+   */
+  cancellationDate?: string | null
+  /**
+   * @type {BookingCancellationReasons}
+   * @memberof BookingResponse
+   */
+  cancellationReason?: BookingCancellationReasons | null
+  /**
+   * @type {string}
+   * @memberof BookingResponse
+   */
+  completedUrl?: string | null
+  /**
+   * @type {string}
+   * @memberof BookingResponse
+   */
+  confirmationDate?: string | null
+  /**
+   * @type {string}
+   * @memberof BookingResponse
+   */
+  dateCreated: string
+  /**
+   * @type {string}
+   * @memberof BookingResponse
+   */
+  dateUsed?: string | null
+  /**
+   * @type {boolean}
+   * @memberof BookingResponse
+   */
+  displayAsEnded?: boolean | null
+  /**
+   * @type {boolean}
+   * @memberof BookingResponse
+   */
+  enablePopUpReaction: boolean
+  /**
+   * @type {string}
+   * @memberof BookingResponse
+   */
+  expirationDate?: string | null
+  /**
+   * @type {number}
+   * @memberof BookingResponse
+   */
+  id: number
+  /**
+   * @type {number}
+   * @memberof BookingResponse
+   */
+  quantity: number
+  /**
+   * @type {BookingStockResponseV2}
+   * @memberof BookingResponse
+   */
+  stock: BookingStockResponseV2
+  /**
+   * @type {TicketResponse}
+   * @memberof BookingResponse
+   */
+  ticket: TicketResponse
+  /**
+   * @type {number}
+   * @memberof BookingResponse
+   */
+  totalAmount: number
+  /**
+   * @type {ReactionTypeEnum}
+   * @memberof BookingResponse
+   */
+  userReaction?: ReactionTypeEnum | null
+}
+
+/**
+ * @export
+ * @interface BookingResponseV3
+ */
+export interface BookingResponseV3 {
+  /**
+   * @type {boolean}
+   * @memberof BookingResponseV3
+   */
+  canReact: boolean
+  /**
+   * @type {string}
+   * @memberof BookingResponseV3
+   */
+  cancellationDate?: string | null
+  /**
+   * @type {BookingCancellationReasons}
+   * @memberof BookingResponseV3
+   */
+  cancellationReason?: BookingCancellationReasons | null
+  /**
+   * @type {string}
+   * @memberof BookingResponseV3
+   */
+  completedUrl?: string | null
+  /**
+   * @type {string}
+   * @memberof BookingResponseV3
+   */
+  confirmationDate?: string | null
+  /**
+   * @type {string}
+   * @memberof BookingResponseV3
+   */
+  dateCreated: string
+  /**
+   * @type {string}
+   * @memberof BookingResponseV3
+   */
+  dateUsed?: string | null
+  /**
+   * @type {boolean}
+   * @memberof BookingResponseV3
+   */
+  displayAsEnded?: boolean | null
+  /**
+   * @type {boolean}
+   * @memberof BookingResponseV3
+   */
+  enablePopUpReaction: boolean
+  /**
+   * @type {string}
+   * @memberof BookingResponseV3
+   */
+  expirationDate?: string | null
+  /**
+   * @type {number}
+   * @memberof BookingResponseV3
+   */
+  id: number
+  /**
+   * @type {number}
+   * @memberof BookingResponseV3
+   */
+  quantity: number
+  /**
+   * @type {BookingStockResponseV3}
+   * @memberof BookingResponseV3
+   */
+  stock: BookingStockResponseV3
+  /**
+   * @type {TicketResponse}
+   * @memberof BookingResponseV3
+   */
+  ticket: TicketResponse
+  /**
+   * @type {number}
+   * @memberof BookingResponseV3
+   */
+  totalAmount: number
+  /**
+   * @type {ReactionTypeEnum}
+   * @memberof BookingResponseV3
+   */
+  userReaction?: ReactionTypeEnum | null
+}
+
+/**
+ * @export
+ * @interface BookingStockResponseV2
+ */
+export interface BookingStockResponseV2 {
+  /**
+   * @type {string}
+   * @memberof BookingStockResponseV2
+   */
+  beginningDatetime?: string | null
+  /**
+   * @type {Array<string>}
+   * @memberof BookingStockResponseV2
+   */
+  features: Array<string>
+  /**
+   * @type {number}
+   * @memberof BookingStockResponseV2
+   */
+  id: number
+  /**
+   * @type {boolean}
+   * @memberof BookingStockResponseV2
+   */
+  isAutomaticallyUsed: boolean
+  /**
+   * @type {BookingOfferResponseV2}
+   * @memberof BookingStockResponseV2
+   */
+  offer: BookingOfferResponseV2
+  /**
+   * @type {number}
+   * @memberof BookingStockResponseV2
+   */
+  price: number
+  /**
+   * @type {string}
+   * @memberof BookingStockResponseV2
+   */
+  priceCategoryLabel?: string | null
+}
+
+/**
+ * @export
+ * @interface BookingStockResponseV3
+ */
+export interface BookingStockResponseV3 {
+  /**
+   * @type {string}
+   * @memberof BookingStockResponseV3
+   */
+  beginningDatetime?: string | null
+  /**
+   * @type {number}
+   * @memberof BookingStockResponseV3
+   */
+  id: number
+  /**
+   * @type {boolean}
+   * @memberof BookingStockResponseV3
+   */
+  isAutomaticallyUsed: boolean
+  /**
+   * @type {BookingOfferResponseV3}
+   * @memberof BookingStockResponseV3
+   */
+  offer: BookingOfferResponseV3
+  /**
+   * @type {number}
+   * @memberof BookingStockResponseV3
+   */
+  price: number
+  /**
+   * @type {string}
+   * @memberof BookingStockResponseV3
+   */
+  priceCategoryLabel?: string | null
+  /**
+   * @type {ScreeningFeatures}
+   * @memberof BookingStockResponseV3
+   */
+  screeningFeatures: ScreeningFeatures
+}
+
+/**
+ * @export
+ * @interface BookingVenueAddressResponseV2
+ */
+export interface BookingVenueAddressResponseV2 {
+  /**
+   * @type {number}
+   * @memberof BookingVenueAddressResponseV2
+   */
+  id?: number | null
+}
+
+/**
+ * @export
+ * @interface BookingVenueAddressResponseV3
+ */
+export interface BookingVenueAddressResponseV3 {
+  /**
+   * @type {number}
+   * @memberof BookingVenueAddressResponseV3
+   */
+  id?: number | null
+}
+
+/**
+ * @export
+ * @interface BookingVenueResponse
+ */
+export interface BookingVenueResponse {
+  /**
+   * @type {string}
+   * @memberof BookingVenueResponse
+   */
+  address?: string | null
+  /**
+   * @type {string}
+   * @memberof BookingVenueResponse
+   */
+  bannerUrl?: string | null
+  /**
+   * @type {string}
+   * @memberof BookingVenueResponse
+   */
+  city?: string | null
+  /**
+   * @type {Coordinates}
+   * @memberof BookingVenueResponse
+   */
+  coordinates: Coordinates
+  /**
+   * @type {number}
+   * @memberof BookingVenueResponse
+   */
+  id: number
+  /**
+   * @type {boolean}
+   * @memberof BookingVenueResponse
+   */
+  isOpenToPublic: boolean
+  /**
+   * @type {string}
+   * @memberof BookingVenueResponse
+   */
+  name: string
+  /**
+   * @type {string}
+   * @memberof BookingVenueResponse
+   */
+  postalCode?: string | null
+  /**
+   * @type {string}
+   * @memberof BookingVenueResponse
+   */
+  publicName?: string | null
+  /**
+   * @type {string}
+   * @memberof BookingVenueResponse
+   */
+  timezone: string
+}
+
+/**
+ * @export
+ * @interface BookingVenueResponseV2
+ */
+export interface BookingVenueResponseV2 {
+  /**
+   * @type {BookingVenueAddressResponseV2}
+   * @memberof BookingVenueResponseV2
+   */
+  address: BookingVenueAddressResponseV2
+  /**
+   * @type {string}
+   * @memberof BookingVenueResponseV2
+   */
+  bannerUrl?: string | null
+  /**
+   * @type {number}
+   * @memberof BookingVenueResponseV2
+   */
+  id: number
+  /**
+   * @type {boolean}
+   * @memberof BookingVenueResponseV2
+   */
+  isOpenToPublic: boolean
+  /**
+   * @type {string}
+   * @memberof BookingVenueResponseV2
+   */
+  name: string
+  /**
+   * @type {string}
+   * @memberof BookingVenueResponseV2
+   */
+  publicName?: string | null
+  /**
+   * @type {string}
+   * @memberof BookingVenueResponseV2
+   */
+  timezone: string
+}
+
+/**
+ * @export
+ * @interface BookingVenueResponseV3
+ */
+export interface BookingVenueResponseV3 {
+  /**
+   * @type {BookingVenueAddressResponseV3}
+   * @memberof BookingVenueResponseV3
+   */
+  address: BookingVenueAddressResponseV3
+  /**
+   * @type {string}
+   * @memberof BookingVenueResponseV3
+   */
+  bannerUrl?: string | null
+  /**
+   * @type {number}
+   * @memberof BookingVenueResponseV3
+   */
+  id: number
+  /**
+   * @type {boolean}
+   * @memberof BookingVenueResponseV3
+   */
+  isOpenToPublic: boolean
+  /**
+   * @type {string}
+   * @memberof BookingVenueResponseV3
+   */
+  name: string
+  /**
+   * @type {string}
+   * @memberof BookingVenueResponseV3
+   */
+  publicName: string
+  /**
+   * @type {string}
+   * @memberof BookingVenueResponseV3
+   */
+  timezone: string
+}
+
+/**
+ * @export
+ * @interface BookingsListResponseV2
+ */
+export interface BookingsListResponseV2 {
+  /**
+   * @type {Array<BookingListItemResponse>}
+   * @memberof BookingsListResponseV2
+   */
+  bookings: Array<BookingListItemResponse>
+}
+
+/**
+ * @export
+ * @interface BookingsResponseV2
+ */
+export interface BookingsResponseV2 {
+  /**
+   * @type {Array<BookingResponse>}
+   * @memberof BookingsResponseV2
+   */
+  endedBookings: Array<BookingResponse>
+  /**
+   * @type {boolean}
+   * @memberof BookingsResponseV2
+   */
+  hasBookingsAfter18: boolean
+  /**
+   * @type {Array<BookingResponse>}
+   * @memberof BookingsResponseV2
+   */
+  ongoingBookings: Array<BookingResponse>
+}
+
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum CallToActionIcon {
+  'EMAIL' = 'EMAIL',
+  'RETRY' = 'RETRY',
+  'EXTERNAL' = 'EXTERNAL',
+}
+
+/**
+ * @export
+ * @interface CallToActionMessageV2
+ */
+export interface CallToActionMessageV2 {
+  /**
+   * @type {CallToActionIcon}
+   * @memberof CallToActionMessageV2
+   */
+  callToActionIcon?: CallToActionIcon | null
+  /**
+   * @type {string}
+   * @memberof CallToActionMessageV2
+   */
+  callToActionLink?: string | null
+  /**
+   * @type {string}
+   * @memberof CallToActionMessageV2
+   */
+  callToActionTitle?: string | null
+}
+
+/**
+ * @export
+ * @interface CallToActionMessageV3
+ */
+export interface CallToActionMessageV3 {
+  /**
+   * @type {CallToActionIcon}
+   * @memberof CallToActionMessageV3
+   */
+  callToActionIcon?: CallToActionIcon | null
+  /**
+   * @type {string}
+   * @memberof CallToActionMessageV3
+   */
+  callToActionLink?: string | null
+  /**
+   * @type {string}
+   * @memberof CallToActionMessageV3
+   */
+  callToActionTitle?: string | null
+}
+
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum CategoryIdEnum {
+  'BEAUX_ARTS' = 'BEAUX_ARTS',
+  'CARTE_JEUNES' = 'CARTE_JEUNES',
+  'CINEMA' = 'CINEMA',
+  'CONFERENCE' = 'CONFERENCE',
+  'FILM' = 'FILM',
+  'INSTRUMENT' = 'INSTRUMENT',
+  'JEU' = 'JEU',
+  'LIVRE' = 'LIVRE',
+  'MEDIA' = 'MEDIA',
+  'MUSEE' = 'MUSEE',
+  'MUSIQUE_ENREGISTREE' = 'MUSIQUE_ENREGISTREE',
+  'MUSIQUE_LIVE' = 'MUSIQUE_LIVE',
+  'PRATIQUE_ART' = 'PRATIQUE_ART',
+  'SPECTACLE' = 'SPECTACLE',
+  'TECHNIQUE' = 'TECHNIQUE',
+}
+
+/**
+ * @export
+ * @interface ChangeBeneficiaryEmailBody
+ */
+export interface ChangeBeneficiaryEmailBody {
+  /**
+   * @type {DeviceInfoV2}
+   * @memberof ChangeBeneficiaryEmailBody
+   */
+  deviceInfo?: DeviceInfoV2 | null
+  /**
+   * @type {string}
+   * @memberof ChangeBeneficiaryEmailBody
+   */
+  token: string
+}
+
+/**
+ * @export
+ * @interface ChangeBeneficiaryEmailResponse
+ */
+export interface ChangeBeneficiaryEmailResponse {
+  /**
+   * @type {string}
+   * @memberof ChangeBeneficiaryEmailResponse
+   */
+  accessToken: string
+  /**
+   * @type {string}
+   * @memberof ChangeBeneficiaryEmailResponse
+   */
+  refreshToken: string
+}
+
+/**
+ * @export
+ * @interface ChangePasswordRequest
+ */
+export interface ChangePasswordRequest {
+  /**
+   * @type {string}
+   * @memberof ChangePasswordRequest
+   */
+  currentPassword: string
+  /**
+   * @type {string}
+   * @memberof ChangePasswordRequest
+   */
+  newPassword: string
+}
+
+/**
+ * @export
+ * @interface ChronicleAuthor
+ */
+export interface ChronicleAuthor {
+  /**
+   * @type {number | null}
+   * @memberof ChronicleAuthor
+   */
+  age?: number | null
+  /**
+   * @type {string | null}
+   * @memberof ChronicleAuthor
+   */
+  city?: string | null
+  /**
+   * @type {string | null}
+   * @memberof ChronicleAuthor
+   */
+  firstName?: string | null
+}
+
+/**
+ * @export
+ * @enum {string}
+ */
+export enum ChronicleClubType {
+  'CINE' = 'CINE',
+  'BOOK' = 'BOOK',
+  'ALBUM' = 'ALBUM',
+  'CONCERT' = 'CONCERT',
+  'SCENE' = 'SCENE',
+}
+
+/**
+ * @export
+ * @interface ChroniclePreview
+ */
+export interface ChroniclePreview {
+  /**
+   * @type {ChronicleAuthor | null}
+   * @memberof ChroniclePreview
+   */
+  author?: ChronicleAuthor | null
+  /**
+   * @type {ChronicleClubType}
+   * @memberof ChroniclePreview
+   */
+  clubType: ChronicleClubType
+  /**
+   * @type {string}
+   * @memberof ChroniclePreview
+   */
+  contentPreview: string
+  /**
+   * @type {string}
+   * @memberof ChroniclePreview
+   */
+  dateCreated: string
+  /**
+   * @type {number}
+   * @memberof ChroniclePreview
+   */
+  id: number
+}
+
+/**
+ * @export
+ * @interface Consent
+ */
+export interface Consent {
+  /**
+   * @type {Array<string>}
+   * @memberof Consent
+   */
+  accepted: Array<string>
+  /**
+   * @type {Array<string>}
+   * @memberof Consent
+   */
+  mandatory: Array<string>
+  /**
+   * @type {Array<string>}
+   * @memberof Consent
+   */
+  refused: Array<string>
+}
+
+/**
+ * @export
+ * @interface CookieConsentRequest
+ */
+export interface CookieConsentRequest {
+  /**
+   * @type {string}
+   * @memberof CookieConsentRequest
+   */
+  choiceDatetime: string
+  /**
+   * @type {Consent}
+   * @memberof CookieConsentRequest
+   */
+  consent: Consent
+  /**
+   * @type {string}
+   * @memberof CookieConsentRequest
+   */
+  deviceId: string
+  /**
+   * @type {number}
+   * @memberof CookieConsentRequest
+   */
+  userId?: number | null
+}
+
+/**
+ * @export
+ * @interface Coordinates
+ */
+export interface Coordinates {
+  /**
+   * @type {number}
+   * @memberof Coordinates
+   */
+  latitude?: number | null
+  /**
+   * @type {number}
+   * @memberof Coordinates
+   */
+  longitude?: number | null
+}
+
+/**
+ * @export
+ * @interface CoordinatesV3
+ */
+export interface CoordinatesV3 {
+  /**
+   * @type {number}
+   * @memberof CoordinatesV3
+   */
+  latitude?: number | null
+  /**
+   * @type {number}
+   * @memberof CoordinatesV3
+   */
+  longitude?: number | null
+}
+
+/**
+ * @export
+ * @interface Credit
+ */
+export interface Credit {
+  /**
+   * @type {number}
+   * @memberof Credit
+   */
+  initial: number
+  /**
+   * @type {number}
+   * @memberof Credit
+   */
+  remaining: number
+}
+
+/**
+ * @export
+ * @interface CulturalDomainItem
+ */
+export interface CulturalDomainItem {
+  /**
+   * @type {number}
+   * @memberof CulturalDomainItem
+   */
+  id: number
+  /**
+   * @type {string}
+   * @memberof CulturalDomainItem
+   */
+  name: string
+}
+
+/**
+ * @export
+ * @interface CulturalSurveyAnswer
+ */
+export interface CulturalSurveyAnswer {
+  /**
+   * @type {CulturalSurveyAnswerEnum}
+   * @memberof CulturalSurveyAnswer
+   */
+  id: CulturalSurveyAnswerEnum
+  /**
+   * @type {CulturalSurveyQuestionEnum | null}
+   * @memberof CulturalSurveyAnswer
+   */
+  sub_question?: CulturalSurveyQuestionEnum | null
+  /**
+   * @type {string | null}
+   * @memberof CulturalSurveyAnswer
+   */
+  subtitle?: string | null
+  /**
+   * @type {string}
+   * @memberof CulturalSurveyAnswer
+   */
+  title: string
+}
+
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum CulturalSurveyAnswerEnum {
+  'FESTIVAL' = 'FESTIVAL',
+  'SPECTACLE' = 'SPECTACLE',
+  'BIBLIOTHEQUE' = 'BIBLIOTHEQUE',
+  'EVENEMENT_JEU' = 'EVENEMENT_JEU',
+  'CONCERT' = 'CONCERT',
+  'CINEMA' = 'CINEMA',
+  'MUSEE' = 'MUSEE',
+  'CONFERENCE' = 'CONFERENCE',
+  'COURS' = 'COURS',
+  'SANS_SORTIES' = 'SANS_SORTIES',
+  'FESTIVAL_MUSIQUE' = 'FESTIVAL_MUSIQUE',
+  'FESTIVAL_AVANT_PREMIERE' = 'FESTIVAL_AVANT_PREMIERE',
+  'FESTIVAL_SPECTACLE' = 'FESTIVAL_SPECTACLE',
+  'FESTIVAL_LIVRE' = 'FESTIVAL_LIVRE',
+  'FESTIVAL_CINEMA' = 'FESTIVAL_CINEMA',
+  'FESTIVAL_AUTRE' = 'FESTIVAL_AUTRE',
+  'SPECTACLE_HUMOUR' = 'SPECTACLE_HUMOUR',
+  'SPECTACLE_THEATRE' = 'SPECTACLE_THEATRE',
+  'SPECTACLE_RUE' = 'SPECTACLE_RUE',
+  'SPECTACLE_OPERA' = 'SPECTACLE_OPERA',
+  'SPECTACLE_CIRQUE' = 'SPECTACLE_CIRQUE',
+  'SPECTACLE_DANSE' = 'SPECTACLE_DANSE',
+  'SPECTACLE_AUTRE' = 'SPECTACLE_AUTRE',
+  'MATERIEL_ART_CREATIF' = 'MATERIEL_ART_CREATIF',
+  'PODCAST' = 'PODCAST',
+  'LIVRE' = 'LIVRE',
+  'JOUE_INSTRUMENT' = 'JOUE_INSTRUMENT',
+  'PRESSE_EN_LIGNE' = 'PRESSE_EN_LIGNE',
+  'JEU_VIDEO' = 'JEU_VIDEO',
+  'FILM_DOMICILE' = 'FILM_DOMICILE',
+  'SANS_ACTIVITES' = 'SANS_ACTIVITES',
+  'PROJECTION_FESTIVAL' = 'PROJECTION_FESTIVAL',
+  'PROJECTION_CINEMA' = 'PROJECTION_CINEMA',
+  'PROJECTION_VISITE' = 'PROJECTION_VISITE',
+  'PROJECTION_CONCERT' = 'PROJECTION_CONCERT',
+  'PROJECTION_CD_VINYLE' = 'PROJECTION_CD_VINYLE',
+  'PROJECTION_SPECTACLE' = 'PROJECTION_SPECTACLE',
+  'PROJECTION_ACTIVITE_ARTISTIQUE' = 'PROJECTION_ACTIVITE_ARTISTIQUE',
+  'PROJECTION_LIVRE' = 'PROJECTION_LIVRE',
+  'PROJECTION_CONFERENCE' = 'PROJECTION_CONFERENCE',
+  'PROJECTION_JEU' = 'PROJECTION_JEU',
+  'PROJECTION_AUTRE' = 'PROJECTION_AUTRE',
+  'MANGAS' = 'MANGAS',
+  'ROMANCE' = 'ROMANCE',
+  'FANTASY' = 'FANTASY',
+  'THRILLER' = 'THRILLER',
+  'ROMANS' = 'ROMANS',
+  'SOCIETE' = 'SOCIETE',
+  'PHILOSOPHIE' = 'PHILOSOPHIE',
+  'CULTURE' = 'CULTURE',
+  'HISTOIRE' = 'HISTOIRE',
+  'LIVRES_AUCUN' = 'LIVRES_AUCUN',
+  'RAP' = 'RAP',
+  'POP' = 'POP',
+  'ELECTRO' = 'ELECTRO',
+  'METAL' = 'METAL',
+  'FILMS' = 'FILMS',
+  'JAZZ' = 'JAZZ',
+  'CLASSIQUE' = 'CLASSIQUE',
+  'MUSIQUES_AUCUN' = 'MUSIQUES_AUCUN',
+}
+
+/**
+ * @export
+ * @interface CulturalSurveyAnswersRequest
+ */
+export interface CulturalSurveyAnswersRequest {
+  /**
+   * @type {Array<CulturalSurveyUserAnswer>}
+   * @memberof CulturalSurveyAnswersRequest
+   */
+  answers: Array<CulturalSurveyUserAnswer>
+}
+
+/**
+ * @export
+ * @interface CulturalSurveyQuestion
+ */
+export interface CulturalSurveyQuestion {
+  /**
+   * @type {Array<CulturalSurveyAnswer>}
+   * @memberof CulturalSurveyQuestion
+   */
+  answers: Array<CulturalSurveyAnswer>
+  /**
+   * @type {CulturalSurveyQuestionEnum}
+   * @memberof CulturalSurveyQuestion
+   */
+  id: CulturalSurveyQuestionEnum
+  /**
+   * @type {string}
+   * @memberof CulturalSurveyQuestion
+   */
+  title: string
+}
+
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum CulturalSurveyQuestionEnum {
+  'SORTIES' = 'SORTIES',
+  'FESTIVALS' = 'FESTIVALS',
+  'SPECTACLES' = 'SPECTACLES',
+  'ACTIVITES' = 'ACTIVITES',
+  'PROJECTIONS' = 'PROJECTIONS',
+  'LIVRES' = 'LIVRES',
+  'MUSIQUES' = 'MUSIQUES',
+}
+
+/**
+ * @export
+ * @interface CulturalSurveyQuestionsResponse
+ */
+export interface CulturalSurveyQuestionsResponse {
+  /**
+   * @type {Array<CulturalSurveyQuestion>}
+   * @memberof CulturalSurveyQuestionsResponse
+   */
+  questions: Array<CulturalSurveyQuestion>
+}
+
+/**
+ * @export
+ * @interface CulturalSurveyUserAnswer
+ */
+export interface CulturalSurveyUserAnswer {
+  /**
+   * @type {Array<CulturalSurveyAnswerEnum>}
+   * @memberof CulturalSurveyUserAnswer
+   */
+  answerIds: Array<CulturalSurveyAnswerEnum>
+  /**
+   * @type {CulturalSurveyQuestionEnum}
+   * @memberof CulturalSurveyUserAnswer
+   */
+  questionId: CulturalSurveyQuestionEnum
+}
+
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum CurrencyEnum {
+  'EUR' = 'EUR',
+  'XPF' = 'XPF',
+}
+
+/**
+ * @export
+ * @interface DayMovieScreenings
+ */
+export interface DayMovieScreenings {
+  /**
+   * @type {string}
+   * @memberof DayMovieScreenings
+   */
+  date: string
+  /**
+   * @type {Array<MovieScreenings>}
+   * @memberof DayMovieScreenings
+   */
+  screenings: Array<MovieScreenings>
+}
+
+/**
+ * @export
+ * @interface DayVenueScreenings
+ */
+export interface DayVenueScreenings {
+  /**
+   * @type {string}
+   * @memberof DayVenueScreenings
+   */
+  date: string
+  /**
+   * @type {Array<VenueScreenings>}
+   * @memberof DayVenueScreenings
+   */
+  screenings: Array<VenueScreenings>
+}
+
+/**
+ * @export
+ * @interface DepositAmountsByAge
+ */
+export interface DepositAmountsByAge {
+  /**
+   * @type {number}
+   * @memberof DepositAmountsByAge
+   */
+  age_15: number
+  /**
+   * @type {number}
+   * @memberof DepositAmountsByAge
+   */
+  age_16: number
+  /**
+   * @type {number}
+   * @memberof DepositAmountsByAge
+   */
+  age_17: number
+  /**
+   * @type {number}
+   * @memberof DepositAmountsByAge
+   */
+  age_18: number
+}
+
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum DepositType {
+  'GRANT_17_18' = 'GRANT_17_18',
+  'GRANT_FREE' = 'GRANT_FREE',
+  'GRANT_15_17' = 'GRANT_15_17',
+  'GRANT_18' = 'GRANT_18',
+}
+
+/**
+ * @export
+ * @interface DeviceInfoV2
+ */
+export interface DeviceInfoV2 {
+  /**
+   * @type {string}
+   * @memberof DeviceInfoV2
+   */
+  deviceId: string
+  /**
+   * @type {string}
+   * @memberof DeviceInfoV2
+   */
+  os?: string | null
+  /**
+   * @type {string}
+   * @memberof DeviceInfoV2
+   */
+  source?: string | null
+}
+
+/**
+ * An enumeration
+ * @export
+ * @enum {string}
+ */
+export enum DisabilityBonificationStatus {
+  'eligible' = 'eligible',
+  'not_eligible' = 'not_eligible',
+  'started' = 'started',
+  'too_many_retries' = 'too_many_retries',
+  'person_not_found' = 'person_not_found',
+  'application_not_found' = 'application_not_found',
+  'not_recipient' = 'not_recipient',
+  'granted' = 'granted',
+  'ko' = 'ko',
+}
+
+/**
+ * @export
+ * @interface DisabilityBonusCreditRequest
+ */
+export interface DisabilityBonusCreditRequest {
+  /**
+   * @type {string}
+   * @memberof DisabilityBonusCreditRequest
+   */
+  birthCityCogCode?: string | null
+  /**
+   * @type {string}
+   * @memberof DisabilityBonusCreditRequest
+   */
+  birthCountryCogCode: string
+}
+
+/**
+ * @export
+ * @interface DomainsCredit
+ */
+export interface DomainsCredit {
+  /**
+   * @type {Credit}
+   * @memberof DomainsCredit
+   */
+  all: Credit
+  /**
+   * @type {Credit}
+   * @memberof DomainsCredit
+   */
+  digital?: Credit | null
+  /**
+   * @type {Credit}
+   * @memberof DomainsCredit
+   */
+  physical?: Credit | null
+}
+
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum EligibilityType {
+  'age-17-18' = 'age-17-18',
+  'free' = 'free',
+  'underage' = 'underage',
+  'age-18' = 'age-18',
+}
+
+/**
+ * @export
+ * @interface EmailChangeConfirmationResponse
+ */
+export interface EmailChangeConfirmationResponse {
+  /**
+   * @type {string}
+   * @memberof EmailChangeConfirmationResponse
+   */
+  accessToken: string
+  /**
+   * @type {string}
+   * @memberof EmailChangeConfirmationResponse
+   */
+  newEmailSelectionToken: string
+  /**
+   * @type {string}
+   * @memberof EmailChangeConfirmationResponse
+   */
+  refreshToken: string
+  /**
+   * @type {string}
+   * @memberof EmailChangeConfirmationResponse
+   */
+  resetPasswordToken?: string | null
+}
+
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum EmailHistoryEventTypeEnum {
+  'UPDATE_REQUEST' = 'UPDATE_REQUEST',
+  'CONFIRMATION' = 'CONFIRMATION',
+  'CANCELLATION' = 'CANCELLATION',
+  'NEW_EMAIL_SELECTION' = 'NEW_EMAIL_SELECTION',
+  'VALIDATION' = 'VALIDATION',
+  'ADMIN_VALIDATION' = 'ADMIN_VALIDATION',
+  'ADMIN_UPDATE_REQUEST' = 'ADMIN_UPDATE_REQUEST',
+  'ADMIN_UPDATE' = 'ADMIN_UPDATE',
+}
+
+/**
+ * @export
+ * @interface EmailUpdateStatusResponse
+ */
+export interface EmailUpdateStatusResponse {
+  /**
+   * @type {boolean}
+   * @memberof EmailUpdateStatusResponse
+   */
+  expired: boolean
+  /**
+   * @type {boolean}
+   * @memberof EmailUpdateStatusResponse
+   */
+  hasRecentlyResetPassword: boolean
+  /**
+   * @type {string}
+   * @memberof EmailUpdateStatusResponse
+   */
+  newEmail?: string | null
+  /**
+   * @type {string}
+   * @memberof EmailUpdateStatusResponse
+   */
+  resetPasswordToken?: string | null
+  /**
+   * @type {EmailHistoryEventTypeEnum}
+   * @memberof EmailUpdateStatusResponse
+   */
+  status: EmailHistoryEventTypeEnum
+  /**
+   * @type {string}
+   * @memberof EmailUpdateStatusResponse
+   */
+  token?: string | null
+}
+
+/**
+ * @export
+ * @interface EmailValidationRemainingResendsResponse
+ */
+export interface EmailValidationRemainingResendsResponse {
+  /**
+   * @type {string}
+   * @memberof EmailValidationRemainingResendsResponse
+   */
+  counterResetDatetime?: string | null
+  /**
+   * @type {number}
+   * @memberof EmailValidationRemainingResendsResponse
+   */
+  remainingResends: number
+}
+
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum ExpenseDomain {
+  'all' = 'all',
+  'digital' = 'digital',
+  'physical' = 'physical',
+}
+
+/**
+ * @export
+ * @interface ExternalBookingDataResponseV2
+ */
+export interface ExternalBookingDataResponseV2 {
+  /**
+   * @type {string}
+   * @memberof ExternalBookingDataResponseV2
+   */
+  barcode: string
+  /**
+   * @type {string}
+   * @memberof ExternalBookingDataResponseV2
+   */
+  seat?: string | null
+}
+
+/**
+ * @export
+ * @interface ExternalBookingResponseV2
+ */
+export interface ExternalBookingResponseV2 {
+  /**
+   * @type {Array<ExternalBookingDataResponseV2>}
+   * @memberof ExternalBookingResponseV2
+   */
+  data?: Array<ExternalBookingDataResponseV2> | null
+}
+
+/**
+ * @export
+ * @interface FavoriteArtistDataResponse
+ */
+export interface FavoriteArtistDataResponse {
+  /**
+   * @type {string}
+   * @memberof FavoriteArtistDataResponse
+   */
+  id: string
+  /**
+   * @type {string | null}
+   * @memberof FavoriteArtistDataResponse
+   */
+  image?: string | null
+  /**
+   * @type {string}
+   * @memberof FavoriteArtistDataResponse
+   */
+  name: string
+}
+
+/**
+ * @export
+ * @interface FavoriteArtistRequest
+ */
+export interface FavoriteArtistRequest {
+  /**
+   * @type {string}
+   * @memberof FavoriteArtistRequest
+   */
+  artistId: string
+}
+
+/**
+ * @export
+ * @interface FavoriteArtistResponse
+ */
+export interface FavoriteArtistResponse {
+  /**
+   * @type {FavoriteArtistDataResponse}
+   * @memberof FavoriteArtistResponse
+   */
+  artist: FavoriteArtistDataResponse
+  /**
+   * @type {number}
+   * @memberof FavoriteArtistResponse
+   */
+  id: number
+}
+
+/**
+ * @export
+ * @interface FavoriteCoordinates
+ */
+export interface FavoriteCoordinates {
+  /**
+   * @type {number | null}
+   * @memberof FavoriteCoordinates
+   */
+  latitude?: number | null
+  /**
+   * @type {number | null}
+   * @memberof FavoriteCoordinates
+   */
+  longitude?: number | null
+}
+
+/**
+ * @export
+ * @interface FavoriteCoordinatesV2
+ */
+export interface FavoriteCoordinatesV2 {
+  /**
+   * @type {number | null}
+   * @memberof FavoriteCoordinatesV2
+   */
+  latitude?: number | null
+  /**
+   * @type {number | null}
+   * @memberof FavoriteCoordinatesV2
+   */
+  longitude?: number | null
+}
+
+/**
+ * @export
+ * @interface FavoriteMediationResponse
+ */
+export interface FavoriteMediationResponse {
+  /**
+   * @type {string | null}
+   * @memberof FavoriteMediationResponse
+   */
+  credit?: string | null
+  /**
+   * @type {string}
+   * @memberof FavoriteMediationResponse
+   */
+  url: string
+}
+
+/**
+ * @export
+ * @interface FavoriteOfferDataResponse
+ */
+export interface FavoriteOfferDataResponse {
+  /**
+   * @type {string | null}
+   * @memberof FavoriteOfferDataResponse
+   */
+  bookingAllowedDatetime?: string | null
+  /**
+   * @type {FavoriteCoordinatesV2}
+   * @memberof FavoriteOfferDataResponse
+   */
+  coordinates: FavoriteCoordinatesV2
+  /**
+   * @type {string | null}
+   * @memberof FavoriteOfferDataResponse
+   */
+  date?: string | null
+  /**
+   * @type {Array<ExpenseDomain>}
+   * @memberof FavoriteOfferDataResponse
+   */
+  expenseDomains: Array<ExpenseDomain>
+  /**
+   * @type {string | null}
+   * @memberof FavoriteOfferDataResponse
+   */
+  externalTicketOfficeUrl?: string | null
+  /**
+   * @type {number}
+   * @memberof FavoriteOfferDataResponse
+   */
+  id: number
+  /**
+   * @type {FavoriteMediationResponse | null}
+   * @memberof FavoriteOfferDataResponse
+   */
+  image?: FavoriteMediationResponse | null
+  /**
+   * @type {boolean}
+   * @memberof FavoriteOfferDataResponse
+   */
+  isExpired?: boolean
+  /**
+   * @type {boolean}
+   * @memberof FavoriteOfferDataResponse
+   */
+  isReleased: boolean
+  /**
+   * @type {boolean}
+   * @memberof FavoriteOfferDataResponse
+   */
+  isSoldOut?: boolean
+  /**
+   * @type {string}
+   * @memberof FavoriteOfferDataResponse
+   */
+  name: string
+  /**
+   * @type {number | null}
+   * @memberof FavoriteOfferDataResponse
+   */
+  price?: number | null
+  /**
+   * @type {string | null}
+   * @memberof FavoriteOfferDataResponse
+   */
+  startDate?: string | null
+  /**
+   * @type {number | null}
+   * @memberof FavoriteOfferDataResponse
+   */
+  startPrice?: number | null
+  /**
+   * @type {SubcategoryIdEnum}
+   * @memberof FavoriteOfferDataResponse
+   */
+  subcategoryId: SubcategoryIdEnum
+  /**
+   * @type {string}
+   * @memberof FavoriteOfferDataResponse
+   */
+  venueName: string
+}
+
+/**
+ * @export
+ * @interface FavoriteOfferResponse
+ */
+export interface FavoriteOfferResponse {
+  /**
+   * @type {string | null}
+   * @memberof FavoriteOfferResponse
+   */
+  bookingAllowedDatetime?: string | null
+  /**
+   * @type {FavoriteCoordinates}
+   * @memberof FavoriteOfferResponse
+   */
+  coordinates: FavoriteCoordinates
+  /**
+   * @type {string | null}
+   * @memberof FavoriteOfferResponse
+   */
+  date?: string | null
+  /**
+   * @type {Array<ExpenseDomain>}
+   * @memberof FavoriteOfferResponse
+   */
+  expenseDomains: Array<ExpenseDomain>
+  /**
+   * @type {string | null}
+   * @memberof FavoriteOfferResponse
+   */
+  externalTicketOfficeUrl?: string | null
+  /**
+   * @type {number}
+   * @memberof FavoriteOfferResponse
+   */
+  id: number
+  /**
+   * @type {FavoriteMediationResponse | null}
+   * @memberof FavoriteOfferResponse
+   */
+  image?: FavoriteMediationResponse | null
+  /**
+   * @type {boolean}
+   * @memberof FavoriteOfferResponse
+   */
+  isExpired?: boolean
+  /**
+   * @type {boolean}
+   * @memberof FavoriteOfferResponse
+   */
+  isReleased: boolean
+  /**
+   * @type {boolean}
+   * @memberof FavoriteOfferResponse
+   */
+  isSoldOut?: boolean
+  /**
+   * @type {string}
+   * @memberof FavoriteOfferResponse
+   */
+  name: string
+  /**
+   * @type {number | null}
+   * @memberof FavoriteOfferResponse
+   */
+  price?: number | null
+  /**
+   * @type {string | null}
+   * @memberof FavoriteOfferResponse
+   */
+  startDate?: string | null
+  /**
+   * @type {number | null}
+   * @memberof FavoriteOfferResponse
+   */
+  startPrice?: number | null
+  /**
+   * @type {SubcategoryIdEnum}
+   * @memberof FavoriteOfferResponse
+   */
+  subcategoryId: SubcategoryIdEnum
+  /**
+   * @type {string}
+   * @memberof FavoriteOfferResponse
+   */
+  venueName: string
+}
+
+/**
+ * @export
+ * @interface FavoriteOfferResponseV2
+ */
+export interface FavoriteOfferResponseV2 {
+  /**
+   * @type {number}
+   * @memberof FavoriteOfferResponseV2
+   */
+  id: number
+  /**
+   * @type {FavoriteOfferDataResponse}
+   * @memberof FavoriteOfferResponseV2
+   */
+  offer: FavoriteOfferDataResponse
+}
+
+/**
+ * @export
+ * @interface FavoriteRequest
+ */
+export interface FavoriteRequest {
+  /**
+   * @type {number}
+   * @memberof FavoriteRequest
+   */
+  offerId: number
+}
+
+/**
+ * @export
+ * @interface FavoriteVenueDataResponse
+ */
+export interface FavoriteVenueDataResponse {
+  /**
+   * @type {number}
+   * @memberof FavoriteVenueDataResponse
+   */
+  id: number
+  /**
+   * @type {string | null}
+   * @memberof FavoriteVenueDataResponse
+   */
+  image: string | null
+  /**
+   * @type {string}
+   * @memberof FavoriteVenueDataResponse
+   */
+  name: string
+}
+
+/**
+ * @export
+ * @interface FavoriteVenueRequest
+ */
+export interface FavoriteVenueRequest {
+  /**
+   * @type {number}
+   * @memberof FavoriteVenueRequest
+   */
+  venueId: number
+}
+
+/**
+ * @export
+ * @interface FavoriteVenueResponse
+ */
+export interface FavoriteVenueResponse {
+  /**
+   * @type {number}
+   * @memberof FavoriteVenueResponse
+   */
+  id: number
+  /**
+   * @type {FavoriteVenueDataResponse}
+   * @memberof FavoriteVenueResponse
+   */
+  venue: FavoriteVenueDataResponse
+}
+
+/**
+ * @export
+ * @interface FavoriteResponse
+ */
+export interface FavoriteResponse {
+  /**
+   * @type {number}
+   * @memberof FavoriteResponse
+   */
+  id: number
+  /**
+   * @type {FavoriteOfferResponse}
+   * @memberof FavoriteResponse
+   */
+  offer: FavoriteOfferResponse
+}
+
+/**
+ * @export
+ * @interface GTL
+ */
+export interface GTL {
+  /**
+   * @type {string}
+   * @memberof GTL
+   */
+  code: string
+  /**
+   * @type {string}
+   * @memberof GTL
+   */
+  label: string
+  /**
+   * @type {number}
+   * @memberof GTL
+   */
+  level: number
+}
+
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum GenderEnum {
+  'M.' = 'M.',
+  'Mme' = 'Mme',
+}
+
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum GenreType {
+  'BOOK' = 'BOOK',
+  'MUSIC' = 'MUSIC',
+  'SHOW' = 'SHOW',
+  'MOVIE' = 'MOVIE',
+}
+
+/**
+ * @export
+ * @interface GenreTypeContentModel
+ */
+export interface GenreTypeContentModel {
+  /**
+   * @type {string}
+   * @memberof GenreTypeContentModel
+   */
+  name: string
+  /**
+   * @type {string}
+   * @memberof GenreTypeContentModel
+   */
+  value: string
+}
+
+/**
+ * @export
+ * @interface GenreTypeModel
+ */
+export interface GenreTypeModel {
+  /**
+   * @type {GenreType}
+   * @memberof GenreTypeModel
+   */
+  name: GenreType
+  /**
+   * @type {Array<BookType> | Array<MusicType> | Array<ShowType> | Array<MovieType>}
+   * @memberof GenreTypeModel
+   */
+  trees: Array<BookType> | Array<MusicType> | Array<ShowType> | Array<MovieType>
+  /**
+   * @type {Array<GenreTypeContentModel>}
+   * @memberof GenreTypeModel
+   */
+  values: Array<GenreTypeContentModel>
+}
+
+/**
+ * @export
+ * @interface GetAvailableReactionsResponse
+ */
+export interface GetAvailableReactionsResponse {
+  /**
+   * @type {Array<AvailableReactionBooking>}
+   * @memberof GetAvailableReactionsResponse
+   */
+  bookings: Array<AvailableReactionBooking>
+  /**
+   * @type {number}
+   * @memberof GetAvailableReactionsResponse
+   */
+  numberOfReactableBookings: number
+}
+
+/**
+ * @export
+ * @interface GetRemindersResponse
+ */
+export interface GetRemindersResponse {
+  /**
+   * @type {Array<ReminderResponse>}
+   * @memberof GetRemindersResponse
+   */
+  reminders: Array<ReminderResponse>
+}
+
+/**
+ * @export
+ * @interface OAuthSigninRequestV2
+ */
+export interface OAuthSigninRequestV2 {
+  /**
+   * @type {string}
+   * @memberof OAuthSigninRequestV2
+   */
+  authorizationCode: string
+  /**
+   * @type {DeviceInfoV2}
+   * @memberof OAuthSigninRequestV2
+   */
+  deviceInfo: DeviceInfoV2
+  /**
+   * @type {string}
+   * @memberof OAuthSigninRequestV2
+   */
+  oauthStateToken: string
+}
+
+/**
+ * @export
+ * @interface SSOAccountRequest
+ */
+export interface SSOAccountRequest {
+  /**
+   * @type {string}
+   * @memberof SSOAccountRequest
+   */
+  accountCreationToken: string
+  /**
+   * @type {string}
+   * @memberof SSOAccountRequest
+   */
+  birthdate: string
+  /**
+   * @type {string}
+   * @memberof SSOAccountRequest
+   */
+  firebasePseudoId?: string | null
+  /**
+   * @type {boolean}
+   * @memberof SSOAccountRequest
+   */
+  marketingEmailSubscription?: boolean | null
+  /**
+   * @type {string}
+   * @memberof SSOAccountRequest
+   */
+  token: string
+  /**
+   * @type {DeviceInfoV2}
+   * @memberof SSOAccountRequest
+   */
+  trustedDevice?: DeviceInfoV2 | null
+}
+
+/**
+ * @export
+ * @interface GtlLabels
+ */
+export interface GtlLabels {
+  /**
+   * @type {string}
+   * @memberof GtlLabels
+   */
+  label: string
+  /**
+   * @type {string | null}
+   * @memberof GtlLabels
+   */
+  level01Label?: string | null
+  /**
+   * @type {string | null}
+   * @memberof GtlLabels
+   */
+  level02Label?: string | null
+  /**
+   * @type {string | null}
+   * @memberof GtlLabels
+   */
+  level03Label?: string | null
+  /**
+   * @type {string | null}
+   * @memberof GtlLabels
+   */
+  level04Label?: string | null
+}
+
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum HomepageLabelNameEnumv2 {
+  'BEAUX_ARTS' = 'BEAUX_ARTS',
+  'CARTE_JEUNES' = 'CARTE_JEUNES',
+  'CINEMA' = 'CINEMA',
+  'CONCERT' = 'CONCERT',
+  'COURS' = 'COURS',
+  'FESTIVAL' = 'FESTIVAL',
+  'FILMS' = 'FILMS',
+  'INSTRUMENT' = 'INSTRUMENT',
+  'JEUX' = 'JEUX',
+  'LIVRES' = 'LIVRES',
+  'MEDIAS' = 'MEDIAS',
+  'MUSEE' = 'MUSEE',
+  'MUSIQUE' = 'MUSIQUE',
+  'NONE' = 'NONE',
+  'PLATEFORME' = 'PLATEFORME',
+  'RENCONTRES' = 'RENCONTRES',
+  'SPECTACLES' = 'SPECTACLES',
+  'STAGE_ATELIER' = 'STAGE_ATELIER',
+  'VISITES' = 'VISITES',
+}
+
+/**
+ * @export
+ * @interface HomepageLabelResponseModelv2
+ */
+export interface HomepageLabelResponseModelv2 {
+  /**
+   * @type {HomepageLabelNameEnumv2}
+   * @memberof HomepageLabelResponseModelv2
+   */
+  name: HomepageLabelNameEnumv2
+  /**
+   * @type {string}
+   * @memberof HomepageLabelResponseModelv2
+   */
+  value?: string | null
+}
+
+/**
+ * @export
+ * @interface IdentificationSessionRequest
+ */
+export interface IdentificationSessionRequest {
+  /**
+   * @type {string}
+   * @memberof IdentificationSessionRequest
+   */
+  redirectUrl: string
+}
+
+/**
+ * @export
+ * @interface IdentificationSessionResponse
+ */
+export interface IdentificationSessionResponse {
+  /**
+   * @type {string}
+   * @memberof IdentificationSessionResponse
+   */
+  identificationUrl: string
+}
+
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum IdentityCheckMethod {
+  'educonnect' = 'educonnect',
+  'ubble' = 'ubble',
+}
+
+/**
+ * @export
+ * @interface InseeCountries
+ */
+export interface InseeCountries {
+  /**
+   * @type {Array<InseeCountry>}
+   * @memberof InseeCountries
+   */
+  countries: Array<InseeCountry>
+}
+
+/**
+ * @export
+ * @interface InseeCountry
+ */
+export interface InseeCountry {
+  /**
+   * @type {number}
+   * @memberof InseeCountry
+   */
+  cog: number
+  /**
+   * @type {string}
+   * @memberof InseeCountry
+   */
+  libcog: string
+}
+
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum MaintenancePageType {
+  'with-dms' = 'with-dms',
+  'without-dms' = 'without-dms',
+}
+
+/**
+ * @export
+ * @interface MarkAchievementsAsSeenRequest
+ */
+export interface MarkAchievementsAsSeenRequest {
+  /**
+   * @type {Array<number>}
+   * @memberof MarkAchievementsAsSeenRequest
+   */
+  achievementIds: Array<number>
+}
+
+/**
+ * @export
+ * @interface MentalDisability
+ */
+export interface MentalDisability {
+  /**
+   * @type {string}
+   * @memberof MentalDisability
+   */
+  trainedPersonnel: string
+}
+
+/**
+ * @export
+ * @interface MotorDisability
+ */
+export interface MotorDisability {
+  /**
+   * @type {string}
+   * @memberof MotorDisability
+   */
+  entrance: string
+  /**
+<<   * @type {string}
+   * @memberof MotorDisability
+   */
+  exterior: string
+  /**
+   * @type {string}
+   * @memberof MotorDisability
+   */
+  facilities: string
+  /**
+   * @type {string}
+   * @memberof MotorDisability
+   */
+  parking: string
+}
+
+/**
+ * @export
+ * @interface MovieCalendarResponse
+ */
+export interface MovieCalendarResponse {
+  /**
+   * @type {Array<DayVenueScreenings>}
+   * @memberof MovieCalendarResponse
+   */
+  calendar: Array<DayVenueScreenings>
+}
+
+/**
+ * @export
+ * @interface MovieScreenings
+ */
+export interface MovieScreenings {
+  /**
+   * @type {Array<Screening>}
+   * @memberof MovieScreenings
+   */
+  dayScreenings: Array<Screening>
+  /**
+   * @type {number | ModelNull}
+   * @memberof MovieScreenings
+   */
+  duration: number | null
+  /**
+   * @type {Array<string>}
+   * @memberof MovieScreenings
+   */
+  genres: Array<string>
+  /**
+   * @type {number}
+   * @memberof MovieScreenings
+   */
+  last30DaysBookings: number
+  /**
+   * @type {string}
+   * @memberof MovieScreenings
+   */
+  movieName: string
+  /**
+   * @type {Screening | ModelNull}
+   * @memberof MovieScreenings
+   */
+  nextScreening: Screening | null
+  /**
+   * @type {number}
+   * @memberof MovieScreenings
+   */
+  offerId: number
+  /**
+   * @type {string | ModelNull}
+   * @memberof MovieScreenings
+   */
+  thumbUrl: string | null
+}
+
+/**
+ * @export
+ * @interface MovieType
+ */
+export interface MovieType {
+  /**
+   * @type {string}
+   * @memberof MovieType
+   */
+  label: string
+  /**
+   * @type {string}
+   * @memberof MovieType
+   */
+  name: string
+}
+
+/**
+ * @export
+ * @interface MusicType
+ */
+export interface MusicType {
+  /**
+   * @type {string}
+   * @memberof MusicType
+   */
+  label: string
+  /**
+   * @type {string}
+   * @memberof MusicType
+   */
+  name: string
+}
+
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum NativeCategoryIdEnumv2 {
+  'ABO_PLATEFORME_VIDEO' = 'ABO_PLATEFORME_VIDEO',
+  'ABONNEMENTS_MUSEE' = 'ABONNEMENTS_MUSEE',
+  'ABONNEMENTS_SPECTACLE' = 'ABONNEMENTS_SPECTACLE',
+  'ACHAT_LOCATION_INSTRUMENT' = 'ACHAT_LOCATION_INSTRUMENT',
+  'ARTS_VISUELS' = 'ARTS_VISUELS',
+  'AUTRES_MEDIAS' = 'AUTRES_MEDIAS',
+  'BIBLIOTHEQUE_MEDIATHEQUE' = 'BIBLIOTHEQUE_MEDIATHEQUE',
+  'CARTES_CINEMA' = 'CARTES_CINEMA',
+  'CD' = 'CD',
+  'CONCERTS_EN_LIGNE' = 'CONCERTS_EN_LIGNE',
+  'CONCERTS_EVENEMENTS' = 'CONCERTS_EVENEMENTS',
+  'CONCOURS' = 'CONCOURS',
+  'CONFERENCES' = 'CONFERENCES',
+  'DEPRECIEE' = 'DEPRECIEE',
+  'DVD_BLU_RAY' = 'DVD_BLU_RAY',
+  'ESCAPE_GAMES' = 'ESCAPE_GAMES',
+  'EVENEMENTS_CINEMA' = 'EVENEMENTS_CINEMA',
+  'EVENEMENTS_PATRIMOINE' = 'EVENEMENTS_PATRIMOINE',
+  'FESTIVALS' = 'FESTIVALS',
+  'FESTIVAL_DU_LIVRE' = 'FESTIVAL_DU_LIVRE',
+  'JEUX_EN_LIGNE' = 'JEUX_EN_LIGNE',
+  'JEUX_PHYSIQUES' = 'JEUX_PHYSIQUES',
+  'LIVRES_AUDIO_PHYSIQUES' = 'LIVRES_AUDIO_PHYSIQUES',
+  'LIVRES_NUMERIQUE_ET_AUDIO' = 'LIVRES_NUMERIQUE_ET_AUDIO',
+  'LIVRES_PAPIER' = 'LIVRES_PAPIER',
+  'LUDOTHEQUE' = 'LUDOTHEQUE',
+  'MATERIELS_CREATIFS' = 'MATERIELS_CREATIFS',
+  'MUSIQUE_EN_LIGNE' = 'MUSIQUE_EN_LIGNE',
+  'NATIVE_CATEGORY_NONE' = 'NATIVE_CATEGORY_NONE',
+  'PARTITIONS_DE_MUSIQUE' = 'PARTITIONS_DE_MUSIQUE',
+  'PODCAST' = 'PODCAST',
+  'PRATIQUES_ET_ATELIERS_ARTISTIQUES' = 'PRATIQUES_ET_ATELIERS_ARTISTIQUES',
+  'PRATIQUE_ARTISTIQUE_EN_LIGNE' = 'PRATIQUE_ARTISTIQUE_EN_LIGNE',
+  'PRESSE_EN_LIGNE' = 'PRESSE_EN_LIGNE',
+  'RENCONTRES' = 'RENCONTRES',
+  'RENCONTRES_EN_LIGNE' = 'RENCONTRES_EN_LIGNE',
+  'RENCONTRES_EVENEMENTS' = 'RENCONTRES_EVENEMENTS',
+  'SALONS_ET_METIERS' = 'SALONS_ET_METIERS',
+  'SEANCES_DE_CINEMA' = 'SEANCES_DE_CINEMA',
+  'SPECTACLES_ENREGISTRES' = 'SPECTACLES_ENREGISTRES',
+  'SPECTACLES_REPRESENTATIONS' = 'SPECTACLES_REPRESENTATIONS',
+  'VIDEOS_ET_DOCUMENTAIRES' = 'VIDEOS_ET_DOCUMENTAIRES',
+  'VINYLES' = 'VINYLES',
+  'VISITES_CULTURELLES' = 'VISITES_CULTURELLES',
+  'VISITES_CULTURELLES_EN_LIGNE' = 'VISITES_CULTURELLES_EN_LIGNE',
+}
+
+/**
+ * @export
+ * @interface NativeCategoryResponseModelv2
+ */
+export interface NativeCategoryResponseModelv2 {
+  /**
+   * @type {GenreType}
+   * @memberof NativeCategoryResponseModelv2
+   */
+  genreType?: GenreType | null
+  /**
+   * @type {NativeCategoryIdEnumv2}
+   * @memberof NativeCategoryResponseModelv2
+   */
+  name: NativeCategoryIdEnumv2
+  /**
+   * @type {Array<SearchGroupNameEnumv2>}
+   * @memberof NativeCategoryResponseModelv2
+   */
+  parents: Array<SearchGroupNameEnumv2>
+  /**
+   * @type {{ [key: string]: number; }}
+   * @memberof NativeCategoryResponseModelv2
+   */
+  positions?: { [key: string]: number } | null
+  /**
+   * @type {string}
+   * @memberof NativeCategoryResponseModelv2
+   */
+  value?: string | null
+}
+
+/**
+ * @export
+ * @interface NewEmailSelectionRequest
+ */
+export interface NewEmailSelectionRequest {
+  /**
+   * @type {string}
+   * @memberof NewEmailSelectionRequest
+   */
+  newEmail: string
+  /**
+   * @type {string}
+   * @memberof NewEmailSelectionRequest
+   */
+  token: string
+}
+
+/**
+ * @export
+ * @interface NotificationSubscriptions
+ */
+export interface NotificationSubscriptions {
+  /**
+   * @type {boolean}
+   * @memberof NotificationSubscriptions
+   */
+  marketingEmail: boolean
+  /**
+   * @type {boolean}
+   * @memberof NotificationSubscriptions
+   */
+  marketingPush: boolean
+  /**
+   * @type {Array<string>}
+   * @memberof NotificationSubscriptions
+   */
+  subscribedThemes?: Array<string>
+}
+
+/**
+ * @export
+ * @interface OauthStateResponseV2
+ */
+export interface OauthStateResponseV2 {
+  /**
+   * @type {string}
+   * @memberof OauthStateResponseV2
+   */
+  oauthStateToken: string
+}
+
+/**
+ * @export
+ * @interface OfferAccessibilityResponse
+ */
+export interface OfferAccessibilityResponse {
+  /**
+   * @type {boolean | null}
+   * @memberof OfferAccessibilityResponse
+   */
+  audioDisability?: boolean | null
+  /**
+   * @type {boolean | null}
+   * @memberof OfferAccessibilityResponse
+   */
+  mentalDisability?: boolean | null
+  /**
+   * @type {boolean | null}
+   * @memberof OfferAccessibilityResponse
+   */
+  motorDisability?: boolean | null
+  /**
+   * @type {boolean | null}
+   * @memberof OfferAccessibilityResponse
+   */
+  visualDisability?: boolean | null
+}
+
+/**
+ * @export
+ * @interface OfferAddressResponse
+ */
+export interface OfferAddressResponse {
+  /**
+   * @type {string}
+   * @memberof OfferAddressResponse
+   */
+  city: string
+  /**
+   * @type {Coordinates}
+   * @memberof OfferAddressResponse
+   */
+  coordinates: Coordinates
+  /**
+   * @type {string | null}
+   * @memberof OfferAddressResponse
+   */
+  label?: string | null
+  /**
+   * @type {string}
+   * @memberof OfferAddressResponse
+   */
+  postalCode: string
+  /**
+   * @type {string | null}
+   * @memberof OfferAddressResponse
+   */
+  street?: string | null
+  /**
+   * @type {string}
+   * @memberof OfferAddressResponse
+   */
+  timezone: string
+}
+
+/**
+ * @export
+ * @interface OfferArtist
+ */
+export interface OfferArtist {
+  /**
+   * @type {string | null}
+   * @memberof OfferArtist
+   */
+  id?: string | null
+  /**
+   * @type {string | null}
+   * @memberof OfferArtist
+   */
+  image?: string | null
+  /**
+   * @type {string}
+   * @memberof OfferArtist
+   */
+  name: string
+  /**
+   * @type {ArtistType | null}
+   * @memberof OfferArtist
+   */
+  role?: ArtistType | null
+}
+
+/**
+ * @export
+ * @interface OfferChronicle
+ */
+export interface OfferChronicle {
+  /**
+   * @type {ChronicleAuthor}
+   * @memberof OfferChronicle
+   */
+  author?: ChronicleAuthor | null
+  /**
+   * @type {ChronicleClubType}
+   * @memberof OfferChronicle
+   */
+  clubType: ChronicleClubType
+  /**
+   * @type {string}
+   * @memberof OfferChronicle
+   */
+  content: string
+  /**
+   * @type {string}
+   * @memberof OfferChronicle
+   */
+  dateCreated: string
+  /**
+   * @type {number}
+   * @memberof OfferChronicle
+   */
+  id: number
+}
+
+/**
+ * @export
+ * @interface OfferChronicles
+ */
+export interface OfferChronicles {
+  /**
+   * @type {Array<OfferChronicle>}
+   * @memberof OfferChronicles
+   */
+  chronicles: Array<OfferChronicle>
+}
+
+/**
+ * @export
+ * @interface OfferExtraDataResponse
+ */
+export interface OfferExtraDataResponse {
+  /**
+   * @type {number | null}
+   * @memberof OfferExtraDataResponse
+   */
+  allocineId?: number | null
+  /**
+   * @type {string | null}
+   * @memberof OfferExtraDataResponse
+   */
+  author?: string | null
+  /**
+   * @type {string | null}
+   * @memberof OfferExtraDataResponse
+   */
+  bookFormat?: string | null
+  /**
+   * @type {Array<string> | null}
+   * @memberof OfferExtraDataResponse
+   */
+  cast?: Array<string> | null
+  /**
+   * @type {string | null}
+   * @memberof OfferExtraDataResponse
+   */
+  certificate?: string | null
+  /**
+   * @type {number | null}
+   * @memberof OfferExtraDataResponse
+   */
+  durationMinutes?: number | null
+  /**
+   * @type {string | null}
+   * @memberof OfferExtraDataResponse
+   */
+  ean?: string | null
+  /**
+   * @type {string | null}
+   * @memberof OfferExtraDataResponse
+   */
+  editeur?: string | null
+  /**
+   * @type {Array<string> | null}
+   * @memberof OfferExtraDataResponse
+   */
+  genres?: Array<string> | null
+  /**
+   * @type {GtlLabels | null}
+   * @memberof OfferExtraDataResponse
+   */
+  gtlLabels?: GtlLabels | null
+  /**
+   * @type {string | null}
+   * @memberof OfferExtraDataResponse
+   */
+  musicSubType?: string | null
+  /**
+   * @type {string | null}
+   * @memberof OfferExtraDataResponse
+   */
+  musicType?: string | null
+  /**
+   * @type {string | null}
+   * @memberof OfferExtraDataResponse
+   */
+  performer?: string | null
+  /**
+   * @type {string | null}
+   * @memberof OfferExtraDataResponse
+   */
+  releaseDate?: string | null
+  /**
+   * @type {string | null}
+   * @memberof OfferExtraDataResponse
+   */
+  showSubType?: string | null
+  /**
+   * @type {string | null}
+   * @memberof OfferExtraDataResponse
+   */
+  showType?: string | null
+  /**
+   * @type {string | null}
+   * @memberof OfferExtraDataResponse
+   */
+  speaker?: string | null
+  /**
+   * @type {string | null}
+   * @memberof OfferExtraDataResponse
+   */
+  stageDirector?: string | null
+  /**
+   * @type {string | null}
+   * @memberof OfferExtraDataResponse
+   */
+  visa?: string | null
+}
+
+/**
+ * @export
+/**
+ * @export
+ * @interface OfferForStocksResponse
+ */
+export interface OfferForStocksResponse {
+  /**
+   * @type {OfferAddressResponse}
+   * @memberof OfferForStocksResponse
+   */
+  address?: OfferAddressResponse | null
+  /**
+   * @type {string}
+   * @memberof OfferForStocksResponse
+   */
+  bookingAllowedDatetime: string | null
+  /**
+   * @type {Array<ExpenseDomain>}
+   * @memberof OfferForStocksResponse
+   */
+  expenseDomains: Array<ExpenseDomain>
+  /**
+   * @type {string}
+   * @memberof OfferForStocksResponse
+   */
+  externalTicketOfficeUrl?: string | null
+  /**
+   * @type {number}
+   * @memberof OfferForStocksResponse
+   */
+  id: number
+  /**
+   * @type {{ [key: string]: OfferImageResponse; }}
+   * @memberof OfferForStocksResponse
+   */
+  images?: { [key: string]: OfferImageResponse; } | null
+  /**
+   * @type {boolean}
+   * @memberof OfferForStocksResponse
+   */
+  isDuo: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferForStocksResponse
+   */
+  isExpired: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferForStocksResponse
+   */
+  isExternalBookingsDisabled: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferForStocksResponse
+   */
+  isReleased: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferForStocksResponse
+   */
+  isSoldOut: boolean
+  /**
+   * @type {number}
+   * @memberof OfferForStocksResponse
+   */
+  last30DaysBookings?: number | null
+  /**
+   * @type {string}
+   * @memberof OfferForStocksResponse
+   */
+  name: string
+  /**
+   * @type {string}
+   * @memberof OfferForStocksResponse
+   */
+  publicationDate: string | null
+  /**
+   * @type {Array<StockResponse>}
+   * @memberof OfferForStocksResponse
+   */
+  stocks: Array<StockResponse>
+  /**
+   * @type {string}
+   * @memberof OfferForStocksResponse
+   */
+  subcategoryId: string
+  /**
+   * @type {OfferVenueResponse}
+   * @memberof OfferForStocksResponse
+   */
+  venue: OfferVenueResponse
+}
+
+/**
+ * @export
+ * @interface OfferImageResponse
+ */
+export interface OfferImageResponse {
+  /**
+   * @type {string | null}
+   * @memberof OfferImageResponse
+   */
+  credit?: string | null
+  /**
+   * @type {string}
+   * @memberof OfferImageResponse
+   */
+  url: string
+}
+
+/**
+ * @export
+ * @interface OfferImageV3
+ */
+export interface OfferImageV3 {
+  /**
+   * @type {string}
+   * @memberof OfferImageV3
+   */
+  credit?: string | null
+  /**
+   * @type {string}
+   * @memberof OfferImageV3
+   */
+  url: string
+}
+
+/**
+ * @export
+ * @interface OfferOffererResponse
+ */
+export interface OfferOffererResponse {
+  /**
+   * @type {string}
+   * @memberof OfferOffererResponse
+   */
+  name: string
+}
+
+/**
+ * @export
+ * @interface OfferPagePlaylist
+   */
+export interface OfferPagePlaylist {
+  /**
+   * @type {string}
+   * @memberof OfferPagePlaylist
+   */
+  analyticsPlaylistType: string
+  /**
+   * @type {OfferPagePlaylistParams}
+   * @memberof OfferPagePlaylist
+   */
+  params: OfferPagePlaylistParams
+  /**
+   * @type {Array<string>}
+   * @memberof OfferPagePlaylist
+   */
+  results: Array<string>
+  /**
+   * @type {string}
+   * @memberof OfferPagePlaylist
+   */
+  title: string
+}
+
+/**
+ * @export
+ * @interface OfferPagePlaylistParams
+ */
+export interface OfferPagePlaylistParams {
+  /**
+   * @type {string}
+   * @memberof OfferPagePlaylistParams
+   */
+  abTest: string
+  /**
+   * @type {string}
+   * @memberof OfferPagePlaylistParams
+   */
+  callId: string
+  /**
+   * @type {string}
+   * @memberof OfferPagePlaylistParams
+   */
+  modelOrigin: string
+  /**
+   * @type {string}
+   * @memberof OfferPagePlaylistParams
+   */
+  recoOrigin: string
+  /**
+   * @type {string}
+   * @memberof OfferPagePlaylistParams
+   */
+  uniqueCallId: string
+}
+
+/**
+ * @export
+ * @interface OfferPagePlaylistQuery
+ */
+export interface OfferPagePlaylistQuery {
+  /**
+   * @type {number | null}
+   * @memberof OfferPagePlaylistQuery
+   */
+  latitude?: number | null
+  /**
+   * @type {number | null}
+   * @memberof OfferPagePlaylistQuery
+   */
+  longitude?: number | null
+  /**
+   * @type {string | null}
+   * @memberof OfferPagePlaylistQuery
+   */
+  userId?: string | null
+}
+
+/**
+ * @export
+ * @interface OfferPagePlaylistResponse
+ */
+export interface OfferPagePlaylistResponse {
+  /**
+   * @type {boolean}
+   * @memberof OfferPagePlaylistResponse
+   */
+  fromCache: boolean
+  /**
+   * @type {string}
+   * @memberof OfferPagePlaylistResponse
+   */
+  offerId: string
+  /**
+   * @type {Array<OfferPagePlaylist>}
+   * @memberof OfferPagePlaylistResponse
+   */
+  playlists: Array<OfferPagePlaylist>
+}
+
+/**
+ * @export
+ * @interface OfferPreviewResponse
+ */
+export interface OfferPreviewResponse {
+  /**
+   * @type {number}
+   * @memberof OfferPreviewResponse
+   */
+  durationMinutes?: number | null
+  /**
+   * @type {OfferExtraDataResponse}
+   * @memberof OfferPreviewResponse
+   */
+  extraData?: OfferExtraDataResponse | null
+  /**
+   * @type {number}
+   * @memberof OfferPreviewResponse
+   */
+  id: number
+  /**
+   * @type {OfferImageResponse}
+   * @memberof OfferPreviewResponse
+   */
+  image?: OfferImageResponse | null
+  /**
+   * @type {number}
+   * @memberof OfferPreviewResponse
+   */
+  last30DaysBookings?: number | null
+  /**
+   * @type {string}
+   * @memberof OfferPreviewResponse
+   */
+  name: string
+  /**
+   * @type {Array<OfferStockResponse>}
+   * @memberof OfferPreviewResponse
+   */
+  stocks: Array<OfferStockResponse>
+}
+
+/**
+ * @export
+ * @interface OfferResponse
+ */
+export interface OfferResponse {
+  /**
+   * @type {OfferAccessibilityResponse}
+   * @memberof OfferResponse
+   */
+  accessibility: OfferAccessibilityResponse
+  /**
+   * @type {OfferAddressResponse | null}
+   * @memberof OfferResponse
+   */
+  address?: OfferAddressResponse | null
+  /**
+   * @type {Array<OfferArtist>}
+   * @memberof OfferResponse
+   */
+  artists: Array<OfferArtist>
+  /**
+   * @type {string | null}
+   * @memberof OfferResponse
+   */
+  bookingAllowedDatetime?: string | null
+  /**
+   * @type {Array<ChroniclePreview>}
+   * @memberof OfferResponse
+   */
+  chronicles: Array<ChroniclePreview>
+  /**
+   * @type {number | null}
+   * @memberof OfferResponse
+   */
+  chroniclesCount?: number | null
+  /**
+   * @type {string | null}
+   * @memberof OfferResponse
+   */
+  description?: string | null
+  /**
+   * @type {Array<ExpenseDomain>}
+   * @memberof OfferResponse
+   */
+  expenseDomains: Array<ExpenseDomain>
+  /**
+   * @type {string | null}
+   * @memberof OfferResponse
+   */
+  externalTicketOfficeUrl?: string | null
+  /**
+   * @type {OfferExtraDataResponse | null}
+   * @memberof OfferResponse
+   */
+  extraData?: OfferExtraDataResponse | null
+  /**
+   * @type {number}
+   * @memberof OfferResponse
+   */
+  id: number
+  /**
+   * @type {{ [key: string]: OfferImageResponse; }}
+   * @memberof OfferResponse
+   */
+  images?: { [key: string]: OfferImageResponse; } | null
+  /**
+   * @type {boolean}
+   * @memberof OfferResponse
+   */
+  isDigital: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferResponse
+   */
+  isDuo: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferResponse
+   */
+  isEducational: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferResponse
+   */
+  isEvent: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferResponse
+   */
+  isExpired: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferResponse
+   */
+  isExternalBookingsDisabled: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferResponse
+   */
+  isForbiddenToUnderage: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferResponse
+   */
+  isHeadline: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferResponse
+   */
+  isReleased: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferResponse
+   */
+  isSoldOut: boolean
+  /**
+   * @type {number | null}
+   * @memberof OfferResponse
+   */
+  last30DaysBookings?: number | null
+  /**
+   * @type {any}
+   * @memberof OfferResponse
+   */
+  metadata: any
+  /**
+   * @type {string}
+   * @memberof OfferResponse
+   */
+  name: string
+  /**
+   * @type {string | null}
+   * @memberof OfferResponse
+   */
+  publicationDate?: string | null
+  /**
+   * @type {ReactionCount}
+   * @memberof OfferResponse
+   */
+  reactionsCount: ReactionCount
+  /**
+   * @type {Array<OfferStockResponse>}
+   * @memberof OfferResponse
+   */
+  stocks: Array<OfferStockResponse>
+  /**
+   * @type {SubcategoryIdEnum}
+   * @memberof OfferResponse
+   */
+  subcategoryId: SubcategoryIdEnum
+  /**
+   * @type {OfferVenueResponse}
+   * @memberof OfferResponse
+   */
+  venue: OfferVenueResponse
+  /**
+   * @type {OfferVideo | null}
+   * @memberof OfferResponse
+   */
+  video?: OfferVideo | null
+  /**
+   * @type {string | null}
+   * @memberof OfferResponse
+   */
+  withdrawalDetails?: string | null
+}
+
+/**
+ * @export
+ * @interface OfferStockActivationCodeResponse
+ */
+export interface OfferStockActivationCodeResponse {
+  /**
+   * @type {string | null}
+   * @memberof OfferStockActivationCodeResponse
+   */
+  expirationDate?: string | null
+}
+
+/**
+ * @export
+ * @interface OfferStockResponse
+ */
+export interface OfferStockResponse {
+  /**
+   * @type {OfferStockActivationCodeResponse | null}
+   * @memberof OfferStockResponse
+   */
+  activationCode?: OfferStockActivationCodeResponse | null
+  /**
+   * @type {string | null}
+   * @memberof OfferStockResponse
+   */
+  beginningDatetime?: string | null
+  /**
+   * @type {string | null}
+   * @memberof OfferStockResponse
+   */
+  bookingLimitDatetime?: string | null
+  /**
+   * @type {string | null}
+   * @memberof OfferStockResponse
+   */
+  cancellationLimitDatetime?: string | null
+  /**
+   * @type {Array<string>}
+   * @memberof OfferStockResponse
+   */
+  features: Array<string>
+  /**
+   * @type {number}
+   * @memberof OfferStockResponse
+   */
+  id: number
+  /**
+   * @type {boolean}
+   * @memberof OfferStockResponse
+   */
+  isBookable: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferStockResponse
+   */
+  isExpired: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferStockResponse
+   */
+  isForbiddenToUnderage: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferStockResponse
+   */
+  isSoldOut: boolean
+  /**
+   * @type {number}
+   * @memberof OfferStockResponse
+   */
+  price: number
+  /**
+   * @type {string | null}
+   * @memberof OfferStockResponse
+   */
+  priceCategoryLabel?: string | null
+  /**
+   * @type {number | null}
+   * @memberof OfferStockResponse
+   */
+  remainingQuantity?: number | null
+}
+
+/**
+ * @export
+ * @interface OfferVenueCoordinates
+ */
+export interface OfferVenueCoordinates {
+  /**
+   * @type {number | null}
+   * @memberof OfferVenueCoordinates
+   */
+  latitude?: number | null
+  /**
+   * @type {number | null}
+   * @memberof OfferVenueCoordinates
+   */
+  longitude?: number | null
+}
+
+/**
+ * @export
+ * @interface OfferVenueResponse
+ */
+export interface OfferVenueResponse {
+  /**
+   * @type {string | null}
+   * @memberof OfferVenueResponse
+   */
+  address?: string | null
+  /**
+   * @type {string | null}
+   * @memberof OfferVenueResponse
+   */
+  bannerUrl?: string | null
+  /**
+   * @type {string | null}
+   * @memberof OfferVenueResponse
+   */
+  city?: string | null
+  /**
+   * @type {OfferVenueCoordinates}
+   * @memberof OfferVenueResponse
+   */
+  coordinates: OfferVenueCoordinates
+  /**
+   * @type {number}
+   * @memberof OfferVenueResponse
+   */
+  id: number
+  /**
+   * @type {boolean}
+   * @memberof OfferVenueResponse
+   */
+  isOpenToPublic: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferVenueResponse
+   */
+  isPermanent: boolean
+  /**
+   * @type {string}
+   * @memberof OfferVenueResponse
+   */
+  name: string
+  /**
+   * @type {OfferOffererResponse}
+   * @memberof OfferVenueResponse
+   */
+  offerer: OfferOffererResponse
+  /**
+   * @type {string | null}
+   * @memberof OfferVenueResponse
+   */
+  postalCode?: string | null
+  /**
+   * @type {string}
+   * @memberof OfferVenueResponse
+   */
+  publicName?: string | null
+  /**
+   * @type {string}
+   * @memberof OfferVenueResponse
+   */
+  timezone: string
+}
+
+/**
+ * @export
+ * @interface OfferVideo
+ */
+export interface OfferVideo {
+  /**
+   * @type {number | null}
+   * @memberof OfferVideo
+   */
+  durationSeconds?: number | null
+  /**
+   * @type {string}
+   * @memberof OfferVideo
+   */
+  id: string
+  /**
+   * @type {string | null}
+   * @memberof OfferVideo
+   */
+  thumbUrl?: string | null
+  /**
+   * @type {string | null}
+   * @memberof OfferVideo
+   */
+  title?: string | null
+}
+
+/**
+ * @export
+ * @interface OffersStocksRequest
+ */
+export interface OffersStocksRequest {
+  /**
+   * @type {Array<number>}
+   * @memberof OffersStocksRequest
+   */
+  offerIds: Array<number>
+}
+
+/**
+ * @export
+ * @interface OffersStocksResponse
+ */
+export interface OffersStocksResponse {
+  /**
+   * @type {Array<OfferForStocksResponse>}
+   * @memberof OffersStocksResponse
+   */
+  offers: Array<OfferForStocksResponse>
+}
+
+/**
+ * @export
+ * @interface OffersStocksResponseV2
+ */
+export interface OffersStocksResponseV2 {
+  /**
+   * @type {Array<OfferResponseV2>}
+   * @memberof OffersStocksResponseV2
+   */
+  offers: Array<OfferResponse>
+}
+
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum OnlineOfflinePlatformChoicesEnum {
+  'OFFLINE' = 'OFFLINE',
+  'ONLINE' = 'ONLINE',
+  'ONLINE_OR_OFFLINE' = 'ONLINE_OR_OFFLINE',
+}
+
+/**
+ * @export
+ * @interface PaginatedFavoritesResponse
+ */
+export interface PaginatedFavoritesResponse {
+  /**
+   * @type {Array<FavoriteResponse>}
+   * @memberof PaginatedFavoritesResponse
+   */
+  favorites: Array<FavoriteResponse>
+  /**
+   * @type {number}
+   * @memberof PaginatedFavoritesResponse
+   */
+  nbFavorites: number
+  /**
+   * @type {number}
+   * @memberof PaginatedFavoritesResponse
+   */
+  page: number
+}
+
+/**
+ * @export
+ * @interface PaginatedResponseFavoriteArtistResponse
+ */
+export interface PaginatedResponseFavoriteArtistResponse {
+  /**
+   * @type {Array<FavoriteArtistResponse>}
+   * @memberof PaginatedResponseFavoriteArtistResponse
+   */
+  favorites: Array<FavoriteArtistResponse>
+  /**
+   * @type {number}
+   * @memberof PaginatedResponseFavoriteArtistResponse
+   */
+  nbFavorites: number
+  /**
+   * @type {number}
+   * @memberof PaginatedResponseFavoriteArtistResponse
+   */
+  page: number
+}
+
+/**
+ * @export
+ * @interface PaginatedResponseFavoriteOfferResponseV2
+ */
+export interface PaginatedResponseFavoriteOfferResponseV2 {
+  /**
+   * @type {Array<FavoriteOfferResponseV2>}
+   * @memberof PaginatedResponseFavoriteOfferResponseV2
+   */
+  favorites: Array<FavoriteOfferResponseV2>
+  /**
+   * @type {number}
+   * @memberof PaginatedResponseFavoriteOfferResponseV2
+   */
+  nbFavorites: number
+  /**
+   * @type {number}
+   * @memberof PaginatedResponseFavoriteOfferResponseV2
+   */
+  page: number
+}
+
+/**
+ * @export
+ * @interface PaginatedResponseFavoriteVenueResponse
+ */
+export interface PaginatedResponseFavoriteVenueResponse {
+  /**
+   * @type {Array<FavoriteVenueResponse>}
+   * @memberof PaginatedResponseFavoriteVenueResponse
+   */
+  favorites: Array<FavoriteVenueResponse>
+  /**
+   * @type {number}
+   * @memberof PaginatedResponseFavoriteVenueResponse
+   */
+  nbFavorites: number
+  /**
+   * @type {number}
+   * @memberof PaginatedResponseFavoriteVenueResponse
+   */
+  page: number
+}
+
+/**
+ * @export
+ * @interface PlaylistRequestBody
+ */
+export interface PlaylistRequestBody {
+  /**
+   * @type {Array<string> | null}
+   * @memberof PlaylistRequestBody
+   */
+  categories?: Array<string> | null
+  /**
+   * @type {string | null}
+   * @memberof PlaylistRequestBody
+   */
+  endDate?: string | null
+  /**
+   * @type {boolean | null}
+   * @memberof PlaylistRequestBody
+   */
+  isDuo?: boolean | null
+  /**
+   * @type {boolean | null}
+   * @memberof PlaylistRequestBody
+   */
+  isEvent?: boolean | null
+  /**
+   * @type {boolean | null}
+   * @memberof PlaylistRequestBody
+   */
+  isRecoShuffled?: boolean | null
+  /**
+   * @type {Array<Map> | null}
+   * @memberof PlaylistRequestBody
+   */
+  offerTypeList?: Array<{ [key: string]: string; }> | null
+  /**
+   * @type {number | null}
+   * @memberof PlaylistRequestBody
+   */
+  priceMax?: number | null
+  /**
+   * @type {number | null}
+   * @memberof PlaylistRequestBody
+   */
+  priceMin?: number | null
+  /**
+   * @type {string | null}
+   * @memberof PlaylistRequestBody
+   */
+  startDate?: string | null
+  /**
+   * @type {Array<string> | null}
+   * @memberof PlaylistRequestBody
+   */
+  subcategories?: Array<string> | null
+}
+
+/**
+ * @export
+ * @interface PlaylistRequestQuery
+ */
+export interface PlaylistRequestQuery {
+  /**
+   * @type {number | null}
+   * @memberof PlaylistRequestQuery
+   */
+  latitude?: number | null
+  /**
+   * @type {number | null}
+   * @memberof PlaylistRequestQuery
+   */
+  longitude?: number | null
+  /**
+   * @type {string | null}
+   * @memberof PlaylistRequestQuery
+   */
+  modelEndpoint?: string | null
+}
+
+/**
+ * @export
+ * @interface PlaylistResponse
+ */
+export interface PlaylistResponse {
+  /**
+   * @type {RecommendationApiParams}
+   * @memberof PlaylistResponse
+   */
+  params: RecommendationApiParams
+  /**
+   * @type {Array<string>}
+   * @memberof PlaylistResponse
+   */
+  playlistRecommendedOffers: Array<string>
+}
+
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum PopOverIcon {
+  'INFO' = 'INFO',
+  'ERROR' = 'ERROR',
+  'WARNING' = 'WARNING',
+  'CLOCK' = 'CLOCK',
+  'FILE' = 'FILE',
+  'MAGNIFYING_GLASS' = 'MAGNIFYING_GLASS',
+}
+
+/**
+ * @export
+ * @interface PostFeedbackBody
+ */
+export interface PostFeedbackBody {
+  /**
+   * @type {string}
+   * @memberof PostFeedbackBody
+   */
+  feedback: string
+}
+
+/**
+ * @export
+ * @interface PostOneReactionRequest
+ */
+export interface PostOneReactionRequest {
+  /**
+   * @type {number}
+   * @memberof PostOneReactionRequest
+   */
+  offerId: number
+  /**
+   * @type {ReactionTypeEnum}
+   * @memberof PostOneReactionRequest
+   */
+  reactionType: ReactionTypeEnum
+}
+
+/**
+ * @export
+ * @interface PostReactionRequest
+ */
+export interface PostReactionRequest {
+  /**
+   * @type {Array<PostOneReactionRequest>}
+   * @memberof PostReactionRequest
+   */
+  reactions: Array<PostOneReactionRequest>
+}
+
+/**
+ * @export
+ * @interface PostReminderRequest
+ */
+export interface PostReminderRequest {
+  /**
+   * @type {number}
+   * @memberof PostReminderRequest
+   */
+  offerId: number
+}
+
+/**
+ * @export
+ * @interface ProfileUpdateRequest
+ */
+export interface ProfileUpdateRequest {
+  /**
+   * @type {ActivityIdEnum}
+   * @memberof ProfileUpdateRequest
+   */
+  activityId: ActivityIdEnum
+  /**
+   * @type {string}
+   * @memberof ProfileUpdateRequest
+   */
+  address: string
+  /**
+   * @type {string}
+   * @memberof ProfileUpdateRequest
+   */
+  city: string
+  /**
+   * @type {string}
+   * @memberof ProfileUpdateRequest
+   */
+  firstName: string
+  /**
+   * @type {string}
+   * @memberof ProfileUpdateRequest
+   */
+  lastName: string
+  /**
+   * @type {string}
+   * @memberof ProfileUpdateRequest
+   */
+  phoneNumber?: string | null
+  /**
+   * @type {string}
+   * @memberof ProfileUpdateRequest
+   */
+  postalCode: string
+  /**
+   * @type {SchoolTypesIdEnum}
+   * @memberof ProfileUpdateRequest
+   */
+  schoolTypeId?: SchoolTypesIdEnum | null
+}
+
+/**
+ *
+ * @export
+ * @enum {string}
+ */
+export enum QFBonificationStatus {
+  'eligible' = 'eligible',
+  'not_eligible' = 'not_eligible',
+  'started' = 'started',
+  'custodian_not_found' = 'custodian_not_found',
+  'application_not_found' = 'application_not_found',
+  'not_in_tax_household' = 'not_in_tax_household',
+  'quotient_familial_too_high' = 'quotient_familial_too_high',
+  'too_many_retries' = 'too_many_retries',
+  'granted' = 'granted',
+  'ko' = 'ko',
+}
+
+/**
+ * @export
+ * @interface QuotientFamilialBonusCreditRequest
+ */
+export interface QuotientFamilialBonusCreditRequest {
+  /**
+   * @type {string}
+   * @memberof QuotientFamilialBonusCreditRequest
+   */
+  birthCityCogCode?: string | null
+  /**
+   * @type {string}
+   * @memberof QuotientFamilialBonusCreditRequest
+   */
+  birthCountryCogCode: string
+  /**
+   * @type {string}
+   * @memberof QuotientFamilialBonusCreditRequest
+   */
+  birthDate: string
+  /**
+   * @type {string}
+   * @memberof QuotientFamilialBonusCreditRequest
+   */
+  commonName?: string | null
+  /**
+   * @type {Array<string>}
+   * @memberof QuotientFamilialBonusCreditRequest
+   */
+  firstNames: Array<string>
+  /**
+   * @type {GenderEnum}
+   * @memberof QuotientFamilialBonusCreditRequest
+   */
+  gender: GenderEnum
+  /**
+   * @type {string}
+   * @memberof QuotientFamilialBonusCreditRequest
+   */
+  lastName: string
+}
+
+/**
+ * @export
+ * @interface Rates
+ */
+export interface Rates {
+  /**
+   * @type {number}
+   * @memberof Rates
+   */
+  pacificFrancToEuro?: number
+}
+
+/**
+ * @export
+ * @interface ReactionCount
+ */
+export interface ReactionCount {
+  /**
+   * @type {number}
+   * @memberof ReactionCount
+   */
+  likes: number
+}
+
+/**
+ * @export
+ * @interface ReactionCountV2
+ */
+export interface ReactionCountV2 {
+  /**
+   * @type {number}
+   * @memberof ReactionCountV2
+   */
+  likes: number
+}
+
+/**
+ *
+ * @export
+ * @enum {string}
+ */
+export enum ReactionTypeEnum {
+  'LIKE' = 'LIKE',
+  'DISLIKE' = 'DISLIKE',
+  'NO_REACTION' = 'NO_REACTION',
+}
+
+/**
+ * @export
+ * @interface RecommendationApiParams
+ */
+export interface RecommendationApiParams {
+  /**
+   * @type {string | null}
+   * @memberof RecommendationApiParams
+   */
+  abTest?: string | null
+  /**
+   * @type {string | null}
+   * @memberof RecommendationApiParams
+   */
+  callId?: string | null
+  /**
+   * @type {boolean | null}
+   * @memberof RecommendationApiParams
+   */
+  filtered?: boolean | null
+  /**
+   * @type {boolean | null}
+   * @memberof RecommendationApiParams
+   */
+  geoLocated?: boolean | null
+  /**
+   * @type {string | null}
+   * @memberof RecommendationApiParams
+   */
+  modelEndpoint?: string | null
+  /**
+   * @type {string | null}
+   * @memberof RecommendationApiParams
+   */
+  modelName?: string | null
+  /**
+   * @type {string | null}
+   * @memberof RecommendationApiParams
+   */
+  modelOrigin?: string | null
+  /**
+   * @type {string | null}
+   * @memberof RecommendationApiParams
+   */
+  modelVersion?: string | null
+  /**
+   * @type {string | null}
+   * @memberof RecommendationApiParams
+   */
+  recoOrigin?: string | null
+}
+
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum RecreditType {
+  'Recredit15' = 'Recredit15',
+  'Recredit16' = 'Recredit16',
+  'Recredit17' = 'Recredit17',
+  'Recredit18' = 'Recredit18',
+  'BonusCredit' = 'BonusCredit',
+  'ManualModification' = 'ManualModification',
+  'PreviousDeposit' = 'PreviousDeposit',
+  'FinanceIncidentRecredit' = 'FinanceIncidentRecredit',
+}
+
+/**
+ * @export
+ * @interface RefreshRequestV2
+ */
+export interface RefreshRequestV2 {
+  /**
+   * @type {DeviceInfoV2}
+   * @memberof RefreshRequestV2
+   */
+  deviceInfo: DeviceInfoV2
+}
+
+/**
+ * @export
+ * @interface RefreshResponse
+ */
+export interface RefreshResponse {
+  /**
+   * @type {string}
+   * @memberof RefreshResponse
+   */
+  accessToken: string
+}
+
+/**
+ * @export
+ * @interface RefreshResponseV2
+ */
+export interface RefreshResponseV2 {
+  /**
+   * @type {string}
+   * @memberof RefreshResponseV2
+   */
+  accessToken: string
+  /**
+   * @type {string}
+   * @memberof RefreshResponseV2
+   */
+  refreshToken: string
+}
+
+/**
+ * @export
+ * @interface ReminderOfferResponse
+ */
+export interface ReminderOfferResponse {
+  /**
+   * @type {number}
+   * @memberof ReminderOfferResponse
+   */
+  id: number
+}
+
+/**
+ * @export
+ * @interface ReminderResponse
+ */
+export interface ReminderResponse {
+  /**
+   * @type {number}
+   * @memberof ReminderResponse
+   */
+  id: number
+  /**
+   * @type {ReminderOfferResponse}
+   * @memberof ReminderResponse
+   */
+  offer: ReminderOfferResponse
+}
+
+/**
+ * @export
+ * @interface RequestPasswordResetRequest
+ */
+export interface RequestPasswordResetRequest {
+  /**
+   * @type {string}
+   * @memberof RequestPasswordResetRequest
+   */
+  email: string
+  /**
+   * @type {string}
+   * @memberof RequestPasswordResetRequest
+   */
+  token?: string | null
+}
+
+/**
+ * @export
+ * @interface ResendEmailValidationRequest
+ */
+export interface ResendEmailValidationRequest {
+  /**
+   * @type {string}
+   * @memberof ResendEmailValidationRequest
+   */
+  email: string
+}
+
+/**
+ * @export
+ * @interface ResetPasswordRequest
+ */
+export interface ResetPasswordRequest {
+  /**
+   * @type {DeviceInfoV2}
+   * @memberof ResetPasswordRequest
+   */
+  deviceInfo?: DeviceInfoV2 | null
+  /**
+   * @type {string}
+   * @memberof ResetPasswordRequest
+   */
+  newPassword: string
+  /**
+   * @type {string}
+   * @memberof ResetPasswordRequest
+   */
+  resetPasswordToken: string
+}
+
+/**
+ * @export
+ * @interface ResetPasswordResponse
+ */
+export interface ResetPasswordResponse {
+  /**
+   * @type {string}
+   * @memberof ResetPasswordResponse
+   */
+  accessToken: string
+  /**
+   * @type {string}
+   * @memberof ResetPasswordResponse
+   */
+  refreshToken: string
+}
+
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum SchoolTypesIdEnum {
+  'AGRICULTURAL_HIGH_SCHOOL' = 'AGRICULTURAL_HIGH_SCHOOL',
+  'APPRENTICE_FORMATION_CENTER' = 'APPRENTICE_FORMATION_CENTER',
+  'MILITARY_HIGH_SCHOOL' = 'MILITARY_HIGH_SCHOOL',
+  'HOME_OR_REMOTE_SCHOOLING' = 'HOME_OR_REMOTE_SCHOOLING',
+  'NAVAL_HIGH_SCHOOL' = 'NAVAL_HIGH_SCHOOL',
+  'PRIVATE_HIGH_SCHOOL' = 'PRIVATE_HIGH_SCHOOL',
+  'PRIVATE_SECONDARY_SCHOOL' = 'PRIVATE_SECONDARY_SCHOOL',
+  'PUBLIC_HIGH_SCHOOL' = 'PUBLIC_HIGH_SCHOOL',
+  'PUBLIC_SECONDARY_SCHOOL' = 'PUBLIC_SECONDARY_SCHOOL',
+}
+
+/**
+ * @export
+ * @interface Screening
+ */
+export interface Screening {
+  /**
+   * @type {string}
+   * @memberof Screening
+   */
+  beginningDatetime: string
+  /**
+   * @type {Bookability}
+   * @memberof Screening
+   */
+  bookability: Bookability
+  /**
+   * @type {Array<string>}
+   * @memberof Screening
+   */
+  features: Array<string>
+  /**
+   * @type {number}
+   * @memberof Screening
+   */
+  price: number
+  /**
+   * @type {number}
+   * @memberof Screening
+   */
+  stockId: number
+}
+
+/**
+ * @export
+ * @interface ScreeningAccessibilityFeatures
+ */
+export interface ScreeningAccessibilityFeatures {
+  /**
+   * @type {Array<string>}
+   * @memberof ScreeningAccessibilityFeatures
+   */
+  audio: Array<string>
+  /**
+   * @type {Array<string>}
+   * @memberof ScreeningAccessibilityFeatures
+   */
+  mental: Array<string>
+  /**
+   * @type {Array<string>}
+   * @memberof ScreeningAccessibilityFeatures
+   */
+  motor: Array<string>
+  /**
+   * @type {Array<string>}
+   * @memberof ScreeningAccessibilityFeatures
+   */
+  visual: Array<string>
+}
+
+/**
+ * @export
+ * @interface ScreeningFeatures
+ */
+export interface ScreeningFeatures {
+  /**
+   * @type {ScreeningAccessibilityFeatures}
+   * @memberof ScreeningFeatures
+   */
+  accessibility: ScreeningAccessibilityFeatures
+  /**
+   * @type {string}
+   * @memberof ScreeningFeatures
+   */
+  audio: string | null
+  /**
+   * @type {string}
+   * @memberof ScreeningFeatures
+   */
+  language: string | null
+  /**
+   * @type {string}
+   * @memberof ScreeningFeatures
+   */
+  specialEventType: string | null
+  /**
+   * @type {string}
+   * @memberof ScreeningFeatures
+   */
+  video: string | null
+}
+
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum SearchGroupNameEnumv2 {
+  'ARTS_LOISIRS_CREATIFS' = 'ARTS_LOISIRS_CREATIFS',
+  'CARTES_JEUNES' = 'CARTES_JEUNES',
+  'CONCERTS_FESTIVALS' = 'CONCERTS_FESTIVALS',
+  'EVENEMENTS_EN_LIGNE' = 'EVENEMENTS_EN_LIGNE',
+  'CINEMA' = 'CINEMA',
+  'FILMS_DOCUMENTAIRES_SERIES' = 'FILMS_DOCUMENTAIRES_SERIES',
+  'JEUX_JEUX_VIDEOS' = 'JEUX_JEUX_VIDEOS',
+  'LIVRES' = 'LIVRES',
+  'MEDIA_PRESSE' = 'MEDIA_PRESSE',
+  'MUSEES_VISITES_CULTURELLES' = 'MUSEES_VISITES_CULTURELLES',
+  'MUSIQUE' = 'MUSIQUE',
+  'NONE' = 'NONE',
+  'RENCONTRES_CONFERENCES' = 'RENCONTRES_CONFERENCES',
+  'SPECTACLES' = 'SPECTACLES',
+}
+
+/**
+ * @export
+ * @interface SearchGroupResponseModelv2
+ */
+export interface SearchGroupResponseModelv2 {
+  /**
+   * @type {SearchGroupNameEnumv2}
+   * @memberof SearchGroupResponseModelv2
+   */
+  name: SearchGroupNameEnumv2
+  /**
+   * @type {string}
+   * @memberof SearchGroupResponseModelv2
+   */
+  value?: string | null
+}
+
+/**
+ * @export
+ * @interface SettingsResponse
+ */
+export interface SettingsResponse {
+  /**
+   * @type {number}
+   * @memberof SettingsResponse
+   */
+  accountCreationMinimumAge: number
+  /**
+   * @type {number}
+   * @memberof SettingsResponse
+   */
+  accountUnsuspensionLimit: number
+  /**
+   * @type {boolean}
+   * @memberof SettingsResponse
+   */
+  appEnableAutocomplete: boolean
+  /**
+   * @type {Bonification}
+   * @memberof SettingsResponse
+   */
+  bonification: Bonification
+  /**
+   * @type {DepositAmountsByAge}
+   * @memberof SettingsResponse
+   */
+  depositAmountsByAge: DepositAmountsByAge
+  /**
+   * @type {boolean}
+   * @memberof SettingsResponse
+   */
+  displayDmsRedirection: boolean
+  /**
+   * @type {boolean}
+   * @memberof SettingsResponse
+   */
+  enableFrontImageResizing: boolean
+  /**
+   * @type {boolean}
+   * @memberof SettingsResponse
+   */
+  enableNativeCulturalSurvey: boolean
+  /**
+   * @type {boolean}
+   * @memberof SettingsResponse
+   */
+  idCheckAddressAutocompletion: boolean
+  /**
+   * @type {Array<string>}
+   * @memberof SettingsResponse
+   */
+  ineligiblePostalCodes: Array<string>
+  /**
+   * @type {boolean}
+   * @memberof SettingsResponse
+   */
+  imageResizingUrl: string
+  /**
+   * @type {string}
+   * @memberof SettingsResponse
+   */
+  isRecaptchaEnabled: boolean
+  /**
+   * @type {string}
+   * @memberof SettingsResponse
+   */
+  objectStorageUrl: string
+  /**
+   * @type {boolean}
+   * @memberof SettingsResponse
+   */
+  useImgProxyFormat?: boolean
+  /**
+   * @type {Rates}
+   * @memberof SettingsResponse
+   */
+  rates?: Rates
+  /**
+   * @type {boolean}
+   * @memberof SettingsResponse
+   */
+  wipEnableCreditV3: boolean
+}
+
+/**
+ * @export
+ * @interface ShowSubType
+ */
+export interface ShowSubType {
+  /**
+   * @type {number}
+   * @memberof ShowSubType
+   */
+  code: number
+  /**
+   * @type {string}
+   * @memberof ShowSubType
+   */
+  label: string
+  /**
+   * @type {string}
+   * @memberof ShowSubType
+   */
+  slug: string
+}
+
+/**
+ * @export
+ * @interface ShowType
+ */
+export interface ShowType {
+  /**
+   * @type {Array<ShowSubType>}
+   * @memberof ShowType
+   */
+  children: Array<ShowSubType>
+  /**
+   * @type {number}
+   * @memberof ShowType
+   */
+  code: number
+  /**
+   * @type {string}
+   * @memberof ShowType
+   */
+  label: string
+}
+
+/**
+ * @export
+ * @interface SigninRequest
+ */
+export interface SigninRequest {
+  /**
+   * @type {DeviceInfoV2}
+   * @memberof SigninRequest
+   */
+  deviceInfo?: DeviceInfoV2 | null
+  /**
+   * @type {string}
+   * @memberof SigninRequest
+   */
+  identifier: string
+  /**
+   * @type {string}
+   * @memberof SigninRequest
+   */
+  password: string
+  /**
+   * @type {string}
+   * @memberof SigninRequest
+   */
+  token?: string | null
+}
+
+/**
+ * @export
+ * @interface SigninRequestV2
+ */
+export interface SigninRequestV2 {
+  /**
+   * @type {DeviceInfoV2}
+   * @memberof SigninRequestV2
+   */
+  deviceInfo: DeviceInfoV2
+  /**
+   * @type {string}
+   * @memberof SigninRequestV2
+   */
+  identifier: string
+  /**
+   * @type {string}
+   * @memberof SigninRequestV2
+   */
+  password: string
+  /**
+   * @type {string}
+   * @memberof SigninRequestV2
+   */
+  token?: string | null
+}
+
+/**
+ * @export
+ * @interface SigninResponse
+ */
+export interface SigninResponse {
+  /**
+   * @type {string}
+   * @memberof SigninResponse
+   */
+  accessToken: string
+  /**
+   * @type {AccountState}
+   * @memberof SigninResponse
+   */
+  accountState: AccountState
+  /**
+   * @type {string}
+   * @memberof SigninResponse
+   */
+  refreshToken: string
+}
+
+/**
+ * @export
+ * @interface SigninResponseV2
+ */
+export interface SigninResponseV2 {
+  /**
+   * @type {string}
+   * @memberof SigninResponseV2
+   */
+  accessToken: string
+  /**
+   * @type {AccountState}
+   * @memberof SigninResponseV2
+   */
+  accountState: AccountState
+  /**
+   * @type {string}
+   * @memberof SigninResponseV2
+   */
+  refreshToken: string
+}
+
+/**
+ * @export
+ * @interface SignoutResponse
+ */
+export interface SignoutResponse {}
+
+/**
+ * @export
+ * @interface SimilarArtistItem
+ */
+export interface SimilarArtistItem {
+  /**
+   * @type {string}
+   * @memberof SimilarArtistItem
+   */
+  id: string
+  /**
+   * @type {string | null}
+   * @memberof SimilarArtistItem
+   */
+  image?: string | null
+  /**
+   * @type {string}
+   * @memberof SimilarArtistItem
+   */
+  name: string
+}
+
+/**
+ * @export
+ * @interface SimilarArtistsResponse
+ */
+export interface SimilarArtistsResponse {
+  /**
+   * @type {Array<SimilarArtistItem>}
+   * @memberof SimilarArtistsResponse
+   */
+  artists: Array<SimilarArtistItem>
+}
+
+/**
+ * @export
+ * @interface SimilarOffersResponse
+ */
+export interface SimilarOffersResponse {
+  /**
+   * @type {RecommendationApiParams}
+   * @memberof SimilarOffersResponse
+   */
+  params: RecommendationApiParams
+  /**
+   * @type {Array<string>}
+   * @memberof SimilarOffersResponse
+   */
+  results?: Array<string>
+}
+
+/**
+ * @export
+ * @interface StockResponse
+ */
+export interface StockResponse {
+  /**
+   * @type {OfferStockActivationCodeResponse}
+   * @memberof StockResponse
+   */
+  activationCode?: OfferStockActivationCodeResponse | null
+  /**
+   * @type {string}
+   * @memberof StockResponse
+   */
+  beginningDatetime?: string | null
+  /**
+   * @type {string}
+   * @memberof StockResponse
+   */
+  bookingLimitDatetime?: string | null
+  /**
+   * @type {string}
+   * @memberof StockResponse
+   */
+  cancellationLimitDatetime?: string | null
+  /**
+   * @type {number}
+   * @memberof StockResponse
+   */
+  id: number
+  /**
+   * @type {boolean}
+   * @memberof StockResponse
+   */
+  isBookable: boolean
+  /**
+   * @type {boolean}
+   * @memberof StockResponse
+   */
+  isExpired: boolean
+  /**
+   * @type {boolean}
+   * @memberof StockResponse
+   */
+  isForbiddenToUnderage: boolean
+  /**
+   * @type {boolean}
+   * @memberof StockResponse
+   */
+  isSoldOut: boolean
+  /**
+   * @type {number}
+   * @memberof StockResponse
+   */
+  price: number
+  /**
+   * @type {strins}
+   * @memberof StockResponse
+   */
+  priceCategoryLabel?: string | null
+  /**
+   * @type {numbes}
+   * @memberof StockResponse
+   */
+  remainingQuantity?: number | null
+  /**
+   * @type {ScreeningFeatures}
+   * @memberof StockResponse
+   */
+  screeningFeatures?: ScreeningFeatures | null
+}
+
+/**
+ * @export
+ * @interface SubcategoriesResponseModelv2
+ */
+export interface SubcategoriesResponseModelv2 {
+  /**
+   * @type {Array<GenreTypeModel>}
+   * @memberof SubcategoriesResponseModelv2
+   */
+  genreTypes: Array<GenreTypeModel>
+  /**
+   * @type {Array<HomepageLabelResponseModelv2>}
+   * @memberof SubcategoriesResponseModelv2
+   */
+  homepageLabels: Array<HomepageLabelResponseModelv2>
+  /**
+   * @type {Array<NativeCategoryResponseModelv2>}
+   * @memberof SubcategoriesResponseModelv2
+   */
+  nativeCategories: Array<NativeCategoryResponseModelv2>
+  /**
+   * @type {Array<SearchGroupResponseModelv2>}
+   * @memberof SubcategoriesResponseModelv2
+   */
+  searchGroups: Array<SearchGroupResponseModelv2>
+  /**
+   * @type {Array<SubcategoryResponseModelv2>}
+   * @memberof SubcategoriesResponseModelv2
+   */
+  subcategories: Array<SubcategoryResponseModelv2>
+}
+
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum SubcategoryIdEnum {
+  'ABO_BIBLIOTHEQUE' = 'ABO_BIBLIOTHEQUE',
+  'ABO_CONCERT' = 'ABO_CONCERT',
+  'ABO_JEU_VIDEO' = 'ABO_JEU_VIDEO',
+  'ABO_LIVRE_NUMERIQUE' = 'ABO_LIVRE_NUMERIQUE',
+  'ABO_LUDOTHEQUE' = 'ABO_LUDOTHEQUE',
+  'ABO_MEDIATHEQUE' = 'ABO_MEDIATHEQUE',
+  'ABO_PLATEFORME_MUSIQUE' = 'ABO_PLATEFORME_MUSIQUE',
+  'ABO_PLATEFORME_VIDEO' = 'ABO_PLATEFORME_VIDEO',
+  'ABO_PRATIQUE_ART' = 'ABO_PRATIQUE_ART',
+  'ABO_PRESSE_EN_LIGNE' = 'ABO_PRESSE_EN_LIGNE',
+  'ABO_SPECTACLE' = 'ABO_SPECTACLE',
+  'ACHAT_INSTRUMENT' = 'ACHAT_INSTRUMENT',
+  'ACTIVATION_EVENT' = 'ACTIVATION_EVENT',
+  'ACTIVATION_THING' = 'ACTIVATION_THING',
+  'APP_CULTURELLE' = 'APP_CULTURELLE',
+  'ATELIER_PRATIQUE_ART' = 'ATELIER_PRATIQUE_ART',
+  'AUTRE_SUPPORT_NUMERIQUE' = 'AUTRE_SUPPORT_NUMERIQUE',
+  'BON_ACHAT_INSTRUMENT' = 'BON_ACHAT_INSTRUMENT',
+  'CAPTATION_MUSIQUE' = 'CAPTATION_MUSIQUE',
+  'CARTE_CINE_ILLIMITE' = 'CARTE_CINE_ILLIMITE',
+  'CARTE_CINE_MULTISEANCES' = 'CARTE_CINE_MULTISEANCES',
+  'CARTE_JEUNES' = 'CARTE_JEUNES',
+  'CARTE_MUSEE' = 'CARTE_MUSEE',
+  'CINE_PLEIN_AIR' = 'CINE_PLEIN_AIR',
+  'CINE_VENTE_DISTANCE' = 'CINE_VENTE_DISTANCE',
+  'CONCERT' = 'CONCERT',
+  'CONCOURS' = 'CONCOURS',
+  'CONFERENCE' = 'CONFERENCE',
+  'DECOUVERTE_METIERS' = 'DECOUVERTE_METIERS',
+  'ESCAPE_GAME' = 'ESCAPE_GAME',
+  'EVENEMENT_CINE' = 'EVENEMENT_CINE',
+  'EVENEMENT_JEU' = 'EVENEMENT_JEU',
+  'EVENEMENT_MUSIQUE' = 'EVENEMENT_MUSIQUE',
+  'EVENEMENT_PATRIMOINE' = 'EVENEMENT_PATRIMOINE',
+  'FESTIVAL_ART_VISUEL' = 'FESTIVAL_ART_VISUEL',
+  'FESTIVAL_CINE' = 'FESTIVAL_CINE',
+  'FESTIVAL_LIVRE' = 'FESTIVAL_LIVRE',
+  'FESTIVAL_MUSIQUE' = 'FESTIVAL_MUSIQUE',
+  'FESTIVAL_SPECTACLE' = 'FESTIVAL_SPECTACLE',
+  'JEU_EN_LIGNE' = 'JEU_EN_LIGNE',
+  'JEU_SUPPORT_PHYSIQUE' = 'JEU_SUPPORT_PHYSIQUE',
+  'LIVESTREAM_EVENEMENT' = 'LIVESTREAM_EVENEMENT',
+  'LIVESTREAM_MUSIQUE' = 'LIVESTREAM_MUSIQUE',
+  'LIVESTREAM_PRATIQUE_ARTISTIQUE' = 'LIVESTREAM_PRATIQUE_ARTISTIQUE',
+  'LIVRE_AUDIO_PHYSIQUE' = 'LIVRE_AUDIO_PHYSIQUE',
+  'LIVRE_NUMERIQUE' = 'LIVRE_NUMERIQUE',
+  'LIVRE_PAPIER' = 'LIVRE_PAPIER',
+  'LOCATION_INSTRUMENT' = 'LOCATION_INSTRUMENT',
+  'MATERIEL_ART_CREATIF' = 'MATERIEL_ART_CREATIF',
+  'MUSEE_VENTE_DISTANCE' = 'MUSEE_VENTE_DISTANCE',
+  'OEUVRE_ART' = 'OEUVRE_ART',
+  'PARTITION' = 'PARTITION',
+  'PLATEFORME_PRATIQUE_ARTISTIQUE' = 'PLATEFORME_PRATIQUE_ARTISTIQUE',
+  'PRATIQUE_ART_VENTE_DISTANCE' = 'PRATIQUE_ART_VENTE_DISTANCE',
+  'PODCAST' = 'PODCAST',
+  'RENCONTRE_EN_LIGNE' = 'RENCONTRE_EN_LIGNE',
+  'RENCONTRE_JEU' = 'RENCONTRE_JEU',
+  'RENCONTRE' = 'RENCONTRE',
+  'SALON' = 'SALON',
+  'SEANCE_CINE' = 'SEANCE_CINE',
+  'SEANCE_ESSAI_PRATIQUE_ART' = 'SEANCE_ESSAI_PRATIQUE_ART',
+  'SPECTACLE_ENREGISTRE' = 'SPECTACLE_ENREGISTRE',
+  'SPECTACLE_REPRESENTATION' = 'SPECTACLE_REPRESENTATION',
+  'SPECTACLE_VENTE_DISTANCE' = 'SPECTACLE_VENTE_DISTANCE',
+  'SUPPORT_PHYSIQUE_FILM' = 'SUPPORT_PHYSIQUE_FILM',
+  'SUPPORT_PHYSIQUE_MUSIQUE_CD' = 'SUPPORT_PHYSIQUE_MUSIQUE_CD',
+  'SUPPORT_PHYSIQUE_MUSIQUE_VINYLE' = 'SUPPORT_PHYSIQUE_MUSIQUE_VINYLE',
+  'TELECHARGEMENT_LIVRE_AUDIO' = 'TELECHARGEMENT_LIVRE_AUDIO',
+  'TELECHARGEMENT_MUSIQUE' = 'TELECHARGEMENT_MUSIQUE',
+  'VISITE_GUIDEE' = 'VISITE_GUIDEE',
+  'VISITE_VIRTUELLE' = 'VISITE_VIRTUELLE',
+  'VISITE' = 'VISITE',
+  'VOD' = 'VOD',
+}
+
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum SubcategoryIdEnumv2 {
+  'ABO_BIBLIOTHEQUE' = 'ABO_BIBLIOTHEQUE',
+  'ABO_CONCERT' = 'ABO_CONCERT',
+  'ABO_JEU_VIDEO' = 'ABO_JEU_VIDEO',
+  'ABO_LIVRE_NUMERIQUE' = 'ABO_LIVRE_NUMERIQUE',
+  'ABO_LUDOTHEQUE' = 'ABO_LUDOTHEQUE',
+  'ABO_MEDIATHEQUE' = 'ABO_MEDIATHEQUE',
+  'ABO_PLATEFORME_MUSIQUE' = 'ABO_PLATEFORME_MUSIQUE',
+  'ABO_PLATEFORME_VIDEO' = 'ABO_PLATEFORME_VIDEO',
+  'ABO_PRATIQUE_ART' = 'ABO_PRATIQUE_ART',
+  'ABO_PRESSE_EN_LIGNE' = 'ABO_PRESSE_EN_LIGNE',
+  'ABO_SPECTACLE' = 'ABO_SPECTACLE',
+  'ACHAT_INSTRUMENT' = 'ACHAT_INSTRUMENT',
+  'ACTIVATION_EVENT' = 'ACTIVATION_EVENT',
+  'ACTIVATION_THING' = 'ACTIVATION_THING',
+  'APP_CULTURELLE' = 'APP_CULTURELLE',
+  'ATELIER_PRATIQUE_ART' = 'ATELIER_PRATIQUE_ART',
+  'AUTRE_SUPPORT_NUMERIQUE' = 'AUTRE_SUPPORT_NUMERIQUE',
+  'BON_ACHAT_INSTRUMENT' = 'BON_ACHAT_INSTRUMENT',
+  'CAPTATION_MUSIQUE' = 'CAPTATION_MUSIQUE',
+  'CARTE_CINE_ILLIMITE' = 'CARTE_CINE_ILLIMITE',
+  'CARTE_CINE_MULTISEANCES' = 'CARTE_CINE_MULTISEANCES',
+  'CARTE_JEUNES' = 'CARTE_JEUNES',
+  'CARTE_MUSEE' = 'CARTE_MUSEE',
+  'CINE_PLEIN_AIR' = 'CINE_PLEIN_AIR',
+  'CINE_VENTE_DISTANCE' = 'CINE_VENTE_DISTANCE',
+  'CONCERT' = 'CONCERT',
+  'CONCOURS' = 'CONCOURS',
+  'CONFERENCE' = 'CONFERENCE',
+  'DECOUVERTE_METIERS' = 'DECOUVERTE_METIERS',
+  'ESCAPE_GAME' = 'ESCAPE_GAME',
+  'EVENEMENT_CINE' = 'EVENEMENT_CINE',
+  'EVENEMENT_JEU' = 'EVENEMENT_JEU',
+  'EVENEMENT_MUSIQUE' = 'EVENEMENT_MUSIQUE',
+  'EVENEMENT_PATRIMOINE' = 'EVENEMENT_PATRIMOINE',
+  'FESTIVAL_ART_VISUEL' = 'FESTIVAL_ART_VISUEL',
+  'FESTIVAL_CINE' = 'FESTIVAL_CINE',
+  'FESTIVAL_LIVRE' = 'FESTIVAL_LIVRE',
+  'FESTIVAL_MUSIQUE' = 'FESTIVAL_MUSIQUE',
+  'FESTIVAL_SPECTACLE' = 'FESTIVAL_SPECTACLE',
+  'JEU_EN_LIGNE' = 'JEU_EN_LIGNE',
+  'JEU_SUPPORT_PHYSIQUE' = 'JEU_SUPPORT_PHYSIQUE',
+  'LIVESTREAM_EVENEMENT' = 'LIVESTREAM_EVENEMENT',
+  'LIVESTREAM_MUSIQUE' = 'LIVESTREAM_MUSIQUE',
+  'LIVESTREAM_PRATIQUE_ARTISTIQUE' = 'LIVESTREAM_PRATIQUE_ARTISTIQUE',
+  'LIVRE_AUDIO_PHYSIQUE' = 'LIVRE_AUDIO_PHYSIQUE',
+  'LIVRE_NUMERIQUE' = 'LIVRE_NUMERIQUE',
+  'LIVRE_PAPIER' = 'LIVRE_PAPIER',
+  'LOCATION_INSTRUMENT' = 'LOCATION_INSTRUMENT',
+  'MATERIEL_ART_CREATIF' = 'MATERIEL_ART_CREATIF',
+  'MUSEE_VENTE_DISTANCE' = 'MUSEE_VENTE_DISTANCE',
+  'OEUVRE_ART' = 'OEUVRE_ART',
+  'PARTITION' = 'PARTITION',
+  'PLATEFORME_PRATIQUE_ARTISTIQUE' = 'PLATEFORME_PRATIQUE_ARTISTIQUE',
+  'PRATIQUE_ART_VENTE_DISTANCE' = 'PRATIQUE_ART_VENTE_DISTANCE',
+  'PODCAST' = 'PODCAST',
+  'RENCONTRE_EN_LIGNE' = 'RENCONTRE_EN_LIGNE',
+  'RENCONTRE_JEU' = 'RENCONTRE_JEU',
+  'RENCONTRE' = 'RENCONTRE',
+  'SALON' = 'SALON',
+  'SEANCE_CINE' = 'SEANCE_CINE',
+  'SEANCE_ESSAI_PRATIQUE_ART' = 'SEANCE_ESSAI_PRATIQUE_ART',
+  'SPECTACLE_ENREGISTRE' = 'SPECTACLE_ENREGISTRE',
+  'SPECTACLE_REPRESENTATION' = 'SPECTACLE_REPRESENTATION',
+  'SPECTACLE_VENTE_DISTANCE' = 'SPECTACLE_VENTE_DISTANCE',
+  'SUPPORT_PHYSIQUE_FILM' = 'SUPPORT_PHYSIQUE_FILM',
+  'SUPPORT_PHYSIQUE_MUSIQUE_CD' = 'SUPPORT_PHYSIQUE_MUSIQUE_CD',
+  'SUPPORT_PHYSIQUE_MUSIQUE_VINYLE' = 'SUPPORT_PHYSIQUE_MUSIQUE_VINYLE',
+  'TELECHARGEMENT_LIVRE_AUDIO' = 'TELECHARGEMENT_LIVRE_AUDIO',
+  'TELECHARGEMENT_MUSIQUE' = 'TELECHARGEMENT_MUSIQUE',
+  'VISITE_GUIDEE' = 'VISITE_GUIDEE',
+  'VISITE_VIRTUELLE' = 'VISITE_VIRTUELLE',
+  'VISITE' = 'VISITE',
+  'VOD' = 'VOD',
+}
+
+/**
+ * @export
+ * @interface SubcategoryResponseModelv2
+ */
+export interface SubcategoryResponseModelv2 {
+  /**
+   * @type {string}
+   * @memberof SubcategoryResponseModelv2
+   */
+  appLabel: string
+  /**
+   * @type {CategoryIdEnum}
+   * @memberof SubcategoryResponseModelv2
+   */
+  categoryId: CategoryIdEnum
+  /**
+   * @type {HomepageLabelNameEnumv2}
+   * @memberof SubcategoryResponseModelv2
+   */
+  homepageLabelName: HomepageLabelNameEnumv2
+  /**
+   * @type {SubcategoryIdEnumv2}
+   * @memberof SubcategoryResponseModelv2
+   */
+  id: SubcategoryIdEnumv2
+  /**
+   * @type {boolean}
+   * @memberof SubcategoryResponseModelv2
+   */
+  isEvent: boolean
+  /**
+   * @type {NativeCategoryIdEnumv2}
+   * @memberof SubcategoryResponseModelv2
+   */
+  nativeCategoryId: NativeCategoryIdEnumv2
+  /**
+   * @type {OnlineOfflinePlatformChoicesEnum}
+   * @memberof SubcategoryResponseModelv2
+   */
+  onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum
+  /**
+   * @type {SearchGroupNameEnumv2}
+   * @memberof SubcategoryResponseModelv2
+   */
+  searchGroupName: SearchGroupNameEnumv2
+}
+
+/**
+ * @export
+ * @interface SubscriptionMessageV2
+ */
+export interface SubscriptionMessageV2 {
+  /**
+   * @type {CallToActionMessageV2}
+   * @memberof SubscriptionMessageV2
+   */
+  callToAction?: CallToActionMessageV2 | null
+  /**
+   * @type {string}
+   * @memberof SubscriptionMessageV2
+   */
+  messageSummary?: string | null
+  /**
+   * @type {PopOverIcon}
+   * @memberof SubscriptionMessageV2
+   */
+  popOverIcon?: PopOverIcon | null
+  /**
+   * @type {string}
+   * @memberof SubscriptionMessageV2
+   */
+  updatedAt?: string | null
+  /**
+   * @type {string}
+   * @memberof SubscriptionMessageV2
+   */
+  userMessage: string
+}
+
+/**
+ * @export
+ * @interface SubscriptionMessageV3
+ */
+export interface SubscriptionMessageV3 {
+  /**
+   * @type {CallToActionMessageV3}
+   * @memberof SubscriptionMessageV3
+   */
+  callToAction?: CallToActionMessageV3 | null
+  /**
+   * @type {string}
+   * @memberof SubscriptionMessageV3
+   */
+  messageSummary?: string | null
+  /**
+   * @type {PopOverIcon}
+   * @memberof SubscriptionMessageV3
+   */
+  popOverIcon?: PopOverIcon | null
+  /**
+   * @type {string}
+   * @memberof SubscriptionMessageV3
+   */
+  updatedAt?: string | null
+  /**
+   * @type {string}
+   * @memberof SubscriptionMessageV3
+   */
+  userMessage: string
+}
+
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum SubscriptionStatus {
+  'has_to_complete_subscription' = 'has_to_complete_subscription',
+  'has_subscription_pending' = 'has_subscription_pending',
+  'has_subscription_issues' = 'has_subscription_issues',
+}
+
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum SubscriptionStep {
+  'email-validation' = 'email-validation',
+  'maintenance' = 'maintenance',
+  'phone-validation' = 'phone-validation',
+  'profile-completion' = 'profile-completion',
+  'identity-check' = 'identity-check',
+  'honor-statement' = 'honor-statement',
+}
+
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum SubscriptionStepCompletionState {
+  'completed' = 'completed',
+  'current' = 'current',
+  'disabled' = 'disabled',
+  'retry' = 'retry',
+}
+
+/**
+ * @export
+ * @interface SubscriptionStepDetailsResponseV2
+ */
+export interface SubscriptionStepDetailsResponseV2 {
+  /**
+   * @type {SubscriptionStepCompletionState}
+   * @memberof SubscriptionStepDetailsResponseV2
+   */
+  completionState: SubscriptionStepCompletionState
+  /**
+   * @type {SubscriptionStep}
+   * @memberof SubscriptionStepDetailsResponseV2
+   */
+  name: SubscriptionStep
+  /**
+   * @type {string}
+   * @memberof SubscriptionStepDetailsResponseV2
+   */
+  subtitle?: string | null
+  /**
+   * @type {SubscriptionStepTitle}
+   * @memberof SubscriptionStepDetailsResponseV2
+   */
+  title: SubscriptionStepTitle
+}
+
+/**
+ * @export
+ * @interface SubscriptionStepDetailsResponseV3
+ */
+export interface SubscriptionStepDetailsResponseV3 {
+  /**
+   * @type {SubscriptionStepCompletionState}
+   * @memberof SubscriptionStepDetailsResponseV3
+   */
+  completionState: SubscriptionStepCompletionState
+  /**
+   * @type {SubscriptionStep}
+   * @memberof SubscriptionStepDetailsResponseV3
+   */
+  name: SubscriptionStep
+  /**
+   * @type {string}
+   * @memberof SubscriptionStepDetailsResponseV3
+   */
+  subtitle?: string | null
+  /**
+   * @type {SubscriptionStepTitle}
+   * @memberof SubscriptionStepDetailsResponseV3
+   */
+  title: SubscriptionStepTitle
+}
+
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum SubscriptionStepTitle {
+  'Numéro de téléphone' = 'Numéro de téléphone',
+  'Profil' = 'Profil',
+  'Identification' = 'Identification',
+  'Confirmation' = 'Confirmation',
+}
+
+/**
+ * @export
+ * @interface SubscriptionStepperResponseV2
+ */
+export interface SubscriptionStepperResponseV2 {
+  /**
+   * @type {Array<IdentityCheckMethod>}
+   * @memberof SubscriptionStepperResponseV2
+   */
+  allowedIdentityCheckMethods: Array<IdentityCheckMethod>
+  /**
+   * @type {boolean}
+   * @memberof SubscriptionStepperResponseV2
+   */
+  hasIdentityCheckPending: boolean
+  /**
+   * @type {MaintenancePageType}
+   * @memberof SubscriptionStepperResponseV2
+   */
+  maintenancePageType?: MaintenancePageType | null
+  /**
+   * @type {SubscriptionStep}
+   * @memberof SubscriptionStepperResponseV2
+   */
+  nextSubscriptionStep?: SubscriptionStep | null
+  /**
+   * @type {SubscriptionMessageV2}
+   * @memberof SubscriptionStepperResponseV2
+   */
+  subscriptionMessage?: SubscriptionMessageV2 | null
+  /**
+   * @type {Array<SubscriptionStepDetailsResponseV2>}
+   * @memberof SubscriptionStepperResponseV2
+   */
+  subscriptionStepsToDisplay: Array<SubscriptionStepDetailsResponseV2>
+  /**
+   * @type {string}
+   * @memberof SubscriptionStepperResponseV2
+   */
+  subtitle?: string | null
+  /**
+   * @type {string}
+   * @memberof SubscriptionStepperResponseV2
+   */
+  title: string
+}
+
+/**
+ * @export
+ * @interface SubscriptionStepperResponseV3
+ */
+export interface SubscriptionStepperResponseV3 {
+  /**
+   * @type {Array<IdentityCheckMethod>}
+   * @memberof SubscriptionStepperResponseV3
+   */
+  allowedIdentityCheckMethods: Array<IdentityCheckMethod>
+  /**
+   * @type {boolean}
+   * @memberof SubscriptionStepperResponseV3
+   */
+  hasIdentityCheckPending: boolean
+  /**
+   * @type {MaintenancePageType}
+   * @memberof SubscriptionStepperResponseV3
+   */
+  maintenancePageType?: MaintenancePageType | null
+  /**
+   * @type {SubscriptionStep}
+   * @memberof SubscriptionStepperResponseV3
+   */
+  nextSubscriptionStep?: SubscriptionStep | null
+  /**
+   * @type {SubscriptionMessageV3}
+   * @memberof SubscriptionStepperResponseV3
+   */
+  subscriptionMessage?: SubscriptionMessageV3 | null
+  /**
+   * @type {Array<SubscriptionStepDetailsResponseV3>}
+   * @memberof SubscriptionStepperResponseV3
+   */
+  subscriptionStepsToDisplay: Array<SubscriptionStepDetailsResponseV3>
+  /**
+   * @type {string}
+   * @memberof SubscriptionStepperResponseV3
+   */
+  subtitle?: string | null
+  /**
+   * @type {string}
+   * @memberof SubscriptionStepperResponseV3
+   */
+  title: string
+}
+
+/**
+ * @export
+ * @interface SuspendAccountForSuspiciousLoginRequest
+ */
+export interface SuspendAccountForSuspiciousLoginRequest {
+  /**
+   * @type {string}
+   * @memberof SuspendAccountForSuspiciousLoginRequest
+   */
+  token: string
+}
+
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum TicketDisplayEnum {
+  'cinema_voucher' = 'cinema_voucher',
+  'email_sent' = 'email_sent',
+  'email_will_be_sent' = 'email_will_be_sent',
+  'external_ticket' = 'external_ticket',
+  'hidden_external_ticket' = 'hidden_external_ticket',
+  'no_ticket' = 'no_ticket',
+  'online_code' = 'online_code',
+  'ticket' = 'ticket',
+  'voucher' = 'voucher',
+}
+
+/**
+ * @export
+ * @interface TicketResponse
+ */
+export interface TicketResponse {
+  /**
+   * @type {ActivationCodeResponse}
+   * @memberof TicketResponse
+   */
+  activationCode?: ActivationCodeResponse | null
+  /**
+   * @type {TicketDisplayEnum}
+   * @memberof TicketResponse
+   */
+  display: TicketDisplayEnum
+  /**
+   * @type {ExternalBookingResponseV2}
+   * @memberof TicketResponse
+   */
+  externalBooking?: ExternalBookingResponseV2 | null
+  /**
+   * @type {TokenResponse}
+   * @memberof TicketResponse
+   */
+  token?: TokenResponse | null
+  /**
+   * @type {VoucherResponse}
+   * @memberof TicketResponse
+   */
+  voucher?: VoucherResponse | null
+  /**
+   * @type {WithdrawalResponse}
+   * @memberof TicketResponse
+   */
+  withdrawal: WithdrawalResponse
+}
+
+/**
+ * @export
+ * @interface TokenResponse
+ */
+export interface TokenResponse {
+  /**
+   * @type {string}
+   * @memberof TokenResponse
+   */
+  data?: string | null
+}
+
+/**
+ * @export
+ * @interface TopArtistsPlaylistResponse
+ */
+export interface TopArtistsPlaylistResponse {
+  /**
+   * @type {Array<ArtistItem>}
+   * @memberof TopArtistsPlaylistResponse
+   */
+  artists: Array<ArtistItem>
+}
+
+/**
+ * @export
+ * @interface UpdateEmailTokenExpiration
+ */
+export interface UpdateEmailTokenExpiration {
+  /**
+   * @type {string}
+   * @memberof UpdateEmailTokenExpiration
+   */
+  expiration?: string | null
+}
+
+/**
+ * @export
+ * @interface UserProfilePatchRequest
+ */
+export interface UserProfilePatchRequest {
+  /**
+   * @type {ActivityIdEnum}
+   * @memberof UserProfilePatchRequest
+   */
+  activityId?: ActivityIdEnum | null
+  /**
+   * @type {string}
+   * @memberof UserProfilePatchRequest
+   */
+  address?: string | null
+  /**
+   * @type {string}
+   * @memberof UserProfilePatchRequest
+   */
+  city?: string | null
+  /**
+   * @type {string}
+   * @memberof UserProfilePatchRequest
+   */
+  origin?: string | null
+  /**
+   * @type {string}
+   * @memberof UserProfilePatchRequest
+   */
+  phoneNumber?: string | null
+  /**
+   * @type {string}
+   * @memberof UserProfilePatchRequest
+   */
+  postalCode?: string | null
+  /**
+   * @type {NotificationSubscriptions}
+   * @memberof UserProfilePatchRequest
+   */
+  subscriptions?: NotificationSubscriptions | null
+}
+
+/**
+ * @export
+ * @interface UserProfileResponse
+ */
+export interface UserProfileResponse {
+  /**
+   * @type {Array<AchievementResponse>}
+   * @memberof UserProfileResponse
+   */
+  achievements: Array<AchievementResponse>
+  /**
+   * @type {ActivityIdEnum}
+   * @memberof UserProfileResponse
+   */
+  activityId?: ActivityIdEnum | null
+  /**
+   * @type {string}
+   * @memberof UserProfileResponse
+   */
+  birthDate?: string | null
+  /**
+   * @type {{ [key: string]: number; }}
+   * @memberof UserProfileResponse
+   */
+  bookedOffers: { [key: string]: number; }
+  /**
+   * @type {string}
+   * @memberof UserProfileResponse
+   */
+  city?: string | null
+  /**
+   * @type {CurrencyEnum}
+   * @memberof UserProfileResponse
+   */
+  currency: CurrencyEnum
+  /**
+   * @type {string}
+   * @memberof UserProfileResponse
+   */
+  depositActivationDate?: string | null
+  /**
+   * @type {string}
+   * @memberof UserProfileResponse
+   */
+  depositExpirationDate?: string | null
+  /**
+   * @type {DepositType}
+   * @memberof UserProfileResponse
+   */
+  depositType?: DepositType | null
+  /**
+   * @type {DisabilityBonificationStatus}
+   * @memberof UserProfileResponse
+   */
+  disabilityBonificationStatus?: DisabilityBonificationStatus | null
+  /**
+   * @type {DomainsCredit}
+   * @memberof UserProfileResponse
+   */
+  domainsCredit?: DomainsCredit | null
+  /**
+   * @type {EligibilityType}
+   * @memberof UserProfileResponse
+   */
+  eligibility?: EligibilityType | null
+  /**
+   * @type {string}
+   * @memberof UserProfileResponse
+   */
+  eligibilityEndDatetime?: string | null
+  /**
+   * @type {string}
+   * @memberof UserProfileResponse
+   */
+  eligibilityStartDatetime?: string | null
+  /**
+   * @type {string}
+   * @memberof UserProfileResponse
+   */
+  email: string
+  /**
+   * @type {string}
+   * @memberof UserProfileResponse
+   */
+  firstDepositActivationDate?: string | null
+  /**
+   * @type {string}
+   * @memberof UserProfileResponse
+   */
+  firstName?: string | null
+  /**
+   * @type {boolean}
+   * @memberof UserProfileResponse
+   */
+  hasPassword: boolean
+  /**
+   * @type {boolean}
+   * @memberof UserProfileResponse
+   */
+  hasProfileExpired: boolean
+  /**
+   * @type {number}
+   * @memberof UserProfileResponse
+   */
+  id: number
+  /**
+   * @type {boolean}
+   * @memberof UserProfileResponse
+   */
+  isBeneficiary: boolean
+  /**
+   * @type {boolean}
+   * @memberof UserProfileResponse
+   */
+  isEligibleForBeneficiaryUpgrade: boolean
+  /**
+   * @type {string}
+   * @memberof UserProfileResponse
+   */
+  lastName?: string | null
+  /**
+   * @type {boolean}
+   * @memberof UserProfileResponse
+   */
+  needsToFillCulturalSurvey: boolean
+  /**
+   * @type {string}
+   * @memberof UserProfileResponse
+   */
+  phoneNumber?: string | null
+  /**
+   * @type {string}
+   * @memberof UserProfileResponse
+   */
+  postalCode?: string | null
+  /**
+   * @type {QFBonificationStatus}
+   * @memberof UserProfileResponse
+   */
+  qfBonificationStatus?: QFBonificationStatus | null
+  /**
+   * @type {number}
+   * @memberof UserProfileResponse
+   */
+  recreditAmountToShow?: number | null
+  /**
+   * @type {RecreditType}
+   * @memberof UserProfileResponse
+   */
+  recreditTypeToShow?: RecreditType | null
+  /**
+   * @type {number}
+   * @memberof UserProfileResponse
+   */
+  remainingBonusAttempts?: number | null
+  /**
+   * @type {boolean}
+   * @memberof UserProfileResponse
+   */
+  requiresIdCheck: boolean
+  /**
+   * @type {Array<UserRole>}
+   * @memberof UserProfileResponse
+   */
+  roles: Array<UserRole>
+  /**
+   * @type {boolean}
+   * @memberof UserProfileResponse
+   */
+  showEligibleCard: boolean
+  /**
+   * @type {YoungStatusResponse}
+   * @memberof UserProfileResponse
+   */
+  status: YoungStatusResponse
+  /**
+   * @type {string}
+   * @memberof UserProfileResponse
+   */
+  street?: string | null
+  /**
+   * @type {SubscriptionMessage}
+   * @memberof UserProfileResponse
+   */
+  subscriptionMessage?: SubscriptionMessageV2 | null
+  /**
+   * @type {NotificationSubscriptions}
+   * @memberof UserProfileResponse
+   */
+  subscriptions: NotificationSubscriptions
+}
+
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum UserRole {
+  'ADMIN' = 'ADMIN',
+  'ANONYMIZED' = 'ANONYMIZED',
+  'BENEFICIARY' = 'BENEFICIARY',
+  'UNDERAGE_BENEFICIARY' = 'UNDERAGE_BENEFICIARY',
+  'FREE_BENEFICIARY' = 'FREE_BENEFICIARY',
+  'PRO' = 'PRO',
+  'NON_ATTACHED_PRO' = 'NON_ATTACHED_PRO',
+  'TEST' = 'TEST',
+}
+
+/**
+ * @export
+ * @interface ValidateEmailRequest
+ */
+export interface ValidateEmailRequest {
+  /**
+   * @type {DeviceInfoV2}
+   * @memberof ValidateEmailRequest
+   */
+  deviceInfo?: DeviceInfoV2 | null
+  /**
+   * @type {string}
+   * @memberof ValidateEmailRequest
+   */
+  emailValidationToken: string
+}
+
+/**
+ * @export
+ * @interface ValidateEmailResponse
+ */
+export interface ValidateEmailResponse {
+  /**
+   * @type {string}
+   * @memberof ValidateEmailResponse
+   */
+  accessToken: string
+  /**
+   * @type {string}
+   * @memberof ValidateEmailResponse
+   */
+  refreshToken: string
+}
+
+/**
+ * @export
+ * @interface ValidationError
+ */
+export interface ValidationError extends Array<ValidationErrorElement> {
+}
+
+/**
+ * @export
+ * @interface ValidationErrorElement
+ */
+export interface ValidationErrorElement {
+  /**
+   * @type {any}
+   * @memberof ValidationErrorElement
+   */
+  ctx?: any
+  /**
+   * @type {Array<string>}
+   * @memberof ValidationErrorElement
+   */
+  loc: Array<string>
+  /**
+   * @type {string}
+   * @memberof ValidationErrorElement
+   */
+  msg: string
+  /**
+   * @type {string}
+   * @memberof ValidationErrorElement
+   */
+  type: string
+}
+
+/**
+ * @export
+ * @interface VenueContact
+ */
+export interface VenueContact {
+  /**
+   * @type {string | null}
+   * @memberof VenueContact
+   */
+  email?: string | null
+  /**
+   * @type {string | null}
+   * @memberof VenueContact
+   */
+  phoneNumber?: string | null
+  /**
+   * @type { [key: string]: string; } | null}
+   * @memberof VenueContact
+   */
+  socialMedias?: { [key: string]: string; } | null
+  /**
+   * @type {string | null}
+   * @memberof VenueContact
+   */
+  website?: string | null
+}
+
+/**
+ * @export
+ * @interface VenueMovieCalendarResponse
+ */
+export interface VenueMovieCalendarResponse {
+  /**
+   * @type {Array<DayMovieScreenings>}
+   * @memberof VenueMovieCalendarResponse
+   */
+  calendar: Array<DayMovieScreenings>
+}
+
+/**
+ * @export
+ * @interface VenueResponse
+ */
+export interface VenueResponse {
+  /**
+   * @type {AccessibilityData}
+   * @memberof VenueResponse
+   */
+  accessibilityData: AccessibilityData
+  /**
+   * @type {Activity}
+   * @memberof VenueResponse
+   */
+  activity: Activity | null
+  /**
+   * @type {string}
+   * @memberof VenueResponse
+   */
+  bannerCredit?: string | null
+  /**
+   * @type {boolean}
+   * @memberof VenueResponse
+   */
+  bannerIsFromGoogle?: boolean
+  /**
+   * @type {string}
+   * @memberof VenueResponse
+   */
+  bannerUrl?: string | null
+  /**
+   * @type {string}
+   * @memberof VenueResponse
+   */
+  city?: string | null
+  /**
+   * @type {VenueContact}
+   * @memberof VenueResponse
+   */
+  contact?: VenueContact | null
+  /**
+   * @type {Array<CulturalDomainItem>}
+   * @memberof VenueResponse
+   */
+  culturalDomains?: Array<CulturalDomainItem> | null
+  /**
+   * @type {string}
+   * @memberof VenueResponse
+   */
+  description?: string | null
+  /**
+   * @type {AccessibilityData}
+   * @memberof VenueResponse
+   */
+  externalAccessibilityData?: AccessibilityData | null
+  /**
+   * @type {string}
+   * @memberof VenueResponse
+   */
+  externalAccessibilityId?: string | null
+  /**
+   * @type {string}
+   * @memberof VenueResponse
+   */
+  externalAccessibilityUrl?: string | null
+  /**
+   * @type {number}
+   * @memberof VenueResponse
+   */
+  id: number
+  /**
+   * @type {boolean}
+   * @memberof VenueResponse
+   */
+  isOpenToPublic: boolean
+  /**
+   * @type {boolean}
+   * @memberof VenueResponse
+   */
+  isPermanent: boolean
+  /**
+   * @type {number}
+   * @memberof VenueResponse
+   */
+  latitude?: number | null
+  /**
+   * @type {number}
+   * @memberof VenueResponse
+   */
+  longitude?: number | null
+  /**
+   * @type {string}
+   * @memberof VenueResponse
+   */
+  name: string
+  /**
+   * @type {any | null}
+   * @memberof VenueResponse
+   */
+  openingHours?: any | null
+  /**
+   * @type {string}
+   * @memberof VenueResponse
+   */
+  postalCode?: string | null
+  /**
+   * @type {string}
+   * @memberof VenueResponse
+   */
+  street?: string | null
+  /**
+   * @type {string}
+   * @memberof VenueResponse
+   */
+  timezone: string
+  /**
+   * @type {string}
+   * @memberof VenueResponse
+   */
+  volunteeringUrl?: string | null
+  /**
+   * @type {string}
+   * @memberof VenueResponse
+   */
+  withdrawalDetails?: string | null
+}
+
+/**
+ * @export
+ * @interface VenueScreenings
+ */
+export interface VenueScreenings {
+  /**
+   * @type {string}
+   * @memberof VenueScreenings
+   */
+  address: string
+  /**
+   * @type {Array<Screening>}
+   * @memberof VenueScreenings
+   */
+  dayScreenings: Array<Screening>
+  /**
+   * @type {number}
+   * @memberof VenueScreenings
+   */
+  distance: number
+  /**
+   * @type {string}
+   * @memberof VenueScreenings
+   */
+  label: string
+  /**
+   * @type {Screening | ModelNull}
+   * @memberof VenueScreenings
+   */
+  nextScreening: Screening | null
+  /**
+   * @type {string | ModelNull}
+   * @memberof VenueScreenings
+   */
+  thumbUrl: string | null
+  /**
+   * @type {number}
+   * @memberof VenueScreenings
+   */
+  venueId: number
+}
+
+/**
+ * @export
+ * @interface VisualDisability
+ */
+export interface VisualDisability {
+  /**
+   * @type {Array<string>}
+   * @memberof VisualDisability
+   */
+  audioDescription: Array<string>
+  /**
+   * @type {string}
+   * @memberof VisualDisability
+   */
+  soundBeacon: string
+}
+
+/**
+ * @export
+ * @interface VoucherResponse
+ */
+export interface VoucherResponse {
+  /**
+   * @type {string}
+   * @memberof VoucherResponse
+   */
+  data?: string | null
+}
+
+/**
+ * @export
+ * @interface WithdrawalResponse
+ */
+export interface WithdrawalResponse {
+  /**
+   * @type {number}
+   * @memberof WithdrawalResponse
+   */
+  delay?: number | null
+  /**
+   * @type {string}
+   * @memberof WithdrawalResponse
+   */
+  details?: string | null
+  /**
+   * @type {WithdrawalTypeEnum}
+   * @memberof WithdrawalResponse
+   */
+  type?: WithdrawalTypeEnum | null
+}
+
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum WithdrawalTypeEnum {
+  'by_email' = 'by_email',
+  'in_app' = 'in_app',
+  'no_ticket' = 'no_ticket',
+  'on_site' = 'on_site',
+}
+
+/**
+ * @export
+ * @interface YoungStatusResponse
+ */
+export interface YoungStatusResponse {
+  /**
+   * @type {YoungStatusType}
+   * @memberof YoungStatusResponse
+   */
+  statusType: YoungStatusType
+  /**
+   * @type {SubscriptionStatus}
+   * @memberof YoungStatusResponse
+   */
+  subscriptionStatus?: SubscriptionStatus | null
+}
+
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum YoungStatusType {
+  'eligible' = 'eligible',
+  'non_eligible' = 'non_eligible',
+  'beneficiary' = 'beneficiary',
+  'ex_beneficiary' = 'ex_beneficiary',
+  'suspended' = 'suspended',
+}
+
+
+import type { EmptyResponse } from "libs/fetch"
+
+export interface LegacyApiSignatures {
+  deleteNativeV1MeFavoritesfavoriteId(favorite_id: number, options?: any): Promise<EmptyResponse>
+  deleteNativeV1MeRemindersreminderId(reminder_id: number, options?: any): Promise<EmptyResponse>
+  deleteNativeV2MeFavoritesArtistsfavoriteId(favorite_id: number, options?: any): Promise<EmptyResponse>
+  deleteNativeV2MeFavoritesOffersfavoriteId(favorite_id: number, options?: any): Promise<EmptyResponse>
+  deleteNativeV2MeFavoritesVenuesfavoriteId(favorite_id: number, options?: any): Promise<EmptyResponse>
+  getNativeV1AccountSuspendTokenValidationtoken(token: string, options?: any): Promise<EmptyResponse>
+  getNativeV1ArtistsartistId(artist_id: string, options?: any): Promise<ArtistResponse>
+  getNativeV1ArtistsartistIdSimilar(artist_id: string, options?: any): Promise<SimilarArtistsResponse>
+  getNativeV1Banner(isGeolocated?: boolean, options?: any): Promise<BannerResponse>
+  getNativeV1Countries(options?: any): Promise<InseeCountries>
+  getNativeV1CulturalSurveyQuestions(options?: any): Promise<CulturalSurveyQuestionsResponse>
+  getNativeV1EmailValidationRemainingResendsemail(email: string, options?: any): Promise<EmailValidationRemainingResendsResponse>
+  getNativeV1Me(options?: any): Promise<UserProfileResponse>
+  getNativeV1MeFavorites(options?: any): Promise<PaginatedFavoritesResponse>
+  getNativeV1MeReminders(options?: any): Promise<GetRemindersResponse>
+  getNativeV1MovieCalendar(latitude: number, longitude: number, allocineId?: string, visa?: string, aroundRadius?: number, from?: string, to?: string, options?: any): Promise<MovieCalendarResponse>
+  getNativeV1MovieCalendarMe(latitude: number, longitude: number, allocineId?: string, visa?: string, aroundRadius?: number, from?: string, to?: string, options?: any): Promise<MovieCalendarResponse>
+  getNativeV1OfferofferIdChronicles(offer_id: number, options?: any): Promise<OfferChronicles>
+  getNativeV1ProfileTokenExpiration(options?: any): Promise<UpdateEmailTokenExpiration>
+  getNativeV1RecommendationOfferPagePlaylistsofferId(offer_id: number, userId?: string, longitude?: number, latitude?: number, options?: any): Promise<OfferPagePlaylistResponse>
+  getNativeV1RecommendationTopArtistsPlaylistsearchGroupName(search_group_name: string, options?: any): Promise<TopArtistsPlaylistResponse>
+  getNativeV1Settings(options?: any): Promise<SettingsResponse>
+  getNativeV1SubcategoriesV2(options?: any): Promise<SubcategoriesResponseModelv2>
+  getNativeV1SubscriptionActivityTypes(options?: any): Promise<ActivityTypesResponse>
+  getNativeV1VenuevenueIdMovieCalendar(venue_id: number, from?: string, to?: string, options?: any): Promise<VenueMovieCalendarResponse>
+  getNativeV1VenuevenueIdMovieCalendarMe(venue_id: number, from?: string, to?: string, options?: any): Promise<VenueMovieCalendarResponse>
+  getNativeV2Bookings(options?: any): Promise<BookingsResponseV2>
+  getNativeV2BookingsbookingId(booking_id: number, options?: any): Promise<BookingResponse>
+  getNativeV2Bookingsstatus(status: string, options?: any): Promise<BookingsListResponseV2>
+  getNativeV2MeFavoritesArtists(options?: any): Promise<PaginatedResponseFavoriteArtistResponse>
+  getNativeV2MeFavoritesOffers(options?: any): Promise<PaginatedResponseFavoriteOfferResponseV2>
+  getNativeV2MeFavoritesVenues(options?: any): Promise<PaginatedResponseFavoriteVenueResponse>
+  getNativeV2OauthState(options?: any): Promise<OauthStateResponseV2>
+  getNativeV2ProfileEmailUpdateStatus(options?: any): Promise<EmailUpdateStatusResponse>
+  getNativeV2ReactionAvailable(options?: any): Promise<GetAvailableReactionsResponse>
+  getNativeV2SubscriptionStepper(options?: any): Promise<SubscriptionStepperResponseV2>
+  getNativeV2VenuevenueId(venue_id: number, options?: any): Promise<VenueResponse>
+  getNativeV3BookingsbookingId(booking_id: number, options?: any): Promise<BookingResponseV3>
+  getNativeV3OfferofferId(offer_id: number, options?: any): Promise<OfferResponse>
+  getNativeV3SubscriptionStepper(options?: any): Promise<SubscriptionStepperResponseV3>
+  patchNativeV1Profile(body: UserProfilePatchRequest, options?: any): Promise<UserProfileResponse>
+  postNativeV1Account(body: AccountRequest, options?: any): Promise<EmptyResponse>
+  postNativeV1AccountAnonymize(options?: any): Promise<EmptyResponse>
+  postNativeV1AccountSuspendForHackSuspicion(options?: any): Promise<EmptyResponse>
+  postNativeV1AccountSuspendForSuspiciousLogin(body: SuspendAccountForSuspiciousLoginRequest, options?: any): Promise<EmptyResponse>
+  postNativeV1AchievementsMarkAsSeen(body: MarkAchievementsAsSeenRequest, options?: any): Promise<AchievementsResponse>
+  postNativeV1Bookings(body: BookOfferRequest, options?: any): Promise<BookOfferResponse>
+  postNativeV1BookingsbookingIdCancel(booking_id: number, options?: any): Promise<EmptyResponse>
+  postNativeV1BookingsbookingIdToggleDisplay(body: BookingDisplayStatusRequest, booking_id: number, options?: any): Promise<EmptyResponse>
+  postNativeV1ChangePassword(body: ChangePasswordRequest, options?: any): Promise<EmptyResponse>
+  postNativeV1CookiesConsent(body: CookieConsentRequest, options?: any): Promise<EmptyResponse>
+  postNativeV1CulturalSurveyAnswers(body: CulturalSurveyAnswersRequest, options?: any): Promise<EmptyResponse>
+  postNativeV1Feedback(body: PostFeedbackBody, options?: any): Promise<EmptyResponse>
+  postNativeV1MeFavorites(body: FavoriteRequest, options?: any): Promise<FavoriteResponse>
+  postNativeV1MeReminders(body: PostReminderRequest, options?: any): Promise<ReminderResponse>
+  postNativeV1OauthssoProviderAccount(body: SSOAccountRequest, sso_provider: string, options?: any): Promise<SigninResponse>
+  postNativeV1ProfileEmailUpdateCancel(body: ChangeBeneficiaryEmailBody, options?: any): Promise<EmptyResponse>
+  postNativeV1RecommendationPlaylist(body: PlaylistRequestBody, modelEndpoint?: string, longitude?: number, latitude?: number, options?: any): Promise<PlaylistResponse>
+  postNativeV1RefreshAccessToken(options?: any): Promise<RefreshResponse>
+  postNativeV1RequestPasswordReset(body: RequestPasswordResetRequest, options?: any): Promise<EmptyResponse>
+  postNativeV1ResendEmailValidation(body: ResendEmailValidationRequest, options?: any): Promise<EmptyResponse>
+  postNativeV1ResetPassword(body: ResetPasswordRequest, options?: any): Promise<ResetPasswordResponse>
+  postNativeV1ResetRecreditAmountToShow(options?: any): Promise<UserProfileResponse>
+  postNativeV1SendOfferLinkByPushofferId(offer_id: number, options?: any): Promise<EmptyResponse>
+  postNativeV1SendOfferWebappLinkByEmailofferId(offer_id: number, options?: any): Promise<EmptyResponse>
+  postNativeV1Signout(options?: any): Promise<SignoutResponse>
+  postNativeV1SubscriptionBonusDisability(body: DisabilityBonusCreditRequest, options?: any): Promise<EmptyResponse>
+  postNativeV1SubscriptionBonusQuotientFamilial(body: QuotientFamilialBonusCreditRequest, options?: any): Promise<EmptyResponse>
+  postNativeV1SubscriptionHonorStatement(options?: any): Promise<EmptyResponse>
+  postNativeV1SubscriptionProfile(body: ProfileUpdateRequest, options?: any): Promise<EmptyResponse>
+  postNativeV1UbbleIdentification(body: IdentificationSessionRequest, options?: any): Promise<IdentificationSessionResponse>
+  postNativeV1ValidateEmail(body: ValidateEmailRequest, options?: any): Promise<ValidateEmailResponse>
+  postNativeV2MeFavoritesArtists(body: FavoriteArtistRequest, options?: any): Promise<FavoriteArtistResponse>
+  postNativeV2MeFavoritesOffers(body: FavoriteRequest, options?: any): Promise<FavoriteOfferResponseV2>
+  postNativeV2MeFavoritesVenues(body: FavoriteVenueRequest, options?: any): Promise<FavoriteVenueResponse>
+  postNativeV2OauthssoProviderAuthorize(body: OAuthSigninRequestV2, sso_provider: string, options?: any): Promise<SigninResponseV2>
+  postNativeV2OffersStocks(body: OffersStocksRequest, options?: any): Promise<OffersStocksResponseV2>
+  postNativeV2ProfileEmailUpdateConfirm(body: ChangeBeneficiaryEmailBody, options?: any): Promise<EmailChangeConfirmationResponse>
+  postNativeV2ProfileEmailUpdateNewEmail(body: NewEmailSelectionRequest, options?: any): Promise<EmptyResponse>
+  postNativeV2ProfileEmailUpdateNewPassword(body: ResetPasswordRequest, options?: any): Promise<EmptyResponse>
+  postNativeV2ProfileUpdateEmail(options?: any): Promise<EmptyResponse>
+  postNativeV2Reaction(body: PostReactionRequest, options?: any): Promise<EmptyResponse>
+  postNativeV2RefreshAccessToken(body: RefreshRequestV2, options?: any): Promise<RefreshResponseV2>
+  postNativeV2Signin(body: SigninRequestV2, options?: any): Promise<SigninResponseV2>
+  postNativeV3OffersStocks(body: OffersStocksRequest, options?: any): Promise<OffersStocksResponse>
+  putNativeV1ProfileEmailUpdateValidate(body: ChangeBeneficiaryEmailBody, options?: any): Promise<ChangeBeneficiaryEmailResponse>
+}

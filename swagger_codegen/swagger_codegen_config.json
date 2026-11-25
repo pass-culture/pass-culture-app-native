@@ -1,6 +1,0 @@
-{
-  "modelPropertyNaming": "original",
-  "typeMappings": {
-    "DateTime": "string"
-  }
-}
