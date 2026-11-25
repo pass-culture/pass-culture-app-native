@@ -204,6 +204,19 @@ describe('FavoritesResults component', () => {
     expect(screen.queryByText('Spectacle une seule date')).not.toBeOnTheScreen()
   })
 
+  it('should display not connected view and disable queries when user is not logged in', async () => {
+    mockIsLoggedIn = false
+    mockUser = undefined
+
+    renderFavoritesResults()
+
+    expect(await screen.findByText('Identifie-toi pour retrouver tes favoris')).toBeOnTheScreen()
+    expect(screen.queryByText('Trier')).not.toBeOnTheScreen()
+    expect(mockUseOfferFavorites).toHaveBeenCalledWith({ enabled: false })
+    expect(mockUseVenueFavorites).toHaveBeenCalledWith({ enabled: false })
+    expect(mockUseArtistFavorites).toHaveBeenCalledWith({ enabled: false })
+  })
+
   it('should display tabs panel when wipFavoritesHub FF activated', async () => {
     setFeatureFlags([RemoteStoreFeatureFlags.WIP_FAVORITES_HUB])
 
@@ -223,6 +236,27 @@ describe('FavoritesResults component', () => {
   describe('with wipFavoritesHub FF activated', () => {
     beforeEach(() => {
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_FAVORITES_HUB])
+    })
+
+    it('should display not connected view in every tab when user is not logged in', async () => {
+      mockIsLoggedIn = false
+      mockUser = undefined
+
+      renderFavoritesResults()
+
+      expect(await screen.findByText('Identifie-toi pour retrouver tes favoris')).toBeOnTheScreen()
+      expect(screen.queryByText('Trier')).not.toBeOnTheScreen()
+
+      await user.press(screen.getByText('Lieux'))
+
+      expect(await screen.findByText('Identifie-toi pour retrouver tes favoris')).toBeOnTheScreen()
+
+      await user.press(screen.getByText('Artistes'))
+
+      expect(await screen.findByText('Identifie-toi pour retrouver tes favoris')).toBeOnTheScreen()
+      expect(mockUseOfferFavorites).toHaveBeenCalledWith({ enabled: false })
+      expect(mockUseVenueFavorites).toHaveBeenCalledWith({ enabled: false })
+      expect(mockUseArtistFavorites).toHaveBeenCalledWith({ enabled: false })
     })
 
     it('should display venue favorites in venues tab', async () => {

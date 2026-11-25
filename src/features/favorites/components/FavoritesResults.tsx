@@ -16,6 +16,7 @@ import { FavoriteOffer } from 'features/favorites/components/FavoriteOffer'
 import { FavoritesList } from 'features/favorites/components/FavoritesList'
 import { FavoritesResultsPlaceholder } from 'features/favorites/components/FavoritesResultsPlaceholder'
 import { FavoriteVenue } from 'features/favorites/components/FavoriteVenue'
+import { NotConnectedFavorites } from 'features/favorites/components/NotConnectedFavorites'
 import { SortButton } from 'features/favorites/components/SortButton'
 import { FAVORITE_TYPE_BY_TAB } from 'features/favorites/constants'
 import { useFavoritesState } from 'features/favorites/context/FavoritesWrapper'
@@ -43,24 +44,26 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
   const { sortBy } = useFavoritesState()
   const { geolocation: position } = useLocationConfiguration(LocationMode.AROUND_ME)
   const enableFavoritesHub = useFeatureFlag(RemoteStoreFeatureFlags.WIP_FAVORITES_HUB)
+  const { isLoggedIn, user } = useAuthContext()
+
   const {
     data: offerFavorites,
     isLoading: isLoadingOfferFavorites,
     isFetching: isFetchingOfferFavorites,
     refetch: refetchOfferFavorites,
-  } = useOfferFavoritesQuery()
+  } = useOfferFavoritesQuery({ enabled: isLoggedIn })
   const {
     data: artistFavorites,
     isLoading: isLoadingArtistFavorites,
     isFetching: isFetchingArtistFavorites,
     refetch: refetchArtistFavorites,
-  } = useArtistFavoritesQuery({ enabled: enableFavoritesHub })
+  } = useArtistFavoritesQuery({ enabled: isLoggedIn && enableFavoritesHub })
   const {
     data: venueFavorites,
     isLoading: isLoadingVenueFavorites,
     isFetching: isFetchingVenueFavorites,
     refetch: refetchVenueFavorites,
-  } = useVenueFavoritesQuery({ enabled: enableFavoritesHub })
+  } = useVenueFavoritesQuery({ enabled: isLoggedIn && enableFavoritesHub })
 
   const showOffersSkeleton = useIsFalseWithDelay(isLoadingOfferFavorites, ANIMATION_DURATION)
   const isOffersRefreshing = useIsFalseWithDelay(isFetchingOfferFavorites, ANIMATION_DURATION)
@@ -74,7 +77,6 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
     () => applySortBy(offerFavorites?.favorites ?? [], sortBy, position),
     [offerFavorites?.favorites, sortBy, position]
   )
-  const { user, isLoggedIn } = useAuthContext()
 
   const credit = getAvailableCredit(user)
 
@@ -115,10 +117,15 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
     [selectedTab]
   )
 
+  const renderTabPanel = (isLoading: boolean, content: React.ReactElement) => {
+    if (!isLoggedIn) return <NotConnectedFavorites />
+    if (isLoading) return <FavoritesResultsPlaceholder />
+    return content
+  }
+
   const tabPanels = {
-    [Tab.OFFERS]: showOffersSkeleton ? (
-      <FavoritesResultsPlaceholder />
-    ) : (
+    [Tab.OFFERS]: renderTabPanel(
+      showOffersSkeleton,
       <FavoritesList
         favorites={sortedFavorites}
         renderItem={renderOffer}
@@ -129,9 +136,8 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
         enableFavoritesHub={enableFavoritesHub}
       />
     ),
-    [Tab.VENUES]: showVenuesSkeleton ? (
-      <FavoritesResultsPlaceholder />
-    ) : (
+    [Tab.VENUES]: renderTabPanel(
+      showVenuesSkeleton,
       <FavoritesList
         favorites={venueFavorites?.favorites}
         renderItem={renderVenue}
@@ -141,9 +147,8 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
         enableFavoritesHub={enableFavoritesHub}
       />
     ),
-    [Tab.ARTISTS]: showArtistsSkeleton ? (
-      <FavoritesResultsPlaceholder />
-    ) : (
+    [Tab.ARTISTS]: renderTabPanel(
+      showArtistsSkeleton,
       <FavoritesList
         favorites={artistFavorites?.favorites}
         renderItem={renderArtist}
@@ -156,7 +161,7 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
   }
 
   const tabs = [{ key: Tab.OFFERS }, { key: Tab.VENUES }, { key: Tab.ARTISTS }]
-  const showSortButton = sortedFavorites.length > 0 && selectedTab === Tab.OFFERS
+  const showSortButton = isLoggedIn && sortedFavorites.length > 0 && selectedTab === Tab.OFFERS
 
   return (
     <React.Fragment>
@@ -185,7 +190,6 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
     </React.Fragment>
   )
 }
-
 export const FavoritesResults = memo(UnmemoizedFavoritesResults)
 
 const Container = styled.View<{ enableFavoritesHub?: boolean }>(

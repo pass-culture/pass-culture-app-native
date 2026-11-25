@@ -1,5 +1,4 @@
 import React from 'react'
-import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
@@ -12,14 +11,12 @@ import { RemoteIllustration } from 'ui/components/RemoteIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
-import { Page } from 'ui/pages/Page'
 import { UserFavorite } from 'ui/svg/icons/UserFavorite'
 import { Spacer, Typo } from 'ui/theme'
 import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 export const NotConnectedFavorites = () => {
   const enableNewVisionUi = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_VISION_UI)
-  const { bottom } = useSafeAreaInsets()
 
   const onBeforeSignupNavigate = () => {
     void analytics.logSignUpFromFavorite()
@@ -31,9 +28,9 @@ export const NotConnectedFavorites = () => {
   }
 
   return (
-    <Page>
-      <ScrollContainer bottom={bottom} showsVerticalScrollIndicator={false}>
-        <MainContent>
+    <Wrapper>
+      <ScrollContainer showsVerticalScrollIndicator={false}>
+        <MainContent gap={6}>
           <IllustrationContainer>
             {enableNewVisionUi ? (
               <RemoteIllustration
@@ -45,7 +42,7 @@ export const NotConnectedFavorites = () => {
               <Illustration />
             )}
           </IllustrationContainer>
-          <TextContainer gap={4}>
+          <TextContainer gap={6}>
             <StyledTitle2 {...setTextSemantic('h1')}>
               Identifie-toi pour retrouver tes favoris
             </StyledTitle2>
@@ -53,7 +50,7 @@ export const NotConnectedFavorites = () => {
               Ton compte te permettra de retrouver tous tes bons plans en un clin d’oeil&nbsp;!
             </StyledBody>
           </TextContainer>
-          <ButtonContainer gap={4}>
+          <ButtonContainer gap={3}>
             <InternalTouchableLink
               key={1}
               as={Button}
@@ -72,33 +69,35 @@ export const NotConnectedFavorites = () => {
         </MainContent>
         <Spacer.TabBar />
       </ScrollContainer>
-    </Page>
+    </Wrapper>
   )
 }
 
-const ScrollContainer = styled.ScrollView.attrs<{ bottom: number }>(({ bottom }) => ({
+const Wrapper = styled.View({
+  flex: 1,
+  overflow: 'hidden',
+})
+
+const ScrollContainer = styled.ScrollView.attrs(({ theme }) => ({
   contentContainerStyle: {
     flexGrow: 1,
     alignItems: 'center',
-    paddingBottom: bottom,
-    height: '100%',
     justifyContent: 'center',
+    paddingTop: theme.designSystem.size.spacing.xl,
+    paddingHorizontal: theme.contentPage.marginHorizontal,
+    paddingBottom: theme.designSystem.size.spacing.xl,
   },
-}))<{ bottom: number }>(({ theme }) => ({
-  paddingHorizontal: theme.contentPage.marginHorizontal,
-  paddingVertical: theme.contentPage.marginVertical,
-}))
+}))``
 
-const MainContent = styled.View({
+const MainContent = styled(ViewGap)({
   width: '100%',
   alignItems: 'center',
 })
 
-const IllustrationContainer = styled.View(({ theme }) => ({
+const IllustrationContainer = styled.View({
   alignItems: 'center',
   justifyContent: 'center',
-  marginBottom: theme.designSystem.size.spacing.xl,
-}))
+})
 
 const Illustration = styled(UserFavorite).attrs(({ theme }) => ({
   size: theme.illustrations.sizes.fullPage,
@@ -115,10 +114,9 @@ const StyledAuthenticationButton = styled(AuthenticationButton).attrs(({ theme }
   linkColor: theme.designSystem.color.text.brandSecondary,
 }))``
 
-const TextContainer = styled(ViewGap)(({ theme }) => ({
+const TextContainer = styled(ViewGap)({
   alignItems: 'center',
-  marginBottom: theme.designSystem.size.spacing['4xl'],
-}))
+})
 
 const StyledTitle2 = styled(Typo.Title2)({
   textAlign: 'center',
