@@ -1,7 +1,7 @@
 // See https://github.com/Slashgear/action-check-pr-title/blob/main/src/run.js#L17
 
 const REGEX = new RegExp(
-  /^\((PC|IC)-\d+\) (build|ci|docs|feat|fix|perf|refactor|test|chore)\(\w+\): \w+/i
+  /^\(((PC|IC)-\d+|Dependabot)\) (build|ci|docs|feat|fix|perf|refactor|test|chore)\(\w+\): \w+/i
 )
 
 const invalidPullRequestTitles: string[] = [
@@ -20,6 +20,7 @@ const invalidPullRequestTitles: string[] = [
 const validPullRequestTitles: string[] = [
   '(PC-1234) feat(home): add color to button',
   '(IC-206) ci(checks): allow firebase CF deployments from pass-culture-app-native ci',
+  '(Dependabot) chore(deps): update dependencies',
 ]
 
 describe('pr-title-checker', () => {
