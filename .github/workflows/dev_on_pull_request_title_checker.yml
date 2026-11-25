@@ -18,4 +18,4 @@ jobs:
     steps:
       - uses: Slashgear/action-check-pr-title@76166c63ec0b25cdbe693e5e972e83ca186313fb # action-check-pr-title-v6.0.0
         with:
-          regexp: '^\((PC|IC)-\d+\) (build|ci|docs|feat|fix|perf|refactor|test|chore)\(\w+\): \w+'
+          regexp: '^\(((PC|IC)-\d+|Dependabot)\) (build|ci|docs|feat|fix|perf|refactor|test|chore)\(\w+\): \w+'

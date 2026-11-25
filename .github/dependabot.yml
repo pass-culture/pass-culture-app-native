@@ -14,8 +14,11 @@ updates:
       - dependency-name: 'react-native'
       - dependency-name: 'react'
       - dependency-name: 'react-native-web'
+    groups:
+      dev-dependencies:
+        dependency-type: 'development'
     commit-message:
-      prefix: '(BSR) chore(deps):'
+      prefix: '(Dependabot) chore(deps):'
 
   - package-ecosystem: 'bundler'
     directory: '/'
@@ -28,7 +31,7 @@ updates:
     labels:
       - 'e2e'
     commit-message:
-      prefix: '(BSR) chore(deps):'
+      prefix: '(Dependabot) chore(deps):'
 
   - package-ecosystem: 'github-actions'
     directory: '.github/workflows'
@@ -40,8 +43,12 @@ updates:
       interval: 'weekly'
     labels:
       - 'e2e'
+    groups:
+      github-actions:
+        patterns:
+          - '*'
     commit-message:
-      prefix: '(BSR) chore(ci):'
+      prefix: '(Dependabot) chore(ci):'
 
   - package-ecosystem: 'npm'
     directory: '/server'
@@ -53,5 +60,8 @@ updates:
       interval: 'weekly'
     labels:
       - 'e2e'
+    groups:
+      dev-dependencies:
+        dependency-type: 'development'
     commit-message:
-      prefix: '(BSR) chore(deps):'
+      prefix: '(Dependabot) chore(deps):'
