@@ -1,29 +1,37 @@
 import React from 'react'
 
 import {
-  OffersStocksResponse,
   OfferResponse,
+  OfferStockResponse,
+  OffersStocksResponse,
   ScreeningFeatures,
-  StockResponse,
   SubcategoryIdEnum,
 } from 'api/gen'
 import { initialBookingState } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { mockOffer as baseOffer } from 'features/bookOffer/fixtures/offer'
+import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
+import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { QueryKeys } from 'libs/queryKeys'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, waitFor } from 'tests/utils'
 
 import { BookingInformations } from './BookingInformations'
 
 const randomDatetime = '2020-12-01T00:00:00Z'
 const offerId = baseOffer.id
-const stockId = 118929
+const screeningStockId = offerStockResponseSnap.id
 
 jest.mock('features/bookOffer/context/useBookingContext')
+jest.mock('features/bookOffer/helpers/useBookingStock')
+jest.mock('libs/hooks/useLogTypeFromRemoteConfig', () => ({
+  useLogTypeFromRemoteConfig: () => ({ logType: 'ignored' }),
+}))
 
 const mockedUseBooking = jest.mocked(useBookingContext)
+const mockedUseBookingStock = jest.mocked(useBookingStock)
 
 jest.mock('queries/subcategories/useSubcategoriesQuery')
 
@@ -55,54 +63,78 @@ const emptyScreeningFeatures: ScreeningFeatures = {
 // This line checks that there is no text content rendered. The regex /./ matches any character, so queryByText will return null if there is no content.
 const ANY_CHARACTER = /./
 
-const setOffer = (offer: OfferResponse | undefined) => {
-  mockUseBookingOffer.mockReturnValue(offer)
+const defaultStock: OfferStockResponse = {
+  ...offerStockResponseSnap,
+  beginningDatetime: randomDatetime,
+  price: 11,
+  activationCode: { expirationDate: randomDatetime },
 }
 
-const setBookingState = (bookingState: typeof initialBookingState) => {
-  mockedUseBooking.mockReturnValue({
-    bookingState,
-    dispatch: () => null,
-    dismissModal: () => null,
-  })
+let offer: OfferResponse | undefined = cinePleinAirOffer
+let bookingState: typeof initialBookingState = { ...initialBookingState, quantity: 2 }
+let stock: OfferStockResponse | undefined = defaultStock
+
+const mockOffersStocks = (screeningFeatures: ScreeningFeatures | null = emptyScreeningFeatures) => {
+  mockServer.postApi<OffersStocksResponse>('/v3/offers/stocks', {
+    offers: [
+      {
+        venue: { timezone: 'UTC' },
+        stocks: [
+          {
+            id: screeningStockId,
+            price: 11,
+            beginningDatetime: randomDatetime,
+            isBookable: true,
+            isExpired: false,
+            isForbiddenToUnderage: false,
+            isSoldOut: false,
+            screeningFeatures,
+          },
+        ],
+      },
+    ],
+  } as OffersStocksResponse)
 }
+
+const renderBookingInformations = () => render(reactQueryProviderHOC(<BookingInformations />))
 
 describe('<BookingInformations />', () => {
   beforeEach(() => {
     setFeatureFlags()
-    setBookingState({ ...initialBookingState, offerId, stockId, quantity: 2 })
-    mockOffersStocks()
+    offer = cinePleinAirOffer
+    bookingState = { ...initialBookingState, quantity: 2 }
+    stock = { ...defaultStock }
+    mockUseBookingOffer.mockImplementation(() => offer)
+    mockedUseBooking.mockImplementation(() => ({
+      bookingState,
+      dispatch: () => null,
+      dismissModal: () => null,
+    }))
+    mockedUseBookingStock.mockImplementation(() => stock)
   })
 
-  it('should return empty component when no offer', async () => {
-    setOffer(undefined)
+  it('should return empty component when no offer', () => {
+    offer = undefined
     renderBookingInformations()
 
-    await waitFor(() => {
-      expect(screen.queryByText(ANY_CHARACTER)).toBeNull()
-    })
+    expect(screen.queryByText(ANY_CHARACTER)).toBeNull()
   })
 
-  it('should return empty component when no stock', async () => {
-    mockOffersStocks([])
+  it('should return empty component when no stock', () => {
+    stock = undefined
     renderBookingInformations()
 
-    await waitFor(() => {
-      expect(screen.queryByText(ANY_CHARACTER)).toBeNull()
-    })
+    expect(screen.queryByText(ANY_CHARACTER)).toBeNull()
   })
 
-  it('should return empty component when no quantity', async () => {
-    setBookingState({ ...initialBookingState, offerId, stockId, quantity: undefined })
+  it('should return empty component when no quantity', () => {
+    bookingState = { ...initialBookingState, quantity: undefined }
     renderBookingInformations()
 
-    await waitFor(() => {
-      expect(screen.queryByText(ANY_CHARACTER)).toBeNull()
-    })
+    expect(screen.queryByText(ANY_CHARACTER)).toBeNull()
   })
 
   it('should render event date section when event', async () => {
-    setOffer(cinePleinAirOffer)
     renderBookingInformations()
 
     expect(
@@ -111,67 +143,40 @@ describe('<BookingInformations />', () => {
   })
 
   it('should display `Gratuit` if price is 0', async () => {
-    setOffer(cinePleinAirOffer)
-    mockOffersStocks([
-      stockResponse({
-        price: 0,
-        activationCode: { expirationDate: randomDatetime },
-      }),
-    ])
+    stock = { ...defaultStock, price: 0 }
     renderBookingInformations()
 
     expect(await screen.findByText('Gratuit')).toBeOnTheScreen()
   })
 
   it('should display unique price when quantity is unique', async () => {
-    setOffer(cinePleinAirOffer)
-
-    setBookingState({ ...initialBookingState, offerId, stockId, quantity: 1 })
+    bookingState = { ...initialBookingState, quantity: 1 }
     renderBookingInformations()
 
     expect(await screen.findByText('0,11 €')).toBeOnTheScreen()
   })
 
-  it('should display stock label when the offer has it', async () => {
-    setOffer(cinePleinAirOffer)
-    mockOffersStocks([
-      stockResponse({
-        price: 1200,
-        priceCategoryLabel: 'A stock label',
-      }),
-    ])
+  it('should display stock label when the offer has it', () => {
+    stock = { ...defaultStock, price: 1200, priceCategoryLabel: 'A stock label' }
 
     renderBookingInformations()
 
-    expect(await screen.findByTestId('price-line-label')).toBeOnTheScreen()
+    expect(screen.getByTestId('price-line-label')).toBeOnTheScreen()
   })
 
-  it("shouldn't display stock label when the offer hasn't any", async () => {
-    setOffer(cinePleinAirOffer)
-    setBookingState({ ...initialBookingState, offerId, stockId, quantity: 1 })
-    mockOffersStocks([
-      stockResponse({
-        price: 1200,
-        priceCategoryLabel: undefined,
-      }),
-    ])
+  it("shouldn't display stock label when the offer hasn't any", () => {
+    bookingState = { ...initialBookingState, quantity: 1 }
+    stock = { ...defaultStock, price: 1200, priceCategoryLabel: undefined }
 
     renderBookingInformations()
-
-    await screen.findByText('12\u00a0€')
 
     expect(screen.queryByTestId('price-line-label')).not.toBeOnTheScreen()
   })
 
   it('should display the screening language when the stock has one', async () => {
-    setOffer(cinePleinAirOffer)
-    setBookingState({ ...initialBookingState, offerId, stockId, quantity: 1 })
-    mockOffersStocks([
-      stockResponse({
-        price: 1200,
-        screeningFeatures: { ...emptyScreeningFeatures, language: 'VOSTFR' },
-      }),
-    ])
+    bookingState = { ...initialBookingState, offerId, stockId: screeningStockId, quantity: 1 }
+    stock = { ...defaultStock, price: 1200 }
+    mockOffersStocks({ ...emptyScreeningFeatures, language: 'VOSTFR' })
 
     renderBookingInformations()
 
@@ -179,37 +184,43 @@ describe('<BookingInformations />', () => {
   })
 
   it("shouldn't display a screening language when the stock has none", async () => {
-    setOffer(cinePleinAirOffer)
-    setBookingState({ ...initialBookingState, offerId, stockId, quantity: 1 })
-    mockOffersStocks([
-      stockResponse({
-        price: 1200,
-        screeningFeatures: emptyScreeningFeatures,
-      }),
-    ])
+    bookingState = { ...initialBookingState, offerId, stockId: screeningStockId, quantity: 1 }
+    stock = { ...defaultStock, price: 1200 }
+    mockOffersStocks(emptyScreeningFeatures)
 
     renderBookingInformations()
 
-    await screen.findByText('12\u00a0€')
+    await waitFor(() => {
+      const screeningQuery = queryCache
+        .getAll()
+        .find((cachedQuery) => cachedQuery.queryKey[0] === QueryKeys.OFFER_STOCKS_SPECIAL_EVENT)
 
+      expect(screeningQuery?.state.status).toBe('success')
+    })
+
+    expect(screen.getByText('12\u00a0€')).toBeOnTheScreen()
     expect(screen.queryByTestId('price-line-attributes')).not.toBeOnTheScreen()
   })
 
+  it('should display screening tags when the stock has screening features', async () => {
+    bookingState = { ...initialBookingState, offerId, stockId: screeningStockId, quantity: 1 }
+    mockOffersStocks({ ...emptyScreeningFeatures, specialEventType: 'AVANT_PREMIERE' })
+
+    renderBookingInformations()
+
+    expect(await screen.findByText('Avant-première')).toBeOnTheScreen()
+  })
+
   it('should display expirationDate section when offer is digital and has expirationDate', async () => {
-    setOffer(carteCineOfferDigital)
+    offer = carteCineOfferDigital
     renderBookingInformations()
 
     expect(await screen.findByText('À activer avant le 1er décembre 2020')).toBeOnTheScreen()
   })
 
   it("shouldn't display expirationDate section when offer is digital and has no expirationDate", async () => {
-    setOffer(carteCineOfferDigital)
-    mockOffersStocks([
-      stockResponse({
-        price: 0,
-        activationCode: null,
-      }),
-    ])
+    offer = carteCineOfferDigital
+    stock = { ...defaultStock, price: 0, activationCode: null }
     renderBookingInformations()
 
     await screen.findByText('Gratuit')
@@ -218,40 +229,13 @@ describe('<BookingInformations />', () => {
   })
 
   it('should display only date if it has no duration information', async () => {
-    mockOffersStocks([stockResponse()])
-    setOffer({
+    offer = {
       ...cinePleinAirOffer,
       extraData: { durationMinutes: null },
-    })
+    }
 
     renderBookingInformations()
 
     expect(await screen.findByText('Mardi 1er décembre 2020 à 00h00')).toBeOnTheScreen()
   })
 })
-
-const renderBookingInformations = () => render(reactQueryProviderHOC(<BookingInformations />))
-
-const stockResponse = (stock: Partial<StockResponse> = {}): StockResponse => ({
-  id: stockId,
-  price: 11,
-  beginningDatetime: randomDatetime,
-  isBookable: true,
-  isExpired: false,
-  isForbiddenToUnderage: false,
-  isSoldOut: false,
-  activationCode: { expirationDate: randomDatetime },
-  screeningFeatures: emptyScreeningFeatures,
-  ...stock,
-})
-
-const mockOffersStocks = (stocks: StockResponse[] = [stockResponse()]) => {
-  mockServer.postApi<OffersStocksResponse>('/v3/offers/stocks', {
-    offers: [
-      {
-        venue: { timezone: 'UTC' },
-        stocks,
-      },
-    ],
-  } as OffersStocksResponse)
-}

@@ -6,6 +6,7 @@ import { CinemaScreeningDetail } from 'features/bookings/components/CinemaScreen
 import { PriceLine } from 'features/bookOffer/components/PriceLine'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { getScreeningDetails } from 'features/bookOffer/helpers/getScreeningDetails'
+import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { CINEMA_SCREENING_ACCESSIBILITY_ENTRIES } from 'features/offer/components/CinemaScreeningCard/constants'
 import { formatDuration } from 'features/offer/helpers/formatDuration/formatDuration'
 import { formatToCompleteFrenchDateTime, formatToFrenchDate } from 'libs/parsers/formatDates'
@@ -32,7 +33,8 @@ const ExpirationDate: React.FC<{
 export const BookingInformations = () => {
   const { bookingState } = useBookingContext()
   const offer = useBookingOfferQuery()
-  const { data: stock } = useOfferStockScreeningFeaturesQuery(
+  const stock = useBookingStock()
+  const { data: screeningStock } = useOfferStockScreeningFeaturesQuery(
     bookingState.offerId,
     bookingState.stockId
   )
@@ -41,8 +43,9 @@ export const BookingInformations = () => {
 
   if (!stock || typeof quantity !== 'number' || !offer) return null
 
-  const screeningDetails = getScreeningDetails(stock.screeningFeatures)
-  const language = stock.screeningFeatures?.language
+  const screeningFeatures = screeningStock?.screeningFeatures
+  const screeningDetails = getScreeningDetails(screeningFeatures)
+  const language = screeningFeatures?.language
   const { isDigital, name } = offer
 
   const price =
@@ -90,7 +93,7 @@ export const BookingInformations = () => {
     )
   }
 
-  const expirationDate = stock.activationCode?.expirationDate
+  const expirationDate = stock?.activationCode?.expirationDate
 
   return (
     <React.Fragment>
