@@ -22,12 +22,6 @@ jest.useFakeTimers()
 describe('NotConnectedFavorites component', () => {
   beforeEach(() => setFeatureFlags([]))
 
-  it('should render not connected favorites', () => {
-    render(reactQueryProviderHOC(<NotConnectedFavorites />))
-
-    expect(screen).toMatchSnapshot()
-  })
-
   it('should navigate to SignupMethods  when click on "Créer un compte"', async () => {
     render(reactQueryProviderHOC(<NotConnectedFavorites />))
 

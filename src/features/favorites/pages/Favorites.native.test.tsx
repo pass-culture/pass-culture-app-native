@@ -10,6 +10,7 @@ import { paginatedArtistFavoritesResponseSnap } from 'features/favorites/fixture
 import { paginatedOfferFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedOfferFavoritesResponseSnap'
 import { paginatedVenueFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedVenueFavoritesResponseSnap'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
@@ -43,9 +44,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 describe('<Favorites/>', () => {
   beforeEach(() => {
     setFeatureFlags()
+    mockUseNetInfoContext.mockReturnValue({ isConnected: true })
   })
-
-  mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
   it('should render correctly', async () => {
     mockServer.getApi<PaginatedResponseFavoriteOfferResponseV2>(
@@ -67,11 +67,22 @@ describe('<Favorites/>', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should show non connected page when not logged in', async () => {
-    mockAuthContextWithoutUser()
+  it('should render non connected view with page header when not logged in', async () => {
+    mockAuthContextWithoutUser({ persist: true })
     render(reactQueryProviderHOC(<Favorites />))
 
-    expect(await screen.findByText('Identifie-toi pour retrouver tes favoris')).toBeOnTheScreen()
+    expect(await screen.findByText('Mes favoris')).toBeOnTheScreen()
+    expect(screen.getByText('Identifie-toi pour retrouver tes favoris')).toBeOnTheScreen()
+  })
+
+  it('should render non connected view inside tabs when favorites hub is enabled and user is not logged in', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_FAVORITES_HUB])
+    mockAuthContextWithoutUser({ persist: true })
+    render(reactQueryProviderHOC(<Favorites />))
+
+    expect(await screen.findByText('Mes favoris')).toBeOnTheScreen()
+    expect(screen.getByLabelText('Types de favoris')).toBeOnTheScreen()
+    expect(screen.getByText('Identifie-toi pour retrouver tes favoris')).toBeOnTheScreen()
   })
 
   it('should render offline page when not connected', async () => {

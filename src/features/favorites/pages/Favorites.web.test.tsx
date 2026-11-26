@@ -48,7 +48,7 @@ describe('<Favorites/>', () => {
     })
 
     it('should not have basic accessibility issues when user is not logged in', async () => {
-      mockAuthContextWithoutUser()
+      mockAuthContextWithoutUser({ persist: true })
 
       const { container } = renderFavorites()
 
