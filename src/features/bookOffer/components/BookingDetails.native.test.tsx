@@ -591,62 +591,52 @@ describe('<BookingDetails />', () => {
     expect(screen.queryByText('Modifier')).not.toBeOnTheScreen()
   })
 
-  it('should open venue selection modal when pressing "Modifier" button', async () => {
+  describe('venue selection modal', () => {
     const mockShowModal = jest.fn()
-    jest.spyOn(useModalAPI, 'useModal').mockReturnValue({
+    const modalSettings = {
       visible: false,
       showModal: mockShowModal,
       hideModal: jest.fn(),
       toggleModal: jest.fn(),
-    })
-    mockUseBookingOffer.mockReturnValue({
-      ...mockOffer,
-      isDuo: true,
-      subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-      extraData: { ean: '12345678' },
-    })
+    }
 
-    mockUseSubcategoriesMapping.mockReturnValue({
-      LIVRE_PAPIER: { isEvent: false },
-    })
-    mockNbVenueItems = 2
-    mockVenueList = offerVenues
-
-    renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
-
-    await user.press(await screen.findByText('Modifier'))
-
-    expect(mockShowModal).toHaveBeenCalledTimes(1)
-  })
-
-  it('should update the booking offer when the user choose an other venue', async () => {
-    const mockShowModal = jest.fn()
-    jest.spyOn(useModalAPI, 'useModal').mockReturnValue({
-      visible: true,
-      showModal: mockShowModal,
-      hideModal: jest.fn(),
-      toggleModal: jest.fn(),
-    })
-    mockUseBookingOffer.mockReturnValue({
-      ...mockOffer,
-      isDuo: true,
-      subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-      extraData: { ean: '12345678' },
+    beforeEach(() => {
+      modalSettings.visible = false
+      modalSettings.showModal = mockShowModal
+      jest.spyOn(useModalAPI, 'useModal').mockReturnValue(modalSettings)
+      mockUseBookingOffer.mockReturnValue({
+        ...mockOffer,
+        isDuo: true,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+        extraData: { ean: '12345678' },
+      })
+      mockUseSubcategoriesMapping.mockReturnValue({
+        LIVRE_PAPIER: { isEvent: false },
+      })
+      mockNbVenueItems = 2
+      mockVenueList = offerVenues
+      mockShowModal.mockClear()
     })
 
-    mockUseSubcategoriesMapping.mockReturnValue({
-      LIVRE_PAPIER: { isEvent: false },
+    it('should open venue selection modal when pressing "Modifier" button', async () => {
+      renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
+
+      await user.press(await screen.findByText('Modifier'))
+
+      expect(mockShowModal).toHaveBeenCalledTimes(1)
     })
-    mockNbVenueItems = 2
-    mockVenueList = offerVenues
 
-    renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
+    it('should update the booking offer when the user choose an other venue', async () => {
+      modalSettings.visible = true
 
-    await user.press(screen.getByText('Le Livre Éclaire'))
+      renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
 
-    await user.press(screen.getByText('Choisir ce lieu'))
+      await user.press(screen.getByText('Le Livre Éclaire'))
 
-    expect(mockDispatch).toHaveBeenCalledWith({ type: 'CHANGE_OFFER', payload: 2 })
+      await user.press(screen.getByText('Choisir ce lieu'))
+
+      expect(mockDispatch).toHaveBeenCalledWith({ type: 'CHANGE_OFFER', payload: 2 })
+    })
   })
 
   describe('HeaderMessage', () => {
