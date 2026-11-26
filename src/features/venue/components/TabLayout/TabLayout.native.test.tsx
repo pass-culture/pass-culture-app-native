@@ -79,22 +79,50 @@ describe('TabLayout', () => {
     expect(screen.getByText('Infos pratiques content')).toBeOnTheScreen()
   })
 
-  it('should display a pastille on tab when specified', () => {
+  it('should display a dot on tab when chip has no label', () => {
+    render(
+      <TabLayout
+        tabPanels={tabPanels}
+        tabs={[{ key: Tab.OFFERS, chip: { accessibilityLabel: 'nouveau' } }, { key: Tab.INFOS }]}
+        defaultTab={Tab.INFOS}
+      />
+    )
+
+    expect(screen.queryByText('nouveau')).not.toBeOnTheScreen()
+    expect(
+      screen.getByLabelText('Onglet 1/2 - Offres disponibles - non sélectionné - nouveau')
+    ).toBeOnTheScreen()
+  })
+
+  it('should display a labeled chip when a label is specified', () => {
     render(
       <TabLayout
         tabPanels={tabPanels}
         tabs={[
-          { key: Tab.OFFERS, pastille: { label: '1', accessibilityLabel: '1 offre' } },
+          { key: Tab.OFFERS, chip: { label: '1', accessibilityLabel: '1 offre' } },
           { key: Tab.INFOS },
         ]}
+        defaultTab={Tab.INFOS}
+      />
+    )
+
+    expect(screen.getByTestId('chip')).toBeOnTheScreen()
+    expect(screen.getByText('1')).toBeOnTheScreen()
+  })
+
+  it('should hide a chip from the active tab', () => {
+    render(
+      <TabLayout
+        tabPanels={tabPanels}
+        tabs={[{ key: Tab.OFFERS, chip: { accessibilityLabel: 'nouveau' } }]}
         defaultTab={Tab.OFFERS}
       />
     )
 
-    expect(screen.getByText('1')).toBeOnTheScreen()
+    expect(screen.queryByTestId('chip')).not.toBeOnTheScreen()
   })
 
-  it('should not display a pastille on tab when not specified', () => {
+  it('should not display a chip on tab when not specified', () => {
     render(
       <TabLayout
         tabPanels={tabPanels}
@@ -103,6 +131,6 @@ describe('TabLayout', () => {
       />
     )
 
-    expect(screen.queryByTestId('pastille')).toBeNull()
+    expect(screen.queryByTestId('chip')).toBeNull()
   })
 })

@@ -159,15 +159,15 @@ describe('Bookings', () => {
     )
   })
 
-  it('should display a pastille when there are bookings without user reaction', async () => {
+  it('should display a chip when there are bookings without user reaction', async () => {
     renderBookings()
 
     await screen.findByText('Mes réservations')
 
-    expect(await screen.findByTestId('pastille')).toBeOnTheScreen()
+    expect(await screen.findByTestId('chip')).toBeOnTheScreen()
   })
 
-  it('should not display a pastille when there are not bookings without user reaction', async () => {
+  it('should not display a chip when there are not bookings without user reaction', async () => {
     mockServer.getApi<BookingsResponseV2>('/v2/bookings', {
       ...bookingsSnapV2,
       endedBookings: [{ ...bookingsSnapV2.endedBookings[1], userReaction: ReactionTypeEnum.LIKE }],
@@ -177,7 +177,7 @@ describe('Bookings', () => {
 
     await screen.findByText('Mes réservations')
 
-    expect(screen.queryByTestId('pastille')).toBeNull()
+    expect(screen.queryByTestId('chip')).toBeNull()
   })
 
   describe('with bookings api that returns bookings by status ongoing | ended', () => {

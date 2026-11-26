@@ -2,7 +2,7 @@ import React, { useMemo } from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
-import { PastilleType } from 'features/venue/types'
+import { ChipType } from 'features/venue/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
 import { getComputedAccessibilityLabel } from 'shared/accessibility/helpers/getComputedAccessibilityLabel'
@@ -19,7 +19,7 @@ type InfoTabProps<TabKeyType extends string> = {
   selectedTab: TabKeyType
   onPress: () => void
   Icon?: React.FC<AccessibleIcon>
-  pastille?: PastilleType
+  chip?: ChipType
   panelId?: string
 }
 
@@ -32,7 +32,7 @@ export const InfoTab = <TabKeyType extends string>({
   selectedTab,
   onPress,
   Icon,
-  pastille,
+  chip,
   panelId,
 }: InfoTabProps<TabKeyType>) => {
   const isSelected = selectedTab === tab
@@ -56,9 +56,15 @@ export const InfoTab = <TabKeyType extends string>({
   const selectedLabel = isSelected ? 'sélectionné' : 'non sélectionné'
 
   // We recompute the accessibility label here to include the role in mobile
+  const hasChip = Boolean(chip) && !isSelected
   const accessibilityLabel = isWeb
-    ? tab
-    : getComputedAccessibilityLabel(`Onglet ${tabIndex}/${totalTabs}`, tab, selectedLabel)
+    ? getComputedAccessibilityLabel(tab, hasChip ? chip?.accessibilityLabel : undefined)
+    : getComputedAccessibilityLabel(
+        `Onglet ${tabIndex}/${totalTabs}`,
+        tab,
+        selectedLabel,
+        hasChip ? chip?.accessibilityLabel : undefined
+      )
 
   return (
     <StyledTouchableTab
@@ -74,11 +80,15 @@ export const InfoTab = <TabKeyType extends string>({
         <TabTitle isHover={isHover} isSelected={isSelected}>
           {tab}
         </TabTitle>
-        {pastille ? (
-          <PastilleContainer accessibilityLabel={pastille.accessibilityLabel} testID="pastille">
-            <Counter>{pastille.label}</Counter>
-          </PastilleContainer>
-        ) : null}
+        {hasChip &&
+          chip &&
+          (chip.label ? (
+            <ChipContainer accessibilityLabel={chip.accessibilityLabel} testID="chip">
+              <Counter>{chip.label}</Counter>
+            </ChipContainer>
+          ) : (
+            <ChipDot testID="chip" />
+          ))}
       </TabTitleContainer>
       <BarOfSelectedTab isSelected={isSelected} />
     </StyledTouchableTab>
@@ -116,12 +126,19 @@ const BarOfSelectedTab = styled.View<{ isSelected: boolean }>(({ theme, isSelect
   borderRadius: theme.designSystem.size.borderRadius.s,
 }))
 
-const PastilleContainer = styled.View(({ theme }) => ({
-  backgroundColor: theme.designSystem.color.background.brandPrimary,
+const ChipContainer = styled.View(({ theme }) => ({
   paddingHorizontal: theme.designSystem.size.spacing.xs,
   borderRadius: theme.designSystem.size.borderRadius.l,
+  backgroundColor: theme.designSystem.color.background.brandPrimary,
 }))
 
 const Counter = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.lockedInverted,
+}))
+
+const ChipDot = styled.View(({ theme }) => ({
+  width: theme.designSystem.size.spacing.m,
+  height: theme.designSystem.size.spacing.m,
+  backgroundColor: theme.designSystem.color.background.brandPrimary,
+  borderRadius: theme.designSystem.size.spacing.m,
 }))

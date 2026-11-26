@@ -65,7 +65,7 @@ export const TabLayout = <TabKeyType extends string>({
             selectedTab={selectedTab}
             onPress={() => onTabPress(tab.key)}
             Icon={tab.Icon}
-            pastille={tab.pastille}
+            chip={tab.chip}
             panelId={`panel-${sanitizeId(tab.key)}`}
           />
         ))}

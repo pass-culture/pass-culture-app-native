@@ -49,15 +49,15 @@ export type OpeningHour = {
 export type OpeningHoursStatusState =
   'open' | 'open-soon' | 'close-soon' | 'close' | 'not-applicable'
 
-export type PastilleType = {
-  label: string
+export type ChipType = {
+  label?: string
   accessibilityLabel: string
 }
 
 export type TabType<TabKeyType extends string> = {
   key: TabKeyType
   Icon?: React.FC<AccessibleIcon>
-  pastille?: PastilleType
+  chip?: ChipType
 }
 
 export type VenueOffers = {

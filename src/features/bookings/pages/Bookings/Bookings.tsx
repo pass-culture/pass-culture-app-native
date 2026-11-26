@@ -110,7 +110,7 @@ export const Bookings = () => {
     [BookingsTab.COMPLETED]: <EndedBookings useEndedBookingsQuery={useActiveBookingsQuery} />,
   }
 
-  const shouldDisplayPastille = numberOfReactableBookings > 0
+  const shouldDisplayChip = numberOfReactableBookings > 0
   const numberOfLines = useMobileFontScaleToDisplay({ default: 1, at200PercentZoom: 3 })
 
   const Container = useMobileFontScaleToDisplay({
@@ -128,9 +128,7 @@ export const Bookings = () => {
           { key: BookingsTab.CURRENT },
           {
             key: BookingsTab.COMPLETED,
-            pastille: shouldDisplayPastille
-              ? { label: fullCountLabel, accessibilityLabel }
-              : undefined,
+            chip: shouldDisplayChip ? { label: fullCountLabel, accessibilityLabel } : undefined,
           },
         ]}
         onTabChange={(key) => {
