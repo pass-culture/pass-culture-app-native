@@ -47,6 +47,7 @@ export enum RemoteStoreFeatureFlags {
   DISABLE_QF_BONIFICATION_MANUAL_REQUEST = 'disableQFBonificationManualRequest',
   ENABLE_BONIFICATION = 'enableBonification',
   ENABLE_CHATBOT = 'enableChatbot',
+  ENABLE_FAVORITE_CHIP = 'enableFavoriteChip',
   ENABLE_HANDICAP_BONIFICATION = 'enableHandicapBonification',
   ENABLE_HIDE_TICKET = 'enableHideTicket',
   ENABLE_INTERSECTION_OBSERVER = 'enableIntersectionObserver',
