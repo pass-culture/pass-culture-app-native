@@ -73,6 +73,7 @@ const user = userEvent.setup()
 describe('VenueMapLocationModal', () => {
   beforeEach(() => {
     setFeatureFlags()
+    locationActions.setLocationMode(LocationMode.EVERYWHERE)
     initLocation()
     useRoute.mockReturnValue({ params: { openedFrom: 'searchPlaylist' } })
   })

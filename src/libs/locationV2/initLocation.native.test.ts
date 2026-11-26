@@ -34,6 +34,19 @@ describe('initLocation', () => {
         expect(locationSelectors.selectLocationMode()).toBe(LocationMode.AROUND_ME)
       })
     })
+
+    it('should keep AROUND_ME once the GRANTED permission is synced at launch', async () => {
+      locationActions.setLocationMode(LocationMode.AROUND_ME)
+      mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
+
+      initLocation()
+
+      await waitFor(() => {
+        expect(locationSelectors.selectPermissionState()).toBe(GeolocPermissionState.GRANTED)
+      })
+
+      expect(locationSelectors.selectLocationMode()).toBe(LocationMode.AROUND_ME)
+    })
   })
 
   describe('when app is resumed', () => {

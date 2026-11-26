@@ -54,4 +54,57 @@ describe('syncLocation', () => {
     ).toBeNull()
     expect(locationSelectors.selectState().geolocationError).toEqual(cause)
   })
+
+  describe('location mode', () => {
+    it('should switch to AROUND_ME when a position is found and the user has not chosen a mode', async () => {
+      locationActions.setPermissionState(GeolocPermissionState.GRANTED)
+      mockGetGeolocPosition.mockResolvedValueOnce(position)
+
+      await syncLocation()
+
+      expect(locationSelectors.selectLocationMode()).toBe(LocationMode.AROUND_ME)
+    })
+
+    it('should keep EVERYWHERE when the user has chosen it', async () => {
+      locationActions.setLocationMode(LocationMode.EVERYWHERE)
+      locationActions.setPermissionState(GeolocPermissionState.GRANTED)
+      mockGetGeolocPosition.mockResolvedValueOnce(position)
+
+      await syncLocation()
+
+      expect(locationSelectors.selectLocationMode()).toBe(LocationMode.EVERYWHERE)
+    })
+
+    it('should keep AROUND_PLACE when a position is found', async () => {
+      locationActions.setLocationMode(LocationMode.AROUND_PLACE)
+      locationActions.setPermissionState(GeolocPermissionState.GRANTED)
+      mockGetGeolocPosition.mockResolvedValueOnce(position)
+
+      await syncLocation()
+
+      expect(locationSelectors.selectLocationMode()).toBe(LocationMode.AROUND_PLACE)
+    })
+
+    it('should fall back to EVERYWHERE when no position is found and the user has not chosen a mode', async () => {
+      locationActions.setPermissionState(GeolocPermissionState.GRANTED)
+      mockGetGeolocPosition.mockResolvedValueOnce(position)
+      await syncLocation()
+      mockGetGeolocPosition.mockRejectedValueOnce({ cause: null })
+
+      await syncLocation()
+
+      expect(locationSelectors.selectLocationMode()).toBe(LocationMode.EVERYWHERE)
+    })
+
+    it('should follow the position again once permission loss has forced EVERYWHERE', async () => {
+      locationActions.setLocationMode(LocationMode.AROUND_ME)
+      locationActions.setPermissionState(GeolocPermissionState.DENIED)
+      locationActions.setPermissionState(GeolocPermissionState.GRANTED)
+      mockGetGeolocPosition.mockResolvedValueOnce(position)
+
+      await syncLocation()
+
+      expect(locationSelectors.selectLocationMode()).toBe(LocationMode.AROUND_ME)
+    })
+  })
 })

@@ -9,6 +9,7 @@ export type LocationState = {
   permissionState: GeolocPermissionState | null
   geolocationError: GeolocationError | null
   locationMode: LocationMode
+  hasChosenLocationMode: boolean
   configuration: {
     [LocationMode.AROUND_ME]: {
       label: 'Ma position'
@@ -36,6 +37,7 @@ export type LocationState = {
 
 export const defaultLocationState: LocationState = {
   locationMode: LocationMode.EVERYWHERE,
+  hasChosenLocationMode: false,
   permissionState: null,
   geolocationError: null,
   configuration: {
@@ -79,7 +81,8 @@ export const locationStore = createStore({
       }))
 
     return {
-      setLocationMode: (locationMode: LocationMode) => set({ locationMode }),
+      setLocationMode: (locationMode: LocationMode) =>
+        set({ locationMode, hasChosenLocationMode: true }),
       setConfiguration,
       setPlace: (place: SuggestedPlace | null) =>
         setConfiguration(
@@ -90,14 +93,27 @@ export const locationStore = createStore({
         setConfiguration(LocationMode.AROUND_PLACE, { radius }),
       setAroundMeRadius: (radius: number) => setConfiguration(LocationMode.AROUND_ME, { radius }),
       setGeolocPosition: (geolocation: GeoCoordinates | null) =>
-        setConfiguration(LocationMode.AROUND_ME, { geolocation }),
+        set((state) => ({
+          configuration: {
+            ...state.configuration,
+            [LocationMode.AROUND_ME]: {
+              ...state.configuration[LocationMode.AROUND_ME],
+              geolocation,
+            },
+          },
+          ...(followsDefaultLocationMode(state) && {
+            locationMode: geolocation ? LocationMode.AROUND_ME : LocationMode.EVERYWHERE,
+          }),
+        })),
       setGeolocationError: (error: GeolocationError | null) => set({ geolocationError: error }),
       setPermissionState: (permissionState: GeolocPermissionState | null) => {
         set((state) => ({
           permissionState,
-          ...(permissionsRejectedWhileAroundMe(state) && {
-            locationMode: LocationMode.EVERYWHERE,
-          }),
+          ...(state.locationMode === LocationMode.AROUND_ME &&
+            isRejected(permissionState) && {
+              locationMode: LocationMode.EVERYWHERE,
+              hasChosenLocationMode: false,
+            }),
         }))
       },
     }
@@ -128,7 +144,10 @@ export const locationStore = createStore({
     },
     selectLocationLabel: () => (state) => state.configuration[state.locationMode].label,
   },
-  options: { persist: true, persistKeys: ['locationMode', 'configuration'] },
+  options: {
+    persist: true,
+    persistKeys: ['locationMode', 'hasChosenLocationMode', 'configuration'],
+  },
 })
 
 locationStore.store.subscribe(locationStore.selectors.selectLocationType, (locationType) =>
@@ -143,8 +162,13 @@ const isRejected = (permission: GeolocPermissionState | null) => {
   )
 }
 
-const permissionsRejectedWhileAroundMe = (state: LocationState) =>
-  state.locationMode === LocationMode.AROUND_ME && isRejected(state.permissionState)
+/**
+ * Until the user explicitly chooses a location mode, the mode follows the geolocation:
+ * "Ma position" when a position is available, "France entière" otherwise.
+ */
+const followsDefaultLocationMode = (state: LocationState) =>
+  !state.hasChosenLocationMode &&
+  (state.locationMode === LocationMode.AROUND_ME || state.locationMode === LocationMode.EVERYWHERE)
 
 export const locationActions = locationStore.actions
 export const locationSelectors = locationStore.selectors

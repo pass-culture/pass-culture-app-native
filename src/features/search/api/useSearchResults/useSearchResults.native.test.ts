@@ -69,6 +69,7 @@ jest.useFakeTimers()
 describe('useSearchResults', () => {
   beforeEach(() => {
     useLocationV2.setState(defaultLocationState)
+    locationActions.setLocationMode(LocationMode.EVERYWHERE)
     locationActions.setGeolocPosition(DEFAULT_POSITION)
   })
 
