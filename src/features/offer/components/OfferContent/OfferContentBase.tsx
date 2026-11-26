@@ -229,7 +229,9 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
         void analytics.logRemoveItemFromFavorite({
           id: offer.id.toString(),
           type: FavoriteType.OFFER,
-          from: 'offer',
+          from: getIsAComingSoonOffer(offer.bookingAllowedDatetime)
+            ? 'comingSoonOffer'
+            : params.from,
         })
       },
       onError: () => {

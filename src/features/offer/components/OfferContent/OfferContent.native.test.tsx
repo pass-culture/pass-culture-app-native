@@ -108,7 +108,7 @@ const mockNavigate = jest.fn()
 jest.mock('@react-navigation/native', () => ({
   ...jest.requireActual('@react-navigation/native'),
   useNavigation: () => ({ navigate: mockNavigate, push: jest.fn(), setOptions: jest.fn() }),
-  useRoute: () => ({ params: { id: 123 } }),
+  useRoute: () => ({ params: { id: 123, from: 'offer' } }),
 }))
 
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({

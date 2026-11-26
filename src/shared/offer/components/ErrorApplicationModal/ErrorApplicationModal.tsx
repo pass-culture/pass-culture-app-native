@@ -26,7 +26,7 @@ export const ErrorApplicationModal: FunctionComponent<Props> = ({
   hideModal,
   offerId,
 }) => {
-  const addToFavorites = useCallback(() => {
+  const onFavoriteSuccess = useCallback(() => {
     void analytics.logHasAddedOfferToFavorites({
       from: 'ErrorApplicationModal' as Referrals,
       offerId,
@@ -36,8 +36,7 @@ export const ErrorApplicationModal: FunctionComponent<Props> = ({
       id: offerId.toString(),
       type: FavoriteType.OFFER,
     })
-    hideModal()
-  }, [hideModal, offerId])
+  }, [offerId])
 
   const { navigate } = useNavigation<UseNavigationType>()
   const navigateToProfile = () => {
@@ -67,7 +66,11 @@ export const ErrorApplicationModal: FunctionComponent<Props> = ({
         onPress={navigateToProfile}
         fullWidth
       />
-      <AddToFavoritesButton offerId={offerId} onFavoriteAdditionnalPress={addToFavorites} />
+      <AddToFavoritesButton
+        offerId={offerId}
+        onFavoriteAdditionnalPress={hideModal}
+        onFavoriteSuccess={onFavoriteSuccess}
+      />
     </AppModalWithIllustration>
   )
 }

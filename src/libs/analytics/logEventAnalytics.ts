@@ -635,7 +635,7 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.QUIT_IDENTITY_CHECK }, { nextStep }),
   logReinitializeFilters: (searchId?: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.REINITIALIZE_FILTERS }, { searchId }),
-  logRemoveItemFromFavorite: (params: { id: string; type: FavoriteType; from: Referrals }) =>
+  logRemoveItemFromFavorite: (params: { id: string; type: FavoriteType; from?: Referrals }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.REMOVE_ITEM_FROM_FAVORITE }, params),
   logResendEmailResetPasswordExpiredLink: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.RESEND_EMAIL_RESET_PASSWORD_EXPIRED_LINK }),

@@ -24,9 +24,18 @@ import {
   useVenueFavoritesQuery,
 } from 'queries/favorites/useFavoritesQuery'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, userEvent } from 'tests/utils'
+import { act, fireEvent, render, screen, userEvent } from 'tests/utils'
 
 import { FavoritesResults } from './FavoritesResults'
+
+let mockFocusEffect: (() => void) | undefined
+jest.mock('@react-navigation/native', () => ({
+  ...jest.requireActual('__mocks__/@react-navigation/native'),
+  useFocusEffect: (effect: () => void) => {
+    mockFocusEffect = effect
+    jest.requireActual('react').useEffect(effect, [effect])
+  },
+}))
 
 const mockFavoritesState = initialFavoritesState
 jest.mock('features/favorites/context/FavoritesWrapper', () => ({
@@ -138,6 +147,7 @@ const user = userEvent.setup()
 describe('FavoritesResults component', () => {
   beforeEach(() => {
     jest.clearAllMocks()
+    mockFocusEffect = undefined
     mockUser = beneficiaryUser
     mockIsLoggedIn = true
     setFeatureFlags()
@@ -321,6 +331,32 @@ describe('FavoritesResults component', () => {
     describe('with wipFavoritesHub FF activated', () => {
       beforeEach(() => {
         setFeatureFlags([RemoteStoreFeatureFlags.WIP_FAVORITES_HUB])
+      })
+
+      it('should not log consult favorites when pressing the selected tab', async () => {
+        renderFavoritesResults()
+
+        await user.press(await screen.findByText('Offres'))
+
+        expect(analytics.logConsultFavorites).toHaveBeenNthCalledWith(1, {
+          tab: FavoriteType.OFFER,
+        })
+      })
+
+      it('should log consult favorites for the selected tab when focused again', async () => {
+        renderFavoritesResults()
+
+        await user.press(await screen.findByText('Lieux'))
+
+        expect(analytics.logConsultFavorites).toHaveBeenNthCalledWith(1, {
+          tab: FavoriteType.OFFER,
+        })
+
+        act(() => mockFocusEffect?.())
+
+        expect(analytics.logConsultFavorites).toHaveBeenNthCalledWith(2, {
+          tab: FavoriteType.VENUE,
+        })
       })
 
       it.each`

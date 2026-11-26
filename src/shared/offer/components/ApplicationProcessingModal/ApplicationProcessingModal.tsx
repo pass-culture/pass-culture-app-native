@@ -25,7 +25,7 @@ export const ApplicationProcessingModal: FunctionComponent<Props> = ({
   hideModal,
   offerId,
 }) => {
-  const addToFavorites = useCallback(() => {
+  const onFavoriteSuccess = useCallback(() => {
     void analytics.logHasAddedOfferToFavorites({
       from: 'ApplicationProcessingModal' as Referrals,
       offerId,
@@ -35,8 +35,7 @@ export const ApplicationProcessingModal: FunctionComponent<Props> = ({
       id: offerId.toString(),
       type: FavoriteType.OFFER,
     })
-    hideModal()
-  }, [hideModal, offerId])
+  }, [offerId])
 
   const goToProfil = useCallback(() => {
     void analytics.logGoToProfil({ from: 'ApplicationProcessingModal', offerId })
@@ -66,7 +65,11 @@ export const ApplicationProcessingModal: FunctionComponent<Props> = ({
         navigateTo={{ screen: 'TabNavigator', params: { screen: 'Profile' } }}
         onBeforeNavigate={goToProfil}
       />
-      <AddToFavoritesButton offerId={offerId} onFavoriteAdditionnalPress={addToFavorites} />
+      <AddToFavoritesButton
+        offerId={offerId}
+        onFavoriteAdditionnalPress={hideModal}
+        onFavoriteSuccess={onFavoriteSuccess}
+      />
     </AppModalWithIllustration>
   )
 }

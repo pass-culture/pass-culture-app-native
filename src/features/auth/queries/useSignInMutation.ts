@@ -6,7 +6,9 @@ import { api } from 'api/api'
 import { isApiError } from 'api/apiHelpers'
 import {
   AccountState,
+  FavoriteArtistResponse,
   FavoriteOfferResponseV2,
+  FavoriteVenueResponse,
   RecreditType,
   SigninResponseV2,
   UserProfileResponse,
@@ -123,6 +125,26 @@ const useHandleSigninSuccess = (
     }
   }, [])
 
+  const onAddArtistFavoriteSuccess = useCallback((data?: FavoriteArtistResponse) => {
+    if (data?.artist.id) {
+      void analytics.logAddItemToFavorite({
+        from: 'login',
+        id: data.artist.id.toString(),
+        type: FavoriteType.ARTIST,
+      })
+    }
+  }, [])
+
+  const onAddVenueFavoriteSuccess = useCallback((data?: FavoriteVenueResponse) => {
+    if (data?.venue.id) {
+      void analytics.logAddItemToFavorite({
+        from: 'login',
+        id: data.venue.id.toString(),
+        type: FavoriteType.VENUE,
+      })
+    }
+  }, [])
+
   const { mutate: addOfferFavorite } = useAddOfferFavoriteMutation({
     type: FavoriteType.OFFER,
     onSuccess: onAddOfferFavoriteSuccess,
@@ -130,10 +152,12 @@ const useHandleSigninSuccess = (
 
   const { mutate: addArtistFavorite } = useAddArtistFavoriteMutation({
     type: FavoriteType.ARTIST,
+    onSuccess: onAddArtistFavoriteSuccess,
   })
 
   const { mutate: addVenueFavorite } = useAddVenueFavoriteMutation({
     type: FavoriteType.VENUE,
+    onSuccess: onAddVenueFavoriteSuccess,
   })
 
   const offerId = params?.offerId

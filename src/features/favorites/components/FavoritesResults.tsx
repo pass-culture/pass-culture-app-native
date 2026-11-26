@@ -1,4 +1,5 @@
-import React, { FunctionComponent, memo, useCallback, useEffect, useMemo, useState } from 'react'
+import { useFocusEffect } from '@react-navigation/native'
+import React, { FunctionComponent, memo, useCallback, useMemo, useState } from 'react'
 import { ListRenderItem } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -77,13 +78,15 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
 
   const credit = getAvailableCredit(user)
 
-  useEffect(
-    function logConsultFavoritesOnOffersTab() {
-      if (isLoggedIn) {
-        void analytics.logConsultFavorites({ tab: FAVORITE_TYPE_BY_TAB[Tab.OFFERS] })
-      }
-    },
-    [isLoggedIn]
+  useFocusEffect(
+    useCallback(
+      function logConsultFavoritesOnFocus() {
+        if (isLoggedIn) {
+          void analytics.logConsultFavorites({ tab: FAVORITE_TYPE_BY_TAB[selectedTab] })
+        }
+      },
+      [isLoggedIn, selectedTab]
+    )
   )
 
   const renderOffer = useCallback<ListRenderItem<FavoriteOfferResponseV2>>(
@@ -104,10 +107,13 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
     []
   )
 
-  const handleOnTabChange = useCallback((tab: Tab) => {
-    setSelectedTab(tab)
-    void analytics.logConsultFavorites({ tab: FAVORITE_TYPE_BY_TAB[tab] })
-  }, [])
+  const handleOnTabChange = useCallback(
+    (tab: Tab) => {
+      if (tab === selectedTab) return
+      setSelectedTab(tab)
+    },
+    [selectedTab]
+  )
 
   const tabPanels = {
     [Tab.OFFERS]: showOffersSkeleton ? (
