@@ -1,5 +1,5 @@
-import { useFocusEffect } from '@react-navigation/native'
-import React, { FunctionComponent, memo, useCallback, useMemo, useState } from 'react'
+import { useFocusEffect, useIsFocused } from '@react-navigation/native'
+import React, { FunctionComponent, memo, useCallback, useEffect, useMemo, useState } from 'react'
 import { ListRenderItem } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -18,7 +18,9 @@ import { FavoritesResultsPlaceholder } from 'features/favorites/components/Favor
 import { FavoriteVenue } from 'features/favorites/components/FavoriteVenue'
 import { SortButton } from 'features/favorites/components/SortButton'
 import { FAVORITE_TYPE_BY_TAB } from 'features/favorites/constants'
+import { useFavoritesTabViews } from 'features/favorites/context/FavoritesTabViewsProvider'
 import { useFavoritesState } from 'features/favorites/context/FavoritesWrapper'
+import { FavoriteType } from 'features/favorites/enum'
 import { applySortBy } from 'features/favorites/helpers/applySortBy'
 import { Tab } from 'features/favorites/types'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
@@ -42,7 +44,10 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
   const [offerToBook, setOfferToBook] = useState<FavoriteOfferResponse | null>(null)
   const { sortBy } = useFavoritesState()
   const { geolocation: position } = useLocationConfiguration(LocationMode.AROUND_ME)
+  const enableFavoriteChip = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_FAVORITE_CHIP)
   const enableFavoritesHub = useFeatureFlag(RemoteStoreFeatureFlags.WIP_FAVORITES_HUB)
+  const isFocused = useIsFocused()
+  const { isReady, unviewedFavorites, markFavoritesViewed } = useFavoritesTabViews()
   const {
     data: offerFavorites,
     isLoading: isLoadingOfferFavorites,
@@ -87,6 +92,25 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
       },
       [isLoggedIn, selectedTab]
     )
+  )
+
+  const favoritesByTab = useMemo(
+    () => ({
+      [Tab.OFFERS]: { type: FavoriteType.OFFER, favorites: offerFavorites?.favorites },
+      [Tab.VENUES]: { type: FavoriteType.VENUE, favorites: venueFavorites?.favorites },
+      [Tab.ARTISTS]: { type: FavoriteType.ARTIST, favorites: artistFavorites?.favorites },
+    }),
+    [offerFavorites?.favorites, venueFavorites?.favorites, artistFavorites?.favorites]
+  )
+
+  useEffect(
+    function markActiveFavoritesViewed() {
+      if (!isFocused || !isReady) return
+      const activeFavorites = favoritesByTab[selectedTab]
+      if (!activeFavorites.favorites) return
+      markFavoritesViewed(activeFavorites.type)
+    },
+    [isFocused, isReady, selectedTab, favoritesByTab, markFavoritesViewed]
   )
 
   const renderOffer = useCallback<ListRenderItem<FavoriteOfferResponseV2>>(
@@ -155,7 +179,43 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
     ),
   }
 
-  const tabs = [{ key: Tab.OFFERS }, { key: Tab.VENUES }, { key: Tab.ARTISTS }]
+  const tabs = [
+    {
+      key: Tab.OFFERS,
+      chip:
+        enableFavoriteChip &&
+        isReady &&
+        offerFavorites?.favorites.some(({ id }) =>
+          unviewedFavorites[FavoriteType.OFFER].includes(id)
+        )
+          ? { accessibilityLabel: 'nouveau' }
+          : undefined,
+    },
+    {
+      key: Tab.VENUES,
+      chip:
+        enableFavoriteChip &&
+        isReady &&
+        enableFavoritesHub &&
+        venueFavorites?.favorites.some(({ id }) =>
+          unviewedFavorites[FavoriteType.VENUE].includes(id)
+        )
+          ? { accessibilityLabel: 'nouveau' }
+          : undefined,
+    },
+    {
+      key: Tab.ARTISTS,
+      chip:
+        enableFavoriteChip &&
+        isReady &&
+        enableFavoritesHub &&
+        artistFavorites?.favorites.some(({ id }) =>
+          unviewedFavorites[FavoriteType.ARTIST].includes(id)
+        )
+          ? { accessibilityLabel: 'nouveau' }
+          : undefined,
+    },
+  ]
   const showSortButton = sortedFavorites.length > 0 && selectedTab === Tab.OFFERS
 
   return (

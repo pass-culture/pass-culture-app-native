@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { TabBarItemIndicators } from 'features/navigation/helpers/useTabBarItemIndicators'
 import { getTabNavigatorConfig } from 'features/navigation/navigators/RootNavigator/Header/getTabNavigatorConfig'
-import { TabParamList } from 'features/navigation/navigators/TabNavigator/types'
 import { mapTabRouteToIcon } from 'features/navigation/TabBar/mapTabRouteToBicolorIcon'
 import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -17,10 +17,18 @@ type Props = {
   tabIndex?: 0 | -1
   maxWidth?: number
   height?: number
-  routeBadgeMap?: Partial<Record<keyof TabParamList, number>>
+  badgeValues?: TabBarItemIndicators['badgeValues']
+  showFavoritesChip?: boolean
 }
 
-export const Nav: React.FC<Props> = ({ nativeID, tabIndex, maxWidth, height, routeBadgeMap }) => {
+export const Nav: React.FC<Props> = ({
+  nativeID,
+  tabIndex,
+  maxWidth,
+  height,
+  badgeValues,
+  showFavoritesChip = false,
+}) => {
   const { tabRoutes } = useTabNavigationContext()
   const { searchState, hideSuggestions } = useSearch()
 
@@ -43,7 +51,8 @@ export const Nav: React.FC<Props> = ({ nativeID, tabIndex, maxWidth, height, rou
                 onBeforeNavigate={
                   route.name === 'SearchStackNavigator' ? hideSuggestions : undefined
                 }
-                badgeValue={routeBadgeMap?.[route.name]}
+                badgeValue={route.name === 'Bookings' ? badgeValues?.Bookings : undefined}
+                showFavoritesChip={showFavoritesChip}
                 navigateTo={{
                   screen: tabNavigationConfig[0],
                   params: tabNavigationConfig[1],

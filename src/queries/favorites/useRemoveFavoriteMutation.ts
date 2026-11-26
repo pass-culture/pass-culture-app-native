@@ -6,6 +6,8 @@ import {
   PaginatedResponseFavoriteOfferResponseV2,
   PaginatedResponseFavoriteVenueResponse,
 } from 'api/gen'
+import { useFavoritesTabViews } from 'features/favorites/context/FavoritesTabViewsProvider'
+import { FavoriteType } from 'features/favorites/enum'
 import { QueryKeys } from 'libs/queryKeys'
 
 type FavoritesList = { favorites: { id: number }[]; nbFavorites: number }
@@ -18,6 +20,7 @@ type RemoveFavoriteProps<TList> = {
 }
 
 type RemoveFavoriteConfig = {
+  type: FavoriteType
   queryKey: QueryKeys
   mutationFn: (favoriteId: number) => Promise<unknown>
 }
@@ -27,6 +30,7 @@ const useRemoveFavoriteMutation = <TList extends FavoritesList>(
   config: RemoveFavoriteConfig
 ) => {
   const queryClient = useQueryClient()
+  const { removeUnviewedFavorite } = useFavoritesTabViews()
   const queryKey = [config.queryKey]
 
   return useMutation<unknown, Error, number, MutationContext<TList>>({
@@ -51,7 +55,8 @@ const useRemoveFavoriteMutation = <TList extends FavoritesList>(
 
       return { previousFavorites }
     },
-    onSuccess: (data) => {
+    onSuccess: (data, favoriteId) => {
+      removeUnviewedFavorite(config.type, favoriteId)
       onSuccess?.(data)
     },
     onError: (error, favoriteId, context) => {
@@ -67,6 +72,7 @@ export const useRemoveOfferFavoriteMutation = (
   props: RemoveFavoriteProps<PaginatedResponseFavoriteOfferResponseV2>
 ) =>
   useRemoveFavoriteMutation<PaginatedResponseFavoriteOfferResponseV2>(props, {
+    type: FavoriteType.OFFER,
     queryKey: QueryKeys.FAVORITES_OFFER,
     mutationFn: (favoriteId) => api.deleteNativeV2MeFavoritesOffersfavoriteId(favoriteId),
   })
@@ -75,6 +81,7 @@ export const useRemoveVenueFavoriteMutation = (
   props: RemoveFavoriteProps<PaginatedResponseFavoriteVenueResponse>
 ) =>
   useRemoveFavoriteMutation<PaginatedResponseFavoriteVenueResponse>(props, {
+    type: FavoriteType.VENUE,
     queryKey: QueryKeys.FAVORITES_VENUE,
     mutationFn: (favoriteId) => api.deleteNativeV2MeFavoritesVenuesfavoriteId(favoriteId),
   })
@@ -83,6 +90,7 @@ export const useRemoveArtistFavoriteMutation = (
   props: RemoveFavoriteProps<PaginatedResponseFavoriteArtistResponse>
 ) =>
   useRemoveFavoriteMutation<PaginatedResponseFavoriteArtistResponse>(props, {
+    type: FavoriteType.ARTIST,
     queryKey: QueryKeys.FAVORITES_ARTIST,
     mutationFn: (favoriteId) => api.deleteNativeV2MeFavoritesArtistsfavoriteId(favoriteId),
   })

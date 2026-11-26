@@ -2,7 +2,6 @@ import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
-import { useTabBarItemBadges } from 'features/navigation/helpers/useTabBarItemBadges'
 import * as navigationRefAPI from 'features/navigation/navigationRef'
 import { Nav } from 'features/navigation/navigators/RootNavigator/Header/Nav'
 import { getSearchHookConfig } from 'features/navigation/navigators/SearchStackNavigator/getSearchHookConfig'
@@ -53,9 +52,6 @@ jest.mock('features/navigation/TabBar/TabNavigationStateContext', () => {
 })
 const mockedUseTabNavigationContext = jest.mocked(useTabNavigationContext)
 
-jest.mock('features/navigation/helpers/useTabBarItemBadges')
-const mockUseTabBarItemBadges = useTabBarItemBadges as jest.Mock
-
 const mockedPlace: SuggestedPlace = {
   label: 'Kourou',
   info: 'Guyane',
@@ -73,12 +69,6 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('Nav', () => {
-  beforeAll(() => {
-    mockUseTabBarItemBadges.mockReturnValue({
-      Bookings: 999,
-    })
-  })
-
   beforeEach(() => {
     setFeatureFlags()
     mockedUseTabNavigationContext.mockReturnValue({
@@ -104,6 +94,17 @@ describe('Nav', () => {
     expectedTabsTestIds.forEach((tab) => {
       expect(screen.getByTestId(tab)).toBeOnTheScreen()
     })
+  })
+
+  it('should display the favorites chip without a value', () => {
+    renderNav({
+      badgeValues: { Bookings: 999 },
+      showFavoritesChip: true,
+    })
+
+    expect(screen.getByTestId('Favorites-new-feature-chip')).toBeOnTheScreen()
+    expect(screen.queryByText('1')).not.toBeOnTheScreen()
+    expect(screen.getByLabelText('Mes favoris - nouveau')).toBeOnTheScreen()
   })
 
   it('should call navigate with searchState params reinitialized except for location on press "Recherche"', async () => {
@@ -136,11 +137,11 @@ describe('Nav', () => {
   })
 })
 
-function renderNav() {
+function renderNav(props: React.ComponentProps<typeof Nav> = {}) {
   return render(
     reactQueryProviderHOC(
       <NavigationContainer>
-        <Nav />
+        <Nav {...props} />
       </NavigationContainer>
     )
   )

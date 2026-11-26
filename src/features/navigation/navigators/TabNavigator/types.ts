@@ -39,5 +39,5 @@ export type TabInnerComponentProps = {
   BicolorIcon: React.FC<AccessibleIcon>
   tabName: TabScreens
   badgeValue?: number
-  showBadge?: boolean
+  showFavoritesChip: boolean
 }

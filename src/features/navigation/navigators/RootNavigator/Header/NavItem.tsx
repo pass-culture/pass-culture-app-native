@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { FavoritesChip } from 'features/navigation/TabBar/FavoritesChip'
 import { TabScreens } from 'features/navigation/TabBar/isTabNavigatorScreen'
 import { menu } from 'features/navigation/TabBar/menu'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -15,6 +16,7 @@ interface NavItemInterface {
   navigateTo: InternalNavigationProps['navigateTo']
   tabName: TabScreens
   badgeValue?: number
+  showFavoritesChip: boolean
   onBeforeNavigate?: () => void
 }
 
@@ -24,9 +26,15 @@ export const NavItem: React.FC<NavItemInterface> = ({
   tabName,
   isSelected,
   badgeValue,
+  showFavoritesChip,
   onBeforeNavigate,
 }) => {
-  const accessibilityLabel = menu[tabName].accessibilityLabel ?? menu[tabName].displayName
+  const accessibilityLabel = [
+    menu[tabName].accessibilityLabel ?? menu[tabName].displayName,
+    tabName === 'Favorites' && showFavoritesChip ? 'nouveau' : undefined,
+  ]
+    .filter(Boolean)
+    .join(' - ')
 
   return (
     <StyledTouchableLink
@@ -40,6 +48,9 @@ export const NavItem: React.FC<NavItemInterface> = ({
       accessibilityLabel={accessibilityLabel}>
       <IconWrapper>
         <StyledIcon as={BicolorIcon} selected={isSelected} badgeValue={badgeValue} />
+        {tabName === 'Favorites' && showFavoritesChip ? (
+          <FavoritesChip testID={`${tabName}-new-feature-chip`} />
+        ) : null}
       </IconWrapper>
       <Title isSelected={isSelected}>{menu[tabName].displayName}</Title>
     </StyledTouchableLink>

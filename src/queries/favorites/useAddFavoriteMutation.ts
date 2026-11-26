@@ -14,6 +14,7 @@ import {
   PaginatedResponseFavoriteVenueResponse,
   SubcategoryIdEnum,
 } from 'api/gen'
+import { useFavoritesTabViews } from 'features/favorites/context/FavoritesTabViewsProvider'
 import { FavoriteType } from 'features/favorites/enum'
 import { triggerFirstFavoriteSnackBar } from 'features/favorites/helpers/firstFavoriteSnackBar'
 import { handleFavoriteError } from 'features/favorites/helpers/handleFavoriteError'
@@ -26,6 +27,7 @@ type FavoritesList<TFavorite> = { favorites: TFavorite[]; nbFavorites: number }
 type FavoriteMutationConfig<TRequest, TFavorite> = {
   queryKey: QueryKeys
   mutationFn: (body: TRequest) => Promise<TFavorite>
+  getFavoriteId: (favorite: TFavorite) => number
   getEntityId: (favorite: TFavorite) => string | number
   buildOptimisticFavorite: (variables: TRequest) => TFavorite
   errorMessage: string
@@ -48,6 +50,7 @@ const useAddFavoriteMutation = <
 ) => {
   const enableFavoritesHub = useFeatureFlag(RemoteStoreFeatureFlags.WIP_FAVORITES_HUB)
   const queryClient = useQueryClient()
+  const { markFavoriteUnviewed } = useFavoritesTabViews()
   const queryKey = [config.queryKey]
 
   return useMutation<TFavorite, Error | ApiError, TRequest, MutationContext<TList>>({
@@ -70,6 +73,7 @@ const useAddFavoriteMutation = <
       return { previousFavorites }
     },
     onSuccess: async (data) => {
+      markFavoriteUnviewed(type, config.getFavoriteId(data))
       const previousFavorites = queryClient.getQueryData<TList>(queryKey)
 
       if (previousFavorites) {
@@ -103,6 +107,7 @@ const useAddFavoriteMutation = <
 const artistConfig: FavoriteMutationConfig<FavoriteArtistRequest, FavoriteArtistResponse> = {
   queryKey: QueryKeys.FAVORITES_ARTIST,
   mutationFn: (body) => api.postNativeV2MeFavoritesArtists(body),
+  getFavoriteId: (favorite) => favorite.id,
   getEntityId: (favorite) => favorite.artist.id,
   buildOptimisticFavorite: ({ artistId }) =>
     ({ id: Math.random(), artist: { id: artistId } }) as FavoriteArtistResponse,
@@ -112,6 +117,7 @@ const artistConfig: FavoriteMutationConfig<FavoriteArtistRequest, FavoriteArtist
 const offerConfig: FavoriteMutationConfig<FavoriteRequest, FavoriteOfferResponseV2> = {
   queryKey: QueryKeys.FAVORITES_OFFER,
   mutationFn: (body) => api.postNativeV2MeFavoritesOffers(body),
+  getFavoriteId: (favorite) => favorite.id,
   getEntityId: (favorite) => favorite.offer.id,
   buildOptimisticFavorite: ({ offerId }) =>
     ({
@@ -125,6 +131,7 @@ const offerConfig: FavoriteMutationConfig<FavoriteRequest, FavoriteOfferResponse
 const venueConfig: FavoriteMutationConfig<FavoriteVenueRequest, FavoriteVenueResponse> = {
   queryKey: QueryKeys.FAVORITES_VENUE,
   mutationFn: (body) => api.postNativeV2MeFavoritesVenues(body),
+  getFavoriteId: (favorite) => favorite.id,
   getEntityId: (favorite) => favorite.venue.id,
   buildOptimisticFavorite: ({ venueId }) =>
     ({ id: Math.random(), venue: { id: venueId } }) as FavoriteVenueResponse,

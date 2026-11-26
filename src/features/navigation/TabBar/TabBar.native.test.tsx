@@ -3,7 +3,7 @@ import { NavigationHelpers, ParamListBase, TabNavigationState } from '@react-nav
 import React from 'react'
 
 import { DisplayedDisabilitiesEnum } from 'features/accessibility/enums'
-import { useTabBarItemBadges } from 'features/navigation/helpers/useTabBarItemBadges'
+import { useTabBarItemIndicators } from 'features/navigation/helpers/useTabBarItemIndicators'
 import {
   DEFAULT_TAB_ROUTES,
   useTabNavigationContext,
@@ -35,8 +35,8 @@ jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: jest.fn(() => ({ bottom: 10 })),
 }))
 
-jest.mock('features/navigation/helpers/useTabBarItemBadges')
-const mockUseTabBarItemBadges = useTabBarItemBadges as jest.Mock
+jest.mock('features/navigation/helpers/useTabBarItemIndicators')
+const mockUseTabBarItemIndicators = useTabBarItemIndicators as jest.Mock
 
 const mockTabNavigationState: TabNavigationState<ParamListBase> = {
   history: [{ key: 'Home-LzN9F8ePccY3NzxcsunpQ', type: 'route' }],
@@ -128,8 +128,9 @@ describe('TabBar', () => {
   })
 
   beforeAll(() => {
-    mockUseTabBarItemBadges.mockReturnValue({
-      Bookings: 999,
+    mockUseTabBarItemIndicators.mockReturnValue({
+      badgeValues: { Bookings: 999 },
+      showFavoritesChip: false,
     })
   })
 
@@ -137,6 +138,18 @@ describe('TabBar', () => {
     renderTabBar(mockTabNavigationState)
 
     expect(await screen.findByText('99+')).toBeOnTheScreen()
+  })
+
+  it('should display a chip on Favorites when there are unviewed favorites', () => {
+    mockUseTabBarItemIndicators.mockReturnValueOnce({
+      badgeValues: {},
+      showFavoritesChip: true,
+    })
+
+    renderTabBar(mockTabNavigationState)
+
+    expect(screen.queryByText('1')).not.toBeOnTheScreen()
+    expect(screen.getByLabelText('Mes favoris - nouveau')).toBeOnTheScreen()
   })
 
   it('should display the 5 following tabs with Home selected', async () => {

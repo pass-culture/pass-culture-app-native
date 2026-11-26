@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
-import { useTabBarItemBadges } from 'features/navigation/helpers/useTabBarItemBadges'
+import { useTabBarItemIndicators } from 'features/navigation/helpers/useTabBarItemIndicators'
 import * as navigationRefAPI from 'features/navigation/navigationRef'
 import { getSearchHookConfig } from 'features/navigation/navigators/SearchStackNavigator/getSearchHookConfig'
 import {
@@ -68,8 +68,8 @@ jest.mock('features/navigation/TabBar/TabNavigationStateContext', () => {
 })
 const mockedUseTabNavigationContext = jest.mocked(useTabNavigationContext)
 
-jest.mock('features/navigation/helpers/useTabBarItemBadges')
-const mockUseTabBarItemBadges = useTabBarItemBadges as jest.Mock
+jest.mock('features/navigation/helpers/useTabBarItemIndicators')
+const mockUseTabBarItemIndicators = useTabBarItemIndicators as jest.Mock
 
 const mockedPlace: SuggestedPlace = {
   label: 'Kourou',
@@ -86,8 +86,9 @@ const mockedLocation = {
 
 describe('AccessibleTabBar', () => {
   beforeAll(() => {
-    mockUseTabBarItemBadges.mockReturnValue({
-      Bookings: 999,
+    mockUseTabBarItemIndicators.mockReturnValue({
+      badgeValues: { Bookings: 999 },
+      showFavoritesChip: false,
     })
   })
 

@@ -8,6 +8,7 @@ import {
   FavoriteVenueResponse,
   PaginatedResponseFavoriteOfferResponseV2,
 } from 'api/gen'
+import { FavoritesTabViewsProvider } from 'features/favorites/context/FavoritesTabViewsProvider'
 import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { FavoriteType } from 'features/favorites/enum'
 import { favoriteArtistResponseSnap } from 'features/favorites/fixtures/favoriteArtistResponseSnap'
@@ -18,6 +19,7 @@ import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { storage } from 'libs/storage'
 import {
   useArtistFavoritesQuery,
   useOfferFavoritesQuery,
@@ -145,7 +147,7 @@ function mockArtists(favorites: FavoriteArtistResponse[] = [], overrides = {}) {
 const user = userEvent.setup()
 
 describe('FavoritesResults component', () => {
-  beforeEach(() => {
+  beforeEach(async () => {
     jest.clearAllMocks()
     mockFocusEffect = undefined
     mockUser = beneficiaryUser
@@ -154,6 +156,11 @@ describe('FavoritesResults component', () => {
     mockOffers()
     mockVenues()
     mockArtists()
+    await Promise.all([
+      storage.clear('unviewed_favorite_offer_ids'),
+      storage.clear('unviewed_favorite_venue_ids'),
+      storage.clear('unviewed_favorite_artist_ids'),
+    ])
   })
 
   it('should show no result message when list is empty', async () => {
@@ -241,6 +248,38 @@ describe('FavoritesResults component', () => {
       await user.press(await screen.findByText('Artistes'))
 
       expect(await screen.findByText(favoriteArtistResponseSnap.artist.name)).toBeOnTheScreen()
+    })
+
+    it('should show a new chip until the matching favorites tab is opened', async () => {
+      setFeatureFlags([
+        RemoteStoreFeatureFlags.WIP_FAVORITES_HUB,
+        RemoteStoreFeatureFlags.ENABLE_FAVORITE_CHIP,
+      ])
+      mockArtists([favoriteArtistResponseSnap])
+      await storage.saveObject('unviewed_favorite_artist_ids', [favoriteArtistResponseSnap.id])
+      renderFavoritesResults(true)
+
+      const artistsTab = await screen.findByLabelText(
+        'Onglet 3/3 - Artistes - non sélectionné - nouveau'
+      )
+
+      expect(artistsTab).toBeOnTheScreen()
+
+      await user.press(artistsTab)
+
+      expect(screen.getByLabelText('Onglet 3/3 - Artistes - sélectionné')).toBeOnTheScreen()
+
+      expect(await storage.readObject('unviewed_favorite_artist_ids')).toEqual([])
+    })
+
+    it('should not show new chips when the favorite chip feature flag is disabled', async () => {
+      mockArtists([favoriteArtistResponseSnap])
+      renderFavoritesResults(true)
+
+      expect(
+        await screen.findByLabelText('Onglet 3/3 - Artistes - non sélectionné')
+      ).toBeOnTheScreen()
+      expect(screen.queryByTestId('chip')).not.toBeOnTheScreen()
     })
 
     it('should show no result message in venues tab when list is empty', async () => {
@@ -390,6 +429,14 @@ describe('FavoritesResults component', () => {
   })
 })
 
-function renderFavoritesResults() {
-  return render(reactQueryProviderHOC(<FavoritesResults />))
+function renderFavoritesResults(withTabViewsProvider = false) {
+  const favoritesResults = withTabViewsProvider ? (
+    <FavoritesTabViewsProvider>
+      <FavoritesResults />
+    </FavoritesTabViewsProvider>
+  ) : (
+    <FavoritesResults />
+  )
+
+  return render(reactQueryProviderHOC(favoritesResults))
 }

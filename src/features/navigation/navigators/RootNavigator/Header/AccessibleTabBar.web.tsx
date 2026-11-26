@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import styled from 'styled-components'
 import nativeStyled from 'styled-components/native'
 
-import { useTabBarItemBadges } from 'features/navigation/helpers/useTabBarItemBadges'
+import { useTabBarItemIndicators } from 'features/navigation/helpers/useTabBarItemIndicators'
 import { getTabNavigatorConfig } from 'features/navigation/navigators/RootNavigator/Header/getTabNavigatorConfig'
 import { TabBarComponent } from 'features/navigation/TabBar/TabBarComponent'
 import { TabBarContainer } from 'features/navigation/TabBar/TabBarContainer'
@@ -14,7 +14,7 @@ import { Ul } from 'ui/components/Ul'
 export const AccessibleTabBar: FC<{ id: string }> = ({ id }) => {
   const { tabRoutes } = useTabNavigationContext()
   const { searchState, hideSuggestions } = useSearch()
-  const routeBadgeMap = useTabBarItemBadges()
+  const { badgeValues, showFavoritesChip } = useTabBarItemIndicators()
 
   return (
     <AccessibleTabBarContainer id={id}>
@@ -33,7 +33,8 @@ export const AccessibleTabBar: FC<{ id: string }> = ({ id }) => {
                   onPress={route.name === 'SearchStackNavigator' ? hideSuggestions : undefined}
                   tabName={route.name}
                   isSelected={route.isSelected}
-                  badgeValue={routeBadgeMap[route.name]}
+                  badgeValue={route.name === 'Bookings' ? badgeValues.Bookings : undefined}
+                  showFavoritesChip={showFavoritesChip}
                 />
               </LinkContainer>
             )

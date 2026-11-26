@@ -1,5 +1,6 @@
 import React, { memo, useMemo, useContext, useReducer } from 'react'
 
+import { FavoritesTabViewsProvider } from 'features/favorites/context/FavoritesTabViewsProvider'
 import {
   initialFavoritesState,
   favoritesReducer,
@@ -21,7 +22,11 @@ export const FavoritesWrapper = memo<{ children: React.JSX.Element }>(function F
     () => ({ ...contextValueWithoutDispatch, dispatch }),
     [contextValueWithoutDispatch, dispatch]
   )
-  return <FavoritesContext.Provider value={contextValue}>{children}</FavoritesContext.Provider>
+  return (
+    <FavoritesContext.Provider value={contextValue}>
+      <FavoritesTabViewsProvider>{children}</FavoritesTabViewsProvider>
+    </FavoritesContext.Provider>
+  )
 })
 
 export const useFavoritesState = (): FavoritesContextType => {

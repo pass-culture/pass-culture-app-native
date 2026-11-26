@@ -5,7 +5,7 @@ import { ThemeProvider as WebThemeProvider } from 'styled-components'
 import { ThemeProvider } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useTabBarItemBadges } from 'features/navigation/helpers/useTabBarItemBadges'
+import { useTabBarItemIndicators } from 'features/navigation/helpers/useTabBarItemIndicators'
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { initialSearchState } from 'features/search/context/reducer'
 import { UserProfile } from 'features/share/types'
@@ -20,8 +20,8 @@ import { Header } from './Header'
 jest.mock('libs/jwt/jwt')
 jest.mock('features/favorites/context/FavoritesWrapper')
 
-jest.mock('features/navigation/helpers/useTabBarItemBadges')
-const mockUseTabBarItemBadges = useTabBarItemBadges as jest.Mock
+jest.mock('features/navigation/helpers/useTabBarItemIndicators')
+const mockUseTabBarItemIndicators = useTabBarItemIndicators as jest.Mock
 
 const mockedUseAuthContext = useAuthContext as jest.Mock
 jest.mock('features/auth/context/AuthContext')
@@ -41,8 +41,9 @@ describe('Header', () => {
   })
 
   beforeAll(() => {
-    mockUseTabBarItemBadges.mockReturnValue({
-      Bookings: 999,
+    mockUseTabBarItemIndicators.mockReturnValue({
+      badgeValues: { Bookings: 999 },
+      showFavoritesChip: false,
     })
   })
 

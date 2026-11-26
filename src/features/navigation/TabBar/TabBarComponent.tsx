@@ -1,6 +1,6 @@
 import React from 'react'
 import { Platform } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { TabScreens } from 'features/navigation/TabBar/isTabNavigatorScreen'
 import { mapTabRouteToIcon } from 'features/navigation/TabBar/mapTabRouteToBicolorIcon'
@@ -12,6 +12,7 @@ import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 interface Props {
   isSelected?: boolean
   badgeValue?: number
+  showFavoritesChip?: boolean
   navigateTo: InternalNavigationProps['navigateTo']
   enableNavigate?: boolean
   onPress?: () => void
@@ -27,10 +28,18 @@ export const TabBarComponent: React.FC<Props> = ({
   onPress,
   tabName,
   badgeValue,
+  showFavoritesChip = false,
 }) => {
+  const { tabBar } = useTheme()
   const BicolorIcon = mapTabRouteToIcon({ route: tabName })
+  const shouldAnnounceFavoriteChip = tabName === 'Favorites' && showFavoritesChip
   const accessibilityLabelSelected = isSelected ? 'actif' : 'inactif'
-  const accessibilityLabel = `${menu[tabName].accessibilityLabel ?? ''} - ${accessibilityLabelSelected}`
+  const accessibilityLabel = [
+    menu[tabName].accessibilityLabel ?? '',
+    shouldAnnounceFavoriteChip ? 'nouveau' : accessibilityLabelSelected,
+  ]
+    .filter(Boolean)
+    .join(' - ')
 
   return (
     <TabComponentContainer
@@ -38,7 +47,9 @@ export const TabBarComponent: React.FC<Props> = ({
       enableNavigate={enableNavigate}
       onBeforeNavigate={onPress}
       selected={isSelected}
-      accessibilityLabel={accessibilityLabel}
+      accessibilityLabel={
+        tabBar.showLabels && isWeb && !shouldAnnounceFavoriteChip ? undefined : accessibilityLabel
+      }
       testID={menu[tabName].accessibilityLabel ?? menu[tabName].displayName}
       accessibilityCurrent={isSelected ? 'page' : undefined}>
       <TabBarInnerComponent
@@ -46,14 +57,14 @@ export const TabBarComponent: React.FC<Props> = ({
         isSelected={isSelected}
         BicolorIcon={BicolorIcon}
         badgeValue={badgeValue}
+        showFavoritesChip={shouldAnnounceFavoriteChip}
       />
     </TabComponentContainer>
   )
 }
 
 const TabComponentContainer: typeof InternalTouchableLink = styled(InternalTouchableLink).attrs(
-  ({ theme, accessibilityLabel, selected }) => ({
-    accessibilityLabel: theme.tabBar.showLabels && isWeb ? undefined : accessibilityLabel,
+  ({ theme, selected }) => ({
     hoverUnderlineColor: selected
       ? theme.designSystem.color.text.default
       : theme.designSystem.color.text.subtle,

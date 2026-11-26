@@ -2,7 +2,7 @@ import React, { memo } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useTabBarItemBadges } from 'features/navigation/helpers/useTabBarItemBadges'
+import { useTabBarItemIndicators } from 'features/navigation/helpers/useTabBarItemIndicators'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
@@ -16,7 +16,7 @@ import { Nav } from './Nav'
 
 export const Header = memo(function Header({ navId }: { navId: string }) {
   const { contentPage, breakpoints, appContentWidth, navTopHeight } = useTheme()
-  const routeBadgeMap = useTabBarItemBadges()
+  const { badgeValues, showFavoritesChip } = useTabBarItemIndicators()
 
   const { user } = useAuthContext()
   const marginHorizontal = user ? contentPage.marginHorizontal * 2 : 0
@@ -50,7 +50,8 @@ export const Header = memo(function Header({ navId }: { navId: string }) {
           tabIndex={-1}
           maxWidth={appContentWidth}
           height={navTopHeight}
-          routeBadgeMap={routeBadgeMap}
+          badgeValues={badgeValues}
+          showFavoritesChip={showFavoritesChip}
         />
       </CenterContainer>
       {isDesktopOffset ? (

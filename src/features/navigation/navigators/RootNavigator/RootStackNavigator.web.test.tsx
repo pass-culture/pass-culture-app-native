@@ -19,6 +19,12 @@ jest
   .spyOn(CookiesUpToDate, 'useIsCookiesListUpToDate')
   .mockReturnValue({ isCookiesListUpToDate: true, cookiesLastUpdate: undefined, isLoading: false })
 jest.mock('features/forceUpdate/helpers/useMustUpdateApp')
+jest.mock('features/navigation/helpers/useTabBarItemIndicators', () => ({
+  useTabBarItemIndicators: () => ({
+    badgeValues: {},
+    showFavoritesChip: false,
+  }),
+}))
 jest.unmock('@react-navigation/native')
 jest.mock('features/auth/context/AuthContext')
 jest.mock('react-error-boundary', () => ({

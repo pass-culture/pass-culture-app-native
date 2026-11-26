@@ -4,8 +4,8 @@ import LinearGradient from 'react-native-linear-gradient'
 import styled, { useTheme } from 'styled-components/native'
 
 import { TabInnerComponentProps } from 'features/navigation/navigators/TabNavigator/types'
+import { FavoritesChip } from 'features/navigation/TabBar/FavoritesChip'
 import { menu } from 'features/navigation/TabBar/menu'
-import { TabBarBadge } from 'features/navigation/TabBar/TabBarBadge'
 import { TabBarTitle } from 'features/navigation/TabBar/TabBarTitle'
 import { useMobileFontScaleToDisplay } from 'shared/accessibility/helpers/zoomHelpers'
 import { LogoDetailed } from 'ui/svg/icons/LogoDetailed'
@@ -15,7 +15,7 @@ export const TabBarInnerComponent: React.FC<TabInnerComponentProps> = ({
   isSelected,
   BicolorIcon,
   badgeValue,
-  showBadge,
+  showFavoritesChip,
 }) => {
   const { icons, designSystem } = useTheme()
 
@@ -42,9 +42,9 @@ export const TabBarInnerComponent: React.FC<TabInnerComponentProps> = ({
             as={BicolorIcon}
             selected={isSelected}
             iconSize={iconSize}
-            badgeValue={showBadge ? undefined : badgeValue}
+            badgeValue={badgeValue}
           />
-          {showBadge ? <TabBarBadge testID={`${tabName}-new-feature-badge`} /> : null}
+          {showFavoritesChip ? <FavoritesChip testID={`${tabName}-new-feature-chip`} /> : null}
         </IconWrapper>
         {title}
       </MainContent>

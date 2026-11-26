@@ -6,7 +6,7 @@ import {
   defaultDisabilitiesProperties,
   useAccessibilityFiltersContext,
 } from 'features/accessibility/context/AccessibilityFiltersWrapper'
-import { useTabBarItemBadges } from 'features/navigation/helpers/useTabBarItemBadges'
+import { useTabBarItemIndicators } from 'features/navigation/helpers/useTabBarItemIndicators'
 import { TabBarContainer } from 'features/navigation/TabBar/TabBarContainer'
 import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { useTabBar } from 'features/navigation/TabBar/useTabBar'
@@ -22,7 +22,7 @@ export const TabBar: React.FC<Props> = ({ navigation, state }) => {
   const { tabRoutes } = useTabNavigationContext()
   const { searchState, dispatch, hideSuggestions } = useSearch()
   const { setDisabilities, disabilities } = useAccessibilityFiltersContext()
-  const routeBadgeMap = useTabBarItemBadges()
+  const { badgeValues, showFavoritesChip } = useTabBarItemIndicators()
   const { locationFilter } = searchState
 
   useTabBar({ state })
@@ -82,7 +82,8 @@ export const TabBar: React.FC<Props> = ({ navigation, state }) => {
             key={`key-tab-nav-${route.key}`}
             tabName={route.name}
             isSelected={route.isSelected}
-            badgeValue={routeBadgeMap[route.name]}
+            badgeValue={route.name === 'Bookings' ? badgeValues.Bookings : undefined}
+            showFavoritesChip={showFavoritesChip}
             onPress={onPress}
           />
         )
