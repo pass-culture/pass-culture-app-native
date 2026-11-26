@@ -1,12 +1,13 @@
-# v1.418.0
+# v1.419.0
 To find the diff, use `git diff tag_min_required_version tag_current_version -- route_usage_changelog.md`
 ## Used routes:
 - /native/v1/me/reminders/{reminder_id}
 - /native/v2/me/favorites/artists/{favorite_id}
 - /native/v2/me/favorites/offers/{favorite_id}
+- /native/v2/me/favorites/venues/{favorite_id}
 - /native/v1/account/suspend/token_validation/{token}
 - /native/v1/artists/{artist_id}
-- /native/v1/artists/{artist_id}/similar
+Pathname not found for getNativeV1ArtistsartistIdSimilar
 - /native/v1/banner
 - /native/v1/venue/{venue_id}/movie/calendar
 - /native/v1/countries
@@ -29,10 +30,12 @@ To find the diff, use `git diff tag_min_required_version tag_current_version -- 
 - /native/v2/bookings/{status}
 - /native/v2/me/favorites/artists
 - /native/v2/me/favorites/offers
+- /native/v2/me/favorites/venues
 - /native/v2/oauth/state
 - /native/v2/profile/email_update/status
 - /native/v2/reaction/available
 - /native/v2/venue/{venue_id}
+- /native/v3/bookings/{booking_id}
 - /native/v3/offer/{offer_id}
 - /native/v3/subscription/stepper
 - /native/v1/profile
@@ -67,6 +70,7 @@ To find the diff, use `git diff tag_min_required_version tag_current_version -- 
 - /native/v1/validate_email
 - /native/v2/me/favorites/artists
 - /native/v2/me/favorites/offers
+- /native/v2/me/favorites/venues
 - /native/v2/oauth/{sso_provider}/authorize
 - /native/v2/offers/stocks
 - /native/v2/profile/email_update/confirm
@@ -79,10 +83,9 @@ To find the diff, use `git diff tag_min_required_version tag_current_version -- 
 - /native/v3/offers/stocks
 - /native/v1/profile/email_update/validate
 ## Unused routes:
-Pathname not found for deleteNativeV1MeFavoritesfavoriteId
+- /native/v1/me/favorites/{favorite_id}
 - /native/v1/me/favorites
 - /native/v2/subscription/stepper
-- /native/v3/bookings/{booking_id}
 - /native/v1/me/favorites
 - /native/v1/refresh_access_token
 
