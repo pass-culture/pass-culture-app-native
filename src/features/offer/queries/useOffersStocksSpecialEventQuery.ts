@@ -6,6 +6,8 @@ import { convertOffererDatesToTimezone } from 'features/offer/queries/selectors/
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { QueryKeys } from 'libs/queryKeys'
 
+const STALE_TIME_OFFERS_STOCKS_SPECIAL_EVENT = 5 * 60 * 1000 // 5 minutes
+
 export const useOffersStocksSpecialEventQuery = <TData = OffersStocksResponse>(
   { offerIds }: { offerIds: number[] },
   options?: {
@@ -23,5 +25,6 @@ export const useOffersStocksSpecialEventQuery = <TData = OffersStocksResponse>(
         ? options.select(convertOffererDatesToTimezone(data))
         : (convertOffererDatesToTimezone(data) as TData),
     enabled: options?.enabled,
+    staleTime: STALE_TIME_OFFERS_STOCKS_SPECIAL_EVENT,
   })
 }

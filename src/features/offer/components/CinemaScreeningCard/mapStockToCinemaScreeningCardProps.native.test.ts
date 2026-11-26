@@ -38,7 +38,7 @@ describe('mapStockToCinemaScreeningCardProps', () => {
         audio: ['Dolby Atmos'],
         languages: ['VO'],
         price: '5,70 €',
-        specialEvent: 'Avant-première avec équipe',
+        specialEvent: 'Avant-première équipe',
         time: '12h00',
         video: ['IMAX'],
       })
@@ -85,7 +85,7 @@ describe('mapStockToCinemaScreeningCardProps', () => {
         accessibility: screening.screeningFeatures?.accessibility,
         audio: ['Dolby Atmos'],
         price: '5,70\u00a0€',
-        specialEvent: 'Avant-première avec équipe',
+        specialEvent: 'Avant-première équipe',
         video: ['IMAX'],
       })
     )

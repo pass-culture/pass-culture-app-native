@@ -1,5 +1,6 @@
 import React, { ComponentProps } from 'react'
 
+import { OffersStocksResponse } from 'api/gen'
 import { Step } from 'features/bookOffer/context/reducer'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
@@ -21,6 +22,8 @@ jest.mock('features/bookOffer/context/useBookingContext', () => ({
       step: mockStep,
       quantity: 2,
       date: new Date('2021-03-02T20:00:00'),
+      offerId: mockOffer.id,
+      stockId: mockOffer.stocks[0].id,
     },
     dispatch: jest.fn(),
     dismissModal: jest.fn(),
@@ -63,6 +66,25 @@ describe('<BookingOfferModal/>', () => {
   describe('Accessibility', () => {
     beforeEach(() => {
       mockServer.getApi(`/v3/offer/${mockOffer.id}`, mockOffer)
+      mockServer.postApi<OffersStocksResponse>('/v3/offers/stocks', {
+        offers: [
+          {
+            venue: { timezone: 'UTC' },
+            stocks: [
+              {
+                id: mockOffer.stocks[0].id,
+                price: mockOffer.stocks[0].price,
+                beginningDatetime: mockOffer.stocks[0].beginningDatetime,
+                isBookable: true,
+                isExpired: false,
+                isForbiddenToUnderage: false,
+                isSoldOut: false,
+                screeningFeatures: null,
+              },
+            ],
+          },
+        ],
+      } as OffersStocksResponse)
     })
 
     it('should not have basic accessibility issues for step "date"', async () => {

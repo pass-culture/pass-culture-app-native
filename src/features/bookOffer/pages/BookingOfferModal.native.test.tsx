@@ -2,7 +2,7 @@ import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { ApiError } from 'api/ApiError'
-import { RecommendationApiParams, SubcategoryIdEnum } from 'api/gen'
+import { OffersStocksResponse, RecommendationApiParams, SubcategoryIdEnum } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
 import { BookingState, Step } from 'features/bookOffer/context/reducer'
 import { mockOffer as baseOffer } from 'features/bookOffer/fixtures/offer'
@@ -18,6 +18,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { storage } from 'libs/storage'
 import * as useBookOfferMutation from 'queries/bookOffer/useBookOfferMutation'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
 
@@ -129,6 +130,10 @@ describe('<BookingOfferModalComponent />', () => {
   beforeEach(() => {
     setFeatureFlags()
     void storage.clear('has_seen_qualtrics_survey')
+    mockServer.postApi<OffersStocksResponse>(
+      '/v3/offers/stocks',
+      offersStocksResponse(mockOffer.stocks[0].id)
+    )
   })
 
   it('should dismiss modal when click on rightIconButton and reset state', async () => {
@@ -555,3 +560,24 @@ const renderBookingOfferModal = ({
 
 const Component = (props: BookingOfferModalComponentProps) =>
   reactQueryProviderHOC(<BookingOfferModalComponent {...props} />)
+
+const offersStocksResponse = (stockId: number): OffersStocksResponse =>
+  ({
+    offers: [
+      {
+        venue: { timezone: 'UTC' },
+        stocks: [
+          {
+            id: stockId,
+            price: mockOffer.stocks[0].price,
+            beginningDatetime: mockOffer.stocks[0].beginningDatetime,
+            isBookable: true,
+            isExpired: false,
+            isForbiddenToUnderage: false,
+            isSoldOut: false,
+            screeningFeatures: null,
+          },
+        ],
+      },
+    ],
+  }) as OffersStocksResponse

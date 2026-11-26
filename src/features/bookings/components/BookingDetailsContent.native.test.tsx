@@ -93,10 +93,10 @@ const bookingWithFeaturesWithoutDetails = selectBookingDetails({
     ...booking.stock,
     screeningFeatures: {
       language: 'VF',
-      video: '4DX',
+      video: null,
       audio: null,
-      accessibility: { motor: [], audio: [], visual: [], mental: [] },
-      specialEventType: 'CINE_DEBAT',
+      accessibility: { motor: ['UNKNOWN'], audio: [], visual: [], mental: [] },
+      specialEventType: null,
     },
   },
 } as unknown as BookingResponseV3)
@@ -389,7 +389,7 @@ describe('<BookingDetailsContent />', () => {
       properties: mockProperties,
     })
 
-    expect(screen.getByText('Avant-première avec équipe')).toBeOnTheScreen()
+    expect(screen.getByText('Avant-première équipe')).toBeOnTheScreen()
     expect(screen.getByText('IMAX')).toBeOnTheScreen()
     expect(screen.getByText('Dolby Atmos')).toBeOnTheScreen()
     expect(screen.getByLabelText('Handicap visuel')).toBeOnTheScreen()
@@ -412,7 +412,7 @@ describe('<BookingDetailsContent />', () => {
     })
   })
 
-  it('should display the cinema screening tags without details button when no feature has a description', async () => {
+  it('should display the cinema screening accessibility without details button when no feature has a description', async () => {
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_SPECIAL_EVENT_SCREENINGS])
 
     await renderBookingDetailsContent({
@@ -420,8 +420,7 @@ describe('<BookingDetailsContent />', () => {
       properties: mockProperties,
     })
 
-    expect(screen.getByText('Ciné-débat')).toBeOnTheScreen()
-    expect(screen.getByText('4DX')).toBeOnTheScreen()
+    expect(screen.getByLabelText('Handicap moteur')).toBeOnTheScreen()
     expect(screen.queryByText('Informations sur la séance')).not.toBeOnTheScreen()
   })
 
@@ -440,7 +439,7 @@ describe('<BookingDetailsContent />', () => {
     })
 
     expect(screen.queryByText('Informations sur la séance')).not.toBeOnTheScreen()
-    expect(screen.queryByText('Avant-première avec équipe')).not.toBeOnTheScreen()
+    expect(screen.queryByText('Avant-première équipe')).not.toBeOnTheScreen()
   })
 })
 
