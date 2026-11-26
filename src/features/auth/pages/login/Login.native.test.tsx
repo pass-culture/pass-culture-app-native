@@ -13,6 +13,7 @@ import {
   SigninResponseV2,
 } from 'api/gen'
 import { AuthContext } from 'features/auth/context/AuthContext'
+import { FavoriteType } from 'features/favorites/enum'
 import { favoriteArtistResponseSnap } from 'features/favorites/fixtures/favoriteArtistResponseSnap'
 import { favoriteOfferResponseSnap } from 'features/favorites/fixtures/favoriteOfferResponseSnap'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
@@ -466,6 +467,11 @@ describe('<Login/>', () => {
         from: 'login',
         offerId: OFFER_ID,
       })
+      expect(analytics.logAddItemToFavorite).toHaveBeenCalledWith({
+        from: 'login',
+        id: OFFER_ID.toString(),
+        type: FavoriteType.OFFER,
+      })
     })
   })
 
@@ -495,6 +501,20 @@ describe('<Login/>', () => {
 
       expect(apiPostArtistFavoriteSpy).toHaveBeenCalledTimes(1)
     })
+
+    it('should log analytics when adding the previous artist to favorites', async () => {
+      simulateAddArtistToFavorites()
+      renderLogin()
+
+      await fillInputs()
+      await user.press(screen.getByText('Se connecter'))
+
+      expect(analytics.logAddItemToFavorite).toHaveBeenCalledWith({
+        from: 'login',
+        id: ARTIST_ID.toString(),
+        type: FavoriteType.ARTIST,
+      })
+    })
   })
 
   describe('Login comes from adding a venue to favorite', () => {
@@ -515,13 +535,27 @@ describe('<Login/>', () => {
     })
 
     it('should add the previous venue to favorites when signin is successful', async () => {
-      simulateAddArtistToFavorites()
+      simulateAddVenueToFavorites()
 
       renderLogin()
       await fillInputs()
       await user.press(screen.getByText('Se connecter'))
 
       expect(apiPostVenueFavoriteSpy).toHaveBeenCalledTimes(1)
+    })
+
+    it('should log analytics when adding the previous venue to favorites', async () => {
+      simulateAddVenueToFavorites()
+      renderLogin()
+
+      await fillInputs()
+      await user.press(screen.getByText('Se connecter'))
+
+      expect(analytics.logAddItemToFavorite).toHaveBeenCalledWith({
+        from: 'login',
+        id: VENUE_ID.toString(),
+        type: FavoriteType.VENUE,
+      })
     })
   })
 
@@ -799,4 +833,8 @@ function simulateAddOfferToFavorites() {
 
 function simulateAddArtistToFavorites() {
   mockServer.postApi<FavoriteArtistResponse>('/v2/me/favorites/artists', favoriteArtistResponseSnap)
+}
+
+function simulateAddVenueToFavorites() {
+  mockServer.postApi<FavoriteVenueResponse>('/v2/me/favorites/venues', favoriteVenueResponseSnap)
 }

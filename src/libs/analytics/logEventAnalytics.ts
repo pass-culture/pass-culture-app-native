@@ -13,6 +13,7 @@ import { PreValidationSignupStep } from 'features/auth/enums'
 import { Provider } from 'features/auth/types'
 import { STEP_LABEL, Step } from 'features/bookOffer/context/reducer'
 import { CookiesChoiceByCategory } from 'features/cookies/types'
+import { FavoriteType } from 'features/favorites/enum'
 import { FavoriteSortBy } from 'features/favorites/types'
 import { IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
 import {
@@ -129,6 +130,16 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.ACCOUNT_REACTIVATION }, { from }),
   logActivateGeolocfromSearchResults: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.ACTIVATE_GEOLOC_FROM_SEARCH_RESULTS }),
+  logAddItemToFavorite: (params: {
+    id: string
+    type: FavoriteType
+    from?: Referrals
+    moduleName?: string
+    moduleId?: string
+    searchId?: string
+    apiRecoParams?: RecommendationApiParams
+    playlistType?: string
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.ADD_ITEM_TO_FAVORITE }, params),
   logAllModulesSeen: (numberOfModules: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.ALL_MODULES_SEEN }, { numberOfModules }),
   logAllTilesSeen: (params: {
@@ -297,6 +308,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_ERROR_APPLICATION_MODAL }, { offerId }),
   logConsultFakeDoorSurvey: (params: FakeDoorAnalyticsParams) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_FAKE_DOOR_SURVEY }, params),
+  logConsultFavorites: (params: { tab: FavoriteType }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_FAVORITES }, params),
   logConsultFinishSubscriptionModal: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_FINISH_SUBSCRIPTION_MODAL }, { offerId }),
   logConsultHome: (params: ConsultHomeParams) =>
@@ -622,6 +635,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.QUIT_IDENTITY_CHECK }, { nextStep }),
   logReinitializeFilters: (searchId?: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.REINITIALIZE_FILTERS }, { searchId }),
+  logRemoveItemFromFavorite: (params: { id: string; type: FavoriteType; from?: Referrals }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.REMOVE_ITEM_FROM_FAVORITE }, params),
   logResendEmailResetPasswordExpiredLink: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.RESEND_EMAIL_RESET_PASSWORD_EXPIRED_LINK }),
   logResendEmailSignupConfirmationExpiredLink: () =>

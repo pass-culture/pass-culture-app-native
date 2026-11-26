@@ -4,6 +4,7 @@ import { Animated, Share } from 'react-native'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
 import { Activity, PaginatedResponseFavoriteVenueResponse, VenueResponse } from 'api/gen'
+import { FavoriteType } from 'features/favorites/enum'
 import { favoriteVenueResponseSnap } from 'features/favorites/fixtures/favoriteVenueResponseSnap'
 import { paginatedVenueFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedVenueFavoritesResponseSnap'
 import * as useGoBack from 'features/navigation/useGoBack'
@@ -217,6 +218,19 @@ describe('<VenueHeader />', () => {
           expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
           expect(spyApiDeleteFavorite).toHaveBeenCalledWith(expectedFavoriteId)
         })
+
+        it('should trigger RemoveItemFromFavorite log when press on favorite', async () => {
+          renderVenueHeader()
+
+          const button = await screen.findByLabelText('Retirer des favoris')
+          await user.press(button)
+
+          expect(analytics.logRemoveItemFromFavorite).toHaveBeenCalledWith({
+            id: venueDataTest.id.toString(),
+            type: FavoriteType.VENUE,
+            from: 'venue',
+          })
+        })
       })
 
       describe('When venue is not in favorites', () => {
@@ -233,6 +247,19 @@ describe('<VenueHeader />', () => {
 
           await waitFor(() => {
             expect(spyApiPostFavorite).toHaveBeenCalledWith({ venueId: venueDataTest.id })
+          })
+        })
+
+        it('should trigger AddItemToFavorite log when press on favorite', async () => {
+          renderVenueHeader()
+
+          const button = await screen.findByLabelText('Mettre en favori')
+          await user.press(button)
+
+          expect(analytics.logAddItemToFavorite).toHaveBeenCalledWith({
+            id: venueDataTest.id.toString(),
+            type: FavoriteType.VENUE,
+            from: 'venue',
           })
         })
       })

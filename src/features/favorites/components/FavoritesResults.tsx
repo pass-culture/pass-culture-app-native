@@ -1,3 +1,4 @@
+import { useFocusEffect } from '@react-navigation/native'
 import React, { FunctionComponent, memo, useCallback, useMemo, useState } from 'react'
 import { ListRenderItem } from 'react-native'
 import styled from 'styled-components/native'
@@ -16,10 +17,12 @@ import { FavoritesList } from 'features/favorites/components/FavoritesList'
 import { FavoritesResultsPlaceholder } from 'features/favorites/components/FavoritesResultsPlaceholder'
 import { FavoriteVenue } from 'features/favorites/components/FavoriteVenue'
 import { SortButton } from 'features/favorites/components/SortButton'
+import { FAVORITE_TYPE_BY_TAB } from 'features/favorites/constants'
 import { useFavoritesState } from 'features/favorites/context/FavoritesWrapper'
 import { applySortBy } from 'features/favorites/helpers/applySortBy'
 import { Tab } from 'features/favorites/types'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
+import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
@@ -71,9 +74,20 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
     () => applySortBy(offerFavorites?.favorites ?? [], sortBy, position),
     [offerFavorites?.favorites, sortBy, position]
   )
-  const { user } = useAuthContext()
+  const { user, isLoggedIn } = useAuthContext()
 
   const credit = getAvailableCredit(user)
+
+  useFocusEffect(
+    useCallback(
+      function logConsultFavoritesOnFocus() {
+        if (isLoggedIn) {
+          void analytics.logConsultFavorites({ tab: FAVORITE_TYPE_BY_TAB[selectedTab] })
+        }
+      },
+      [isLoggedIn, selectedTab]
+    )
+  )
 
   const renderOffer = useCallback<ListRenderItem<FavoriteOfferResponseV2>>(
     ({ item }) => {
@@ -91,6 +105,14 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
   const renderArtist = useCallback<ListRenderItem<FavoriteArtistResponse>>(
     ({ item }) => <FavoriteArtist favorite={item} />,
     []
+  )
+
+  const handleOnTabChange = useCallback(
+    (tab: Tab) => {
+      if (tab === selectedTab) return
+      setSelectedTab(tab)
+    },
+    [selectedTab]
   )
 
   const tabPanels = {
@@ -154,7 +176,7 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
             tabPanels={tabPanels}
             tabs={tabs}
             defaultTab={selectedTab}
-            onTabChange={setSelectedTab}
+            onTabChange={handleOnTabChange}
           />
         ) : (
           tabPanels[Tab.OFFERS]

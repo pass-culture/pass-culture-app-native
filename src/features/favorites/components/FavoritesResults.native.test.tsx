@@ -9,11 +9,13 @@ import {
   PaginatedResponseFavoriteOfferResponseV2,
 } from 'api/gen'
 import { initialFavoritesState } from 'features/favorites/context/reducer'
+import { FavoriteType } from 'features/favorites/enum'
 import { favoriteArtistResponseSnap } from 'features/favorites/fixtures/favoriteArtistResponseSnap'
 import { favoriteVenueResponseSnap } from 'features/favorites/fixtures/favoriteVenueResponseSnap'
 import { paginatedOfferFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedOfferFavoritesResponseSnap'
 import { UserProfile } from 'features/share/types'
 import { beneficiaryUser } from 'fixtures/user'
+import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import {
@@ -22,9 +24,18 @@ import {
   useVenueFavoritesQuery,
 } from 'queries/favorites/useFavoritesQuery'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, userEvent } from 'tests/utils'
+import { act, fireEvent, render, screen, userEvent } from 'tests/utils'
 
 import { FavoritesResults } from './FavoritesResults'
+
+let mockFocusEffect: (() => void) | undefined
+jest.mock('@react-navigation/native', () => ({
+  ...jest.requireActual('__mocks__/@react-navigation/native'),
+  useFocusEffect: (effect: () => void) => {
+    mockFocusEffect = effect
+    jest.requireActual('react').useEffect(effect, [effect])
+  },
+}))
 
 const mockFavoritesState = initialFavoritesState
 jest.mock('features/favorites/context/FavoritesWrapper', () => ({
@@ -35,9 +46,10 @@ jest.mock('features/favorites/context/FavoritesWrapper', () => ({
 }))
 
 let mockUser: UserProfile | undefined = beneficiaryUser
+let mockIsLoggedIn = true
 jest.mock('features/auth/context/AuthContext', () => ({
   ...jest.requireActual('features/auth/context/AuthContext'),
-  useAuthContext: () => ({ user: mockUser }),
+  useAuthContext: () => ({ user: mockUser, isLoggedIn: mockIsLoggedIn }),
 }))
 
 jest.mock('queries/favorites/useFavoritesQuery')
@@ -135,7 +147,9 @@ const user = userEvent.setup()
 describe('FavoritesResults component', () => {
   beforeEach(() => {
     jest.clearAllMocks()
+    mockFocusEffect = undefined
     mockUser = beneficiaryUser
+    mockIsLoggedIn = true
     setFeatureFlags()
     mockOffers()
     mockVenues()
@@ -292,6 +306,86 @@ describe('FavoritesResults component', () => {
       expect(mockRefetchVenues).toHaveBeenCalledTimes(1)
       expect(mockRefetchOffers).not.toHaveBeenCalled()
       expect(mockRefetchArtists).not.toHaveBeenCalled()
+    })
+  })
+
+  describe('logConsultFavorites', () => {
+    it('should log consult favorites for offers tab on mount when user is logged in', async () => {
+      renderFavoritesResults()
+
+      await screen.findByText('Spectacle une seule date')
+
+      expect(analytics.logConsultFavorites).toHaveBeenNthCalledWith(1, { tab: FavoriteType.OFFER })
+    })
+
+    it('should not log consult favorites on mount when user is not logged in', async () => {
+      mockIsLoggedIn = false
+
+      renderFavoritesResults()
+
+      await screen.findByText('Spectacle une seule date')
+
+      expect(analytics.logConsultFavorites).not.toHaveBeenCalled()
+    })
+
+    describe('with wipFavoritesHub FF activated', () => {
+      beforeEach(() => {
+        setFeatureFlags([RemoteStoreFeatureFlags.WIP_FAVORITES_HUB])
+      })
+
+      it('should not log consult favorites when pressing the selected tab', async () => {
+        renderFavoritesResults()
+
+        await user.press(await screen.findByText('Offres'))
+
+        expect(analytics.logConsultFavorites).toHaveBeenNthCalledWith(1, {
+          tab: FavoriteType.OFFER,
+        })
+      })
+
+      it('should log consult favorites for the selected tab when focused again', async () => {
+        renderFavoritesResults()
+
+        await user.press(await screen.findByText('Lieux'))
+
+        expect(analytics.logConsultFavorites).toHaveBeenNthCalledWith(1, {
+          tab: FavoriteType.OFFER,
+        })
+
+        act(() => mockFocusEffect?.())
+
+        expect(analytics.logConsultFavorites).toHaveBeenNthCalledWith(2, {
+          tab: FavoriteType.VENUE,
+        })
+      })
+
+      it.each`
+        tabLabel      | expectedType
+        ${'Lieux'}    | ${FavoriteType.VENUE}
+        ${'Artistes'} | ${FavoriteType.ARTIST}
+      `(
+        'should log consult favorites for $tabLabel tab when pressed',
+        async ({ tabLabel, expectedType }) => {
+          renderFavoritesResults()
+
+          await screen.findByLabelText('Types de favoris')
+
+          await user.press(screen.getByText(tabLabel))
+
+          expect(analytics.logConsultFavorites).toHaveBeenNthCalledWith(2, { tab: expectedType })
+        }
+      )
+
+      it('should log consult favorites for offers tab when going back to it', async () => {
+        renderFavoritesResults()
+        await user.press(await screen.findByText('Lieux'))
+
+        await user.press(screen.getByText('Offres'))
+
+        expect(analytics.logConsultFavorites).toHaveBeenNthCalledWith(3, {
+          tab: FavoriteType.OFFER,
+        })
+      })
     })
   })
 })

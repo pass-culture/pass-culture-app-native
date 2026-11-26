@@ -51,6 +51,11 @@ export const BookingImpossible: React.FC<Props> = ({ venueId }) => {
     onSuccess: () => {
       if (offerId === undefined) return
       void analytics.logHasAddedOfferToFavorites({ from: 'bookingimpossible', offerId })
+      void analytics.logAddItemToFavorite({
+        from: 'bookingimpossible',
+        id: offerId.toString(),
+        type: FavoriteType.OFFER,
+      })
       notifyWebappLinkSent(offerId)
     },
   })

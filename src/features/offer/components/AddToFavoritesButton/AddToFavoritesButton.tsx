@@ -10,15 +10,20 @@ import { FavoriteFilled } from 'ui/svg/icons/FavoriteFilled'
 interface Props {
   offerId: number
   onFavoriteAdditionnalPress?: () => void
+  onFavoriteSuccess?: () => void
 }
 
 export const AddToFavoritesButton: FunctionComponent<Props> = ({
   offerId,
   onFavoriteAdditionnalPress,
+  onFavoriteSuccess,
 }) => {
   const isFavorite = useOfferFavorite({ offerId })
 
-  const { mutate: addFavorite } = useAddOfferFavoriteMutation({ type: FavoriteType.OFFER })
+  const { mutate: addFavorite } = useAddOfferFavoriteMutation({
+    type: FavoriteType.OFFER,
+    onSuccess: onFavoriteSuccess,
+  })
 
   const addToFavorite = () => {
     addFavorite({ offerId })

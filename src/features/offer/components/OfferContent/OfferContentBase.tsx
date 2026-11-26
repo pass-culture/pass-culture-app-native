@@ -209,12 +209,31 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
           ...apiRecoParams,
           playlistType,
         })
+        void analytics.logAddItemToFavorite({
+          id: offer.id.toString(),
+          type: FavoriteType.OFFER,
+          from: getIsAComingSoonOffer(offer.bookingAllowedDatetime) ? 'comingSoonOffer' : from,
+          moduleName,
+          moduleId,
+          searchId,
+          ...apiRecoParams,
+          playlistType,
+        })
       }
     },
   })
 
   const { mutate: removeFavorite, isPending: isRemoveFavoriteLoading } =
     useRemoveOfferFavoriteMutation({
+      onSuccess: () => {
+        void analytics.logRemoveItemFromFavorite({
+          id: offer.id.toString(),
+          type: FavoriteType.OFFER,
+          from: getIsAComingSoonOffer(offer.bookingAllowedDatetime)
+            ? 'comingSoonOffer'
+            : params.from,
+        })
+      },
       onError: () => {
         showErrorSnackBar('L’offre n’a pas été retirée de tes favoris')
       },

@@ -3,6 +3,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { FavoriteArtistResponse } from 'api/gen'
 import { FavoriteArtistVenue } from 'features/favorites/components/FavoriteArtistVenue'
+import { FavoriteType } from 'features/favorites/enum'
 import { getShareArtist } from 'features/share/helpers/getShareArtist'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { analytics } from 'libs/analytics/provider'
@@ -20,6 +21,13 @@ export const FavoriteArtist: FunctionComponent<Props> = ({ favorite }) => {
   const { designSystem } = useTheme()
 
   const { mutate: removeFavorite, isPending: isRemoving } = useRemoveArtistFavoriteMutation({
+    onSuccess: () => {
+      void analytics.logRemoveItemFromFavorite({
+        id: artist.id,
+        type: FavoriteType.ARTIST,
+        from: 'favorites',
+      })
+    },
     onError: () => {
       showErrorSnackBar('L’artiste n’a pas été retiré de tes favoris')
     },
@@ -46,6 +54,14 @@ export const FavoriteArtist: FunctionComponent<Props> = ({ favorite }) => {
     showShareModal()
   }, [artist.id, artist.name, shareArtist, showShareModal])
 
+  const onItemPress = useCallback(() => {
+    void analytics.logConsultArtist({
+      artistId: artist.id,
+      artistName: artist.name,
+      from: 'favorites',
+    })
+  }, [artist.id, artist.name])
+
   return (
     <React.Fragment>
       <FavoriteArtistVenue
@@ -55,6 +71,7 @@ export const FavoriteArtist: FunctionComponent<Props> = ({ favorite }) => {
         isRemoving={isRemoving}
         onRemove={() => removeFavorite(favorite.id)}
         onSharePress={onSharePress}
+        onPress={onItemPress}
         shareAccessibilityLabel={`Partager l’artiste ${artist.name}`}
         thumbnailComponent={
           <Avatar

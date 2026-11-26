@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
+import { FavoriteType } from 'features/favorites/enum'
 import { Referrals, UseNavigationType } from 'features/navigation/navigators/RootNavigator/types'
 import { getTabHookConfig } from 'features/navigation/TabBar/getTabHookConfig'
 import { AddToFavoritesButton } from 'features/offer/components/AddToFavoritesButton/AddToFavoritesButton'
@@ -25,13 +26,17 @@ export const ErrorApplicationModal: FunctionComponent<Props> = ({
   hideModal,
   offerId,
 }) => {
-  const addToFavorites = useCallback(() => {
+  const onFavoriteSuccess = useCallback(() => {
     void analytics.logHasAddedOfferToFavorites({
       from: 'ErrorApplicationModal' as Referrals,
       offerId,
     })
-    hideModal()
-  }, [hideModal, offerId])
+    void analytics.logAddItemToFavorite({
+      from: 'ErrorApplicationModal' as Referrals,
+      id: offerId.toString(),
+      type: FavoriteType.OFFER,
+    })
+  }, [offerId])
 
   const { navigate } = useNavigation<UseNavigationType>()
   const navigateToProfile = () => {
@@ -61,7 +66,11 @@ export const ErrorApplicationModal: FunctionComponent<Props> = ({
         onPress={navigateToProfile}
         fullWidth
       />
-      <AddToFavoritesButton offerId={offerId} onFavoriteAdditionnalPress={addToFavorites} />
+      <AddToFavoritesButton
+        offerId={offerId}
+        onFavoriteAdditionnalPress={hideModal}
+        onFavoriteSuccess={onFavoriteSuccess}
+      />
     </AppModalWithIllustration>
   )
 }

@@ -49,10 +49,24 @@ export const VenueHeader: React.FC<Props> = ({ headerTransition, venue }) => {
 
   const { mutate: addFavorite, isPending: isAddFavoriteLoading } = useAddVenueFavoriteMutation({
     type: FavoriteType.VENUE,
+    onSuccess: () => {
+      void analytics.logAddItemToFavorite({
+        id: venue.id.toString(),
+        type: FavoriteType.VENUE,
+        from: 'venue',
+      })
+    },
   })
 
   const { mutate: removeFavorite, isPending: isRemoveFavoriteLoading } =
     useRemoveVenueFavoriteMutation({
+      onSuccess: () => {
+        void analytics.logRemoveItemFromFavorite({
+          id: venue.id.toString(),
+          type: FavoriteType.VENUE,
+          from: 'venue',
+        })
+      },
       onError: () => {
         showErrorSnackBar('Le lieu n’a pas été retiré de tes favoris')
       },

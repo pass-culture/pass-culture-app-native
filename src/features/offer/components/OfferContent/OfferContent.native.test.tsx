@@ -21,6 +21,7 @@ import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/Cook
 import { ConsentState } from 'features/cookies/enums'
 import * as Cookies from 'features/cookies/helpers/useCookies'
 import { ConsentStatus } from 'features/cookies/types'
+import { FavoriteType } from 'features/favorites/enum'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import * as useOfferFavorite from 'features/favorites/hooks/useOfferFavorite'
 import * as useGoBack from 'features/navigation/useGoBack'
@@ -107,7 +108,7 @@ const mockNavigate = jest.fn()
 jest.mock('@react-navigation/native', () => ({
   ...jest.requireActual('@react-navigation/native'),
   useNavigation: () => ({ navigate: mockNavigate, push: jest.fn(), setOptions: jest.fn() }),
-  useRoute: () => ({ params: { id: 123 } }),
+  useRoute: () => ({ params: { id: 123, from: 'offer' } }),
 }))
 
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
@@ -265,6 +266,19 @@ describe('<OfferContent />', () => {
       expect(screen.getByTestId('snackbar-error')).toBeOnTheScreen()
       expect(screen.getByText('L’offre n’a pas été retirée de tes favoris')).toBeOnTheScreen()
     })
+
+    it('should trigger RemoveItemFromFavorite log when remove favorite succeeds', async () => {
+      mockAuthContextWithUser({ id: 1, email: 'user@test.com' } as UserProfile)
+      renderOfferContent({})
+
+      await user.press(await screen.findByLabelText('Retirer des favoris'))
+
+      expect(analytics.logRemoveItemFromFavorite).toHaveBeenNthCalledWith(1, {
+        id: offerResponseSnap.id.toString(),
+        type: FavoriteType.OFFER,
+        from: 'offer',
+      })
+    })
   })
 
   it('should navigate to offer preview screen when clicking on image offer', async () => {
@@ -385,6 +399,23 @@ describe('<OfferContent />', () => {
           expect(analytics.logHasAddedOfferToFavorites).toHaveBeenNthCalledWith(
             1,
             expect.objectContaining({ offerId: comingSoonOffer.id, from: 'comingSoonOffer' })
+          )
+        })
+
+        it('should send logAddItemToFavorite event with correct params', async () => {
+          renderOfferContent({ offer: comingSoonOffer })
+
+          await screen.findAllByText(comingSoonOffer.name)
+
+          await user.press(await screen.findByText('Mettre en favori'))
+
+          expect(analytics.logAddItemToFavorite).toHaveBeenNthCalledWith(
+            1,
+            expect.objectContaining({
+              id: comingSoonOffer.id.toString(),
+              type: FavoriteType.OFFER,
+              from: 'comingSoonOffer',
+            })
           )
         })
       })

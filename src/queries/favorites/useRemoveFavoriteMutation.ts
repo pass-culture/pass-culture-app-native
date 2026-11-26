@@ -14,6 +14,7 @@ type MutationContext<TList> = { previousFavorites?: TList }
 
 type RemoveFavoriteProps<TList> = {
   onError?: (error?: Error, favoriteId?: number, context?: MutationContext<TList>) => void
+  onSuccess?: (data?: unknown) => void
 }
 
 type RemoveFavoriteConfig = {
@@ -22,7 +23,7 @@ type RemoveFavoriteConfig = {
 }
 
 const useRemoveFavoriteMutation = <TList extends FavoritesList>(
-  { onError }: RemoveFavoriteProps<TList>,
+  { onError, onSuccess }: RemoveFavoriteProps<TList>,
   config: RemoveFavoriteConfig
 ) => {
   const queryClient = useQueryClient()
@@ -49,6 +50,9 @@ const useRemoveFavoriteMutation = <TList extends FavoritesList>(
       }
 
       return { previousFavorites }
+    },
+    onSuccess: (data) => {
+      onSuccess?.(data)
     },
     onError: (error, favoriteId, context) => {
       if (context?.previousFavorites) {
