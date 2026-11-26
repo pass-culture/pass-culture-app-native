@@ -68,7 +68,7 @@ describe('<Favorites/>', () => {
   })
 
   it('should render non connected view with page header when not logged in', async () => {
-    mockAuthContextWithoutUser()
+    mockAuthContextWithoutUser({ persist: true })
     render(reactQueryProviderHOC(<Favorites />))
 
     expect(await screen.findByText('Mes favoris')).toBeOnTheScreen()
@@ -77,7 +77,7 @@ describe('<Favorites/>', () => {
 
   it('should render non connected view inside tabs when favorites hub is enabled and user is not logged in', async () => {
     setFeatureFlags([RemoteStoreFeatureFlags.WIP_FAVORITES_HUB])
-    mockAuthContextWithoutUser()
+    mockAuthContextWithoutUser({ persist: true })
     render(reactQueryProviderHOC(<Favorites />))
 
     expect(await screen.findByText('Mes favoris')).toBeOnTheScreen()

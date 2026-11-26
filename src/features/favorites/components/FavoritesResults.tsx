@@ -51,19 +51,19 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
     isLoading: isLoadingOfferFavorites,
     isFetching: isFetchingOfferFavorites,
     refetch: refetchOfferFavorites,
-  } = useOfferFavoritesQuery({ enabled: isLoggedIn })
+  } = useOfferFavoritesQuery()
   const {
     data: artistFavorites,
     isLoading: isLoadingArtistFavorites,
     isFetching: isFetchingArtistFavorites,
     refetch: refetchArtistFavorites,
-  } = useArtistFavoritesQuery({ enabled: isLoggedIn && enableFavoritesHub })
+  } = useArtistFavoritesQuery({ enabled: enableFavoritesHub })
   const {
     data: venueFavorites,
     isLoading: isLoadingVenueFavorites,
     isFetching: isFetchingVenueFavorites,
     refetch: refetchVenueFavorites,
-  } = useVenueFavoritesQuery({ enabled: isLoggedIn && enableFavoritesHub })
+  } = useVenueFavoritesQuery({ enabled: enableFavoritesHub })
 
   const showOffersSkeleton = useIsFalseWithDelay(isLoadingOfferFavorites, ANIMATION_DURATION)
   const isOffersRefreshing = useIsFalseWithDelay(isFetchingOfferFavorites, ANIMATION_DURATION)
@@ -190,6 +190,7 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
     </React.Fragment>
   )
 }
+
 export const FavoritesResults = memo(UnmemoizedFavoritesResults)
 
 const Container = styled.View<{ enableFavoritesHub?: boolean }>(

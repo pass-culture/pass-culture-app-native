@@ -204,7 +204,7 @@ describe('FavoritesResults component', () => {
     expect(screen.queryByText('Spectacle une seule date')).not.toBeOnTheScreen()
   })
 
-  it('should display not connected view and disable queries when user is not logged in', async () => {
+  it('should display not connected view when user is not logged in', async () => {
     mockIsLoggedIn = false
     mockUser = undefined
 
@@ -212,9 +212,6 @@ describe('FavoritesResults component', () => {
 
     expect(await screen.findByText('Identifie-toi pour retrouver tes favoris')).toBeOnTheScreen()
     expect(screen.queryByText('Trier')).not.toBeOnTheScreen()
-    expect(mockUseOfferFavorites).toHaveBeenCalledWith({ enabled: false })
-    expect(mockUseVenueFavorites).toHaveBeenCalledWith({ enabled: false })
-    expect(mockUseArtistFavorites).toHaveBeenCalledWith({ enabled: false })
   })
 
   it('should display tabs panel when wipFavoritesHub FF activated', async () => {
@@ -254,9 +251,6 @@ describe('FavoritesResults component', () => {
       await user.press(screen.getByText('Artistes'))
 
       expect(await screen.findByText('Identifie-toi pour retrouver tes favoris')).toBeOnTheScreen()
-      expect(mockUseOfferFavorites).toHaveBeenCalledWith({ enabled: false })
-      expect(mockUseVenueFavorites).toHaveBeenCalledWith({ enabled: false })
-      expect(mockUseArtistFavorites).toHaveBeenCalledWith({ enabled: false })
     })
 
     it('should display venue favorites in venues tab', async () => {
@@ -357,7 +351,7 @@ describe('FavoritesResults component', () => {
 
       renderFavoritesResults()
 
-      await screen.findByText('Spectacle une seule date')
+      await screen.findByText('Identifie-toi pour retrouver tes favoris')
 
       expect(analytics.logConsultFavorites).not.toHaveBeenCalled()
     })

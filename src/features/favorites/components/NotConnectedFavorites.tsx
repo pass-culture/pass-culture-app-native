@@ -13,7 +13,6 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Button } from 'ui/designSystem/Button/Button'
 import { UserFavorite } from 'ui/svg/icons/UserFavorite'
 import { Spacer, Typo } from 'ui/theme'
-import { setTextSemantic } from 'ui/theme/typographyAttrs/setTextSemantic'
 
 export const NotConnectedFavorites = () => {
   const enableNewVisionUi = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_VISION_UI)
@@ -43,10 +42,8 @@ export const NotConnectedFavorites = () => {
             )}
           </IllustrationContainer>
           <TextContainer gap={6}>
-            <StyledTitle2 {...setTextSemantic('h1')}>
-              Identifie-toi pour retrouver tes favoris
-            </StyledTitle2>
-            <StyledBody {...setTextSemantic('h2')}>
+            <StyledTitle2>Identifie-toi pour retrouver tes favoris</StyledTitle2>
+            <StyledBody>
               Ton compte te permettra de retrouver tous tes bons plans en un clin d’oeil&nbsp;!
             </StyledBody>
           </TextContainer>
