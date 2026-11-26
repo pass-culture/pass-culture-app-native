@@ -180,7 +180,7 @@ describe('<BookingInformations />', () => {
 
     renderBookingInformations()
 
-    expect(await screen.findByTestId('price-line-attributes')).toHaveTextContent(/VOSTFR/)
+    expect(await screen.findByTestId('price-line-language')).toHaveTextContent(/VOSTFR/)
   })
 
   it("shouldn't display a screening language when the stock has none", async () => {
@@ -199,7 +199,7 @@ describe('<BookingInformations />', () => {
     })
 
     expect(screen.getByText('12\u00a0€')).toBeOnTheScreen()
-    expect(screen.queryByTestId('price-line-attributes')).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('price-line-language')).not.toBeOnTheScreen()
   })
 
   it('should display screening tags when the stock has screening features', async () => {

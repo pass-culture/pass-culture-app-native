@@ -54,7 +54,7 @@ export const BookingInformations = () => {
         unitPrice={stock.price}
         label={stock.priceCategoryLabel}
         quantity={quantity}
-        attributes={language ? [language] : []}
+        language={language}
       />
     ) : (
       'Gratuit'

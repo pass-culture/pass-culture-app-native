@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { OfferStockResponse } from 'api/gen'
+import { OfferStockResponse, ScreeningFeatures } from 'api/gen'
 import { usePacificFrancToEuroRate } from 'queries/settings/useSettings'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
@@ -11,7 +11,7 @@ interface PriceLineProps {
   unitPrice: number
   label?: OfferStockResponse['priceCategoryLabel']
   shouldDisabledStyles?: boolean
-  attributes?: OfferStockResponse['features']
+  language?: ScreeningFeatures['language']
 }
 
 export function PriceLine({
@@ -19,7 +19,7 @@ export function PriceLine({
   unitPrice,
   label,
   shouldDisabledStyles = false,
-  attributes,
+  language,
 }: PriceLineProps) {
   const currency = useGetCurrencyToDisplay()
   const { data: euroToPacificFrancRate } = usePacificFrancToEuroRate()
@@ -28,8 +28,6 @@ export function PriceLine({
 
   const MainText = shouldDisabledStyles ? Typo.Body : Typo.BodyAccentXs
   const SecondaryText = shouldDisabledStyles ? Typo.Body : Typo.BodyAccentXs
-
-  const shouldDisplayAttributes = attributes?.length
 
   return (
     <Typo.Body>
@@ -43,9 +41,7 @@ export function PriceLine({
 
       {label ? <MainText testID="price-line-label"> - {label}</MainText> : null}
 
-      {shouldDisplayAttributes ? (
-        <MainText testID="price-line-attributes"> - {attributes.join(' ')}</MainText>
-      ) : null}
+      {language ? <MainText testID="price-line-language"> - {language}</MainText> : null}
     </Typo.Body>
   )
 }
