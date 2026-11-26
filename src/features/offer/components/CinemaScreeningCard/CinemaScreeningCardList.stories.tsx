@@ -2,6 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import React from 'react'
 import { action } from 'storybook/actions'
 
+import { IconFactoryProvider } from 'ui/components/icons/IconFactoryProvider'
+
 import { CinemaScreeningCardList } from './CinemaScreeningCardList'
 import { CinemaScreeningCardProps } from './types'
 
@@ -42,6 +44,13 @@ const meta: Meta<typeof CinemaScreeningCardList> = {
       description: 'Séances affichées dans la playlist',
     },
   },
+  decorators: [
+    (Story) => (
+      <IconFactoryProvider>
+        <Story />
+      </IconFactoryProvider>
+    ),
+  ],
 }
 
 export default meta
