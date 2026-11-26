@@ -17,6 +17,7 @@ import {
   getVenueBookingDetails,
 } from 'features/bookOffer/helpers/getBookingDetails'
 import { getScreeningDetails } from 'features/bookOffer/helpers/getScreeningDetails'
+import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { RotatingTextOptions, useRotatingText } from 'features/bookOffer/helpers/useRotatingText'
 import { VenueSelectionModal } from 'features/offer/components/VenueSelectionModal/VenueSelectionModal'
 import { getVenueSectionTitle } from 'features/offer/helpers/getVenueSectionTitle/getVenueSectionTitle'
@@ -69,7 +70,8 @@ const LOADING_MESSAGES: RotatingTextOptions[] = [
 export const BookingDetails = ({ stocks, onPressBookOffer, isLoading }: BookingDetailsProps) => {
   const { bookingState, dispatch } = useBookingContext()
   const { user } = useAuthContext()
-  const { data: selectedStock } = useOfferStockScreeningFeaturesQuery(
+  const selectedStock = useBookingStock()
+  const { data: screeningStock } = useOfferStockScreeningFeaturesQuery(
     bookingState.offerId,
     bookingState.stockId
   )
@@ -138,19 +140,17 @@ export const BookingDetails = ({ stocks, onPressBookOffer, isLoading }: BookingD
 
   const { visible, hideModal, showModal } = useModal(false)
 
-  useEffect(
-    function selectFirstBookableStock() {
-      // For offers of type Thing, we don't manually select a date (thus a stock).
-      // So we select it programmatically given the bookable stocks.
-      const firstBookableStock = stocks.find(({ isBookable }) => isBookable)
+  useEffect(() => {
+    // For offers of type Thing, we don't manually select a date (thus a stock).
+    // So we select it programmatically given the bookable stocks.
+    const firstBookableStock = stocks.find(({ isBookable }) => isBookable)
 
-      if (bookingState.stockId === undefined && firstBookableStock) {
-        dispatch({ type: 'SELECT_STOCK', payload: firstBookableStock.id })
-        dispatch({ type: 'SELECT_QUANTITY', payload: 1 })
-      }
-    },
-    [bookingState.stockId, dispatch, stocks]
-  )
+    if (!selectedStock && firstBookableStock) {
+      dispatch({ type: 'SELECT_STOCK', payload: firstBookableStock.id })
+      dispatch({ type: 'SELECT_QUANTITY', payload: 1 })
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [stocks, selectedStock])
 
   // Change step to confirmation if no event offer
   useEffect(() => {
@@ -182,7 +182,7 @@ export const BookingDetails = ({ stocks, onPressBookOffer, isLoading }: BookingD
 
   if (!selectedStock || typeof quantity !== 'number') return null
 
-  const screeningDetails = getScreeningDetails(selectedStock.screeningFeatures)
+  const screeningDetails = getScreeningDetails(screeningStock?.screeningFeatures)
 
   const {
     formattedPriceWithEuro,
