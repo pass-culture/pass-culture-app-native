@@ -11422,7 +11422,7 @@ __metadata:
     react-native-lottie-splash-screen: "npm:^1.1.2"
     react-native-map-clustering: "npm:^4.0.0"
     react-native-map-link: "npm:^3.10.1"
-    react-native-maps: "npm:1.29.0"
+    react-native-maps: "npm:1.29.11"
     react-native-modal: "npm:13.0.1"
     react-native-orientation-locker: "npm:^1.7.0"
     react-native-performance: "npm:^5.1.4"
@@ -24618,9 +24618,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-maps@npm:1.29.0":
-  version: 1.29.0
-  resolution: "react-native-maps@npm:1.29.0"
+"react-native-maps@npm:1.29.11":
+  version: 1.29.11
+  resolution: "react-native-maps@npm:1.29.11"
   dependencies:
     "@types/geojson": "npm:^7946.0.13"
   peerDependencies:
@@ -24630,7 +24630,7 @@ __metadata:
   peerDependenciesMeta:
     react-native-web:
       optional: true
-  checksum: 10/9a265da46deb243ba9624678604875a33a592128a7113a734499c4c671ae371c1208495240448728ada3101126a51f131e2b0e4d5714f5c69a55a044f92ba5a4
+  checksum: 10/7b52cc297ff1f469db658db7bb9543286dfd780f0cae2bde3e22984da33e041590ad8cdd8eaefc57b57713a77011851a32dce24eaa1f5d202e54df4535c44ed6
   languageName: node
   linkType: hard
 
