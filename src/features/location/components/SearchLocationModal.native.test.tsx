@@ -75,6 +75,7 @@ const user = userEvent.setup()
 describe('SearchLocationModal', () => {
   beforeEach(() => {
     setFeatureFlags()
+    locationActions.setLocationMode(LocationMode.EVERYWHERE)
     locationActions.setPermissionState(GeolocPermissionState.GRANTED)
     initLocation()
   })

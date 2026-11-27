@@ -8,7 +8,9 @@ import { GeolocationActivationModal } from 'libs/location/components/Geolocation
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
 import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
 import { checkGeolocPermission, GeolocPermissionState } from 'libs/location/location'
+import { LocationMode } from 'libs/location/types'
 import { initLocation } from 'libs/locationV2/initLocation'
+import { locationActions } from 'libs/locationV2/location.store'
 import { SuggestedPlace } from 'libs/place/types'
 import { MODAL_TO_SHOW_TIME } from 'tests/constants'
 import { act, fireEvent, render, screen, userEvent, within } from 'tests/utils'
@@ -53,6 +55,7 @@ const user = userEvent.setup()
 describe('HomeLocationModal', () => {
   beforeEach(() => {
     setFeatureFlags()
+    locationActions.setLocationMode(LocationMode.EVERYWHERE)
     initLocation()
   })
 
