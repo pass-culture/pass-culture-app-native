@@ -8,15 +8,57 @@ on:
       - edited
       - synchronize
       - labeled
+      - unlabeled
 
 permissions:
   contents: read
   id-token: write
+  pull-requests: write
 
 jobs:
+  mark_web_building:
+    if: >-
+      contains(toJson(github.event.pull_request.labels.*.name), '"preview"')
+      && github.event.action != 'edited'
+      && github.event.action != 'unlabeled'
+      && (github.event.action != 'labeled' || github.event.label.name == 'preview')
+    name: Mark Web preview build as building
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    concurrency:
+      group: preview-qr-comment-${{ github.event.pull_request.number }}
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.3
+        with:
+          persist-credentials: false
+      - name: Update sticky QR comment (Web building)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          COMMIT_SHA: ${{ github.sha }}
+          JOB_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python3 scripts/ci/update_preview_qr_comment.py \
+            --platform web \
+            --status building \
+            --job-url "${JOB_URL}" \
+            --pr "${PR_NUMBER}" \
+            --commit-sha "${COMMIT_SHA}"
+
   deploy_on_firebase:
-    if: contains(github.event.pull_request.labels.*.name, 'preview')
+    needs: mark_web_building
+    if: >-
+      always()
+      && needs.mark_web_building.result == 'success'
+      && contains(toJson(github.event.pull_request.labels.*.name), '"preview"')
+      && github.event.action != 'edited'
+      && github.event.action != 'unlabeled'
+      && (github.event.action != 'labeled' || github.event.label.name == 'preview')
     name: Deploy PR version to Firebase
+    concurrency:
+      group: web-preview-${{ github.event.pull_request.number }}
+      cancel-in-progress: true
     uses: ./.github/workflows/dev_on_workflow_pr_preview.yml
     with:
       environment: testing
@@ -24,3 +66,357 @@ jobs:
     secrets:
       github_app_id: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_ID }}
       github_app_private_key: ${{ secrets.PASSCULTURE_GITHUB_ACTION_APP_PRIVATE_KEY }}
+
+  mark_web_ready:
+    needs: deploy_on_firebase
+    if: >-
+      always()
+      && needs.deploy_on_firebase.result == 'success'
+      && contains(toJson(github.event.pull_request.labels.*.name), '"preview"')
+      && github.event.action != 'edited'
+      && github.event.action != 'unlabeled'
+      && (github.event.action != 'labeled' || github.event.label.name == 'preview')
+    name: Mark Web preview build as ready
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    concurrency:
+      group: preview-qr-comment-${{ github.event.pull_request.number }}
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.3
+        with:
+          persist-credentials: false
+      - name: Update sticky QR comment (Web ready)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DOWNLOAD_URL: ${{ needs.deploy_on_firebase.outputs.preview_url }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          COMMIT_SHA: ${{ github.sha }}
+        run: |
+          python3 scripts/ci/update_preview_qr_comment.py \
+            --platform web \
+            --status ready \
+            --download-url "${DOWNLOAD_URL}" \
+            --pr "${PR_NUMBER}" \
+            --commit-sha "${COMMIT_SHA}"
+
+  mark_web_failed:
+    needs: deploy_on_firebase
+    if: >-
+      always()
+      && needs.deploy_on_firebase.result == 'failure'
+      && contains(toJson(github.event.pull_request.labels.*.name), '"preview"')
+      && github.event.action != 'edited'
+      && github.event.action != 'unlabeled'
+      && (github.event.action != 'labeled' || github.event.label.name == 'preview')
+    name: Mark Web preview build as failed
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    concurrency:
+      group: preview-qr-comment-${{ github.event.pull_request.number }}
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.3
+        with:
+          persist-credentials: false
+      - name: Update sticky QR comment (Web failed)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          COMMIT_SHA: ${{ github.sha }}
+        run: |
+          python3 scripts/ci/update_preview_qr_comment.py \
+            --platform web \
+            --status failed \
+            --pr "${PR_NUMBER}" \
+            --commit-sha "${COMMIT_SHA}"
+
+  mark_android_building:
+    if: >-
+      contains(toJson(github.event.pull_request.labels.*.name), '"preview android"')
+      && github.event.action != 'edited'
+      && github.event.action != 'unlabeled'
+      && (github.event.action != 'labeled' || github.event.label.name == 'preview android')
+    name: Mark Android preview build as building
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    concurrency:
+      group: preview-qr-comment-${{ github.event.pull_request.number }}
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.3
+        with:
+          persist-credentials: false
+      - name: Update sticky QR comment (Android building)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          COMMIT_SHA: ${{ github.sha }}
+          JOB_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python3 scripts/ci/update_preview_qr_comment.py \
+            --platform android \
+            --status building \
+            --job-url "${JOB_URL}" \
+            --pr "${PR_NUMBER}" \
+            --commit-sha "${COMMIT_SHA}"
+
+  deploy_android:
+    # An Android build takes up to an hour: skip PR description edits and unrelated labels
+    needs: mark_android_building
+    if: >-
+      always()
+      && needs.mark_android_building.result == 'success'
+      && contains(toJson(github.event.pull_request.labels.*.name), '"preview android"')
+      && github.event.action != 'edited'
+      && github.event.action != 'unlabeled'
+      && (github.event.action != 'labeled' || github.event.label.name == 'preview android')
+    name: Deploy PR Android version to Firebase App Distribution
+    concurrency:
+      group: android-preview-${{ github.event.pull_request.number }}
+      cancel-in-progress: true
+    uses: ./.github/workflows/dev_on_workflow_environment_android_deploy.yml
+    with:
+      ENV: preview
+
+  mark_android_ready:
+    needs: deploy_android
+    if: >-
+      always()
+      && needs.deploy_android.result == 'success'
+      && contains(toJson(github.event.pull_request.labels.*.name), '"preview android"')
+      && github.event.action != 'edited'
+      && github.event.action != 'unlabeled'
+      && (github.event.action != 'labeled' || github.event.label.name == 'preview android')
+    name: Mark Android preview build as ready
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    concurrency:
+      group: preview-qr-comment-${{ github.event.pull_request.number }}
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.3
+        with:
+          persist-credentials: false
+      - name: Update sticky QR comment (Android ready)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DOWNLOAD_URL: ${{ needs.deploy_android.outputs.testing_uri }}
+          PREVIEW_CHANNEL: ${{ needs.deploy_android.outputs.preview_channel }}
+          FINGERPRINT: ${{ needs.deploy_android.outputs.fingerprint_hash }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          COMMIT_SHA: ${{ github.sha }}
+        run: |
+          python3 scripts/ci/update_preview_qr_comment.py \
+            --platform android \
+            --status ready \
+            --download-url "${DOWNLOAD_URL}" \
+            --channel "${PREVIEW_CHANNEL}" \
+            --fingerprint "${FINGERPRINT}" \
+            --pr "${PR_NUMBER}" \
+            --commit-sha "${COMMIT_SHA}"
+
+  mark_android_failed:
+    needs: deploy_android
+    if: >-
+      always()
+      && needs.deploy_android.result == 'failure'
+      && contains(toJson(github.event.pull_request.labels.*.name), '"preview android"')
+      && github.event.action != 'edited'
+      && github.event.action != 'unlabeled'
+      && (github.event.action != 'labeled' || github.event.label.name == 'preview android')
+    name: Mark Android preview build as failed
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    concurrency:
+      group: preview-qr-comment-${{ github.event.pull_request.number }}
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.3
+        with:
+          persist-credentials: false
+      - name: Update sticky QR comment (Android failed)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          COMMIT_SHA: ${{ github.sha }}
+        run: |
+          python3 scripts/ci/update_preview_qr_comment.py \
+            --platform android \
+            --status failed \
+            --pr "${PR_NUMBER}" \
+            --commit-sha "${COMMIT_SHA}"
+
+  mark_ios_building:
+    if: >-
+      contains(toJson(github.event.pull_request.labels.*.name), '"preview ios"')
+      && github.event.action != 'edited'
+      && github.event.action != 'unlabeled'
+      && (github.event.action != 'labeled' || github.event.label.name == 'preview ios')
+    name: Mark iOS preview build as building
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    concurrency:
+      group: preview-qr-comment-${{ github.event.pull_request.number }}
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.3
+        with:
+          persist-credentials: false
+      - name: Update sticky QR comment (iOS building)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          COMMIT_SHA: ${{ github.sha }}
+          JOB_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python3 scripts/ci/update_preview_qr_comment.py \
+            --platform ios \
+            --status building \
+            --job-url "${JOB_URL}" \
+            --pr "${PR_NUMBER}" \
+            --commit-sha "${COMMIT_SHA}"
+
+  deploy_ios:
+    needs: mark_ios_building
+    if: >-
+      always()
+      && needs.mark_ios_building.result == 'success'
+      && contains(toJson(github.event.pull_request.labels.*.name), '"preview ios"')
+      && github.event.action != 'edited'
+      && github.event.action != 'unlabeled'
+      && (github.event.action != 'labeled' || github.event.label.name == 'preview ios')
+    name: Deploy PR iOS version to Firebase App Distribution
+    concurrency:
+      group: ios-preview-${{ github.event.pull_request.number }}
+      cancel-in-progress: true
+    uses: ./.github/workflows/dev_on_workflow_environment_ios_deploy.yml
+    with:
+      ENV: preview
+
+  mark_ios_ready:
+    needs: deploy_ios
+    if: >-
+      always()
+      && needs.deploy_ios.result == 'success'
+      && contains(toJson(github.event.pull_request.labels.*.name), '"preview ios"')
+      && github.event.action != 'edited'
+      && github.event.action != 'unlabeled'
+      && (github.event.action != 'labeled' || github.event.label.name == 'preview ios')
+    name: Mark iOS preview build as ready
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    concurrency:
+      group: preview-qr-comment-${{ github.event.pull_request.number }}
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.3
+        with:
+          persist-credentials: false
+      - name: Update sticky QR comment (iOS ready)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DOWNLOAD_URL: ${{ needs.deploy_ios.outputs.testing_uri }}
+          PREVIEW_CHANNEL: ${{ needs.deploy_ios.outputs.preview_channel }}
+          FINGERPRINT: ${{ needs.deploy_ios.outputs.fingerprint_hash }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          COMMIT_SHA: ${{ github.sha }}
+        run: |
+          python3 scripts/ci/update_preview_qr_comment.py \
+            --platform ios \
+            --status ready \
+            --download-url "${DOWNLOAD_URL}" \
+            --channel "${PREVIEW_CHANNEL}" \
+            --fingerprint "${FINGERPRINT}" \
+            --pr "${PR_NUMBER}" \
+            --commit-sha "${COMMIT_SHA}"
+
+  mark_ios_failed:
+    needs: deploy_ios
+    if: >-
+      always()
+      && needs.deploy_ios.result == 'failure'
+      && contains(toJson(github.event.pull_request.labels.*.name), '"preview ios"')
+      && github.event.action != 'edited'
+      && github.event.action != 'unlabeled'
+      && (github.event.action != 'labeled' || github.event.label.name == 'preview ios')
+    name: Mark iOS preview build as failed
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    concurrency:
+      group: preview-qr-comment-${{ github.event.pull_request.number }}
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.3
+        with:
+          persist-credentials: false
+      - name: Update sticky QR comment (iOS failed)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          COMMIT_SHA: ${{ github.sha }}
+        run: |
+          python3 scripts/ci/update_preview_qr_comment.py \
+            --platform ios \
+            --status failed \
+            --pr "${PR_NUMBER}" \
+            --commit-sha "${COMMIT_SHA}"
+
+  reconcile_removed_labels:
+    if: github.event.action == 'unlabeled'
+    name: Reset preview comment when a label is removed
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    concurrency:
+      group: preview-qr-comment-${{ github.event.pull_request.number }}
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.3
+        with:
+          persist-credentials: false
+      - name: Clear building status for platforms without their label
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          COMMIT_SHA: ${{ github.sha }}
+        run: |
+          python3 scripts/ci/update_preview_qr_comment.py \
+            --reconcile-labels \
+            --pr "${PR_NUMBER}" \
+            --commit-sha "${COMMIT_SHA}"
+
+  cancel_web_preview:
+    if: github.event.action == 'unlabeled' && github.event.label.name == 'preview'
+    name: Cancel in-progress Web preview
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    concurrency:
+      group: web-preview-${{ github.event.pull_request.number }}
+      cancel-in-progress: true
+    steps:
+      - name: Cancel the Web preview deploy that was still running
+        run: echo "Label preview removed"
+
+  cancel_android_preview:
+    if: github.event.action == 'unlabeled' && github.event.label.name == 'preview android'
+    name: Cancel in-progress Android preview
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    concurrency:
+      group: android-preview-${{ github.event.pull_request.number }}
+      cancel-in-progress: true
+    steps:
+      - name: Cancel the Android preview deploy that was still running
+        run: echo "Label preview android removed"
+
+  cancel_ios_preview:
+    if: github.event.action == 'unlabeled' && github.event.label.name == 'preview ios'
+    name: Cancel in-progress iOS preview
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    concurrency:
+      group: ios-preview-${{ github.event.pull_request.number }}
+      cancel-in-progress: true
+    steps:
+      - name: Cancel the iOS preview deploy that was still running
+        run: echo "Label preview ios removed"

@@ -9,6 +9,8 @@ apply plugin: "com.facebook.react"
 project.ext.envConfigFiles = [
         apptestingdebug: ".env.testing",
         apptestingrelease: ".env.testing",
+        previewdebug: ".env.preview",
+        previewrelease: ".env.preview",
         developmentdebug: ".env.development",
         stagingdebug: ".env.staging",
         stagingrelease: ".env.staging",
@@ -189,6 +191,12 @@ android {
         // ProductFlavors names can not start with 'test' https://android.googlesource.com/platform/tools/build/+/21b5320e57ba21f829ecbb4862cf0b9876e11778/gradle/src/main/groovy/com/android/build/gradle/AndroidPlugin.groovy#93
         apptesting {
             dimension "environment"
+        }
+        preview {
+            dimension "environment"
+            // Identical on every preview binary so testers can install any fingerprint
+            // over another without uninstalling. Android rejects a lower versionCode.
+            versionCode 1
         }
         development {
             dimension "environment"

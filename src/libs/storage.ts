@@ -37,6 +37,7 @@ export type StorageKey =
   | 'profile-name'
   | 'profile-status'
   | 'phone_validation_code_asked_at'
+  | 'preview_install'
   | 'react_navigation_persistence'
   | 'review_request_history'
   | 'review_v2_migration_done'

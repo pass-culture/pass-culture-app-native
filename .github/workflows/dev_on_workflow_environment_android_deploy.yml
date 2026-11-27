@@ -6,14 +6,28 @@ on:
       ENV:
         type: string
         required: true
+    outputs:
+      testing_uri:
+        description: Firebase App Distribution tester link (preview builds)
+        value: ${{ jobs.sentry_and_deploy.outputs.testing_uri }}
+      preview_channel:
+        description: Hot updater channel derived from the PR ticket (preview builds)
+        value: ${{ jobs.sentry_and_deploy.outputs.preview_channel }}
+      fingerprint_hash:
+        description: Native fingerprint hash embedded in the preview build
+        value: ${{ jobs.sentry_and_deploy.outputs.fingerprint_hash }}
 
 jobs:
   sentry_and_deploy:
     name: 'Install runtime environment and dependencies Android deploy'
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest-8-cores
     timeout-minutes: 60
     environment:
       name: app-native-${{ inputs.ENV }}
+    outputs:
+      testing_uri: ${{ steps.preview_release.outputs.testing_uri }}
+      preview_channel: ${{ steps.preview_channel.outputs.channel }}
+      fingerprint_hash: ${{ steps.fingerprint_lookup.outputs.fingerprint_hash }}
     steps:
       - name: Disk usage (for debugging purposes)
         run: df -h
@@ -44,6 +58,12 @@ jobs:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.3
         with:
           persist-credentials: false
+      - name: Resolve preview channel
+        if: inputs.ENV == 'preview'
+        id: preview_channel
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: python3 scripts/ci/preview_channel.py --github-output "$GITHUB_OUTPUT"
       - name: Set up Cloud SDK to get gsutils
         uses: 'google-github-actions/setup-gcloud@aa5489c8933f4cc7a4f7d45035b3b1440c9c10db' #v3.1.0
         with:
@@ -52,31 +72,31 @@ jobs:
         with:
           node-version-file: '.nvmrc'
       - uses: pass-culture/common-workflows/actions/setup-safe-chain@5715b432e91814bc6ab6725ff10abf3b81d5f8d1 # safe-chain-setup/v1.3.3
-      - name: Setup java
-        uses: actions/setup-java@de7274f081f381c8f8158605e0321c36c376e2e6 #v6.0.1
-        with:
-          java-version: '17'
-          distribution: 'temurin'
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@40fd30fb8d7440372e1316f5d1809ec01dcd3699 #v4.0.1
-        with:
-          packages: 'platform-tools'
-          cmdline-tools-version: 11076708 # correspond to cmdline-tools version 12.0
-      - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 #v6.1.0
+      - name: Compute yarn cache key
+        id: yarn-cache-key
+        env:
+          RUNNER_OS: ${{ runner.os }}
+          YARN_LOCK_HASH: ${{ hashFiles('**/yarn.lock') }}
+        run: echo "key=v2-yarn-dependency-cache-${RUNNER_OS}-${YARN_LOCK_HASH}" >> "$GITHUB_OUTPUT"
+      - name: Restore yarn cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 #v6.1.0
         id: yarn-modules-cache
         with:
           path: |
             node_modules
             ~/.cache/yarn
-          key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ steps.yarn-cache-key.outputs.key }}
 
       - name: Yarn install
         run: yarn install
-      - uses: ruby/setup-ruby@89f90524b88a01fe6e0b732220432cc6142926af #v1.313.0
+      - name: Save yarn cache
+        if: steps.yarn-modules-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 #v6.1.0
         with:
-          bundler-cache: true
+          path: |
+            node_modules
+            ~/.cache/yarn
+          key: ${{ steps.yarn-cache-key.outputs.key }}
       - name: Authentification to Google
         id: openid-auth
         uses: 'google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093' # v3.0.0
@@ -104,16 +124,53 @@ jobs:
           vars: |
             token: ${{ steps.secrets.outputs.SENTRY_AUTH_TOKEN }}
           result_path: .sentryclirc
+      - name: Embed preview fingerprint
+        if: inputs.ENV == 'preview'
+        env:
+          NODE_ENV: preview
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ steps.openid-auth.outputs.credentials_file_path }}
+        run: yarn hot-updater fingerprint create
+
+      - name: Look up preview fingerprint
+        if: inputs.ENV == 'preview'
+        id: fingerprint_lookup
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ steps.openid-auth.outputs.credentials_file_path }}
+        run: |
+          python3 scripts/ci/publish_preview_fingerprint.py \
+            --lookup \
+            --platform android \
+            --github-output "$GITHUB_OUTPUT"
+
+      - name: Setup java
+        if: inputs.ENV != 'preview' || steps.fingerprint_lookup.outputs.exists != 'true'
+        uses: actions/setup-java@de7274f081f381c8f8158605e0321c36c376e2e6 #v6.0.1
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Setup Android SDK
+        if: inputs.ENV != 'preview' || steps.fingerprint_lookup.outputs.exists != 'true'
+        uses: android-actions/setup-android@40fd30fb8d7440372e1316f5d1809ec01dcd3699 #v4.0.1
+        with:
+          packages: 'platform-tools'
+          cmdline-tools-version: 11076708 # correspond to cmdline-tools version 12.0
+      - uses: ruby/setup-ruby@89f90524b88a01fe6e0b732220432cc6142926af #v1.313.0
+        if: inputs.ENV != 'preview' || steps.fingerprint_lookup.outputs.exists != 'true'
+        with:
+          bundler-cache: true
       - name: Create a directory for keystores
+        if: inputs.ENV != 'preview' || steps.fingerprint_lookup.outputs.exists != 'true'
         run: |
           mkdir --parents android/keystores/
       - name: Setup android keystore for ${{ inputs.ENV }} environment
+        if: inputs.ENV != 'preview' || steps.fingerprint_lookup.outputs.exists != 'true'
         env:
           ENV: ${{ inputs.ENV }}
           ANDROID_KEYSTORE: ${{ steps.secrets.outputs.ANDROID_KEYSTORE }}
         run: |
           echo "$ANDROID_KEYSTORE" |  base64 --decode > "android/keystores/$ENV.keystore"
       - name: Setup android keystore properties for ${{ inputs.ENV }} environment
+        if: inputs.ENV != 'preview' || steps.fingerprint_lookup.outputs.exists != 'true'
         uses: chuhlomin/render-template@a7c644e341797d050d1cb24332d83791b9a46dae #v1.10
         with:
           template: templates_github_ci/${{ inputs.ENV }}.keystore.properties
@@ -123,15 +180,18 @@ jobs:
             ANDROID_KEYSTORE_KEY_PASSWORD: ${{ steps.secrets.outputs.ANDROID_KEYSTORE_KEY_PASSWORD }}
           result_path: android/keystores/${{ inputs.ENV }}.keystore.properties
       - name: Setup android Google services config
+        if: inputs.ENV != 'preview' || steps.fingerprint_lookup.outputs.exists != 'true'
         run: echo "$ANDROID_GOOGLE_SERVICES_JSON" > android/app/google-services.json
         env:
           ANDROID_GOOGLE_SERVICES_JSON: ${{ steps.secrets.outputs.ANDROID_GOOGLE_SERVICES_JSON }}
-      - name: Setup android Google services config
+      - name: Setup android Play Store service account
+        if: inputs.ENV != 'preview' || steps.fingerprint_lookup.outputs.exists != 'true'
         run: echo "$ANDROID_PLAYSTORE_SERVICE_ACCOUNT" > fastlane/playStoreServiceAccount.json
         env:
           ANDROID_PLAYSTORE_SERVICE_ACCOUNT: ${{ steps.secrets.outputs.ANDROID_PLAYSTORE_SERVICE_ACCOUNT }}
 
       - name: Deploy hard android for ${{ inputs.ENV }}
+        if: inputs.ENV != 'preview' || steps.fingerprint_lookup.outputs.exists != 'true'
         env:
           LC_ALL: en_US.UTF-8
           LANG: en_US.UTF-8
@@ -144,7 +204,55 @@ jobs:
             bundle exec fastlane android deploy --env "${ENV}" --verbose
           fi
 
+      - name: Expose App Distribution testing URI
+        if: inputs.ENV == 'preview'
+        id: preview_release
+        env:
+          FINGERPRINT_EXISTS: ${{ steps.fingerprint_lookup.outputs.exists }}
+          EXISTING_TESTING_URI: ${{ steps.fingerprint_lookup.outputs.testing_uri }}
+        run: |
+          if [ "$FINGERPRINT_EXISTS" = "true" ]; then
+            if [ -z "$EXISTING_TESTING_URI" ]; then
+              echo "Existing fingerprint document is missing testing_uri" >&2
+              exit 1
+            fi
+            echo "testing_uri=$EXISTING_TESTING_URI" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          TESTING_URI=$(jq -r '.testingUri // .testing_uri // empty' firebase_app_distribution_release.json)
+          if [ -z "$TESTING_URI" ]; then
+            echo "testingUri missing from firebase_app_distribution_release.json" >&2
+            exit 1
+          fi
+          echo "testing_uri=$TESTING_URI" >> "$GITHUB_OUTPUT"
+
+      - name: Publish preview fingerprint
+        if: inputs.ENV == 'preview' && steps.fingerprint_lookup.outputs.exists != 'true'
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ steps.openid-auth.outputs.credentials_file_path }}
+          COMMIT_SHA: ${{ github.sha }}
+          TESTING_URI: ${{ steps.preview_release.outputs.testing_uri }}
+        run: |
+          python3 scripts/ci/publish_preview_fingerprint.py \
+            --platform android \
+            --commit-sha "${COMMIT_SHA}" \
+            --testing-uri "${TESTING_URI}"
+
+      - name: Deploy preview JS bundle
+        if: inputs.ENV == 'preview'
+        env:
+          NODE_ENV: preview
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ steps.openid-auth.outputs.credentials_file_path }}
+          HOT_UPDATER_FIREBASE_PROJECT_ID: pc-native-preview
+          HOT_UPDATER_FIREBASE_STORAGE_BUCKET: pc-native-preview.firebasestorage.app
+          SENTRY_ORG: pass-culture
+          SENTRY_PROJECT: jeunes
+          SENTRY_AUTH_TOKEN: ${{ steps.secrets.outputs.SENTRY_AUTH_TOKEN }}
+          CHANNEL: ${{ steps.preview_channel.outputs.channel }}
+        run: yarn hot-updater deploy -p android -c "${CHANNEL}" -f -m "Preview ${CHANNEL}"
+
       - name: Create Sentry sourcemaps
+        if: inputs.ENV != 'preview'
         env:
           ENV: ${{ inputs.ENV }}
         run: source scripts/upload_sourcemaps_to_sentry.sh;upload_sourcemaps "android" "$ENV"
@@ -152,7 +260,7 @@ jobs:
   slack_notify:
     runs-on: ubuntu-24.04
     timeout-minutes: 60
-    if: ${{ always() && contains(fromJSON('["success", "failure", "cancelled"]'), needs.sentry_and_deploy.result) }}
+    if: ${{ always() && inputs.ENV != 'preview' && contains(fromJSON('["success", "failure", "cancelled"]'), needs.sentry_and_deploy.result) }}
     needs: sentry_and_deploy
     steps:
       - name: Connect to Secret Manager

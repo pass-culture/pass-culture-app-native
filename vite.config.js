@@ -123,6 +123,10 @@ export default ({ mode }) => {
         },
         // if you add something below, it should also be added to storybook config file in modulesToAlias
         { find: 'react-native', replacement: 'react-native-web' },
+        {
+          find: /^@hot-updater\/react-native$/,
+          replacement: '/src/libs/hot-updater/index.web.ts',
+        },
         { find: 'react-native-svg', replacement: 'react-native-svg-web' },
         {
           find: 'react-native-email-link',

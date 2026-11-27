@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 
 import { api } from 'api/api'
 import { CrashTestButton } from 'cheatcodes/components/CrashTestButton'
+import { env } from 'libs/environment/env'
 import { decodeToken } from 'libs/jwt/jwt'
 import { clearRefreshToken } from 'libs/keychain/keychain'
 import { BatchUser } from 'libs/react-native-batch'
@@ -33,7 +34,7 @@ const getUserId = async () => {
 const checkForAppUpdate = async () => {
   try {
     const updateInfo = await HotUpdater.checkForUpdate({
-      updateStrategy: 'appVersion',
+      updateStrategy: env.ENV === 'preview' ? 'fingerprint' : 'appVersion',
     })
 
     if (!updateInfo) {
