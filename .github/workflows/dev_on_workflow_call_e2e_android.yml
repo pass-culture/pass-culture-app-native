@@ -174,3 +174,8 @@ jobs:
             MAESTRO_CLOUD_API_KEY=${{ steps.secrets.outputs.MAESTRO_CLOUD_API_KEY }}
             MAESTRO_E2E_API_KEY=${{ steps.secrets.outputs.MAESTRO_E2E_API_KEY }}
             MAESTRO_E2E_BASE_URL=${{ steps.secrets.outputs.MAESTRO_E2E_BASE_URL }}
+            MAESTRO_API_BASE_URL=https://backend.staging.passculture.team
+            MAESTRO_ALGOLIA_APP_ID=testingHXXTDUE7H0
+            MAESTRO_ALGOLIA_PUBLIC_API_KEY=e6f3e382eaadae482499266cd9b6b6ac
+            MAESTRO_ALGOLIA_OFFERS_INDEX=STAGING
+            MAESTRO_ALGOLIA_ARTISTS_INDEX=staging-artists

@@ -1,0 +1,42 @@
+appId: ${MAESTRO_APP_ID}
+tags:
+  - artist
+onFlowStart:
+  - runScript: ../common/deeplinks/DeepLink.js
+  - runScript:
+      file: ../common/helpers/findArtist.js
+      env:
+        artist_name: 'Stromae'
+---
+- runFlow: ../common/lifecycle/LaunchApp.yml
+- runFlow: ../common/deeplinks/DeeplinkToHome.yml
+- runFlow: ../common/deeplinks/DeeplinkToArtist.yml
+
+- assertVisible: 'À propos'
+- tapOn: 'Voir plus'
+- scrollUntilVisible:
+    element: 'Voir moins'
+- assertVisible: '.*Wikipédia.*'
+
+- scrollUntilVisible:
+    element: 'Ses oeuvres populaires'
+    centerElement: true
+- tapOn:
+    id: 'OfferTile'
+    below: 'Ses oeuvres populaires'
+    index: 0
+- scrollUntilVisible:
+    element: '${output.artistName} - .*'
+- tapOn: 'Revenir en arrière'
+
+- assertVisible: 'Ses oeuvres populaires'
+- tapOn: 'Voir tout pour la sélection Ses oeuvres populaires'
+- assertVisible:
+    text: 'Ses oeuvres populaires'
+    index: 0
+- assertVisible: '[0-9]+ offres?'
+- tapOn: 'Revenir en arrière'
+
+- assertVisible: 'Ses oeuvres populaires'
+
+- runFlow: ../common/lifecycle/StopApp.yml

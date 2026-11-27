@@ -1,0 +1,9 @@
+appId: ${MAESTRO_APP_ID}
+---
+- runFlow:
+    file: OpenDeeplink.yml
+    env:
+      LINK: ${output.artistDeeplink}
+- extendedWaitUntil:
+    visible: ${output.artistName}
+    timeout: 30000

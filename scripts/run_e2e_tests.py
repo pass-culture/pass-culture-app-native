@@ -345,6 +345,11 @@ def build_maestro_args(config: dict) -> list[str]:
         else "false",
         "MAESTRO_E2E_API_KEY": secrets["e2e_api_key"],
         "MAESTRO_E2E_BASE_URL": secrets["e2e_base_url"],
+        "MAESTRO_API_BASE_URL": secrets["api_base_url"],
+        "MAESTRO_ALGOLIA_APP_ID": secrets["algolia_app_id"],
+        "MAESTRO_ALGOLIA_PUBLIC_API_KEY": secrets["algolia_public_api_key"],
+        "MAESTRO_ALGOLIA_OFFERS_INDEX": secrets["algolia_offers_index"],
+        "MAESTRO_ALGOLIA_ARTISTS_INDEX": secrets["algolia_artists_index"],
         "MAESTRO_DRIVER_STARTUP_TIMEOUT": "60000",
     }
     if config["target"] == "cloud":
@@ -421,6 +426,17 @@ def resolve_secrets(config: dict) -> dict:
         "cloud_api_key": parse_env_variable("MAESTRO_CLOUD_API_KEY", SECRET_FILE),
         "e2e_api_key": parse_env_variable("MAESTRO_E2E_API_KEY", SECRET_FILE),
         "e2e_base_url": parse_env_variable("MAESTRO_E2E_BASE_URL", SECRET_FILE),
+        "api_base_url": parse_env_variable("API_BASE_URL", env_file),
+        "algolia_app_id": parse_env_variable("ALGOLIA_APPLICATION_ID", env_file),
+        "algolia_public_api_key": parse_env_variable(
+            "ALGOLIA_SEARCH_API_PUBLIC_KEY", env_file
+        ),
+        "algolia_offers_index": parse_env_variable(
+            "ALGOLIA_OFFERS_INDEX_NAME", env_file
+        ),
+        "algolia_artists_index": parse_env_variable(
+            "ALGOLIA_ARTISTS_INDEX_NAME", env_file
+        ),
         "robin_api_key": "",
         "robin_project_id": "",
     }
