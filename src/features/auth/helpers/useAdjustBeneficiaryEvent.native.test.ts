@@ -1,7 +1,12 @@
 import { format } from 'date-fns'
 import mockdate from 'mockdate'
 
-import { CURRENT_DATE, SIXTEEN_AGE_DATE, EIGHTEEN_AGE_DATE } from 'features/auth/fixtures/fixtures'
+import {
+  CURRENT_DATE,
+  SIXTEEN_AGE_DATE,
+  EIGHTEEN_AGE_DATE,
+  FIFTEEN_AGE_DATE,
+} from 'features/auth/fixtures/fixtures'
 import { UserCreditType } from 'features/auth/helpers/getCreditType'
 import { logAdjustBeneficiaryEvent } from 'features/auth/helpers/useAdjustBeneficiaryEvent'
 import { beneficiaryUserV2, nonBeneficiaryUserV2 } from 'fixtures/user'
@@ -197,77 +202,54 @@ describe('useAdjustBeneficiaryEvent', () => {
         expect(Adjust.logEvent).not.toHaveBeenCalledWith(AdjustEvents.NEW_BENEFICIARY)
       })
 
-      it('should only log NEW_BENEFICIARY and NEW_FREE_BENEFICIARY event when user is new beneficiary with free credit', async () => {
-        await storage.saveObject('adjust_events', {
-          alreadySeenAsNotBeneficiary: true,
-        })
+      it.each`
+        creditType                     | event
+        ${UserCreditType.CREDIT_V3_17} | ${AdjustEvents.NEW_BENEFICIARY_17}
+        ${UserCreditType.CREDIT_V3_18} | ${AdjustEvents.NEW_BENEFICIARY_18}
+        ${UserCreditType.CREDIT_V2_18} | ${AdjustEvents.NEW_BENEFICIARY_18}
+      `(
+        'should log NEW_BENEFICIARY and $event event when user is over 17 and new beneficiary with $creditType',
+        async ({ creditType, event }) => {
+          await storage.saveObject('adjust_events', {
+            alreadySeenAsNotBeneficiary: true,
+          })
 
-        logAdjustBeneficiaryEvent({
-          ...beneficiaryUserV2,
-          creditType: UserCreditType.CREDIT_V3_FREE,
-        })
+          logAdjustBeneficiaryEvent({
+            ...beneficiaryUserV2,
+            creditType,
+          })
 
-        await callbackPromise
+          await callbackPromise
 
-        expect(Adjust.logEvent).toHaveBeenCalledWith(AdjustEvents.NEW_BENEFICIARY)
-        expect(Adjust.logEvent).toHaveBeenCalledWith(AdjustEvents.NEW_FREE_BENEFICIARY)
-        expect(Adjust.logEvent).not.toHaveBeenCalledWith(AdjustEvents.NEW_BENEFICIARY_17)
-        expect(Adjust.logEvent).not.toHaveBeenCalledWith(AdjustEvents.NEW_BENEFICIARY_18)
-      })
+          expect(Adjust.logEvent).toHaveBeenCalledWith(AdjustEvents.NEW_BENEFICIARY)
+          expect(Adjust.logEvent).toHaveBeenCalledWith(event)
+        }
+      )
 
-      it('should only log NEW_BENEFICIARY and NEW_BENEFICIARY_17 event when user is new beneficiary with credit v3 17', async () => {
-        await storage.saveObject('adjust_events', {
-          alreadySeenAsNotBeneficiary: true,
-        })
+      it.each`
+        creditType                       | birthDate                                 | event
+        ${UserCreditType.CREDIT_V3_FREE} | ${format(FIFTEEN_AGE_DATE, 'yyyy-MM-dd')} | ${AdjustEvents.NEW_FREE_BENEFICIARY_15}
+        ${UserCreditType.CREDIT_V3_FREE} | ${format(SIXTEEN_AGE_DATE, 'yyyy-MM-dd')} | ${AdjustEvents.NEW_FREE_BENEFICIARY_16}
+      `(
+        'should log NEW_BENEFICIARY and NEW_FREE_BENEFICIARY and $event event when user is under 17 and new beneficiary with $creditType',
+        async ({ creditType, birthDate, event }) => {
+          await storage.saveObject('adjust_events', {
+            alreadySeenAsNotBeneficiary: true,
+          })
 
-        logAdjustBeneficiaryEvent({
-          ...beneficiaryUserV2,
-          creditType: UserCreditType.CREDIT_V3_17,
-        })
+          logAdjustBeneficiaryEvent({
+            ...beneficiaryUserV2,
+            creditType,
+            birthDate,
+          })
 
-        await callbackPromise
+          await callbackPromise
 
-        expect(Adjust.logEvent).toHaveBeenCalledWith(AdjustEvents.NEW_BENEFICIARY)
-        expect(Adjust.logEvent).toHaveBeenCalledWith(AdjustEvents.NEW_BENEFICIARY_17)
-        expect(Adjust.logEvent).not.toHaveBeenCalledWith(AdjustEvents.NEW_FREE_BENEFICIARY)
-        expect(Adjust.logEvent).not.toHaveBeenCalledWith(AdjustEvents.NEW_BENEFICIARY_18)
-      })
-
-      it('should only log NEW_BENEFICIARY and NEW_BENEFICIARY_18 event when user is new beneficiary with credit v3 18', async () => {
-        await storage.saveObject('adjust_events', {
-          alreadySeenAsNotBeneficiary: true,
-        })
-
-        logAdjustBeneficiaryEvent({
-          ...beneficiaryUserV2,
-          creditType: UserCreditType.CREDIT_V3_18,
-        })
-
-        await callbackPromise
-
-        expect(Adjust.logEvent).toHaveBeenCalledWith(AdjustEvents.NEW_BENEFICIARY)
-        expect(Adjust.logEvent).toHaveBeenCalledWith(AdjustEvents.NEW_BENEFICIARY_18)
-        expect(Adjust.logEvent).not.toHaveBeenCalledWith(AdjustEvents.NEW_FREE_BENEFICIARY)
-        expect(Adjust.logEvent).not.toHaveBeenCalledWith(AdjustEvents.NEW_BENEFICIARY_17)
-      })
-
-      it('should only log NEW_BENEFICIARY and NEW_BENEFICIARY_18 event when user is new beneficiary with credit v2 18', async () => {
-        await storage.saveObject('adjust_events', {
-          alreadySeenAsNotBeneficiary: true,
-        })
-
-        logAdjustBeneficiaryEvent({
-          ...beneficiaryUserV2,
-          creditType: UserCreditType.CREDIT_V2_18,
-        })
-
-        await callbackPromise
-
-        expect(Adjust.logEvent).toHaveBeenCalledWith(AdjustEvents.NEW_BENEFICIARY)
-        expect(Adjust.logEvent).toHaveBeenCalledWith(AdjustEvents.NEW_BENEFICIARY_18)
-        expect(Adjust.logEvent).not.toHaveBeenCalledWith(AdjustEvents.NEW_FREE_BENEFICIARY)
-        expect(Adjust.logEvent).not.toHaveBeenCalledWith(AdjustEvents.NEW_BENEFICIARY_17)
-      })
+          expect(Adjust.logEvent).toHaveBeenCalledWith(AdjustEvents.NEW_BENEFICIARY)
+          expect(Adjust.logEvent).toHaveBeenCalledWith(AdjustEvents.NEW_FREE_BENEFICIARY)
+          expect(Adjust.logEvent).toHaveBeenCalledWith(event)
+        }
+      )
     })
   })
 })

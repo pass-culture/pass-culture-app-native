@@ -15,6 +15,15 @@ export const logAdjustRegistrationEvents = (userAge?: number) => {
     if (userAge && [15, 16, 17, 18].includes(userAge)) {
       Adjust.logEvent(AdjustEvents.REGISTRATION_1518)
     }
+    if (userAge && userAge === 15) {
+      Adjust.logEvent(AdjustEvents.REGISTRATION_15)
+    }
+    if (userAge && userAge === 16) {
+      Adjust.logEvent(AdjustEvents.REGISTRATION_16)
+    }
+    if (userAge && userAge === 17) {
+      Adjust.logEvent(AdjustEvents.REGISTRATION_17)
+    }
 
     if (userAge && userAge === 18) {
       Adjust.logEvent(AdjustEvents.REGISTRATION_18)

@@ -43,9 +43,14 @@ describe('logAdjustRegistrationEvents', () => {
     expect(Adjust.logEvent).toHaveBeenCalledWith(AdjustEvents.REGISTRATION)
   })
 
-  it.each([15, 16, 17])(
-    'should only log UNDERAGE_REGISTRATION, REGISTRATION and REGISTRATION_1518 events when user age is %i',
-    async (age) => {
+  it.each`
+    age   | event
+    ${15} | ${AdjustEvents.REGISTRATION_15}
+    ${16} | ${AdjustEvents.REGISTRATION_16}
+    ${17} | ${AdjustEvents.REGISTRATION_17}
+  `(
+    'should only log UNDERAGE_REGISTRATION, REGISTRATION and REGISTRATION_1518 and REGISTRATION_%i events when user age is %i',
+    async ({ age, event }) => {
       logAdjustRegistrationEvents(age)
 
       await callbackPromise
@@ -53,7 +58,8 @@ describe('logAdjustRegistrationEvents', () => {
       expect(Adjust.logEvent).toHaveBeenCalledWith(AdjustEvents.REGISTRATION)
       expect(Adjust.logEvent).toHaveBeenCalledWith(AdjustEvents.UNDERAGE_REGISTRATION)
       expect(Adjust.logEvent).toHaveBeenCalledWith(AdjustEvents.REGISTRATION_1518)
-      expect(Adjust.logEvent).toHaveBeenCalledTimes(3)
+      expect(Adjust.logEvent).toHaveBeenCalledWith(event)
+      expect(Adjust.logEvent).toHaveBeenCalledTimes(4)
     }
   )
 
