@@ -92,8 +92,8 @@ export const OnboardingSubscription = () => {
     updateSubscription,
   ])
 
-  useEffect(() => {
-    storage.saveObject('has_seen_onboarding_subscription', true)
+  useEffect(function saveOnboardingSubscriptionSeen() {
+    void storage.saveObject('has_seen_onboarding_subscription', true)
   }, [])
 
   const isValidateButtonDisabled = subscribedThemes.length === 0 || isUpdatingProfile

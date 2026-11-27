@@ -29,7 +29,10 @@ export const setFirebaseParams = async (campaignDate?: Date | null) => {
 export const useInit = () => {
   const { campaignDate } = useUtmParams()
 
-  useEffect(() => {
-    setFirebaseParams(campaignDate)
-  }, [campaignDate])
+  useEffect(
+    function initFirebaseParams() {
+      void setFirebaseParams(campaignDate)
+    },
+    [campaignDate]
+  )
 }

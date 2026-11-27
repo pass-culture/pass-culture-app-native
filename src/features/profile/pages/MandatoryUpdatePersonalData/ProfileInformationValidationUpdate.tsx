@@ -35,7 +35,7 @@ export const ProfileInformationValidationUpdate = () => {
         ],
       })
       resetProfileStores()
-      refetchUser()
+      void refetchUser()
     },
     onError: () => {
       showErrorSnackBar('Une erreur est survenue')

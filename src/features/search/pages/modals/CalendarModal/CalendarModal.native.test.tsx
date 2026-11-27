@@ -96,10 +96,20 @@ describe('CalendarModal', () => {
     })
 
     describe('should execute search with filter when pressing filter and search button', () => {
-      it('With today filter', async () => {
+      it.each([
+        { filter: 'today', label: 'Aujourd’hui', calendarFilterId: 'today' },
+        { filter: 'this week', label: 'Cette semaine', calendarFilterId: 'thisWeek' },
+        { filter: 'this weekend', label: 'Ce week-end', calendarFilterId: 'thisWeekend' },
+        { filter: 'this month', label: 'Ce mois-ci', calendarFilterId: 'thisMonth' },
+        {
+          filter: 'this next month',
+          label: capitalize(nextMonthName),
+          calendarFilterId: 'nextMonth',
+        },
+      ])('With $filter filter', async ({ label, calendarFilterId }) => {
         renderCalendarModal()
 
-        await user.press(screen.getByText('Aujourd’hui'))
+        await user.press(screen.getByText(label))
 
         await user.press(screen.getByText('Rechercher'))
 
@@ -107,75 +117,7 @@ describe('CalendarModal', () => {
           expect.objectContaining({
             type: 'SET_STATE',
             payload: expect.objectContaining({
-              calendarFilterId: 'today',
-            }),
-          })
-        )
-      })
-
-      it('With this week filter', async () => {
-        renderCalendarModal()
-
-        await user.press(screen.getByText('Cette semaine'))
-
-        await user.press(screen.getByText('Rechercher'))
-
-        expect(mockDispatch).toHaveBeenCalledWith(
-          expect.objectContaining({
-            type: 'SET_STATE',
-            payload: expect.objectContaining({
-              calendarFilterId: 'thisWeek',
-            }),
-          })
-        )
-      })
-
-      it('With this weekend filter', async () => {
-        renderCalendarModal()
-
-        await user.press(screen.getByText('Ce week-end'))
-
-        await user.press(screen.getByText('Rechercher'))
-
-        expect(mockDispatch).toHaveBeenCalledWith(
-          expect.objectContaining({
-            type: 'SET_STATE',
-            payload: expect.objectContaining({
-              calendarFilterId: 'thisWeekend',
-            }),
-          })
-        )
-      })
-
-      it('With this month filter', async () => {
-        renderCalendarModal()
-
-        await user.press(screen.getByText('Ce mois-ci'))
-
-        await user.press(screen.getByText('Rechercher'))
-
-        expect(mockDispatch).toHaveBeenCalledWith(
-          expect.objectContaining({
-            type: 'SET_STATE',
-            payload: expect.objectContaining({
-              calendarFilterId: 'thisMonth',
-            }),
-          })
-        )
-      })
-
-      it('With this next month filter', async () => {
-        renderCalendarModal()
-
-        await user.press(screen.getByText(capitalize(nextMonthName)))
-
-        await user.press(screen.getByText('Rechercher'))
-
-        expect(mockDispatch).toHaveBeenCalledWith(
-          expect.objectContaining({
-            type: 'SET_STATE',
-            payload: expect.objectContaining({
-              calendarFilterId: 'nextMonth',
+              calendarFilterId,
             }),
           })
         )

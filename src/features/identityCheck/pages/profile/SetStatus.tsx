@@ -58,7 +58,7 @@ export const SetStatus = () => {
   }, [selectedStatus, setStoreStatus])
 
   const submitStatus = useCallback(
-    async (formValues: StatusForm) => {
+    (formValues: StatusForm) => {
       if (!formValues.selectedStatus) return
       setIsLoading(true)
       setStoreStatus(formValues.selectedStatus)

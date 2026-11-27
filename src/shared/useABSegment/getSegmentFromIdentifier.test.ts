@@ -31,6 +31,6 @@ describe('getSegmentFromIdentifier', () => {
   it('should return undefined when identifier is undefined', () => {
     const segment = getSegmentFromIdentifier(['A', 'B'])
 
-    expect(segment).toEqual(undefined)
+    expect(segment).toBeUndefined()
   })
 })

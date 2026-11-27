@@ -10,12 +10,12 @@ describe('getNextPageParam', () => {
   it('should return undefined when page + 1 = nbPages', () => {
     const nextPageParam = getNextPageParam({ page: 1, nbPages: 2 })
 
-    expect(nextPageParam).toEqual(undefined)
+    expect(nextPageParam).toBeUndefined()
   })
 
   it('should return undefined when page + 1 > nbPages', () => {
     const nextPageParam = getNextPageParam({ page: 2, nbPages: 2 })
 
-    expect(nextPageParam).toEqual(undefined)
+    expect(nextPageParam).toBeUndefined()
   })
 })

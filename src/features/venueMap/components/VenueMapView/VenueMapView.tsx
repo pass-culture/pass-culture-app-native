@@ -102,13 +102,13 @@ export const VenueMapView = forwardRef<Map, VenueMapViewProps>(function VenueMap
 
   const handleMapReady = () => {
     if (venues.length > 0) {
-      zoomOutIfMapEmpty({ mapViewRef: mapRef, venues })
+      void zoomOutIfMapEmpty({ mapViewRef: mapRef, venues })
     }
     onMapReady?.()
   }
 
   const checkLabelVisibility = () => {
-    mapRef.current?.getCamera().then((camera) => {
+    void mapRef.current?.getCamera().then((camera) => {
       setLabelVisible(
         Platform.OS === 'ios'
           ? Number(camera.altitude) <= MARKER_LABEL_VISIBILITY_LIMIT.altitude

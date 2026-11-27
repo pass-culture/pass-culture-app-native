@@ -20,7 +20,7 @@ export function useSearchHistory() {
   const [queryHistory, setQueryHistory] = useState<string>('')
   const { logType } = useLogTypeFromRemoteConfig()
 
-  const setHistoryItems = useCallback(async (newItems: HistoryItem[]) => {
+  const setHistoryItems = useCallback((newItems: HistoryItem[]) => {
     return AsyncStorage.setItem(HISTORY_KEY, JSON.stringify(newItems))
   }, [])
 
@@ -45,9 +45,12 @@ export function useSearchHistory() {
     }
   }, [setHistoryItems])
 
-  useEffect(() => {
-    getHistoryFromStorage().then(setHistory)
-  }, [getHistoryFromStorage])
+  useEffect(
+    function loadHistoryFromStorage() {
+      void getHistoryFromStorage().then(setHistory)
+    },
+    [getHistoryFromStorage]
+  )
 
   const internalRemoveFromHistory = useCallback(
     async (item: HistoryItem) => {

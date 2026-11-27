@@ -5,7 +5,7 @@ const colors: MarkedDatesColors = { backgroundColor: '#ffffff', textColor: '#cbc
 
 describe('getMarkedDates', () => {
   it('should return an empty object if no start date', () => {
-    expect(getMarkedDates(undefined, undefined, colors)).toEqual(undefined)
+    expect(getMarkedDates(undefined, undefined, colors)).toBeUndefined()
   })
 
   it('should return single day marked if only start date', () => {

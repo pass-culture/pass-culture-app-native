@@ -15,8 +15,8 @@ export const getCampaignDate = (time: string | null) =>
 export const useUtmParams = (): ExtendedUtmParams => {
   const [utmParams, setUtmParams] = useState<ExtendedUtmParams | null>(null)
 
-  useEffect(() => {
-    storage
+  useEffect(function readUtmParamsFromStorage() {
+    void storage
       .readMultiString([
         'traffic_gen',
         'traffic_campaign',

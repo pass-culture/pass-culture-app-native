@@ -19,24 +19,12 @@ describe('captureAlgoliaError', () => {
       expect(eventMonitoring.captureException).not.toHaveBeenCalled()
     })
 
-    it('should not capture errors with "network request failed" message', () => {
-      const error = new Error('network request failed')
-
-      captureAlgoliaError(error)
-
-      expect(eventMonitoring.captureException).not.toHaveBeenCalled()
-    })
-
-    it('should not capture errors with message containing "network request failed"', () => {
-      const error = new Error('Something went wrong: network request failed due to timeout')
-
-      captureAlgoliaError(error)
-
-      expect(eventMonitoring.captureException).not.toHaveBeenCalled()
-    })
-
-    it('should not capture errors with "erreur lors de la récupération du token" message', () => {
-      const error = new Error('erreur lors de la récupération du token')
+    it.each([
+      'network request failed',
+      'Something went wrong: network request failed due to timeout',
+      'erreur lors de la récupération du token',
+    ])('should not capture errors with message "%s"', (message) => {
+      const error = new Error(message)
 
       captureAlgoliaError(error)
 

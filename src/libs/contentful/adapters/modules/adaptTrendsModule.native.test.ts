@@ -60,7 +60,7 @@ describe('adaptTrendsModule', () => {
       fields: undefined,
     }
 
-    expect(adaptTrendsModule(unpublishedTrends)).toEqual(null)
+    expect(adaptTrendsModule(unpublishedTrends)).toBeNull()
   })
 
   it('should not filter out venue map block when no homeEntryId is provided', () => {

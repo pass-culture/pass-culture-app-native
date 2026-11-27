@@ -9,7 +9,7 @@ import { Typo } from 'ui/theme'
 interface PriceLineProps {
   quantity?: number
   unitPrice: number
-  label?: OfferStockResponse['priceCategoryLabel']
+  label?: Exclude<OfferStockResponse['priceCategoryLabel'], undefined>
   shouldDisabledStyles?: boolean
   attributes?: OfferStockResponse['features']
 }

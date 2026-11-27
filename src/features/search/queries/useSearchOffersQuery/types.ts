@@ -13,7 +13,7 @@ export type FetchSearchOffersResponse = {
   offersResponse: {
     hits: AlgoliaOffer[]
     nbHits: number
-    userData?: VenuesUserData | null
+    userData?: Exclude<VenuesUserData, undefined> | null
     nbPages: number
     page: number
   }

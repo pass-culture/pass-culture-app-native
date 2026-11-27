@@ -26,29 +26,20 @@ const children = [
 ]
 
 describe('<StepList />', () => {
-  it('should not render any complete step when active index is 0', () => {
-    render(<StepList currentStepIndex={0}>{children}</StepList>)
+  it.each([
+    { currentStepIndex: 0, complete: 0, inProgress: 1, future: 2 },
+    { currentStepIndex: 1, complete: 1, inProgress: 1, future: 1 },
+    { currentStepIndex: 2, complete: 2, inProgress: 1, future: 0 },
+  ])(
+    'should render $complete complete, $inProgress in progress and $future future steps when active index is $currentStepIndex',
+    ({ currentStepIndex, complete, inProgress, future }) => {
+      render(<StepList currentStepIndex={currentStepIndex}>{children}</StepList>)
 
-    expect(screen.queryAllByTestId('vertical-stepper-complete')).toHaveLength(0)
-    expect(screen.queryAllByTestId('vertical-stepper-in_progress')).toHaveLength(1)
-    expect(screen.queryAllByTestId('vertical-stepper-future')).toHaveLength(2)
-  })
-
-  it('should render one complete step, one in progress step and one future step', () => {
-    render(<StepList currentStepIndex={1}>{children}</StepList>)
-
-    expect(screen.queryAllByTestId('vertical-stepper-complete')).toHaveLength(1)
-    expect(screen.queryAllByTestId('vertical-stepper-in_progress')).toHaveLength(1)
-    expect(screen.queryAllByTestId('vertical-stepper-future')).toHaveLength(1)
-  })
-
-  it('should render two complete steps, one in progress step and no future step', () => {
-    render(<StepList currentStepIndex={2}>{children}</StepList>)
-
-    expect(screen.queryAllByTestId('vertical-stepper-complete')).toHaveLength(2)
-    expect(screen.queryAllByTestId('vertical-stepper-in_progress')).toHaveLength(1)
-    expect(screen.queryAllByTestId('vertical-stepper-future')).toHaveLength(0)
-  })
+      expect(screen.queryAllByTestId('vertical-stepper-complete')).toHaveLength(complete)
+      expect(screen.queryAllByTestId('vertical-stepper-in_progress')).toHaveLength(inProgress)
+      expect(screen.queryAllByTestId('vertical-stepper-future')).toHaveLength(future)
+    }
+  )
 
   it('should warn about active index being greater than children length', () => {
     const warnSpy = jest.spyOn(console, 'warn').mockImplementation()

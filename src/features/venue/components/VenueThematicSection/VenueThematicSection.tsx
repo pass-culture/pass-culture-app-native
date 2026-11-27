@@ -40,7 +40,7 @@ export const VenueThematicSection: FunctionComponent<Props> = ({ venue }: Props)
     hideModal: hideUnsubscribingModal,
   } = useModal(false)
 
-  const onUpdateSubscriptionSuccess = async (thematic: SubscriptionTheme) => {
+  const onUpdateSubscriptionSuccess = (thematic: SubscriptionTheme) => {
     showSuccessSnackBar(
       `Tu suis le thème “${mapSubscriptionThemeToName[thematic]}”\u00a0! Tu peux gérer tes alertes depuis ton profil.`
     )

@@ -212,27 +212,15 @@ describe('<BookingEventChoices />', () => {
       expect(await screen.findByText('Nombre de places')).toBeOnTheScreen()
     })
 
-    it('should not display date selection', async () => {
+    it.each([
+      { selection: 'date', testId: 'DateStep' },
+      { selection: 'hour', testId: 'HourStep' },
+      { selection: 'price', testId: 'PricesStep' },
+    ])('should not display $selection selection', async ({ testId }) => {
       render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
 
       await waitFor(() => {
-        expect(screen.queryByTestId('DateStep')).not.toBeOnTheScreen()
-      })
-    })
-
-    it('should not display hour selection', async () => {
-      render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
-
-      await waitFor(() => {
-        expect(screen.queryByTestId('HourStep')).not.toBeOnTheScreen()
-      })
-    })
-
-    it('should not display price selection', async () => {
-      render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
-
-      await waitFor(() => {
-        expect(screen.queryByTestId('PricesStep')).not.toBeOnTheScreen()
+        expect(screen.queryByTestId(testId)).not.toBeOnTheScreen()
       })
     })
   })

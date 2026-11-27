@@ -31,7 +31,12 @@ describe('<OfferVenueBlock />', () => {
     onCopyAddressPress: mockOnCopyAddressPress,
   })
 
-  it('should display title', () => {
+  it.each([
+    { element: 'title', text: 'Lieu de retrait' },
+    { element: 'venue name', text: 'PATHE BEAUGRENELLE' },
+    { element: 'address', text: '75008 PARIS 8, 2 RUE LAMENNAIS' },
+    { element: 'copy address button', text: 'Copier l’adresse' },
+  ])('should render $element', ({ text }) => {
     render(
       <OfferVenueBlock
         isOfferAtSameAddressAsVenue
@@ -40,31 +45,7 @@ describe('<OfferVenueBlock />', () => {
       />
     )
 
-    expect(screen.getByText('Lieu de retrait')).toBeOnTheScreen()
-  })
-
-  it('should render venue name', () => {
-    render(
-      <OfferVenueBlock
-        isOfferAtSameAddressAsVenue
-        title="Lieu de retrait"
-        offer={offerResponseSnap}
-      />
-    )
-
-    expect(screen.getByText('PATHE BEAUGRENELLE')).toBeOnTheScreen()
-  })
-
-  it('should render address', () => {
-    render(
-      <OfferVenueBlock
-        isOfferAtSameAddressAsVenue
-        title="Lieu de retrait"
-        offer={offerResponseSnap}
-      />
-    )
-
-    expect(screen.getByText('75008 PARIS 8, 2 RUE LAMENNAIS')).toBeOnTheScreen()
+    expect(screen.getByText(text)).toBeOnTheScreen()
   })
 
   it('should render distance when user chose geolocation', () => {
@@ -80,7 +61,17 @@ describe('<OfferVenueBlock />', () => {
     expect(screen.getByText('à 105 km')).toBeOnTheScreen()
   })
 
-  it("should not render distance when user chose 'France entière'", () => {
+  it.each([
+    { element: "distance when user chose 'France entière'", text: 'à 105 km' },
+    {
+      element: "'Changer le lieu de retrait' button when onChangeVenuePress is undefined",
+      text: 'Changer le lieu de retrait',
+    },
+    {
+      element: 'see itinerary button when onSeeItineraryPress is undefined',
+      text: 'Voir l’itinéraire',
+    },
+  ])('should not render $element', ({ text }) => {
     render(
       <OfferVenueBlock
         isOfferAtSameAddressAsVenue
@@ -89,7 +80,7 @@ describe('<OfferVenueBlock />', () => {
       />
     )
 
-    expect(screen.queryByText('à 105 km')).not.toBeOnTheScreen()
+    expect(screen.queryByText(text)).not.toBeOnTheScreen()
   })
 
   it("should render placeholder instead of thumbnail when venue doesn't have any image", () => {
@@ -162,30 +153,6 @@ describe('<OfferVenueBlock />', () => {
     expect(onChangeVenuePress).toHaveBeenCalledTimes(1)
   })
 
-  it("should not render 'Changer le lieu de retrait' button when onChangeVenuePress is undefined", () => {
-    render(
-      <OfferVenueBlock
-        isOfferAtSameAddressAsVenue
-        title="Lieu de retrait"
-        offer={offerResponseSnap}
-      />
-    )
-
-    expect(screen.queryByText('Changer le lieu de retrait')).not.toBeOnTheScreen()
-  })
-
-  it('should render copy address button', () => {
-    render(
-      <OfferVenueBlock
-        isOfferAtSameAddressAsVenue
-        title="Lieu de retrait"
-        offer={offerResponseSnap}
-      />
-    )
-
-    expect(screen.getByText('Copier l’adresse')).toBeOnTheScreen()
-  })
-
   it('should not render copy address button when offer is cinema', () => {
     render(
       <OfferVenueBlock isOfferAtSameAddressAsVenue title="Lieu de retrait" offer={cinemaOffer} />
@@ -235,18 +202,6 @@ describe('<OfferVenueBlock />', () => {
     await user.press(screen.getByText('Voir l’itinéraire'))
 
     expect(onSeeItineraryPress).toHaveBeenCalledTimes(1)
-  })
-
-  it('should not render see itinerary button when onSeeItineraryPress is undefined', () => {
-    render(
-      <OfferVenueBlock
-        isOfferAtSameAddressAsVenue
-        title="Lieu de retrait"
-        offer={offerResponseSnap}
-      />
-    )
-
-    expect(screen.queryByText('Voir l’itinéraire')).not.toBeOnTheScreen()
   })
 
   it('should not render see itinerary button when offer is cinema', () => {

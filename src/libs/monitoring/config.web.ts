@@ -3,7 +3,7 @@ import { BrowserOptions } from '@sentry/react'
 import { env } from 'libs/environment/env'
 import { browserTracingIntegration } from 'libs/monitoring/sentry.web'
 
-export async function getSentryConfig() {
+export function getSentryConfig() {
   return {
     dsn: env.SENTRY_DSN,
     environment: __DEV__ ? 'development' : env.ENV,

@@ -47,7 +47,7 @@ describe('setMarketingParams', () => {
   })
 
   it('should not set marketing params when no params are available', async () => {
-    await setMarketingParams(undefined, ALL_OPTIONAL_COOKIES)
+    setMarketingParams(undefined, ALL_OPTIONAL_COOKIES)
 
     jest.runOnlyPendingTimers()
 
@@ -57,7 +57,7 @@ describe('setMarketingParams', () => {
 
   describe('user has refused customization cookies', () => {
     it('should not set marketing params', async () => {
-      await setMarketingParams(UTM_PARAMS, [
+      setMarketingParams(UTM_PARAMS, [
         ...COOKIES_BY_CATEGORY.performance,
         ...COOKIES_BY_CATEGORY.marketing,
       ])
@@ -76,8 +76,8 @@ describe('setMarketingParams', () => {
       })
     })
 
-    it('should not set analytics event params', async () => {
-      await setMarketingParams(UTM_PARAMS, [
+    it('should not set analytics event params', () => {
+      setMarketingParams(UTM_PARAMS, [
         ...COOKIES_BY_CATEGORY.performance,
         ...COOKIES_BY_CATEGORY.marketing,
       ])
@@ -90,7 +90,7 @@ describe('setMarketingParams', () => {
 
   describe('user has accepted customization cookies', () => {
     it('should set marketing params', async () => {
-      await setMarketingParams(UTM_PARAMS, COOKIES_BY_CATEGORY.customization)
+      setMarketingParams(UTM_PARAMS, COOKIES_BY_CATEGORY.customization)
 
       jest.runOnlyPendingTimers()
 
@@ -106,7 +106,7 @@ describe('setMarketingParams', () => {
     })
 
     it('should set analytics event params', async () => {
-      await setMarketingParams(UTM_PARAMS, COOKIES_BY_CATEGORY.customization)
+      setMarketingParams(UTM_PARAMS, COOKIES_BY_CATEGORY.customization)
 
       jest.runOnlyPendingTimers()
 

@@ -1,5 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const { boundariesRule } = require('./eslint-custom-rules/boundaries-rule')
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const { sonarSoftRules } = require('./eslint-sonar-rules')
 
 const softRules = {
   cleancode: {
@@ -27,6 +29,7 @@ const softRules = {
     'react-hooks/unsupported-syntax': 'warn',
     'react-hooks/incompatible-library': 'warn',
   },
+  sonar: sonarSoftRules,
 }
 
 const getConditionalRules = (scope, rules) =>

@@ -22,7 +22,7 @@ export const useSettingsQuery = <TSelect = SettingsResponse>(
     ...options,
   })
 
-export const prefetchSettingsQuery = async () =>
+export const prefetchSettingsQuery = () =>
   queryClient.prefetchQuery({
     ...settingsQueryBaseOptions,
   })

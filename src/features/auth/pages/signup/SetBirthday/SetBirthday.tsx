@@ -79,7 +79,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
       }
     }
     if (isNative) {
-      fetchUserAge()
+      void fetchUserAge()
     }
   }, [currentYear, previousBirthdateProvided, setValue, isNative])
 

@@ -20,10 +20,9 @@ import { useHorizontalFlatListScroll } from 'ui/hooks/useHorizontalFlatListScrol
 
 type ItemDimensions = { width: number; height: number }
 
-type RenderHeaderItem = ((itemDimensions: ItemDimensions) => React.ReactElement<any>) | undefined
+type RenderHeaderItem = (itemDimensions: ItemDimensions) => React.ReactElement<any>
 
-type RenderFooterItem =
-  ((itemDimensions: ItemDimensions) => React.ReactElement<any> | null) | undefined
+type RenderFooterItem = (itemDimensions: ItemDimensions) => React.ReactElement<any> | null
 
 export type CustomListRenderItem<ItemT> = (
   info: ListRenderItemInfo<ItemT> &

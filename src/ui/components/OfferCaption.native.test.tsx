@@ -15,33 +15,20 @@ const props = {
 describe('OfferCaption component', () => {
   afterAll(() => jest.resetAllMocks())
 
-  it('should display offer price', () => {
+  it.each([
+    { element: 'price', text: 'Dès 5€' },
+    { element: 'date', text: 'Dès le 2 mars 2020' },
+    { element: 'title', text: 'Mensch ! Où sont les Hommes ?' },
+    { element: 'category', text: 'Cinéma' },
+  ])('should display offer $element', ({ text }) => {
     render(<OfferCaption {...props} />)
 
-    expect(screen.getByText('Dès 5€')).toBeOnTheScreen()
-  })
-
-  it('should display offer date', () => {
-    render(<OfferCaption {...props} />)
-
-    expect(screen.getByText('Dès le 2 mars 2020')).toBeOnTheScreen()
+    expect(screen.getByText(text)).toBeOnTheScreen()
   })
 
   it('should display offer distance when provided', () => {
     render(<OfferCaption {...props} distance="10 km" />)
 
     expect(screen.getByText('à 10 km • Dès le 2 mars 2020')).toBeOnTheScreen()
-  })
-
-  it('should display offer title', () => {
-    render(<OfferCaption {...props} />)
-
-    expect(screen.getByText('Mensch ! Où sont les Hommes ?')).toBeOnTheScreen()
-  })
-
-  it('should display offer category', () => {
-    render(<OfferCaption {...props} />)
-
-    expect(screen.getByText('Cinéma')).toBeOnTheScreen()
   })
 })

@@ -69,7 +69,7 @@ describe('useHighlightOffer', () => {
   it('should return undefined when no offer id or tag or ean is provided', async () => {
     const { result } = renderUseHighlightOfferHook({})
 
-    await waitFor(() => expect(result.current).toBe(undefined))
+    await waitFor(() => expect(result.current).toBeUndefined())
   })
 
   describe('geolocation', () => {
@@ -103,7 +103,7 @@ describe('useHighlightOffer', () => {
         aroundRadius: 100,
       })
 
-      await waitFor(() => expect(result.current).toBe(undefined))
+      await waitFor(() => expect(result.current).toBeUndefined())
     })
 
     it('should not return offer when isGeolocated is true and the user position is not defined', async () => {
@@ -117,7 +117,7 @@ describe('useHighlightOffer', () => {
         aroundRadius: 100,
       })
 
-      await waitFor(() => expect(result.current).toBe(undefined))
+      await waitFor(() => expect(result.current).toBeUndefined())
     })
 
     it('should return offer when isGeolocated is true and around radius is not defined', async () => {

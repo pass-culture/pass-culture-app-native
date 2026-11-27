@@ -13,7 +13,7 @@ export const fetchFilmsOffers = async ({
   userLocation,
   isReplicaAlgoliaIndexActive,
 }: {
-  userLocation?: Position
+  userLocation?: Exclude<Position, undefined>
   isReplicaAlgoliaIndexActive?: boolean
 }) => {
   const queries: SearchForHits[] = [

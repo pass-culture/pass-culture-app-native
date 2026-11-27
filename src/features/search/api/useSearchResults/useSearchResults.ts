@@ -1,7 +1,6 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { SearchResponse } from 'algoliasearch/lite'
 import { uniqBy } from 'lodash'
-import flatten from 'lodash/flatten'
 import { useMemo } from 'react'
 
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
@@ -105,7 +104,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
     const { pages = [] } = data ?? {}
 
     removeSelectedVenue()
-    const venues = flatten(pages[0]?.venues.hits)
+    const venues = (pages[0]?.venues.hits ?? []).flat()
     if (userLocation && venues.length) {
       setVenues(
         adaptAlgoliaVenues(venues).filter((venue): venue is GeolocatedVenue =>
@@ -117,10 +116,10 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
     }
 
     return {
-      offers: flatten(pages.map((page) => page.offers.hits.map(transformHits))),
-      venueNotOpenToPublic: flatten(pages[0]?.venueNotOpenToPublic.hits),
+      offers: pages.flatMap((page) => page.offers.hits.map(transformHits)),
+      venueNotOpenToPublic: (pages[0]?.venueNotOpenToPublic.hits ?? []).flat(),
       venues,
-      duplicatedOffers: flatten(pages.map((page) => page.duplicatedOffers.hits.map(transformHits))),
+      duplicatedOffers: pages.flatMap((page) => page.duplicatedOffers.hits.map(transformHits)),
       artists: uniqBy(
         pages[0]?.offerArtists.hits
           .filter((offer) => offer.artists?.length)

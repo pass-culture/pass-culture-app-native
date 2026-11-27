@@ -14,13 +14,13 @@ describe('buildOfferLast30DaysBookings', () => {
   it('should return an undefined offer last 30 days bookings predicate when not defined', () => {
     const offerLast30DaysBookingsPredicate = buildOfferLast30DaysBookings(undefined)
 
-    expect(offerLast30DaysBookingsPredicate).toEqual(undefined)
+    expect(offerLast30DaysBookingsPredicate).toBeUndefined()
   })
 
   it('should return an undefined offer last 30 days bookings predicate when defined at 0', () => {
     const offerLast30DaysBookingsPredicate = buildOfferLast30DaysBookings(0)
 
-    expect(offerLast30DaysBookingsPredicate).toEqual(undefined)
+    expect(offerLast30DaysBookingsPredicate).toBeUndefined()
   })
 
   it('should return an offer last 30 days bookings predicate when defined at a value > 0', () => {
@@ -54,7 +54,7 @@ describe('buildDatePredicate', () => {
   it('should return an undefined date predicate when date and time range not defined', () => {
     const datePredicate = buildDatePredicate(defaultDatePredicate)
 
-    expect(datePredicate).toEqual(undefined)
+    expect(datePredicate).toBeUndefined()
   })
 
   it('should return a date predicate with date and time range when defined', () => {
@@ -100,7 +100,7 @@ describe('buildHomepageDatePredicate', () => {
   it('should return an undefined homepage date predicate when beginning and ending date not defined', () => {
     const homepageDatePredicate = buildHomepageDatePredicate(defaultBuildHomepageDatePredicate)
 
-    expect(homepageDatePredicate).toEqual(undefined)
+    expect(homepageDatePredicate).toBeUndefined()
   })
 
   it('should return an homepage date predicate from beginning date when beginning date defined and ending date not defined', () => {

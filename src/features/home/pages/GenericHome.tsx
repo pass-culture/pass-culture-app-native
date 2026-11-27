@@ -212,7 +212,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function Onli
   const { isLoggedIn } = useAuthContext()
   const { current: triggerStorage } = useRef(createInMemoryScreenSeenCountTriggerStorage())
 
-  const triggerHasSeenEnoughHomeContent = async (screenSeenCount: ScreenSeenCount) => {
+  const triggerHasSeenEnoughHomeContent = (screenSeenCount: ScreenSeenCount) => {
     const attributes = new BatchEventAttributes()
     attributes.put('screen_seen_count', screenSeenCount)
     attributes.put('home_id', homeId)

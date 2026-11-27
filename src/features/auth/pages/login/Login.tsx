@@ -149,13 +149,15 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   const onReCaptchaSuccess = useCallback(
     (token: string) => {
       setIsDoingReCaptchaChallenge(false)
-      handleSubmit((data) => signIn({ identifier: data.email, password: data.password, token }))()
+      void handleSubmit((data) =>
+        signIn({ identifier: data.email, password: data.password, token })
+      )()
     },
     [handleSubmit, signIn]
   )
 
   const onSubmit = useCallback(
-    async (data: LoginFormData) => {
+    (data: LoginFormData) => {
       if (!shouldDisableLoginButton) {
         setErrorMessage('')
         Keyboard.dismiss()

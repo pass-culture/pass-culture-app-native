@@ -1,6 +1,6 @@
 import { showLocation } from 'react-native-map-link'
 
-export async function openItinerary(address: string) {
+export function openItinerary(address: string) {
   return showLocation({
     address,
     dialogTitle: 'Obtenir l’itinéraire',

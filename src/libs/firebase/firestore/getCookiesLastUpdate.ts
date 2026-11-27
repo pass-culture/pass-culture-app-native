@@ -7,7 +7,7 @@ import {
 import { captureMonitoringError } from 'libs/monitoring/errors'
 import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 
-export const getCookiesLastUpdate = async (): Promise<
+export const getCookiesLastUpdate = (): Promise<
   | void
   | {
       lastUpdated: Date

@@ -11,10 +11,10 @@ describe('buildImageUrl', () => {
   it('should return undefined when an empty string is provided', () => {
     const rawUrl = ''
 
-    expect(buildImageUrl(rawUrl)).toEqual(undefined)
+    expect(buildImageUrl(rawUrl)).toBeUndefined()
   })
 
   it('should return undefined when nothing is provided', () => {
-    expect(buildImageUrl(undefined)).toEqual(undefined)
+    expect(buildImageUrl(undefined)).toBeUndefined()
   })
 })

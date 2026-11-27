@@ -12,7 +12,7 @@ type AnalyticsInfos = { venueId: string; homeId?: never } | { homeId: string; ve
 
 export type Props = {
   user?: UserProfile
-  onUpdateSubscriptionSuccess: (thematic: SubscriptionTheme) => Promise<void>
+  onUpdateSubscriptionSuccess: (thematic: SubscriptionTheme) => void | Promise<void>
   thematic?: SubscriptionTheme | null
 } & AnalyticsInfos
 

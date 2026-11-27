@@ -504,7 +504,7 @@ describe('OpeningHoursStatusViewModel', () => {
         timezone: PARIS_TIMEZONE,
       })
 
-      expect(viewModel.openingLabel).toEqual(null)
+      expect(viewModel.openingLabel).toBeNull()
     })
   })
 

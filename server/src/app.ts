@@ -5,6 +5,7 @@ import express from 'express'
 import { webAppProxyMiddleware } from './middlewares/webAppProxyMiddleware'
 import { getVersion } from './routes/version'
 
+// eslint-disable-next-line sonarjs/x-powered-by
 export const app = express()
 
 const options = {

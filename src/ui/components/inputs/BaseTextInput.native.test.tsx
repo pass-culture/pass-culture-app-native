@@ -19,7 +19,7 @@ describe('<BaseTextInput />', () => {
 
     const nativeTextInput = screen.getByPlaceholderText('placeholder')
 
-    expect(nativeTextInput.props.autoFocus).toBe(undefined)
+    expect(nativeTextInput.props.autoFocus).toBeUndefined()
     expect(ref.current?.focus).toHaveBeenCalledTimes(1)
   })
 

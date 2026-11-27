@@ -15,7 +15,7 @@ const checkNetworks = [
   async () => Platform.OS !== 'web' && (await canOpenURL('fb-messenger://')) && Network.messenger,
   async () => (await canOpenURL('tg://')) && Network.telegram,
   async () => Platform.OS !== 'web' && (await canOpenURL('viber://forward')) && Network.viber,
-  async () => Platform.OS === 'web' && Network.twitter,
+  () => Promise.resolve(Platform.OS === 'web' && Network.twitter),
 ]
 
 export const checkIsInstalled = async () => {

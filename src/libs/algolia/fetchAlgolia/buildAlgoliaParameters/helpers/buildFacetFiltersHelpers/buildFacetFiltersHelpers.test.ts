@@ -162,7 +162,7 @@ describe('buildOfferIsDuoPredicate', () => {
   it('should return undefined when offerIsDuo param is false', () => {
     const offerIsDuoPredicate = buildOfferIsDuoPredicate(false)
 
-    expect(offerIsDuoPredicate).toEqual(undefined)
+    expect(offerIsDuoPredicate).toBeUndefined()
   })
 })
 
@@ -170,7 +170,7 @@ describe('buildTagsPredicate', () => {
   it('should return undefined when no tags associated', () => {
     const tagsPredicate = buildTagsPredicate([])
 
-    expect(tagsPredicate).toEqual(undefined)
+    expect(tagsPredicate).toBeUndefined()
   })
 
   it('should return a tags predicate formatted for Algolia API', () => {

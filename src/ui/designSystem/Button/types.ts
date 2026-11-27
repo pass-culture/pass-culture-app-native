@@ -67,13 +67,13 @@ type TextButtonProps = ButtonBaseProps &
   }
 
 type ButtonNativeEvents = {
-  onPress?: AppButtonEventNative
-  onLongPress?: AppButtonEventNative
+  onPress?: Exclude<AppButtonEventNative, undefined>
+  onLongPress?: Exclude<AppButtonEventNative, undefined>
 }
 
 type ButtonWebEvents = {
-  onPress?: AppButtonEventWeb
-  onLongPress?: AppButtonEventWeb
+  onPress?: Exclude<AppButtonEventWeb, undefined>
+  onLongPress?: Exclude<AppButtonEventWeb, undefined>
   href?: string
   target?: string
 }

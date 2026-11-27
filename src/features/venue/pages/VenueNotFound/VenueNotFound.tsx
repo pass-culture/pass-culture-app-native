@@ -19,7 +19,7 @@ export const VenueNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
     []
   )
 
-  async function onAfterNavigate() {
+  function onAfterNavigate() {
     // if we reset too fast, it will rerun the failed query, this as no effect on the UI but that's not desired.
     const beforeResetDelayInMs = 300
     timer.current = globalThis.setTimeout(resetErrorBoundary, beforeResetDelayInMs)

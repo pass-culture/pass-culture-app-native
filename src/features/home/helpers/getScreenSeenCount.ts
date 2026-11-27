@@ -11,7 +11,7 @@ export const getScreenSeenCount = ({
   isLoggedIn,
 }: {
   screenHeight: number
-  onTrigger: (screenSeenCount: ScreenSeenCount) => Promise<void>
+  onTrigger: (screenSeenCount: ScreenSeenCount) => void
   triggerStorage: ScreenSeenCountTriggerStorage
   isLoggedIn: boolean
 }) => {

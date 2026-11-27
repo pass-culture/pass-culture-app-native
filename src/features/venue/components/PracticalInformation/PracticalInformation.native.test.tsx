@@ -10,26 +10,17 @@ jest.mock('libs/firebase/analytics/analytics')
 const venueOpenToPublic = { ...venueDataTest, isOpenToPublic: true }
 
 describe('PracticalInformation', () => {
-  it('should display withdrawal information', async () => {
+  it.each([
+    { information: 'withdrawal information', text: 'How to withdraw, https://test.com' },
+    {
+      information: 'description information',
+      text: ' https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,',
+    },
+    { information: 'contact block', text: 'contact@venue.com' },
+  ])('should display $information', async ({ text }) => {
     render(reactQueryProviderHOC(<PracticalInformation venue={venueOpenToPublic} />))
 
-    expect(await screen.findByText('How to withdraw, https://test.com')).toBeOnTheScreen()
-  })
-
-  it('should display description information', async () => {
-    render(reactQueryProviderHOC(<PracticalInformation venue={venueOpenToPublic} />))
-
-    expect(
-      await screen.findByText(
-        ' https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,'
-      )
-    ).toBeOnTheScreen()
-  })
-
-  it('should display contact block', async () => {
-    render(reactQueryProviderHOC(<PracticalInformation venue={venueOpenToPublic} />))
-
-    expect(await screen.findByText('contact@venue.com')).toBeOnTheScreen()
+    expect(await screen.findByText(text)).toBeOnTheScreen()
   })
 
   it('should display specific wording placeholder when no practical information provided and venue is open to public', async () => {

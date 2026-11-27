@@ -46,7 +46,7 @@ describe('useGetGTLPlaylistConfigQuery', () => {
 
     await act(async () => {})
 
-    expect(result.current.data).toEqual(undefined)
+    expect(result.current.data).toBeUndefined()
   })
 })
 

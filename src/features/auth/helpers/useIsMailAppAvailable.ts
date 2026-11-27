@@ -26,7 +26,7 @@ export const useIsMailAppAvailable = (): boolean => {
       }
     }
 
-    checkMailAppAvailability()
+    void checkMailAppAvailability()
   }, [])
 
   return isMailAppAvailable

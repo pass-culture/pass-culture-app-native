@@ -1,5 +1,5 @@
 import { SearchResponse } from 'algoliasearch/lite'
-import { flatten, uniqBy } from 'lodash'
+import { uniqBy } from 'lodash'
 
 import { ModuleData, OfferModuleParamsInfo } from 'features/home/types'
 import { filterOfferHitWithImage } from 'libs/algolia/fetchAlgolia/transformOfferHit'
@@ -31,7 +31,8 @@ export const mapOffersDataAndModules = ({
       const nbParams = module.adaptedPlaylistParameters.length
 
       const moduleOffers = data.slice(moduleIterator, moduleIterator + nbParams)
-      const hits = flatten(moduleOffers.map((hits) => hits.hits))
+      const hits = moduleOffers
+        .flatMap((hits) => hits.hits)
         .filter(filterOfferHitWithImage)
         .map(transformHits)
 

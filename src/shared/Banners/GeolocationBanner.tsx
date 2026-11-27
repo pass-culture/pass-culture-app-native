@@ -25,7 +25,7 @@ export const GeolocationBanner: FunctionComponent<Props> = ({
 }) => {
   const isGeolocated = locationStore.hooks.useIsGeolocated()
 
-  const onPressGeolocationBanner = async () => {
+  const onPressGeolocationBanner = () => {
     onPress?.()
     void requestGeolocPermission({
       onSuccess: () => locationStore.actions.setLocationMode(LocationMode.AROUND_ME),

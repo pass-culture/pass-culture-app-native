@@ -6,13 +6,13 @@ describe('getBookingOfferId', () => {
   it('should return undefined when offer is not booked', () => {
     const bookingOfferId = getBookingOfferId(1500, bookedOffer)
 
-    expect(bookingOfferId).toEqual(undefined)
+    expect(bookingOfferId).toBeUndefined()
   })
 
   it('should return undefined when booked offer is an empty object', () => {
     const bookingOfferId = getBookingOfferId(1500)
 
-    expect(bookingOfferId).toEqual(undefined)
+    expect(bookingOfferId).toBeUndefined()
   })
 
   it('should return booking id when offer is booked', () => {

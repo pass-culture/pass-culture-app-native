@@ -36,7 +36,7 @@ export const EduConnectForm = () => {
             headers: { Authorization: `Bearer ${value}` },
           })
         })
-        .catch(setError)
+        .catch((accessTokenError) => setError(accessTokenError))
     }
     setWebView()
     return () => setWebViewSource(undefined)

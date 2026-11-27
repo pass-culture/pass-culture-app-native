@@ -28,7 +28,7 @@ describe('useMinimalBuildNumberQuery', () => {
 
     const { result } = renderUseMinimalBuildNumber()
 
-    expect(result.current.minimalBuildNumber).toEqual(undefined)
+    expect(result.current.minimalBuildNumber).toBeUndefined()
   })
 })
 

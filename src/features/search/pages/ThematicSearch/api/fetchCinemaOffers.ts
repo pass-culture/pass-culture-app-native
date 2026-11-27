@@ -11,7 +11,7 @@ export const fetchCinemaOffers = async ({
   userLocation,
   isReplicaAlgoliaIndexActive,
 }: {
-  userLocation?: Position
+  userLocation?: Exclude<Position, undefined>
   isReplicaAlgoliaIndexActive?: boolean
 }) => {
   const commonQueryParams = {

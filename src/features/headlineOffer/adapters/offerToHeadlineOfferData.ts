@@ -11,7 +11,7 @@ type OfferToHeadlineOfferData = {
   labelMapping: CategoryHomeLabelMapping
   currency: Currency
   euroToPacificFrancRate: number
-  userLocation?: Position
+  userLocation?: Exclude<Position, undefined>
 }
 
 type OfferToHeadlineParams = {

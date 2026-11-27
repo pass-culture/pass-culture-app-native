@@ -8,8 +8,8 @@ import { ProfileFeatureFlagsProps } from 'features/profile/types'
 import { UserProfile } from 'features/share/types'
 
 type EligibleMessageProps = {
-  eligibilityEndDatetime?: UserProfile['eligibilityEndDatetime']
-  updatedAt?: SubscriptionMessageV2['updatedAt']
+  eligibilityEndDatetime?: Exclude<UserProfile['eligibilityEndDatetime'], undefined>
+  updatedAt?: Exclude<SubscriptionMessageV2['updatedAt'], undefined>
 } & ProfileFeatureFlagsProps
 
 export const EligibleMessage = ({

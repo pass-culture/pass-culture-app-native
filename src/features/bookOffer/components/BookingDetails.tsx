@@ -191,9 +191,9 @@ export const BookingDetails = ({ stocks, onPressBookOffer, isLoading }: BookingD
     euroToPacificFrancRate,
   })
 
-  return isLoading ? (
-    <Loader message={loadingMessage} />
-  ) : (
+  if (isLoading) return <Loader message={loadingMessage} />
+
+  return (
     <MainContainer>
       <Banner
         label="Les biens acquis ou réservés sur le pass Culture sont destinés à un usage strictement personnel et ne peuvent faire l’objet de revente."

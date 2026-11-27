@@ -17,28 +17,26 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<ContactBlock/>', () => {
-  it('should navigate to mail when pressing on email', async () => {
+  it.each([
+    {
+      destination: 'mail',
+      contact: 'email',
+      text: 'contact@venue.com',
+      url: 'mailto:contact@venue.com',
+    },
+    { destination: 'tel', contact: 'phoneNumber', text: '+33102030405', url: 'tel:+33102030405' },
+    {
+      destination: 'website',
+      contact: 'website adress',
+      text: 'https://my@website.com',
+      url: 'https://my@website.com',
+    },
+  ])('should navigate to $destination when pressing on $contact', async ({ text, url }) => {
     render(<ContactBlock venue={venueDataTest} />)
 
-    await user.press(screen.getByText('contact@venue.com'))
+    await user.press(screen.getByText(text))
 
-    expect(openUrlSpy).toHaveBeenCalledWith('mailto:contact@venue.com', undefined, true)
-  })
-
-  it('should navigate to tel when pressing on phoneNumber', async () => {
-    render(<ContactBlock venue={venueDataTest} />)
-
-    await user.press(screen.getByText('+33102030405'))
-
-    expect(openUrlSpy).toHaveBeenCalledWith('tel:+33102030405', undefined, true)
-  })
-
-  it('should navigate to website when pressing on website adress', async () => {
-    render(<ContactBlock venue={venueDataTest} />)
-
-    await user.press(screen.getByText('https://my@website.com'))
-
-    expect(openUrlSpy).toHaveBeenCalledWith('https://my@website.com', undefined, true)
+    expect(openUrlSpy).toHaveBeenCalledWith(url, undefined, true)
   })
 
   it('should display the email, phoneNumber and website', () => {
@@ -49,32 +47,16 @@ describe('<ContactBlock/>', () => {
     expect(screen.getByText('https://my@website.com')).toBeOnTheScreen()
   })
 
-  it('should log event VenueContact when opening email', async () => {
+  it.each([
+    { contact: 'email', text: 'contact@venue.com', type: 'email' },
+    { contact: 'phone number', text: '+33102030405', type: 'phoneNumber' },
+    { contact: 'website', text: 'https://my@website.com', type: 'website' },
+  ])('should log event VenueContact when opening $contact', async ({ text, type }) => {
     render(<ContactBlock venue={venueDataTest} />)
-    await user.press(screen.getByText('contact@venue.com'))
+    await user.press(screen.getByText(text))
 
     expect(analytics.logVenueContact).toHaveBeenNthCalledWith(1, {
-      type: 'email',
-      venueId,
-    })
-  })
-
-  it('should log event VenueContact when opening phone number', async () => {
-    render(<ContactBlock venue={venueDataTest} />)
-    await user.press(screen.getByText('+33102030405'))
-
-    expect(analytics.logVenueContact).toHaveBeenNthCalledWith(1, {
-      type: 'phoneNumber',
-      venueId,
-    })
-  })
-
-  it('should log event VenueContact when opening website', async () => {
-    render(<ContactBlock venue={venueDataTest} />)
-    await user.press(screen.getByText('https://my@website.com'))
-
-    expect(analytics.logVenueContact).toHaveBeenNthCalledWith(1, {
-      type: 'website',
+      type,
       venueId,
     })
   })

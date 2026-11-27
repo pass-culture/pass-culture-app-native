@@ -53,12 +53,12 @@ describe('buildOfferGenreTypes', () => {
   it('should return undefined offerGenreType list when no subtypes are provided', () => {
     const offerGenreTypes = buildOfferGenreTypes(GenreType.MOVIE, [], genreTypeMapping)
 
-    expect(offerGenreTypes).toEqual(undefined)
+    expect(offerGenreTypes).toBeUndefined()
   })
 
   it('should return undefined offerGenreType list when subtype list is not recognized', () => {
     const offerGenreTypes = buildOfferGenreTypes(GenreType.MOVIE, ['Gros navet'], genreTypeMapping)
 
-    expect(offerGenreTypes).toEqual(undefined)
+    expect(offerGenreTypes).toBeUndefined()
   })
 })

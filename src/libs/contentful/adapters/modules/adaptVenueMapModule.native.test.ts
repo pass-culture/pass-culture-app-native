@@ -16,6 +16,6 @@ describe('adaptVenueMapModule', () => {
       fields: undefined,
     }
 
-    expect(adaptVenueMapModule(unpublishedVenueMap)).toEqual(null)
+    expect(adaptVenueMapModule(unpublishedVenueMap)).toBeNull()
   })
 })

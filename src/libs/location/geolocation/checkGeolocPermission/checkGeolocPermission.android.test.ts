@@ -17,24 +17,13 @@ describe('checkGeolocPermission()', () => {
     expect(permission).toEqual(GeolocPermissionState.GRANTED)
   })
 
-  it('should return never_ask_again when COARSE_LOCATION permission is denied', async () => {
-    permissionsCheckSpy.mockResolvedValueOnce('denied')
-    const permission = await checkGeolocPermission()
+  it.each(['denied', 'blocked', 'unavailable'] as const)(
+    'should return never_ask_again when COARSE_LOCATION permission is %s',
+    async (status) => {
+      permissionsCheckSpy.mockResolvedValueOnce(status)
+      const permission = await checkGeolocPermission()
 
-    expect(permission).toEqual(GeolocPermissionState.NEVER_ASK_AGAIN)
-  })
-
-  it('should return never_ask_again when COARSE_LOCATION permission is blocked', async () => {
-    permissionsCheckSpy.mockResolvedValueOnce('blocked')
-    const permission = await checkGeolocPermission()
-
-    expect(permission).toEqual(GeolocPermissionState.NEVER_ASK_AGAIN)
-  })
-
-  it('should return never_ask_again when COARSE_LOCATION permission is unavailable', async () => {
-    permissionsCheckSpy.mockResolvedValueOnce('unavailable')
-    const permission = await checkGeolocPermission()
-
-    expect(permission).toEqual(GeolocPermissionState.NEVER_ASK_AGAIN)
-  })
+      expect(permission).toEqual(GeolocPermissionState.NEVER_ASK_AGAIN)
+    }
+  )
 })

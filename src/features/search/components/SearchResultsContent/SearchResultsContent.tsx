@@ -1,7 +1,6 @@
 import { useFocusEffect, useIsFocused, useNavigation } from '@react-navigation/native'
 import { FlashListRef } from '@shopify/flash-list'
 import { SearchResponse } from 'algoliasearch'
-import { debounce } from 'lodash'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { FlatList, Platform, useWindowDimensions, ViewToken } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
@@ -223,18 +222,16 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
 
   const { headerTransition: scrollButtonTransition, onScroll } = useOpacityTransition()
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // Despite the fact that the useEffect hook being called immediately,
+  // scrollToOffset may not always have an effect for unknown reason,
+  // deferring scrollToOffset solves it.
   useEffect(
-    // Despite the fact that the useEffect hook being called immediately,
-    // scrollToOffset may not always have an effect for unknown reason,
-    // debouncing scrollToOffset solves it.
-    debounce(
-      useCallback(() => {
-        if (searchListRef?.current) {
-          searchListRef.current.scrollToOffset({ offset: 0, animated: true })
-        }
-      }, [searchListRef])
-    ),
+    function scrollToTopOnSearchChange() {
+      const timeout = setTimeout(() => {
+        searchListRef.current?.scrollToOffset({ offset: 0, animated: true })
+      })
+      return () => clearTimeout(timeout)
+    },
     [nbHits, searchState]
   )
 

@@ -16,7 +16,7 @@ describe('adaptRecommendationModule', () => {
   it('should return null when the module is not published', () => {
     const rawRecommendationModule = { ...recommendationNatifModuleFixture, fields: undefined }
 
-    expect(adaptRecommendationModule(rawRecommendationModule)).toEqual(null)
+    expect(adaptRecommendationModule(rawRecommendationModule)).toBeNull()
   })
 
   it('should return null when the Display Parameters module is not published', () => {
@@ -31,6 +31,6 @@ describe('adaptRecommendationModule', () => {
       },
     }
 
-    expect(adaptRecommendationModule(rawRecommendationModule)).toEqual(null)
+    expect(adaptRecommendationModule(rawRecommendationModule)).toBeNull()
   })
 })

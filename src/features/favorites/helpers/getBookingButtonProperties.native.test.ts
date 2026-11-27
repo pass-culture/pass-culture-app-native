@@ -85,7 +85,7 @@ describe('getBookingButtonProperties', () => {
       user: beneficiaryUserV2,
     })
 
-    expect(buttonProps).toBe(undefined)
+    expect(buttonProps).toBeUndefined()
   })
 
   it('should return "Réserver" and button should be enabled when offer is free', () => {
@@ -133,7 +133,7 @@ describe('when user is ex-beneficiary', () => {
       user: exBeneficiaryUserV2,
     })
 
-    expect(buttonProps).toBe(undefined)
+    expect(buttonProps).toBeUndefined()
   })
 
   it('should return external link when offer has external url and user is ex-beneficiary', () => {

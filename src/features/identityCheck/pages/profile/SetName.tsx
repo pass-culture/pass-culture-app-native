@@ -78,7 +78,7 @@ export const SetName = () => {
     return freeOfferId ? { type, freeOfferId } : { type }
   }
 
-  async function submitName({ firstName, lastName }: FormValues) {
+  function submitName({ firstName, lastName }: FormValues) {
     if (disabled) return
     setStoredName({ firstName, lastName })
     navigate('SetCity', getCityNavigationParams())

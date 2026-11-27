@@ -72,6 +72,6 @@ describe('matchSubscriptionMessageIconToSvg', () => {
   it('should no return icon when given no icon and no fallback icon', () => {
     const returnedIcon = matchSubscriptionMessageIconToSvg(undefined, undefined)
 
-    expect(returnedIcon).toEqual(undefined)
+    expect(returnedIcon).toBeUndefined()
   })
 })

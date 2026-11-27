@@ -316,18 +316,18 @@ describe('formatDates', () => {
   })
 
   it('should return undefined when undefined is given', () => {
-    expect(formatDates(undefined)).toEqual(undefined)
+    expect(formatDates(undefined)).toBeUndefined()
   })
 
   it('should return undefined when empty array is given', () => {
-    expect(formatDates([])).toEqual(undefined)
+    expect(formatDates([])).toBeUndefined()
   })
 
   it('should return undefined when given dates are past', () => {
     const dates = [OCTOBER_5_2020, OCTOBER_5_2020]
     const timestampsInSeconds = dates.map((date: Date) => date.valueOf())
 
-    expect(formatDates(timestampsInSeconds)).toEqual(undefined)
+    expect(formatDates(timestampsInSeconds)).toBeUndefined()
   })
 
   it('should return "Dès le" when given dates are future and different', () => {
@@ -445,7 +445,6 @@ describe('formatDateToISOStringWithoutTime() - Brazil/East', () => {
   it.each([
     [31, 12, 2020, '2020-12-31'],
     [1, 12, 2020, '2020-12-01'],
-    [1, 12, 2020, '2020-12-01'],
     [13, 6, 2001, '2001-06-13'],
   ])(
     'should format Date $year / $month / $day to string "$expectedISOString"',
@@ -463,7 +462,6 @@ describe('formatDateToISOStringWithoutTime() - Europe/London', () => {
 
   it.each([
     [31, 12, 2020, '2020-12-31'],
-    [1, 12, 2020, '2020-12-01'],
     [1, 12, 2020, '2020-12-01'],
     [13, 6, 2001, '2001-06-13'],
   ])(

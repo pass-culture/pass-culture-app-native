@@ -39,7 +39,7 @@ const useMobileFontScale = (): { mobileFontScale: number } => {
       }
     }
 
-    fetchFontScale()
+    void fetchFontScale()
   }, [])
 
   return { mobileFontScale }
