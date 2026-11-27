@@ -5,7 +5,6 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 
 import achievements_success from 'ui/animations/achievements_success.json'
-import add_favorite from 'ui/animations/add_favorite.json'
 import french_republic_animation from 'ui/animations/french_republic_animation.json'
 import geolocalisation from 'ui/animations/geolocalisation.json'
 import lottie_loading from 'ui/animations/lottie_loading.json'
@@ -13,9 +12,9 @@ import notif_basic_medium from 'ui/animations/notif_basic_medium.json'
 import onboarding_birthday_cake from 'ui/animations/onboarding_birthday_cake.json'
 import onboarding_unlock from 'ui/animations/onboarding_unlock.json'
 import qpi_thanks from 'ui/animations/qpi_thanks.json'
-import remove_favorite from 'ui/animations/remove_favorite.json'
 import { ThemedStyledLottieView } from 'ui/animations/ThemedStyledLottieView'
 import { AnimationObject, LottieColoringOptions } from 'ui/animations/type'
+import { AnimatedFavoriteIcon } from 'ui/components/AnimatedFavoriteIcon'
 import { Typo, getSpacing } from 'ui/theme'
 
 export default {
@@ -39,12 +38,6 @@ const LottieAnimations: Record<string, LottieStoryConfig> = {
     isSmallAnimation: false,
     coloringMode: 'targeted',
     targetShapeNames: ['Fond 1'],
-  },
-  add_favorite: {
-    source: add_favorite,
-    hasBackground: false,
-    isSmallAnimation: true,
-    coloringMode: 'global',
   },
   geolocalisation: {
     source: geolocalisation,
@@ -94,40 +87,42 @@ const LottieAnimations: Record<string, LottieStoryConfig> = {
     targetShapeNames: ['Fond 1', 'Gradient Fill 1'],
     targetLayerNames: ['étoile', 'cadre'],
   },
-  remove_favorite: {
-    source: remove_favorite,
-    hasBackground: false,
-    isSmallAnimation: true,
-    coloringMode: 'global',
-  },
 }
 
-const Template: StoryFn<typeof ThemedStyledLottieView> = () => (
-  <GridContainer>
-    {Object.entries(LottieAnimations)
-      .sort(([nameA], [nameB]) => nameA.localeCompare(nameB))
-      .map(([name, config]) => (
-        <HoverAnimation key={name} name={name} config={config} />
-      ))}
-  </GridContainer>
-)
+type CodeAnimationAction = 'add' | 'remove'
 
-interface HoverAnimationProps {
+// Micro-animations made in code (Reanimated), see doc/development/how-to/micro-animations.md
+const CodeAnimations: Record<string, CodeAnimationAction> = {
+  add_favorite: 'add',
+  remove_favorite: 'remove',
+}
+
+const Template: StoryFn<typeof ThemedStyledLottieView> = () => {
+  const cards = [
+    ...Object.entries(LottieAnimations).map(([name, config]) => ({
+      name,
+      card: <HoverLottieAnimation key={name} name={name} config={config} />,
+    })),
+    ...Object.entries(CodeAnimations).map(([name, action]) => ({
+      name,
+      card: <HoverFavoriteAnimation key={name} name={name} action={action} />,
+    })),
+  ]
+
+  return (
+    <GridContainer>
+      {cards.sort((cardA, cardB) => cardA.name.localeCompare(cardB.name)).map(({ card }) => card)}
+    </GridContainer>
+  )
+}
+
+interface HoverCardProps {
   name: string
-  config: LottieStoryConfig
+  hasBackground?: boolean
+  children: (isHovered: boolean) => React.ReactNode
 }
 
-const HoverAnimation: React.FC<HoverAnimationProps> = ({
-  name,
-  config: {
-    source,
-    hasBackground,
-    isSmallAnimation,
-    coloringMode,
-    targetShapeNames,
-    targetLayerNames,
-  },
-}) => {
+const HoverCard: React.FC<HoverCardProps> = ({ name, hasBackground = false, children }) => {
   const [isHovered, setIsHovered] = useState(false)
 
   return (
@@ -138,7 +133,30 @@ const HoverAnimation: React.FC<HoverAnimationProps> = ({
       <Cover isHovered={isHovered}>
         <Typo.Button>👆{name} (Hover)</Typo.Button>
       </Cover>
+      {children(isHovered)}
+      <Name hasBackground={hasBackground}>{name}</Name>
+    </AnimationContainer>
+  )
+}
 
+interface HoverLottieAnimationProps {
+  name: string
+  config: LottieStoryConfig
+}
+
+const HoverLottieAnimation: React.FC<HoverLottieAnimationProps> = ({
+  name,
+  config: {
+    source,
+    hasBackground,
+    isSmallAnimation,
+    coloringMode,
+    targetShapeNames,
+    targetLayerNames,
+  },
+}) => (
+  <HoverCard name={name} hasBackground={hasBackground}>
+    {(isHovered) => (
       <ThemedStyledLottieView
         key={isHovered ? `${name}-hover` : `${name}-idle`}
         source={source}
@@ -150,8 +168,39 @@ const HoverAnimation: React.FC<HoverAnimationProps> = ({
         height={isSmallAnimation ? getSpacing(15) : getSpacing(37.5)}
         width={isSmallAnimation ? getSpacing(15) : getSpacing(37.5)}
       />
-      <Name hasBackground={hasBackground}>{name}</Name>
-    </AnimationContainer>
+    )}
+  </HoverCard>
+)
+
+interface HoverFavoriteAnimationProps {
+  name: string
+  action: CodeAnimationAction
+}
+
+const HoverFavoriteAnimation: React.FC<HoverFavoriteAnimationProps> = ({ name, action }) => (
+  <HoverCard name={name}>
+    {(isHovered) => <LoopingFavoriteIcon action={action} isPlaying={isHovered} />}
+  </HoverCard>
+)
+
+const LoopingFavoriteIcon: React.FC<{ action: CodeAnimationAction; isPlaying: boolean }> = ({
+  action,
+  isPlaying,
+}) => {
+  // Re-mounting the icon on each loop restarts its animation
+  const [loopCount, setLoopCount] = useState(0)
+  const isAdding = action === 'add'
+
+  return (
+    <FavoriteIconContainer>
+      <AnimatedFavoriteIcon
+        key={loopCount}
+        isFavorited={isPlaying ? isAdding : !isAdding}
+        isPurple={isPlaying || !isAdding}
+        animatingAction={isPlaying ? action : null}
+        onAnimationFinish={() => setLoopCount((count) => count + 1)}
+      />
+    </FavoriteIconContainer>
   )
 }
 
@@ -181,6 +230,14 @@ const Name = styled(Typo.Button)<{ hasBackground: boolean }>(({ theme, hasBackgr
     ? theme.designSystem.color.text.inverted
     : theme.designSystem.color.text.default,
 }))
+
+const FavoriteIconContainer = styled.div({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  height: getSpacing(15),
+  width: getSpacing(15),
+})
 
 const GridContainer = styled.div({
   display: 'flex',
