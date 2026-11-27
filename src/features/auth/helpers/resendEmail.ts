@@ -1,4 +1,3 @@
-export const ONE_MINUTE = 60 // 1 minute in seconds
 export const RESEND_COUNTDOWN = 120 // 2 minutes in seconds
 export const MAX_RESEND_ATTEMPTS = 5
 export const MAX_ATTEMPTS_COUNTDOWN = 3600 // 1 hour in seconds
